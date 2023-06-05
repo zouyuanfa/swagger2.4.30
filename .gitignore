@@ -8,6 +8,7 @@ version.properties
 !modules/swagger-codegen-cli/src/main/resources/version.properties
 .project
 .classpath
+.json
 lib/*
 build/*
 generated-files/*
