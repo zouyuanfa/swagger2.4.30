@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
 import java.lang.reflect.Type;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -52,11 +53,15 @@ import {{invokerPackage}}.auth.Authentication;
 import {{invokerPackage}}.auth.HttpBasicAuth;
 import {{invokerPackage}}.auth.ApiKeyAuth;
 import {{invokerPackage}}.auth.OAuth;
+import {{invokerPackage}}.unit.SHAUtil;
 
 public class ApiClient {
 
+    private static final String[] DEFAULT_SIGNHEADERS = new String[]{"X-Api-Nonce", "X-Api-TimeStamp"};
     private String basePath = "{{{basePath}}}";
     private boolean debugging = false;
+    private String clientId =  null;
+    private String clientSecret = null;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
@@ -96,6 +101,8 @@ public class ApiClient {
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
+
+
 
     /**
      * Get base path
@@ -155,6 +162,22 @@ public class ApiClient {
     public ApiClient setJSON(JSON json) {
         this.json = json;
         return this;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+      this.clientId = clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
     }
 
     public DateFormat getDateFormat() {
@@ -219,75 +242,18 @@ public class ApiClient {
         return authentications.get(authName);
     }
 
-    /**
-     * Helper method to set username for the first HTTP basic authentication.
-     *
-     * @param username Username
-     */
-    public void setUsername(String username) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setUsername(username);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
 
-    /**
-     * Helper method to set password for the first HTTP basic authentication.
-     *
-     * @param password Password
-     */
-    public void setPassword(String password) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof HttpBasicAuth) {
-                ((HttpBasicAuth) auth).setPassword(password);
-                return;
-            }
-        }
-        throw new RuntimeException("No HTTP basic authentication configured!");
-    }
 
-    /**
-     * Helper method to set API key value for the first API key authentication.
-     *
-     * @param apiKey API key
-     */
-    public void setApiKey(String apiKey) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKey(apiKey);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
-
-    /**
-     * Helper method to set API key prefix for the first API key authentication.
-     *
-     * @param apiKeyPrefix API key prefix
-     */
-    public void setApiKeyPrefix(String apiKeyPrefix) {
-        for (Authentication auth : authentications.values()) {
-            if (auth instanceof ApiKeyAuth) {
-                ((ApiKeyAuth) auth).setApiKeyPrefix(apiKeyPrefix);
-                return;
-            }
-        }
-        throw new RuntimeException("No API key authentication configured!");
-    }
 
     /**
      * Helper method to set access token for the first OAuth2 authentication.
      *
-     * @param accessToken Access token
+     * @param appToken Access token
      */
-    public void setAccessToken(String accessToken) {
+    public void setAppToken(String appToken) {
         for (Authentication auth : authentications.values()) {
-            if (auth instanceof OAuth) {
-                ((OAuth) auth).setAccessToken(accessToken);
+            if (auth instanceof ApiKeyAuth) {
+                ((ApiKeyAuth) auth).setAppToken(appToken);
                 return;
             }
         }
@@ -805,10 +771,10 @@ public class ApiClient {
                 try {
                     respBody = response.body().string();
                 } catch (IOException e) {
-                    throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
+                    throw new ApiException(respBody, e, response.code(), response.headers().toMultimap());
                 }
             }
-            throw new ApiException(response.message(), response.code(), response.headers().toMultimap(), respBody);
+            throw new ApiException(respBody, response.code(), response.headers().toMultimap(), respBody);
         }
     }
 
@@ -828,11 +794,75 @@ public class ApiClient {
      * @throws ApiException If fail to serialize the request body object
      */
     public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        kingdeeSign(path,method,queryParams,headerParams);
         Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, formParams, authNames, progressRequestListener);
 
         return httpClient.newCall(request);
     }
+    private void kingdeeSign(String path, String method, List<Pair> queryParams, Map<String,String> headerParams) {
+        String[] signHeaders = DEFAULT_SIGNHEADERS;
+        headerParams.put("X-Api-ClientID", clientId);
+        headerParams.put("X-Api-Auth-Version", "2.0");
+        headerParams.put("X-Api-TimeStamp", String.valueOf(System.currentTimeMillis()));
+        headerParams.put("X-Api-Nonce", String.valueOf(System.currentTimeMillis()));
+        headerParams.put("X-Api-SignHeaders", String.join(",", signHeaders));
+        headerParams.put("X-Api-Signature", this.getSignature(method,  this.getPathEncode(path), this.getQueryEncode(queryParams), signHeaders, headerParams));
+    }
 
+
+    private String getQueryEncode(List<Pair> querys) {
+        if(Objects.isNull(querys) || querys.size() == 0){
+        return "";
+        }
+        List<String> list = new ArrayList<>(querys.size());
+            try {
+                for (Pair query : querys) {
+                    String key = URLEncoder.encode(query.getName(), StandardCharsets.UTF_8.toString());
+                    String value = URLEncoder.encode(query.getValue(), StandardCharsets.UTF_8.toString());
+                    list.add(key + "=" + value);
+                }
+                String rawQueryString = String.join("&", (Iterable)list);
+                String[] queryStrings = rawQueryString.split("&");
+                list.clear();
+                for (String param : queryStrings) {
+                    int index = param.indexOf("=");
+                    if (index >= 1) {
+                    String key = URLEncoder.encode(param.substring(0, index), StandardCharsets.UTF_8.toString());
+                    String value = URLEncoder.encode(param.substring(index + 1), StandardCharsets.UTF_8.toString());
+                    list.add(key + "=" + value);
+                }
+            }
+                return String.join("&", (Iterable)list);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+    }
+
+    private String getPathEncode(String path) {
+        try {
+            return URLEncoder.encode(path, StandardCharsets.UTF_8.toString());
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    private String getSignature(String method, String path, String query, String[] signatureHeaders, Map<String,String> headerParams) {
+        StringBuilder b = new StringBuilder();
+        b.append(method);
+        b.append("\n");
+        b.append(path);
+        b.append("\n");
+        b.append(query);
+        b.append("\n");
+        for (String x : signatureHeaders) {
+            b.append(x.toLowerCase());
+            b.append(":");
+            b.append(headerParams.get(x));
+            b.append("\n");
+        }
+        String s = SHAUtil.SHA256HMAC(b.toString(), this.clientSecret);
+        return s != null ?  Base64.getUrlEncoder().encodeToString(s.getBytes()) : "";
+    }
     /**
      * Build an HTTP request with the given options.
      *

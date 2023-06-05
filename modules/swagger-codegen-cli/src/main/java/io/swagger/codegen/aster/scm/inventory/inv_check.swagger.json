@@ -1,0 +1,1178 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "进销存云;仓存单据;盘点单",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "InventoryCheck"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/scm/inv_check_bill": {
+      "get": {
+        "summary": "盘点单列表;盘点单列表;1.0.7",
+        "operationId": "InventoryCheck_invCheckBillList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvCheckBillListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_start_time",
+            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_end_time",
+            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_start_time",
+            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_end_time",
+            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_bill_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_bill_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "emp_id",
+            "description": "a=当前业务员ID;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_status",
+            "description": "a=单据状态（所有：“”，已审核：“C”，未审核：“Z”）;c=C.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "stock_id",
+            "description": "a=仓库ID;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "creator_id",
+            "description": "a=制单人ID;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "check_status",
+            "description": "a=单据状态（所有：“”，未盘点：“D”，盘点中：“E”，未汇总：“F”，已汇总：“G”，待盈亏处理：“A”，盈亏处理中：“Z”，盘点完成：“C”）;c=C.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "check_model",
+            "description": "a=盘点类型（所有：“”，单人盘点：“1”，多人盘点：“2”）;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InventoryCheck"
+        ]
+      },
+      "post": {
+        "summary": "盘点单保存;盘点单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.10",
+        "operationId": "InventoryCheck_invCheckBillSave",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvCheckBillSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "InventoryCheck"
+        ]
+      }
+    },
+    "/openapi/v2/scm/inv_check_bill_detail": {
+      "get": {
+        "summary": "盘点单详情;盘点单详情;1.0.9",
+        "operationId": "InventoryCheck_invCheckBillDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvCheckBillDetailRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=单据ID;c=803390648580310016;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "only_basic",
+            "description": "a=为true时返回更详细商品信息;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "InventoryCheck"
+        ]
+      }
+    },
+    "/openapi/v2/scm/inv_check_bill_gain_loss_deal": {
+      "post": {
+        "summary": "盘点单盈亏处理;盘点单盈亏处理;1.0.6",
+        "operationId": "InventoryCheck_invCheckBillGainLossDeal",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvCheckBillGainLossDealRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvCheckBillGainLossDealReq"
+            }
+          }
+        ],
+        "tags": [
+          "InventoryCheck"
+        ]
+      }
+    },
+    "/openapi/v2/scm/inv_check_task": {
+      "get": {
+        "summary": "盘点任务列表;盘点任务列表;1.0.6",
+        "operationId": "InventoryCheck_invCheckTaskList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvCheckTaskListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "check_model",
+            "description": "a=盘点模式（单人盘点：“1”，多人盘点：“2”，默认为2）;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InventoryCheck"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "InvCheckBillDetailRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=843961420348406785"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=PDD-20200310-00001"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2020-03-10"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态，Z：未审核，C：已审核;c=Z"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-10 10:40:23"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;c=2020-03-10 10:40:23"
+        },
+        "check_time": {
+          "type": "string",
+          "title": "a=盈亏处理时间;c=2020-03-10 10:40:23"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=盘点人id;c=1"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=盘点人名称;c=盘点人A"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=盘点人编码;c=001"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=创建人id;c=2"
+        },
+        "creator_name": {
+          "type": "string",
+          "title": "a=创建人名称;c=创建人B"
+        },
+        "creator_number": {
+          "type": "string",
+          "title": "a=创建人编码;c=002"
+        },
+        "modifier_id": {
+          "type": "string",
+          "title": "a=修改人id;c=3"
+        },
+        "modifier_name": {
+          "type": "string",
+          "title": "a=修改人名称;c=修改人C"
+        },
+        "modifier_number": {
+          "type": "string",
+          "title": "a=修改人编码;c=003"
+        },
+        "check_id": {
+          "type": "string",
+          "title": "a=盈亏处理人id;c=4"
+        },
+        "check_name": {
+          "type": "string",
+          "title": "a=盈亏处理人名称;c=盘亏人D"
+        },
+        "check_number": {
+          "type": "string",
+          "title": "a=盈亏处理人编码;c=004"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=xxxx"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=1"
+        },
+        "stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=仓库A"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=001"
+        },
+        "stock_is_allow_freight": {
+          "type": "boolean",
+          "title": "a=仓库启用仓位管理;c=false"
+        },
+        "gain_id": {
+          "type": "string",
+          "title": "a=盘盈单id;c=1"
+        },
+        "gain_bill_no": {
+          "type": "string",
+          "title": "a=盘盈单编码;c=001"
+        },
+        "loss_id": {
+          "type": "string",
+          "title": "a=盘亏单id;c=1"
+        },
+        "loss_bill_no": {
+          "type": "string",
+          "title": "a=盘亏单编码;c=001"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvCheckBillDetailRes.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[]"
+        },
+        "custom_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        }
+      }
+    },
+    "InvCheckBillDetailRes.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=843961420348406785"
+        },
+        "picture": {
+          "type": "string",
+          "title": "a=图片url;c=333"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=778308996250477568"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=SP00004"
+        },
+        "material_is_multi_unit": {
+          "type": "boolean",
+          "title": "a=商品是否多单位;c=false"
+        },
+        "material_is_serial": {
+          "type": "boolean",
+          "title": "a=商品是否序列号;c=false"
+        },
+        "material_is_asst_attr": {
+          "type": "boolean",
+          "title": "a=商品是否启用辅助属性;c=false"
+        },
+        "material_is_kf_period": {
+          "type": "boolean",
+          "title": "a=商品是否开启保质期;c=false"
+        },
+        "material_is_batch": {
+          "type": "boolean",
+          "title": "a=商品是否开启批次;c=false"
+        },
+        "material_model": {
+          "type": "string",
+          "title": "a=商品规格;c=001"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位id;c=1"
+        },
+        "sp_name": {
+          "type": "string",
+          "title": "a=仓位名称;c=仓位A"
+        },
+        "sp_number": {
+          "type": "string",
+          "title": "a=仓位编码;c=001"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=1"
+        },
+        "aux_prop_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=辅助属性001"
+        },
+        "aux_prop_number": {
+          "type": "string",
+          "title": "a=辅助属性编码;c=001"
+        },
+        "aux_id1": {
+          "type": "string",
+          "title": "a=辅助属性1id;c=1"
+        },
+        "aux_name1": {
+          "type": "string",
+          "title": "a=辅助属性1名称;c=辅助属性1"
+        },
+        "aux_number1": {
+          "type": "string",
+          "title": "a=辅助属性1编码;c=001"
+        },
+        "aux_id2": {
+          "type": "string",
+          "title": "a=辅助属性2id;c=2"
+        },
+        "aux_name2": {
+          "type": "string",
+          "title": "a=辅助属性2名称;c=辅助属性2"
+        },
+        "aux_number2": {
+          "type": "string",
+          "title": "a=辅助属性2编码;c=002"
+        },
+        "aux_id3": {
+          "type": "string",
+          "title": "a=辅助属性3id;c=3"
+        },
+        "aux_name3": {
+          "type": "string",
+          "title": "a=辅助属性3名称;c=辅助属性3"
+        },
+        "aux_number3": {
+          "type": "string",
+          "title": "a=辅助属性3编码;c=003"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码;c=2020222"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号;c=20220202"
+        },
+        "pro_place": {
+          "type": "string",
+          "title": "a=产地;c=深圳"
+        },
+        "pro_reg_no": {
+          "type": "string",
+          "title": "a=注册证号;c=xxxx222"
+        },
+        "pro_license": {
+          "type": "string",
+          "title": "a=生产许可证号;c=xxx11"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-08"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=有效日期;c=2099-08-08"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型，1：天，2：月，3：年;c=1"
+        },
+        "kf_period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=保质期天数;c=180"
+        },
+        "conversion_rate": {
+          "type": "string",
+          "title": "a=换算公式;c=xx"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=752823522438466560"
+        },
+        "base_unit_name": {
+          "type": "string",
+          "title": "a=基本单位名称;c=克"
+        },
+        "base_unit_number": {
+          "type": "string",
+          "title": "a=基本单位编码;c=g"
+        },
+        "inv_base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本账存数量;c=50"
+        },
+        "base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本盘点数量;c=50"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编码;c=001"
+        },
+        "inv_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=账存数量;c=20"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=盘点数量;c=50"
+        },
+        "aux_unit_id": {
+          "type": "string",
+          "title": "a=辅助单位id;c=1"
+        },
+        "aux_unit_name": {
+          "type": "string",
+          "title": "a=辅助单位名称;c=克"
+        },
+        "aux_unit_number": {
+          "type": "string",
+          "title": "a=辅助单位编码;c=001"
+        },
+        "aux_inv_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助账存数量;c=50"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助盘点数量;c=50"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=行备注;c=xxxx"
+        },
+        "sn_list": {
+          "type": "string",
+          "title": "a=序列号 （以分号分隔，备注可以不填；如：sn_list:0001;c=0002）;c=0001"
+        },
+        "inv_sn_list": {
+          "type": "string",
+          "title": "a=账存序列号 （以分号分隔，备注可以不填；如：inv_sn_list:0001;c=0002）;c=0001"
+        },
+        "src_bill_no": {
+          "type": "string",
+          "title": "a=源单编码;c=991"
+        },
+        "src_bill_type_id": {
+          "type": "string",
+          "title": "a=源单类型;c=1"
+        },
+        "src_bill_type_name": {
+          "type": "string",
+          "title": "a=源单类型名称;c=销售出库单"
+        },
+        "src_bill_type_number": {
+          "type": "string",
+          "title": "a=源单类型编码;c=sal_outbound_bill"
+        },
+        "src_inter_id": {
+          "type": "string",
+          "title": "a=源单id;c=1"
+        },
+        "src_bill_date": {
+          "type": "string",
+          "title": "a=源单日期;c=2022-08-08"
+        },
+        "src_seq": {
+          "type": "string",
+          "title": "a=源单行号;c=1"
+        },
+        "src_entry_id": {
+          "type": "string",
+          "title": "a=源单分录id;c=11"
+        },
+        "custom_entity_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        }
+      }
+    },
+    "InvCheckBillGainLossDealReq": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=盘点单ID;c=[];d=true"
+        }
+      }
+    },
+    "InvCheckBillGainLossDealRes": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "title": "a=操作是否成功;c=true"
+        },
+        "gain_loss_type": {
+          "type": "string",
+          "title": "a=盈亏类型，盘盈：1，盘亏：2，既有盘盈也有盘亏：3，无盈亏：0;c=1"
+        },
+        "gain_id": {
+          "type": "string",
+          "title": "a=盘盈单ID;c=1033851548410637312"
+        },
+        "gain_no": {
+          "type": "string",
+          "title": "a=盘盈单编码;c=PYD-20201127-00001"
+        },
+        "loss_id": {
+          "type": "string",
+          "title": "a=盘亏单ID;c=0"
+        },
+        "loss_no": {
+          "type": "string",
+          "title": "a=盘亏单编码;c=0"
+        }
+      }
+    },
+    "InvCheckBillListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvCheckBillListRes.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "InvCheckBillListRes.Row": {
+      "type": "object",
+      "properties": {
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-10-14 10:42:36"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期，yyyy-MM-dd;c=2020-10-14"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=1001963490413380608"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=PDD-20201014-00001"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态（所有：“”，未审核：“Z”，已审核：“C”）;c=C"
+        },
+        "check_status": {
+          "type": "string",
+          "title": "a=单据状态（所有：“”，未盘点：“D”，盘点中：“E”，未汇总：“F”，已汇总：“G”，待盈亏处理：“A”，盈亏处理中：“Z”，盘点完成：“C”）;c=D"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=test"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=998349917053284352"
+        },
+        "stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=DK1"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=CK00001"
+        },
+        "check_date": {
+          "type": "string",
+          "title": "a=盘点日期，指定日期盘点时才有;c=2020-10-14"
+        },
+        "check_model": {
+          "type": "string",
+          "title": "a=盘点类型（单人盘点：“1”，多人盘点：“2”）;c=1"
+        },
+        "check_scope": {
+          "type": "string",
+          "title": "a=盘点范围（全盘：“1”，抽盘：“2”）;c=1"
+        },
+        "material_source": {
+          "type": "string",
+          "title": "a=商品来源（在盘点仓库中有交易记录的商品：“1”，商品基础资料：“2”）;c=1"
+        }
+      }
+    },
+    "InvCheckBillSaveReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据ID，修改单据时必填，新增不传该字段;c=1"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码，修改单据时必填，新增不传该字段;c=001"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2020-08-06;d=true"
+        },
+        "check_task_id": {
+          "type": "string",
+          "title": "a=盘点任务;c=0;d=true"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=盘点人;c=1"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=xxxx"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvCheckBillSaveReq.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[];d=true"
+        },
+        "custom_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "operation_key": {
+          "type": "string",
+          "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+        }
+      }
+    },
+    "InvCheckBillSaveReq.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录id，新增不传该字段，修改必传;c=1"
+        },
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品;c=950031544737603584;d=true"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位;c=1"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性(辅助属性商品必填);c=1"
+        },
+        "aux_id1": {
+          "type": "string",
+          "title": "a=辅助属性1;c=1"
+        },
+        "aux_id2": {
+          "type": "string",
+          "title": "a=辅助属性2;c=2"
+        },
+        "aux_id3": {
+          "type": "string",
+          "title": "a=辅助属性3;c=3"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号 (批次商品必填);c=122121"
+        },
+        "pro_reg_no": {
+          "type": "string",
+          "title": "a=注册证号;c=21213"
+        },
+        "pro_place": {
+          "type": "string",
+          "title": "a=产地;c=深圳"
+        },
+        "pro_license": {
+          "type": "string",
+          "title": "a=生产许可证号;c=1231232"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码;c=1232132"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-08"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=有效日期;c=2022-08-08"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型，1：天，2：月，3：年;c=3"
+        },
+        "kf_period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=保质期天数;c=180"
+        },
+        "sn_list": {
+          "type": "string",
+          "title": "a=盘点序列号（序列号:备注，多个序列号用英文分号隔开）;c=1;2"
+        },
+        "inv_sn_list": {
+          "type": "string",
+          "title": "a=账存序列号;c=1"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位;c=1"
+        },
+        "inv_base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本账存数量;c=0;d=true"
+        },
+        "base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本盘点数量;c=0;d=true"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位;c=0;d=true"
+        },
+        "inv_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=账存数量;c=0;d=true"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=盘点数量;c=1;d=true"
+        },
+        "aux_unit_id": {
+          "type": "string",
+          "title": "a=辅助单位;c=1"
+        },
+        "aux_inv_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助账存数量;c=10"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助盘点数量;c=10"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=行备注;c=xxx"
+        },
+        "custom_entity_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        }
+      }
+    },
+    "InvCheckTaskListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvCheckTaskListRes.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "InvCheckTaskListRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=任务ID;c=939721550083405824"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=任务名称;c=快速新增盘点任务"
+        },
+        "check_model": {
+          "type": "string",
+          "title": "a=盘点模式（单人盘点：“1”，多人盘点：“2”）;c=1"
+        },
+        "check_type": {
+          "type": "string",
+          "title": "a=盘点类型（即时库存盘点：“1”，指定日期盘点：“2”）;c=1"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=923744127558900736"
+        },
+        "stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=ZGF无仓位"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=CK00001"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

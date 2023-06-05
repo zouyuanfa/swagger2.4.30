@@ -1,0 +1,238 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "零售云;门店管理;",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "MallPreWriteOffCancel"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/mall_pre_write_off_cancel": {
+      "post": {
+        "summary": "反预核销;反预核销;1.0.6",
+        "operationId": "MallPreWriteOffCancel_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MallPreWriteOffCancelReq"
+            }
+          }
+        ],
+        "tags": [
+          "MallPreWriteOffCancel"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "MallPreWriteOffCancelReq": {
+      "type": "object",
+      "properties": {
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=商城单据内码（外部对接系统唯一标识），每次预核销，该参数必须不同，否则会当成已经处理，直接返回;c=001;d=true"
+        },
+        "member_id": {
+          "type": "string",
+          "title": "a=会员ID;c=1333333333;d=true"
+        },
+        "member_deals": {
+          "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals",
+          "title": "a=预核销业务类型;c=object;d=false"
+        }
+      }
+    },
+    "MallPreWriteOffCancelReq.MemberDeals": {
+      "type": "object",
+      "properties": {
+        "recharge_consume": {
+          "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.RechargeConsume",
+          "title": "a=会员消费;c=object;d=false"
+        },
+        "integral_now": {
+          "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.IntegralNow",
+          "title": "a=优惠券预核销;c=object;d=false"
+        },
+        "write_off_coupons": {
+          "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons",
+          "title": "a=优惠券预核销;c=object;d=false"
+        },
+        "recharge_return": {
+          "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.RechargeReturn",
+          "title": "a=充值退款;c=object;d=false"
+        },
+        "consume_return": {
+          "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.ConsumeReturn",
+          "title": "a=退货退款;c=object;d=false"
+        }
+      }
+    },
+    "MallPreWriteOffCancelReq.MemberDeals.ConsumeReturn": {
+      "type": "object",
+      "properties": {
+        "member_card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1333333333;d=false"
+        },
+        "member_card_no": {
+          "type": "string",
+          "title": "a=会员卡编号;c=1333333333;d=false"
+        },
+        "return_amt": {
+          "type": "string",
+          "title": "a=退充值预核销金额;c=1333333333;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=原单ID;c=1333333333;d=false"
+        }
+      }
+    },
+    "MallPreWriteOffCancelReq.MemberDeals.IntegralNow": {
+      "type": "object",
+      "properties": {
+        "member_card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1333333333;d=false"
+        },
+        "member_card_no": {
+          "type": "string",
+          "title": "a=会员卡编号;c=1333333333;d=false"
+        },
+        "integral": {
+          "type": "string",
+          "title": "a=核销积分;c=300;d=false"
+        }
+      },
+      "title": "预核销积分"
+    },
+    "MallPreWriteOffCancelReq.MemberDeals.RechargeConsume": {
+      "type": "object",
+      "properties": {
+        "member_card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1333333333;d=false"
+        },
+        "member_card_no": {
+          "type": "string",
+          "title": "a=会员卡编号;c=1333333333;d=false"
+        },
+        "amt": {
+          "type": "string",
+          "title": "a=会员消费预核销金额;c=30;d=false"
+        }
+      }
+    },
+    "MallPreWriteOffCancelReq.MemberDeals.RechargeReturn": {
+      "type": "object",
+      "properties": {
+        "member_card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1333333333;d=false"
+        },
+        "amt": {
+          "type": "string",
+          "title": "a=退充值预核销金额;c=300;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=原充值单ID;c=1333333333;d=false"
+        }
+      },
+      "title": "充值退款"
+    },
+    "MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons": {
+      "type": "object",
+      "properties": {
+        "member_card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1333333333;d=false"
+        },
+        "member_card_no": {
+          "type": "string",
+          "title": "a=会员卡编号;c=1333333333;d=false"
+        },
+        "coupon_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons.Coupon"
+          },
+          "title": "a=优惠券 数组;c=[];d=false"
+        }
+      }
+    },
+    "MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons.Coupon": {
+      "type": "object",
+      "properties": {
+        "coupons_id": {
+          "type": "string",
+          "title": "a=优惠券ID 可选;c=1333333333;d=false"
+        },
+        "coupons_no": {
+          "type": "string",
+          "title": "a=优惠券编号 可选;c=1333333333;d=false"
+        },
+        "money": {
+          "type": "string",
+          "title": "a=抵扣金额;c=300;d=false"
+        }
+      },
+      "title": "优惠券 数组"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

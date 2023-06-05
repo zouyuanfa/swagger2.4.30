@@ -1,0 +1,255 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "进销存云;应付单据;付款退款单",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ApPayRet"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/arap/ap_pay_ret": {
+      "post": {
+        "summary": "付款退款单保存;付款退款单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.14",
+        "operationId": "ApPayRet_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApPayRetSaveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ApPayRet"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "ApPayRetSaveRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据id，修改单据时必填;b=2147483647;c=1;d=false"
+        },
+        "default_bill_source": {
+          "type": "string",
+          "title": "固定值字段，不生成对外API文档"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;b=10;c=2022-01-01;d=true"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;b=2147483647;c=1;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id，不填时默认单据币别使用系统本位币;b=2147483647;c=1;d=false"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率，应大于零，币别为本币时，汇率取1,汇率小于零时，修正为1;b=99999;c=1;d=false"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;b=2147483647;c=1;d=false"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门id;b=2147483647;c=1;d=false"
+        },
+        "total_discount_amount": {
+          "type": "string",
+          "title": "a=优惠金额;b=999999999;c=100;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=无;d=false"
+        },
+        "pay_entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApPayRetSaveRequest.PayEntry"
+          },
+          "title": "a=付款信息分录;b=100;c=[];d=false"
+        },
+        "source_bill_entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApPayRetSaveRequest.SourceBillEntry"
+          },
+          "title": "a=源单信息分录;b=100;c=[];d=false"
+        },
+        "attachments_url_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApPayRetSaveRequest.AttachmentsUrl"
+          },
+          "title": "a=附件地址;b=100;c=[];d=false"
+        },
+        "custom_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "operation_key": {
+          "type": "string",
+          "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+        }
+      }
+    },
+    "ApPayRetSaveRequest.AttachmentsUrl": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "a=附件地址;b=1000;c=http;d=false"
+        }
+      }
+    },
+    "ApPayRetSaveRequest.PayEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录id(新增时不传，修改时必传);b=2147483647;c=1;d=false"
+        },
+        "settle_account_id": {
+          "type": "string",
+          "title": "a=付款账户id;b=2147483647;c=1;d=false"
+        },
+        "pay_type_id": {
+          "type": "string",
+          "title": "a=支出类别id;b=2147483647;c=1;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=付款金额（应大于0）;b=999999999;c=100;d=false"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=付款备注;b=100;c=备注;d=false"
+        },
+        "trans_number": {
+          "type": "string",
+          "title": "a=交易号/票据号;b=30;c=001;d=false"
+        },
+        "service_fee": {
+          "type": "string",
+          "title": "a=手续费;b=999999999;c=100;d=false"
+        },
+        "custom_entity_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        }
+      }
+    },
+    "ApPayRetSaveRequest.SourceBillEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录id(新增时不传，修改时必传);b=2147483647;c=1;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=源单id;b=2147483647;c=1;d=false"
+        },
+        "src_bill_type_id": {
+          "type": "string",
+          "title": "a=源单类型sal_bill_outbound、sal_bill_inbound、ar_othercreditbill;b=30;c=sal_bill_outbound;d=false"
+        },
+        "cur_settle_amount": {
+          "type": "string",
+          "title": "a=本次核销金额;b=999999999;c=100;d=false"
+        },
+        "src_comment": {
+          "type": "string",
+          "title": "a=备注;b=100;c=备注;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

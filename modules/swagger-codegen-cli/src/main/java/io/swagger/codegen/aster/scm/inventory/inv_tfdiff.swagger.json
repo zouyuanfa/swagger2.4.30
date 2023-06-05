@@ -1,0 +1,476 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "进销存云;仓存单据;调拨出库",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "InvTf"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/scm/inv_tfdiff": {
+      "get": {
+        "summary": "调拨差异单列表;调拨差异单列表;1.0.6",
+        "operationId": "InvTf_invTfDiffList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvTfDiffListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_start_time",
+            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_end_time",
+            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_start_time",
+            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_end_time",
+            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_bill_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_bill_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bill_status",
+            "description": "a=单据状态（所有：“”，已审核：“C”，未审核：“Z”）;c=C.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "out_dept_id",
+            "description": "a=调出部门;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "dept_id",
+            "description": "a=调入部门;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "trans_type",
+            "description": "a=业务类型，（1：同价调拨，2：异价调拨）;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "transfer_status",
+            "description": "a=调拨状态，0：未出库，1：未入库，2：部分入库，3：全部入库;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InvTf"
+        ]
+      }
+    },
+    "/openapi/v2/scm/inv_tfin_draw": {
+      "post": {
+        "summary": "调拨差异处理;调拨差异处理;1.0.7",
+        "operationId": "InvTf_invTfInDrawList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvTfInDrawListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvTfInDrawListReq"
+            }
+          }
+        ],
+        "tags": [
+          "InvTf"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=要处理的单据ID;c=785454575074201600;d=true"
+        },
+        "entry_id": {
+          "type": "string",
+          "title": "a=单据分录ID;c=785454575074202624;d=true"
+        }
+      }
+    },
+    "InvTfDiffListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvTfDiffListRes.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "InvTfDiffListRes.Row": {
+      "type": "object",
+      "properties": {
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期，yyyy-MM-dd;c=2021-03-01"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=844054399251655680"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=DBCK-20200310-00001"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=调入部门id;c=1"
+        },
+        "dept_name": {
+          "type": "string",
+          "title": "a=调入部门名称;c=部门A"
+        },
+        "dept_number": {
+          "type": "string",
+          "title": "a=调入部门编码;c=001"
+        },
+        "out_dept_id": {
+          "type": "string",
+          "title": "a=调出部门id;c=2"
+        },
+        "out_dept_name": {
+          "type": "string",
+          "title": "a=调出部门名称;c=部门B"
+        },
+        "out_dept_number": {
+          "type": "string",
+          "title": "a=调出部门编码;c=002"
+        },
+        "trans_type": {
+          "type": "string",
+          "title": "a=业务类型，1：同价调拨，2：异价调拨;c=1"
+        },
+        "diff_status": {
+          "type": "string",
+          "title": "a=业务类型，（1：同价调拨，2：异价调拨）;c=1"
+        },
+        "transfer_status": {
+          "type": "string",
+          "title": "a=调拨状态，0：未出库，1：未入库，2：部分入库，3：全部入库;c=1"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[]"
+        }
+      }
+    },
+    "InvTfInDrawListReq": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "a=处理类型（1：下推其他入库单，2：下推其他出库单;c=1;d=true"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Data"
+          },
+          "title": "a=处理的数据;c=[];d=true"
+        }
+      }
+    },
+    "InvTfInDrawListRes": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "string",
+          "title": "a=入库成功的id，多个id之间用英文逗号隔开;c=784663422611499008"
+        }
+      }
+    },
+    "Row.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=844098615923196928"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=001"
+        },
+        "material_is_multi_unit": {
+          "type": "boolean",
+          "title": "a=商品是否多单位;c=false"
+        },
+        "material_is_serial": {
+          "type": "boolean",
+          "title": "a=商品是否序列号;c=false"
+        },
+        "material_is_asst_attr": {
+          "type": "boolean",
+          "title": "a=商品是否启用辅助属性;c=false"
+        },
+        "material_is_kf_period": {
+          "type": "boolean",
+          "title": "a=商品是否开启保质期;c=false"
+        },
+        "material_is_batch": {
+          "type": "boolean",
+          "title": "a=商品是否开启批次;c=false"
+        },
+        "material_model": {
+          "type": "string",
+          "title": "a=商品规格;c=001"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码;c=0045"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编码;c=5"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号;c=3333222"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-08"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=有效日期;c=2022-08-08"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型，1：天，2：月，3：年;c=1"
+        },
+        "kf_period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=保质期天数;c=180"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量;c=50"
+        },
+        "inv_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=库存数量;c=50"
+        },
+        "base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本数量;c=50"
+        },
+        "diff_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=差异数量;c=50"
+        },
+        "in_stock_id": {
+          "type": "string",
+          "title": "a=调入仓库id;c=1"
+        },
+        "in_stock_name": {
+          "type": "string",
+          "title": "a=调入仓库名称;c=仓库A"
+        },
+        "in_stock_number": {
+          "type": "string",
+          "title": "a=调入仓库编码;c=001"
+        },
+        "out_stock_id": {
+          "type": "string",
+          "title": "a=调出仓库id;c=2"
+        },
+        "out_stock_name": {
+          "type": "string",
+          "title": "a=调出仓库名称;c=仓库B"
+        },
+        "out_stock_number": {
+          "type": "string",
+          "title": "a=调出仓库编码;c=002"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

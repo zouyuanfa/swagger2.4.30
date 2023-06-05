@@ -1,0 +1,41 @@
+{{>licenseInfo}}
+
+package {{invokerPackage}};
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * API response returned by API call.
+ *
+ * @param <T> The type of data that is deserialized from response body
+ */
+public class KingdeeResponse<T> {
+    private T data;
+    private String description;
+    private Integer errcode;
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getErrcode() {
+        return errcode;
+    }
+
+    public void setErrcode(Integer errcode) {
+        this.errcode = errcode;
+    }
+}

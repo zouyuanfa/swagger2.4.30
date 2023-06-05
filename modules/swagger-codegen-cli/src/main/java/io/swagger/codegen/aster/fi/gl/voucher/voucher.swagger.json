@@ -1,0 +1,679 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "财税云;凭证;",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Voucher"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/fi/voucher": {
+      "get": {
+        "summary": "凭证列表;获取凭证列表;1.0.7",
+        "operationId": "Voucher_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/VoucherListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索，备注;b=30;c=凭证;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "explanation",
+            "description": "a=模糊搜索，摘要;b=30;c=摘要;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_period",
+            "description": "a=起始期间;b=6;c=202206;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_period",
+            "description": "a=结束期间;b=6;c=202206;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account_ids",
+            "description": "a=科目id数组;b=30;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_status",
+            "description": "a=单据状态（所有：“”，已审核：“C”，未审核：“A”）;b=1;c=C;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=凭证号;b=30;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_start_time",
+            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_end_time",
+            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_start_time",
+            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_end_time",
+            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source_bill_no",
+            "description": "a=外部唯一标识;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Voucher"
+        ]
+      },
+      "post": {
+        "summary": "凭证保存;凭证新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.15",
+        "operationId": "Voucher_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/IdsRequest"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VoucherSaveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Voucher"
+        ]
+      }
+    },
+    "/openapi/v2/fi/voucher_detail": {
+      "get": {
+        "summary": "凭证详情;获取凭证详情;1.0.7",
+        "operationId": "Voucher_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/VoucherDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Voucher"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Entry.Assist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=辅助核算id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=辅助核算编码;b=30;c=001;d=false"
+        },
+        "type": {
+          "type": "string",
+          "title": "a=核算项目类别(bd_customer:客户，bd_supplier:供应商， bd_material:商品，bd_department:部门， bd_auxinfo:辅助资料，bd_employee:职员，bd_store:仓库);b=20;c=bd_auxinfo;d=true"
+        },
+        "bd_aux_info_type_id": {
+          "type": "string",
+          "title": "a=当type为bd_auxinfo时,辅助资料类别id;b=2147483647;c=1;d=false"
+        }
+      }
+    },
+    "IdsRequest": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=id数组;c=[\"1\"];d=true"
+        }
+      }
+    },
+    "Item.Entry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;b=2147483647;c=1;d=true"
+        },
+        "explanation": {
+          "type": "string",
+          "title": "a=摘要;b=100;c=无;d=true"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=科目 id;b=2147483647;c=1;d=false"
+        },
+        "account_number": {
+          "type": "string",
+          "title": "a=科目 编码;b=30;c=001;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;b=2147483647;c=1;d=true"
+        },
+        "debit_amount": {
+          "type": "string",
+          "title": "a=借方金额(本位币);b=999999999;c=100;d=true"
+        },
+        "credit_amount": {
+          "type": "string",
+          "title": "a=贷方金额(本位币);b=999999999;c=100;d=true"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=金额（原币）;b=999999999;c=100;d=true"
+        },
+        "dc": {
+          "type": "string",
+          "title": "a=借贷方向（1：借，-1：贷）;b=1;c=1;d=true"
+        },
+        "quantity": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量（会根据 金额/数量 自动算出单价）;c=1;d=false"
+        },
+        "assist_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entry.Assist"
+          },
+          "title": "a=辅助核算;b=8;c=[];d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "VoucherDetailReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=凭证id;b=2147483647;c=1;d=true"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=凭证日期;b=10;c=2022-06-09;d=true"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=凭证期间;b=6;c=202206;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=凭证号;b=100;c=1;d=true"
+        },
+        "voucher_no": {
+          "type": "string",
+          "title": "a=凭证字号;b=1;c=记;d=true"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=状态,暂存：“A”，保存：“B”，已审核：“C”，已作废：“D”;b=1;c=A;d=true"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=凭证字id;b=2147483647;c=1;d=true"
+        },
+        "group_number": {
+          "type": "string",
+          "title": "a=凭证字编码;b=30;c=001;d=true"
+        },
+        "group_name": {
+          "type": "string",
+          "title": "a=凭证字名称;b=30;c=记;d=true"
+        },
+        "debit_total": {
+          "type": "string",
+          "title": "a=借方总金额;b=2^128;c=100;d=true"
+        },
+        "credit_total": {
+          "type": "string",
+          "title": "a=贷方总金额;b=2^128;c=100;d=true"
+        },
+        "source_bill_type": {
+          "type": "string",
+          "title": "a=业务单据类型;b=30;c=sal_order_bill;d=true"
+        },
+        "source_bill_id": {
+          "type": "string",
+          "title": "a=业务单据id;b=2147483647;c=1;d=true"
+        },
+        "have_reverse": {
+          "type": "boolean",
+          "title": "a=是否已被冲销;b=5;c=true;d=true"
+        },
+        "is_reverse": {
+          "type": "boolean",
+          "title": "a=是否冲销凭证;b=5;c=true;d=true"
+        },
+        "entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VoucherDetailReply.Entry"
+          },
+          "title": "a=凭证分录;b=8;c=[];d=false"
+        }
+      }
+    },
+    "VoucherDetailReply.Assist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=辅助核算id（id与number二选一）;b=2147483647;c=1;d=false"
+        },
+        "type": {
+          "type": "string",
+          "title": "a=辅助核算类别;b=20;c=bd_auxinfo;d=true"
+        },
+        "bd_aux_info_type_id": {
+          "type": "string",
+          "title": "a=当type为bd_auxinfo时,辅助资料类别id;b=2147483647;c=1;d=false"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=辅助核算number（id与number二选一）;b=30;c=001;d=false"
+        }
+      }
+    },
+    "VoucherDetailReply.Entry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;b=2147483647;c=1;d=true"
+        },
+        "seq": {
+          "type": "string",
+          "title": "a=分录序号;b=100;c=1;d=true"
+        },
+        "explanation": {
+          "type": "string",
+          "title": "a=摘要;b=100;c=无;d=true"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=科目 id;b=2147483647;c=1;d=true"
+        },
+        "account_name": {
+          "type": "string",
+          "title": "a=科目 名称;b=30;c=库存现金;d=true"
+        },
+        "account_number": {
+          "type": "string",
+          "title": "a=科目 编码;b=30;c=001;d=true"
+        },
+        "measure_unit_id": {
+          "type": "string",
+          "title": "a=单位id;b=2147483647;c=1;d=true"
+        },
+        "measure_unit_name": {
+          "type": "string",
+          "title": "a=单位名称;b=30;c=个;d=true"
+        },
+        "measure_unit_number": {
+          "type": "string",
+          "title": "a=单位编码;b=30;c=001;d=true"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;b=2147483647;c=1;d=true"
+        },
+        "currency_name": {
+          "type": "string",
+          "title": "a=币别名称;b=30;c=元;d=true"
+        },
+        "currency_number": {
+          "type": "string",
+          "title": "a=币别编码;b=30;c=001;d=true"
+        },
+        "debit_amount": {
+          "type": "string",
+          "title": "a=借方金额;b=999999999;c=100;d=true"
+        },
+        "credit_amount": {
+          "type": "string",
+          "title": "a=贷方金额;b=999999999;c=100;d=true"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=金额（本位币）;b=999999999;c=100;d=true"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=单价;b=999999999;c=100;d=true"
+        },
+        "quantity": {
+          "type": "string",
+          "title": "a=数量;b=999999;c=1;d=true"
+        },
+        "dc": {
+          "type": "string",
+          "title": "a=借贷方向（1：借，-1：贷）;b=1;c=1;d=true"
+        },
+        "assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VoucherDetailReply.Assist"
+          },
+          "title": "a=期间;b=8;c=[];d=true"
+        }
+      }
+    },
+    "VoucherListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VoucherListReply.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "VoucherListReply.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=凭证id;b=2147483647;c=1;d=true"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=凭证日期;b=10;c=2022-06-09;d=true"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=凭证期间;b=6;c=202206;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=凭证号;b=100;c=1;d=true"
+        },
+        "voucher_no": {
+          "type": "string",
+          "title": "a=凭证字号;b=1;c=记;d=true"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=状态,暂存：“A”，保存：“B”，已审核：“C”，已作废：“D”;b=1;c=A;d=true"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=凭证字id;b=2147483647;c=1;d=true"
+        },
+        "group_number": {
+          "type": "string",
+          "title": "a=凭证字编码;b=30;c=001;d=true"
+        },
+        "group_name": {
+          "type": "string",
+          "title": "a=凭证字名称;b=30;c=记;d=true"
+        },
+        "debit_total": {
+          "type": "string",
+          "title": "a=借方总金额;b=2^128;c=100;d=true"
+        },
+        "credit_total": {
+          "type": "string",
+          "title": "a=贷方总金额;b=2^128;c=100;d=true"
+        },
+        "source_bill_type": {
+          "type": "string",
+          "title": "a=业务单据类型;b=30;c=sal_order_bill;d=true"
+        },
+        "source_bill_id": {
+          "type": "string",
+          "title": "a=业务单据id;b=2147483647;c=1;d=true"
+        },
+        "have_reverse": {
+          "type": "boolean",
+          "title": "a=是否已被冲销;b=5;c=true;d=true"
+        },
+        "is_reverse": {
+          "type": "boolean",
+          "title": "a=是否冲销凭证;b=5;c=true;d=true"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=备注;d=true"
+        },
+        "source_bill_no": {
+          "type": "string",
+          "title": "a=外部唯一标识;b=30;c=001;d=false"
+        }
+      }
+    },
+    "VoucherSaveRequest": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VoucherSaveRequest.Item"
+          },
+          "title": "a=凭证保存列表;b=100;c=[];d=true"
+        }
+      }
+    },
+    "VoucherSaveRequest.Item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id（修改时必填）;b=2147483647;c=1;d=false"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=凭证日期 YYYY-MM-DD形式;b=10;c=2022-07-13;d=true"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=凭证字id（凭证字id与凭证字编码二选一）;b=2147483647;c=1;d=false"
+        },
+        "group_number": {
+          "type": "string",
+          "title": "a=凭证字编码（凭证字id与凭证字编码二选一）;b=30;c=001;d=false"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=凭证号，未填写时自动填补断号;b=30;c=001;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=无;d=false"
+        },
+        "attachment_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=关联凭证附件（来源于凭证附件列表接口，要求所填附件必须有同一个adjustid）;b=2147483647;c=[];d=false"
+        },
+        "entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item.Entry"
+          },
+          "title": "a=分录列表;b=100;c=[];d=false"
+        },
+        "source_bill_no": {
+          "type": "string",
+          "title": "a=外部唯一标识，已存在时不允许保存凭证;b=30;c=001;d=false"
+        }
+      }
+    }
+  }
+}

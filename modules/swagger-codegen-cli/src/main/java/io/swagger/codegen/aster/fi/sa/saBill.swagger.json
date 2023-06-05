@@ -1,0 +1,627 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "财税云;工资;工资单",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "PayRoll"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/fi/sa_bill": {
+      "get": {
+        "summary": "工资单列表;获取工资单列表;1.0.5",
+        "operationId": "PayRoll_billList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=单据编号模糊查询;b=6;c=20;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayRoll"
+        ]
+      },
+      "post": {
+        "summary": "工资单保存;工资单修改及新增;1.0.6",
+        "operationId": "PayRoll_billSave",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillSaveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "PayRoll"
+        ]
+      }
+    },
+    "/openapi/v2/fi/sa_bill_detail": {
+      "get": {
+        "summary": "工资单详情;获取工资单详情;1.0.6",
+        "operationId": "PayRoll_billDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BillDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id;c=123457452;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "PayRoll"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "BillDetailReply": {
+      "type": "object",
+      "properties": {
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态（所有：“”，已审核：“C”，未审核：“A”）;b=1;c=C;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=id;b=30;c=11;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;b=30;c=01;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;b=30;c=01;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=30;c=01;d=false"
+        },
+        "payed_total_amount": {
+          "type": "string",
+          "title": "a=实发合计;b=30;c=01;d=false"
+        },
+        "pay_total_amount": {
+          "type": "string",
+          "title": "a=应发合计;b=30;c=11;d=false"
+        },
+        "entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeEntry"
+          },
+          "title": "a=单据分录;b=30;c=[];d=false"
+        }
+      },
+      "title": "工资单详情返回对象"
+    },
+    "BillDetailReply.SaItem": {
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SaItemsInfo"
+          },
+          "title": "a=工资项目信息;b=20;c=1550136270506704896;d=false"
+        },
+        "item_value": {
+          "type": "string",
+          "title": "a=金额;b=20;c=240;d=false"
+        }
+      }
+    },
+    "BillListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "cur_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillRow"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      },
+      "title": "工资单列表返回对象"
+    },
+    "BillRow": {
+      "type": "object",
+      "properties": {
+        "bill_date": {
+          "type": "string",
+          "title": "a=工资创建时间;b=200;c=2022-10-18;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=工资id;b=2147483647;c=768582155554002944;d=true"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=工资编号;b=20;c=20221018-4;d=false"
+        }
+      }
+    },
+    "BillSaveRequest": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          },
+          "title": "a=工资单;b=99999;c=[];d=true"
+        }
+      },
+      "title": "工资单保存请求对象"
+    },
+    "DeEntry": {
+      "type": "object",
+      "properties": {
+        "emp_id": {
+          "type": "string",
+          "title": "a=职员id;b=30;c=001;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录id;b=30;c=001;d=false"
+        },
+        "seq": {
+          "type": "string",
+          "title": "a=分录序号;b=20;c=002;d=false"
+        },
+        "employee_number": {
+          "type": "string",
+          "title": "a=职员编码;b=30;c=002;d=false"
+        },
+        "dep_id": {
+          "type": "string",
+          "format": "int64",
+          "title": "a=部门id;b=100;c=154843110654030643;d=false"
+        },
+        "mobile": {
+          "type": "string",
+          "title": "a=手机号;b=11;c=19715168801;d=false"
+        },
+        "id_number": {
+          "type": "string",
+          "title": "a=证件号码;b=18;c=45458412545545;d=false"
+        },
+        "hire_date": {
+          "type": "string",
+          "title": "a=入职日期;b=20;c=2021-01-27;d=false"
+        },
+        "bank_account": {
+          "type": "string",
+          "title": "a=银行账号;b=18;c=43534354357863;d=false"
+        },
+        "bank_name": {
+          "type": "string",
+          "title": "a=开户行;b=20;c=招商银行;d=false"
+        },
+        "pay_amount": {
+          "type": "string",
+          "title": "a=应发工资;b=20;c=8000;d=false"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=代扣个税;b=20;c=100;d=false"
+        },
+        "old_insurance": {
+          "type": "string",
+          "title": "a=养老保险;b=20;c=200;d=false"
+        },
+        "old_insurance_c": {
+          "type": "string",
+          "title": "a=养老保险公司;b=20;c=001;d=false"
+        },
+        "medical_insurance": {
+          "type": "string",
+          "title": "a=医疗保险;b=20;c=001;d=false"
+        },
+        "medical_insurance_c": {
+          "type": "string",
+          "title": "a=医疗保险公司;b=002;c=001;d=false"
+        },
+        "emp_injury_insurance": {
+          "type": "string",
+          "title": "a=工伤保险;b=002;c=022;d=false"
+        },
+        "emp_injury_insurance_c": {
+          "type": "string",
+          "title": "a=工伤保险公司;b=20;c=022;d=false"
+        },
+        "birth_insurance": {
+          "type": "string",
+          "title": "a=生育保险;b=20;c=202;d=false"
+        },
+        "birth_insurance_c": {
+          "type": "string",
+          "title": "a=生育保险公司;b=20;c=001;d=false"
+        },
+        "un_emp_insurance": {
+          "type": "string",
+          "title": "a=失业保险;b=20;c=002;d=false"
+        },
+        "un_emp_insurance_c": {
+          "type": "string",
+          "title": "a=失业保险公司;b=20;c=001;d=false"
+        },
+        "hpf": {
+          "type": "string",
+          "title": "a=住房公积金;b=50;c=005;d=false"
+        },
+        "hpf_c": {
+          "type": "string",
+          "title": "a=住房公积金公司;b=20;c=005;d=false"
+        },
+        "children_edu": {
+          "type": "string",
+          "title": "a=子女教育;b=20;c=007;d=false"
+        },
+        "continue_edu": {
+          "type": "string",
+          "title": "a=继续教育;b=20;c=002;d=false"
+        },
+        "housing_loan": {
+          "type": "string",
+          "title": "a=住房贷款;b=20;c=2003;d=false"
+        },
+        "housing_rent": {
+          "type": "string",
+          "title": "a=住房租金;b=20;c=5520;d=false"
+        },
+        "support_elderly": {
+          "type": "string",
+          "title": "a=赡养老人;b=20;c=022;d=false"
+        },
+        "children_care": {
+          "type": "string",
+          "title": "a=婴幼儿照护费用;b=20;c=005;d=false"
+        },
+        "special_deduct_total": {
+          "type": "string",
+          "title": "a=专项附加扣除合计;b=100;c=200;d=false"
+        },
+        "summary_for_tax": {
+          "type": "string",
+          "title": "a=影响个税增加累计;b=20;c=2000;d=false"
+        },
+        "total_deduct_for_tax": {
+          "type": "string",
+          "title": "a=影响个税减少累计;b=20;c=2000;d=false"
+        },
+        "sa_item_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillDetailReply.SaItem"
+          },
+          "title": "a=自定义工资项目;b=1000;c=[];d=false"
+        }
+      }
+    },
+    "Entry": {
+      "type": "object",
+      "properties": {
+        "emp_id": {
+          "type": "string",
+          "title": "a=职员id;b=30;c=1548431106540306432;d=true"
+        },
+        "dep_id": {
+          "type": "string",
+          "title": "a=部门id;b=100;c=154843110654030643;d=false"
+        },
+        "mobile": {
+          "type": "string",
+          "title": "a=手机号;b=11;c=19715168801;d=false"
+        },
+        "id_number": {
+          "type": "string",
+          "title": "a=证件号码;b=18;c=45458412545545;d=false"
+        },
+        "hire_date": {
+          "type": "string",
+          "title": "a=入职日期;b=20;c=2021-01-27;d=false"
+        },
+        "bank_account": {
+          "type": "string",
+          "title": "a=银行账号;b=18;c=43534354357863;d=false"
+        },
+        "bank_name": {
+          "type": "string",
+          "title": "a=开户行;b=20;c=招商银行;d=false"
+        },
+        "pay_amount": {
+          "type": "string",
+          "title": "a=应发工资;b=20;c=8000;d=false"
+        },
+        "taxa_mount": {
+          "type": "string",
+          "title": "a=代扣个税;b=20;c=100;d=false"
+        },
+        "old_insurance": {
+          "type": "string",
+          "title": "a=养老保险;b=20;c=200;d=false"
+        },
+        "old_insurance_c": {
+          "type": "string",
+          "title": "a=养老保险公司;b=20;c=001;d=false"
+        },
+        "medical_insurance": {
+          "type": "string",
+          "title": "a=医疗保险;b=20;c=001;d=false"
+        },
+        "medical_insurance_c": {
+          "type": "string",
+          "title": "a=医疗保险公司;b=002;c=001;d=false"
+        },
+        "emp_injury_insurance": {
+          "type": "string",
+          "title": "a=工伤保险;b=002;c=022;d=false"
+        },
+        "emp_injury_insurance_c": {
+          "type": "string",
+          "title": "a=工伤保险公司;b=20;c=022;d=false"
+        },
+        "birth_insurance": {
+          "type": "string",
+          "title": "a=生育保险;b=20;c=202;d=false"
+        },
+        "birth_insurance_c": {
+          "type": "string",
+          "title": "a=生育保险公司;b=20;c=001;d=false"
+        },
+        "un_emp_insurance": {
+          "type": "string",
+          "title": "a=失业保险;b=20;c=002;d=false"
+        },
+        "un_emp_insurance_c": {
+          "type": "string",
+          "title": "a=失业保险公司;b=20;c=001;d=false"
+        },
+        "hpf": {
+          "type": "string",
+          "title": "a=住房公积金;b=50;c=005;d=false"
+        },
+        "hpf_c": {
+          "type": "string",
+          "title": "a=住房公积金公司;b=20;c=005;d=false"
+        },
+        "children_edu": {
+          "type": "string",
+          "title": "a=子女教育;b=20;c=007;d=false"
+        },
+        "continue_edu": {
+          "type": "string",
+          "title": "a=继续教育;b=20;c=002;d=false"
+        },
+        "housing_loan": {
+          "type": "string",
+          "title": "a=住房贷款;b=20;c=2003;d=false"
+        },
+        "housing_rent": {
+          "type": "string",
+          "title": "a=住房租金;b=20;c=5520;d=false"
+        },
+        "support_elderly": {
+          "type": "string",
+          "title": "a=赡养老人;b=20;c=022;d=false"
+        },
+        "children_care": {
+          "type": "string",
+          "title": "a=婴幼儿照护费用;b=20;c=005;d=false"
+        },
+        "special_deduct_total": {
+          "type": "string",
+          "title": "a=专项附加扣除合计;b=100;c=200;d=false"
+        },
+        "sa_item_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item.SaItem"
+          },
+          "title": "a=自定义工资项目;b=1000;c=[];d=false"
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编号;b=30;c=20221018-4;d=true"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期(yyyy-MM-dd);b=20;c=2022-10-18;d=true"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=aaaapi;d=false"
+        },
+        "entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entry"
+          },
+          "title": "a=单据分录;b=100;c=[];d=true"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=id;b=30;c=2022101845;d=false"
+        }
+      }
+    },
+    "Item.SaItem": {
+      "type": "object",
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "title": "a=自定义工资项目id;b=200;c=001;d=false"
+        },
+        "item_value": {
+          "type": "string",
+          "title": "a=自定义工资项目金额;b=122;c=1000;d=false"
+        }
+      }
+    },
+    "SaItemsInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=工资项目信息;b=20;c=30;d=false"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=工资项目编码;b=20;c=baseamount;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

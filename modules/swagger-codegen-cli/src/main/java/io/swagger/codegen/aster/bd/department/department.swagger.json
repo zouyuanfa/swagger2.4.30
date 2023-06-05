@@ -1,0 +1,413 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "基础资料;业务资料;部门",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Department"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/bd/department": {
+      "get": {
+        "summary": "部门列表;获取部门列表;1.0.6",
+        "operationId": "Department_departmentList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DepartmentListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索-名称;b=2147483647;c=苹果;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_start_time",
+            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_end_time",
+            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_start_time",
+            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_end_time",
+            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "description": "a=id;b=100;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "parent_id",
+            "description": "a=上级部门;b=100;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "level",
+            "description": "a=级次，全部：-1，0：第一级，1：第二级，以此类推;b=100;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "Department"
+        ]
+      },
+      "post": {
+        "summary": "部门保存;部门新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.7",
+        "operationId": "Department_departmentSave",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DepartmentSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "Department"
+        ]
+      }
+    },
+    "/openapi/v2/bd/department_detail": {
+      "get": {
+        "summary": "部门详情;获取部门详情;1.0.6",
+        "operationId": "Department_departmentDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DepartmentDetailRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Department"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "DepartmentDetailRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=false"
+        },
+        "enable": {
+          "type": "string",
+          "title": "a=可用状态，1 可用，0 不可用;b=1;c=1;d=false"
+        },
+        "level": {
+          "type": "string",
+          "title": "a=级次;b=99999;c=0：顶级;d=false"
+        },
+        "long_number": {
+          "type": "string",
+          "title": "a=长编码;b=100;c=001;d=false"
+        },
+        "full_name": {
+          "type": "string",
+          "title": "a=长名称;b=100;c=精斗云_动物园_长颈鹿园;d=false"
+        },
+        "f_comment": {
+          "type": "string",
+          "title": "a=备注;b=1000;c=备注;d=false"
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "a=上级id;b=2147483647;c=1;d=false"
+        },
+        "parent_name": {
+          "type": "string",
+          "title": "a=上级名称;b=20;c=上级名称;d=false"
+        },
+        "parent_number": {
+          "type": "string",
+          "title": "a=上级编码;b=30;c=001;d=false"
+        }
+      }
+    },
+    "DepartmentListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "currentPage": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=100;c=1;d=true"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DepartmentListRes.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "DepartmentListRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=false"
+        },
+        "long_number": {
+          "type": "string",
+          "title": "a=长编码;b=100;c=001;d=false"
+        },
+        "full_name": {
+          "type": "string",
+          "title": "a=长名称;b=100;c=精斗云_动物园_长颈鹿园;d=false"
+        },
+        "enable": {
+          "type": "string",
+          "title": "a=可用状态，1 可用，0 不可用;b=1;c=1;d=false"
+        },
+        "level": {
+          "type": "string",
+          "title": "a=级次;b=99999;c=0：顶级;d=false"
+        },
+        "is_leaf": {
+          "type": "boolean",
+          "title": "a=是否子级;b=1;c=1;d=false"
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "a=上级id;b=2147483647;c=1;d=false"
+        },
+        "parent_name": {
+          "type": "string",
+          "title": "a=上级名称;b=20;c=上级名称;d=false"
+        },
+        "parent_number": {
+          "type": "string",
+          "title": "a=上级编码;b=30;c=001;d=false"
+        }
+      }
+    },
+    "DepartmentSaveReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=false"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=false"
+        },
+        "parent_org_id": {
+          "type": "string",
+          "title": "a=上级部门id;b=2147483647;c=1;d=false"
+        },
+        "parent_org_number": {
+          "type": "string",
+          "title": "a=上级部门编码;b=30;c=001;d=false"
+        },
+        "f_comment": {
+          "type": "string",
+          "title": "a=描述;b=100;c=描述;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

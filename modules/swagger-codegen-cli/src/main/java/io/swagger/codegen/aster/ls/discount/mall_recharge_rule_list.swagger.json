@@ -1,0 +1,309 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "零售云;积分储值;",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "MallRechargeRuleList"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/mall_recharge_rule": {
+      "get": {
+        "summary": "充值赠送规则;会员充值赠送规则列表查询;1.0.6",
+        "operationId": "MallRechargeRuleList_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MallRechargeRuleListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "member_id",
+            "description": "a=会员id;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "member_card_id",
+            "description": "a=会员卡id;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "store_id",
+            "description": "a=门店id;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "MallRechargeRuleList"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Coupon": {
+      "type": "object",
+      "properties": {
+        "coupon_schema_id": {
+          "type": "string",
+          "title": "a=优惠券方案id;c=1;d=false"
+        },
+        "coupon_schema_name": {
+          "type": "string",
+          "title": "a=优惠券方案名称;c=补偿方案A;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=总数量数量;c=50;d=false"
+        },
+        "given_type": {
+          "type": "string",
+          "title": "a=赠送方式;c=1;d=false"
+        },
+        "per_qty": {
+          "type": "string",
+          "title": "a=每次赠送数量;c=50;d=false"
+        },
+        "terms": {
+          "type": "string",
+          "title": "a=赠送次数;c=50;d=false"
+        },
+        "interval": {
+          "type": "string",
+          "title": "a=赠送间隔次数;c=50;d=false"
+        },
+        "effect_type": {
+          "type": "string",
+          "title": "a=生效方式;c=1;d=false"
+        },
+        "delay_days": {
+          "type": "string",
+          "title": "a=延迟赠送的天数;c=50;d=false"
+        },
+        "begin_date": {
+          "type": "string",
+          "title": "a=固定时间赠送的开始时间;c=2022-08-08;d=false"
+        },
+        "end_date": {
+          "type": "string",
+          "title": "a=固定时间赠送的结束时间;c=2022-08-08;d=false"
+        },
+        "given_type_desc": {
+          "type": "string",
+          "title": "a=赠送方式描述;c=赠送方式A;d=false"
+        },
+        "effect_type_desc": {
+          "type": "string",
+          "title": "a=生效方式描述;c=生效方式A;d=false"
+        },
+        "effect_range": {
+          "type": "string",
+          "title": "a=有效时间;c=2022-08-08;d=false"
+        }
+      }
+    },
+    "MallRechargeRuleListRes": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row"
+          }
+        }
+      }
+    },
+    "Material": {
+      "type": "object",
+      "properties": {
+        "bd_id": {
+          "type": "string",
+          "title": "a=赠送id;c=1;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=1;d=false"
+        },
+        "bd_name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "unit": {
+          "type": "string",
+          "title": "a=单位id;c=1;d=false"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id（进销存辅助属性id实际值为零售的skuId）;c=1;d=false"
+        },
+        "num": {
+          "type": "string",
+          "title": "a=赠送商品数量;c=50;d=false"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=零售价;c=50;d=false"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "img_url": {
+          "type": "string",
+          "title": "a=商品图片;c=XXX;d=false"
+        },
+        "small_img_url": {
+          "type": "string",
+          "title": "a=商品缩略图;c=XXX;d=false"
+        },
+        "is_batch": {
+          "type": "string",
+          "title": "a=是否批次商品（0：否，1：是）;c=0;d=false"
+        },
+        "is_serial": {
+          "type": "string",
+          "title": "a=是否序列号商品（0：否，1：是）;c=0;d=false"
+        },
+        "is_aux": {
+          "type": "string",
+          "title": "a=是否批次商品（0：否，1：是）;c=0;d=false"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克;d=false"
+        },
+        "aux_comb_name": {
+          "type": "string",
+          "title": "a=辅助属性组合名称;c=XXX;d=false"
+        },
+        "aux_comb_id": {
+          "type": "string",
+          "title": "a=辅助属性组合id;c=1;d=false"
+        },
+        "sku_entry_id": {
+          "type": "string",
+          "title": "a=sku表id;c=1;d=false"
+        },
+        "is_selected": {
+          "type": "boolean",
+          "title": "a=是否默认选项;c=true;d=false"
+        }
+      }
+    },
+    "Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1;d=false"
+        },
+        "rule_id": {
+          "type": "string",
+          "title": "a=充值规则id;c=1;d=false"
+        },
+        "recharge_amount": {
+          "type": "string",
+          "title": "a=充值金额;c=50;d=false"
+        },
+        "donate_amount": {
+          "type": "string",
+          "title": "a=赠送金额;c=50;d=false"
+        },
+        "to_member_point": {
+          "type": "string",
+          "title": "a=赠送积分;c=false;d=false"
+        },
+        "to_coupon": {
+          "type": "boolean",
+          "title": "a=赠送优惠券;c=false;d=false"
+        },
+        "to_material": {
+          "type": "boolean",
+          "title": "a=赠送商品;c=false;d=false"
+        },
+        "to_amount": {
+          "type": "boolean",
+          "title": "a=赠送余额;c=false;d=false"
+        },
+        "to_point": {
+          "type": "boolean",
+          "title": "a=赠送积分;c=false;d=false"
+        },
+        "material_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Material"
+          },
+          "title": "a=商品列表;c=[];d=false"
+        },
+        "coupon_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coupon"
+          },
+          "title": "a=赠送券列表;c=001;d=false"
+        },
+        "material_value": {
+          "type": "string",
+          "title": "a=指定商品种类数（X种;c=xxx;d=false"
+        },
+        "material_set": {
+          "type": "boolean",
+          "title": "a=是否指定商品数量;c=true;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1607 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "系统设置",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "System"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/sys/bill_push": {
+      "post": {
+        "summary": "单据下推;调用单据下推将直接保存新建目标单据并返回单据id;1.0.13",
+        "operationId": "System_billPush",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillPushRequest"
+            }
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/common_operate": {
+      "post": {
+        "summary": "通用批量操作;通用批量操作;1.0.9",
+        "operationId": "System_commonOperate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CommonOperateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/country_load": {
+      "get": {
+        "summary": "国家行政区域查询;国家行政区域查询;1.0.6",
+        "operationId": "System_countryLoad",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CountryLoadRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索-名称;b=100;c=苹果;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "un_page",
+            "description": "a=是否分页，1：不分页返回100条数据；默认分页，每页10;b=1;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "enable",
+            "description": "a=可用状态，1：可用，0：禁用;b=1;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/current_user_info": {
+      "get": {
+        "summary": "当前用户信息查询;当前用户信息查询;1.0.7",
+        "operationId": "System_currentUserInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CurrentUserInfoRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/custom_field": {
+      "get": {
+        "summary": "自定义字段查询;自定义字段查询;1.0.7",
+        "operationId": "System_customField",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomFieldRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_number",
+            "description": "a=单据或基础资料类型，参考\u003c基础资料及业务单据类型\u003e;b=20;c=bd_material;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      },
+      "post": {
+        "summary": "自定义字段保存;自定义字段保存;1.0.1",
+        "operationId": "System_customFieldSave",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EmptyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomFieldSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/division_load": {
+      "get": {
+        "summary": "省市区查询;省市区查询;1.0.6",
+        "operationId": "System_divisionLoad",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DivisionLoadReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/system_param": {
+      "get": {
+        "summary": "系统参数查询;系统参数查询;1.0.7",
+        "operationId": "System_settlingParam",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SettlingParamRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "type",
+            "description": "a=系统参数类型；取值如下： public：公共参数(基础参数) arap：应收应付参数 basedata：商品参数 pur：进销存参数（默认值） gl：财税参数 chhs：存货核算参数 fa：资产管理参数 A：查询全部系统参数;b=20;c=public;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/user_list": {
+      "get": {
+        "summary": "用户信息列表;用户信息列表;1.0.8",
+        "operationId": "System_userList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "enable",
+            "description": "a=状态，1代表启用，0代表禁用;b=1;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Arap": {
+      "type": "object",
+      "properties": {
+        "radio_field": {
+          "type": "boolean",
+          "title": "a=是否按单据核销;b=1;c=true;d=false"
+        },
+        "radio_field1": {
+          "type": "boolean",
+          "title": "a=是否按分录核销;b=1;c=true;d=false"
+        },
+        "radio_field2": {
+          "type": "boolean",
+          "title": "a=是否按余额核销;b=1;c=true;d=false"
+        }
+      }
+    },
+    "AreaLoadRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=行政区域ID;b=2147483647;c=1;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=行政区域名称;b=20;c=名称;d=false"
+        },
+        "level": {
+          "type": "string",
+          "title": "a=行政区域级别；1-省，2-市，3-区;b=1;c=1;d=false"
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "a=父级行政区域ID;b=2147483647;c=1;d=false"
+        }
+      }
+    },
+    "Basedata": {
+      "type": "object",
+      "properties": {
+        "is_enable_daux": {
+          "type": "boolean",
+          "title": "a=是否启用辅助属性;b=1;c=true;d=false"
+        },
+        "is_enable_daux_material_cust": {
+          "type": "boolean",
+          "title": "a=是否按辅助属性维护客户商品编码;b=1;c=true;d=false"
+        },
+        "is_enable_dserial": {
+          "type": "boolean",
+          "title": "a=是否启用序列号管理;b=1;c=true;d=false"
+        },
+        "is_enabled_batch_manage": {
+          "type": "boolean",
+          "title": "a=是否启用批次管理;b=1;c=true;d=false"
+        },
+        "is_enabled_quality_period": {
+          "type": "boolean",
+          "title": "a=是否启用保质期;b=1;c=true;d=false"
+        },
+        "is_enable_donecode": {
+          "type": "boolean",
+          "title": "a=是否启用一码多品;b=1;c=true;d=false"
+        },
+        "is_enable_tax": {
+          "type": "boolean",
+          "title": "a=是否启用税率（%）;b=1;c=true;d=false"
+        },
+        "default_tax": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=启用税率后的默认增值税税率;b=1;c=0;d=false"
+        },
+        "is_enabled_price_tax": {
+          "type": "boolean",
+          "title": "a=是否启用商品价格含税;b=1;c=true;d=false"
+        }
+      }
+    },
+    "BillEntry": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "title": "a=字段名;b=30;c=001;d=false"
+        },
+        "def_value": {
+          "type": "string",
+          "title": "a=默认值，字段类型为4的时候没有该字段;b=20;c=1;d=false"
+        },
+        "audit_lock": {
+          "type": "boolean",
+          "title": "a=审核锁定;b=20;c=false;d=false"
+        },
+        "entity_number": {
+          "type": "string",
+          "title": "a=单据或基础资料类型，参考\u003c基础资料及业务单据类型\u003e;b=20;c=bd_material;d=true"
+        },
+        "type_id": {
+          "type": "string",
+          "title": "a=单据或基础资料类型，参考\u003c基础资料及业务单据类型\u003e;b=20;c=1;d=false"
+        },
+        "must_input": {
+          "type": "boolean",
+          "title": "a=必录;b=1;c=false;d=false"
+        },
+        "display_name": {
+          "type": "string",
+          "title": "a=字段展示名称;b=20;c=名称;d=false"
+        },
+        "base_entity_number": {
+          "type": "string",
+          "title": "a=基础资料标识，字段类型为5的时候独有该字段;b=20;c=1;d=false"
+        },
+        "field_type": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=字段类型，（1：文本，2：数字，3：日期，4：辅助资料，5：基础资料，6：引用基础资料属性）;b=1;c=1;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=id;b=30;c=1;d=false"
+        }
+      }
+    },
+    "BillPushRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=源单id;c=1;d=true"
+        },
+        "source_bill": {
+          "type": "string",
+          "title": "a=源单标识（采购订单pur_bill_order、采购入库pur_bill_inbound、销售订单sal_bill_order、销售出库sal_bill_outbound、调拨出库单inv_tfout_bill_outbound、采购申请单pur_bill_request、委托代销单sal_bill_entrust）;c=pur_bill_order;d=true"
+        },
+        "target_bill": {
+          "type": "string",
+          "title": "a=目标单标识（采购入库pur_bill_inbound、付款单ap_paybill、销售出库sal_bill_outbound、收款单ar_creditbill、调拨入库inv_tfin_bill_inbound、采购订单pur_bill_order、委托代销退货单sal_bill_entrust_rtn）;c=pur_bill_inbound;d=true"
+        }
+      }
+    },
+    "Chhs": {
+      "type": "object",
+      "properties": {
+        "order_by_param": {
+          "type": "boolean",
+          "title": "a=核算维度-是否按参数设置核算成本;b=1;c=true;d=false"
+        },
+        "order_by_cost": {
+          "type": "boolean",
+          "title": "a=核算维度-是否按商品设置核算成本;b=1;c=true;d=false"
+        },
+        "valua_method": {
+          "type": "string",
+          "title": "a=核算维度-计价方法;b=30;c=001;d=false"
+        },
+        "batch_number": {
+          "type": "boolean",
+          "title": "a=核算维度-是否按批号核算成本;b=1;c=true;d=false"
+        },
+        "serial_number": {
+          "type": "boolean",
+          "title": "a=核算维度-是否按序列号核算成本;b=1;c=true;d=false"
+        },
+        "assat_tribute": {
+          "type": "boolean",
+          "title": "a=核算维度-是否按辅助属性核算成本;b=1;c=true;d=false"
+        },
+        "radio_field2": {
+          "type": "boolean",
+          "title": "a=核算维度-是否分仓核算（商品存放在不同的仓库，成本可能不一样）;b=1;c=true;d=false"
+        },
+        "radio_field3": {
+          "type": "boolean",
+          "title": "a=核算维度-是否总仓核算（商品不论存放在哪个仓库，都是一样的成本）;b=1;c=true;d=false"
+        },
+        "navall": {
+          "type": "boolean",
+          "title": "a=负结存出库单据成本来源-是否成本来源;b=1;c=true;d=false"
+        },
+        "nav_first_field": {
+          "type": "boolean",
+          "title": "a=负结存出库单据成本来源-是否上次入库成本;b=1;c=true;d=false"
+        },
+        "nav_sec_field": {
+          "type": "boolean",
+          "title": "a=负结存出库单据成本来源-是否上次出库成本;b=1;c=true;d=false"
+        },
+        "nav_third_field": {
+          "type": "boolean",
+          "title": "a=负结存出库单据成本来源-是否成本指导价;b=1;c=true;d=false"
+        },
+        "nav_forth_field": {
+          "type": "boolean",
+          "title": "a=负结存出库单据成本来源-是否期初平均成本;b=1;c=true;d=false"
+        },
+        "retall": {
+          "type": "boolean",
+          "title": "a=无源单的销售退货单成本来源-是否成本来源;b=1;c=true;d=false"
+        },
+        "ret_first_field": {
+          "type": "boolean",
+          "title": "a=无源单的销售退货单成本来源-是否上次出库成本;b=1;c=true;d=false"
+        },
+        "ret_sec_field": {
+          "type": "boolean",
+          "title": "a=无源单的销售退货单成本来源-是否上次入库成本;b=1;c=true;d=false"
+        },
+        "ret_third_field": {
+          "type": "boolean",
+          "title": "a=无源单的销售退货单成本来源-是否成本指导价;b=1;c=true;d=false"
+        },
+        "ret_forth_field": {
+          "type": "boolean",
+          "title": "a=无源单的销售退货单成本来源-是否期初平均成本;b=1;c=true;d=false"
+        },
+        "radio_field12": {
+          "type": "boolean",
+          "title": "a=是否业务系统单独结账，且总账无关联;b=1;c=true;d=false"
+        },
+        "radio_field1": {
+          "type": "boolean",
+          "title": "a=是否业务系统单独结账，且必须早于总账结账;b=1;c=true;d=false"
+        },
+        "enable_close_account_cost": {
+          "type": "boolean",
+          "title": "a=是否成本异常时允许结账;b=1;c=true;d=false"
+        },
+        "not_create_voucher_bill": {
+          "type": "boolean",
+          "title": "a=是否财务结账前检查未生成凭证的业务单据;b=1;c=true;d=false"
+        },
+        "nagative": {
+          "type": "string",
+          "title": "a=负结存;b=30;c=001;d=false"
+        },
+        "param_nagative": {
+          "type": "string",
+          "title": "a=负结存参数;b=30;c=001;d=false"
+        },
+        "return": {
+          "type": "string",
+          "title": "a=退货单;b=30;c=001;d=false"
+        },
+        "param_return": {
+          "type": "string",
+          "title": "a=退货单参数;b=30;c=001;d=false"
+        }
+      }
+    },
+    "CityLoadRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=行政区域ID;b=2147483647;c=1;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=行政区域名称;b=20;c=名称;d=false"
+        },
+        "level": {
+          "type": "string",
+          "title": "a=行政区域级别；1-省，2-市，3-区;b=1;c=1;d=false"
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "a=父级行政区域ID;b=2147483647;c=1;d=false"
+        },
+        "son_nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AreaLoadRes"
+          },
+          "title": "a=下级行政区域列表;b=100;c=[];d=false"
+        }
+      }
+    },
+    "CommonOperateRequest": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id;b=100;c=[];d=false"
+        },
+        "numbers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=编码;b=100;c=[];d=false"
+        },
+        "entity_number": {
+          "type": "string",
+          "title": "a=单据或基础资料类型，参照《系统设置》-《基础资料及业务单据类型》;b=20;c=sal_bill_outbound;d=false"
+        },
+        "operate_type": {
+          "type": "string",
+          "title": "a=操作类型，删除delete、审核audit、反审核unaudit、订单关闭close_donothing;b=10;c=delete;d=false"
+        },
+        "ignore_warn": {
+          "type": "boolean",
+          "title": "a=是否忽略告警信息(如：名称已存在)保存客户，true:忽略，默认false;b=1;c=true;d=false"
+        }
+      }
+    },
+    "CountryLoadRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CountryLoadRes.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "CountryLoadRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=false"
+        },
+        "full_name": {
+          "type": "string",
+          "title": "a=全称;b=20;c=名称;d=false"
+        },
+        "enable": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=状态(1:启用 0:禁用 -1：不限);b=1;c=1;d=false"
+        }
+      }
+    },
+    "CurrentUserInfoRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=false"
+        },
+        "enable": {
+          "type": "string",
+          "title": "a=状态(1:启用 0:禁用 -1：不限);b=1;c=1;d=false"
+        },
+        "phone": {
+          "type": "string",
+          "title": "a=联系方式;b=20;c=188;d=false"
+        },
+        "status": {
+          "type": "string",
+          "title": "a=状态（已审核：“C”，未审核：“A”）;b=1;c=C;d=false"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee",
+          "title": "a=业务员;b=1;c={};d=false"
+        },
+        "department": {
+          "$ref": "#/definitions/Department",
+          "title": "a=部门;b=1;c={};d=false"
+        },
+        "uid": {
+          "type": "string",
+          "title": "a=金蝶云平台用户id;b=2147483647;c=1;d=false"
+        },
+        "eid": {
+          "type": "string",
+          "title": "a=金蝶云平台公司id;b=2147483647;c=1;d=false"
+        },
+        "is_admin": {
+          "type": "boolean",
+          "title": "a=是否管理员;b=1;c=false;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;b=20;c=2019-04-16 00:00:00;d=false"
+        }
+      }
+    },
+    "CustomField": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "title": "a=字段名;b=30;c=001;d=false"
+        },
+        "display_name": {
+          "type": "string",
+          "title": "a=字段展示名称;b=20;c=名称;d=false"
+        },
+        "field_type": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=字段类型，（1：文本，2：数字，3：日期，4：辅助资料，5：基础资料，6：引用基础资料属性）;b=1;c=1;d=false"
+        },
+        "must_input": {
+          "type": "boolean",
+          "title": "a=必录;b=1;c=false;d=false"
+        },
+        "def_value": {
+          "type": "string",
+          "title": "a=默认值，字段类型为4的时候没有该字段;b=20;c=1;d=false"
+        },
+        "base_entity_number": {
+          "type": "string",
+          "title": "a=基础资料标识，字段类型为5的时候独有该字段;b=20;c=1;d=false"
+        },
+        "combo_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Item"
+          },
+          "title": "a=下拉选项，字段类型为4的时候独有该字段;b=100;c=[];d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=id;b=30;c=1;d=false"
+        }
+      }
+    },
+    "CustomFieldRes": {
+      "type": "object",
+      "properties": {
+        "head": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomField"
+          },
+          "title": "a=头部字段（固定的参数名称，非分录字段）;b=100;c=[];d=false"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomField"
+          },
+          "title": "a=分录字段（动态的参数名称，跟参数值配置的类型有关）;b=100;c=[];d=false"
+        },
+        "pay_from_to_entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillEntry"
+          }
+        },
+        "instant_pay_from_to_entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillEntry"
+          }
+        }
+      }
+    },
+    "CustomFieldSaveReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id，更新时必填;b=30;c=1;d=false"
+        },
+        "field_name": {
+          "type": "string",
+          "title": "a=自定义字段名称(新增必传);b=30;c=001;d=false"
+        },
+        "field_type": {
+          "type": "string",
+          "title": "a=自定义字段类型(新增必传,\"1\":文本,\"2\":数值,\"3\":日期,\"4\":辅助资料,\"5\":基础资料);b=1;c=1;d=false"
+        },
+        "data_position": {
+          "type": "string",
+          "title": "a=自定义字段位置(新增必传,\"table_head\":单据头,\"table_body\":单据体);b=10;c=table_head;d=false"
+        },
+        "suit_bills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=适用单据或基础资料类型，参考\u003c基础资料及业务单据类型\u003e;b=20;c=[];d=false"
+        },
+        "enabled": {
+          "type": "boolean",
+          "title": "a=启用禁用;b=1;c=false;d=false"
+        },
+        "required": {
+          "type": "boolean",
+          "title": "a=必录;b=1;c=false;d=false"
+        },
+        "changeable": {
+          "type": "boolean",
+          "title": "a=审核后可修改;b=1;c=false;d=false"
+        },
+        "field_length": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=文本长度（文本类型）;b=20;c=1;d=false"
+        },
+        "decimal_Digit": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=数值小数精度(数值类型);b=20;c=1;d=false"
+        },
+        "is_sum": {
+          "type": "boolean",
+          "title": "a=是否合计(数值类型);b=1;c=false;d=false"
+        },
+        "default_system_time": {
+          "type": "boolean",
+          "title": "a=是否默认系统时间(日期类型);b=1;c=false;d=false"
+        },
+        "data_source": {
+          "type": "string",
+          "title": "a=辅助资料id(辅助资料类型);b=30;c=1;d=false"
+        },
+        "basedata_source": {
+          "type": "string",
+          "title": "a=基础资料类型，参考\u003c基础资料及业务单据类型\u003e;b=20;c=bd_material;d=false"
+        }
+      }
+    },
+    "Department": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "$ref": "#/definitions/Name",
+          "title": "a=名称;b=1;c={};d=false"
+        }
+      }
+    },
+    "DivisionLoadReply": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DivisionLoadRes"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "DivisionLoadRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=行政区域ID;b=2147483647;c=1;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=行政区域名称;b=20;c=名称;d=false"
+        },
+        "level": {
+          "type": "string",
+          "title": "a=行政区域级别；1-省，2-市，3-区;b=1;c=1;d=false"
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "a=父级行政区域ID;b=2147483647;c=1;d=false"
+        },
+        "son_nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CityLoadRes"
+          },
+          "title": "a=下级行政区域列表;b=100;c=[];d=false"
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "$ref": "#/definitions/Name",
+          "title": "a=名称;b=1;c={};d=false"
+        }
+      }
+    },
+    "EmptyReply": {
+      "type": "object"
+    },
+    "Fa": {
+      "type": "object",
+      "properties": {
+        "start_year": {
+          "type": "string",
+          "title": "a=启用年度;c=2020;d=false"
+        },
+        "start_period": {
+          "type": "string",
+          "title": "a=启用期间 ;c=1;d=false"
+        },
+        "current_year": {
+          "type": "string",
+          "title": "a=当前年度;c=2020;d=false"
+        },
+        "current_period": {
+          "type": "string",
+          "title": "a=当前期间;c=1;d=false"
+        },
+        "with_gl": {
+          "type": "boolean",
+          "title": "a=是否与总账连用;b=1;c=false;d=false"
+        },
+        "close_with_gl": {
+          "type": "boolean",
+          "title": "a=是否与总账一起结账(固定资产与总账连用);b=1;c=false;d=false"
+        },
+        "depreciate_field": {
+          "type": "boolean",
+          "title": "a=是否不折旧（整个系统）;b=1;c=false;d=false"
+        }
+      }
+    },
+    "Gl": {
+      "type": "object",
+      "properties": {
+        "start_year": {
+          "type": "string",
+          "title": "a=财务系统启用会计年度;b=4;c=2020;d=false"
+        },
+        "start_period": {
+          "type": "string",
+          "title": "a=财务系统启用会计期间;b=1;c=1;d=false"
+        },
+        "current_year": {
+          "type": "string",
+          "title": "a=财务系统当前会计年度;b=4;c=2020;d=false"
+        },
+        "current_period": {
+          "type": "string",
+          "title": "a=财务系统当前会计期间;b=1;c=1;d=false"
+        },
+        "account_rule": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=财务系统当前会计科目体系（会计制度：1 小企业会计准则(2013年颁) 2 新会计准则(2006年颁) 3 新会计准则(未执行新收入准则) 4 新会计准则(执行新收入准则）;b=1;c=1;d=false"
+        },
+        "vch_maker_not_single": {
+          "type": "boolean",
+          "title": "a=凭证审核与制单不能为同一人;b=1;c=true;d=false"
+        },
+        "check_cash_bank_redink": {
+          "type": "boolean",
+          "title": "a=现金、银行类科目赤字检查;b=1;c=true;d=false"
+        },
+        "must_transpl": {
+          "type": "boolean",
+          "title": "a=结账前必须结转损益;b=1;c=true;d=false"
+        },
+        "trans_dc_by_balance": {
+          "type": "boolean",
+          "title": "a=账簿余额方向与科目方向一致;b=1;c=true;d=false"
+        },
+        "vch_checker_single": {
+          "type": "boolean",
+          "title": "a=凭证审核与反审核必须为同一人;b=1;c=true;d=false"
+        },
+        "must_vch_checked": {
+          "type": "boolean",
+          "title": "a=凭证必须审核才能结账;b=1;c=true;d=false"
+        },
+        "allow_recheck_vch": {
+          "type": "boolean",
+          "title": "a=允许审核和取消审核以前期间凭证;b=1;c=true;d=false"
+        },
+        "is_first_close_set": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行过一次设置;b=1;c=true;d=false"
+        },
+        "is_check_for_assets": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行资产检查;b=1;c=true;d=false"
+        },
+        "is_check_for_fee": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行费用检查;b=1;c=true;d=false"
+        },
+        "is_check_for_close": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行期末结转检查;b=1;c=true;d=false"
+        },
+        "is_check_for_other": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行其他检查;b=1;c=true;d=false"
+        },
+        "is_check_for_pa": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行负债检查;b=1;c=true;d=false"
+        },
+        "is_check_for_arap": {
+          "type": "boolean",
+          "title": "a=期末结账是否进行往来挂账检查;b=1;c=true;d=false"
+        },
+        "max_voucher_number": {
+          "type": "string",
+          "title": "a=最大凭证字号记录;b=30;c=001;d=false"
+        },
+        "max_of_gen_voucher": {
+          "type": "string",
+          "title": "a=生成凭证时，一次最多允许选择的单据数;b=30;c=001;d=false"
+        },
+        "acct_for_arap_recmoney": {
+          "type": "string",
+          "title": "a=往来挂账检查-应收账款(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_sale_income_trans": {
+          "type": "string",
+          "title": "a=期末结转检查-销售收入科目(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_arap_recbill": {
+          "type": "string",
+          "title": "a=往来挂账检查-应收票据(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_pending_loss": {
+          "type": "string",
+          "title": "a=其他检查-待处理财产损益(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_virtual_assets_dep": {
+          "type": "string",
+          "title": "a=无形资产净额-累计摊销(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_arap_long_recmoney": {
+          "type": "string",
+          "title": "a=往来挂账检查-长期应收款(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_virtual_assets_bal": {
+          "type": "string",
+          "title": "a=无形资产净额-无形资产(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_arap_pay_money": {
+          "type": "string",
+          "title": "a=往来挂账检查-预付账款(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_fixed_asset_sclear": {
+          "type": "string",
+          "title": "a=其他检查-固定资产清理(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_long_pending_fee": {
+          "type": "string",
+          "title": "a=资产检查-长期待摊费用(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_employee_pay": {
+          "type": "string",
+          "title": "a=负债检查-应付职工薪酬(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_fixed_assets_dep": {
+          "type": "string",
+          "title": "a=固定资产净额-累计折旧(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_currency_amount": {
+          "type": "string",
+          "title": "a=资产检查检查-货币资金科目(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_fixed_assets_bal": {
+          "type": "string",
+          "title": "a=固定资产净额-固定资产(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_fixed_assets_impa": {
+          "type": "string",
+          "title": "a=固定资产净额-固定资产减值准备(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_virtual_assets_impa": {
+          "type": "string",
+          "title": "a=无形资产净额-无形资产减值准备(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_sale_income_fee": {
+          "type": "string",
+          "title": "a=费用检查-销售收入(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_entertain_fee": {
+          "type": "string",
+          "title": "a=费用检查-业务招待费(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_assets_inventory": {
+          "type": "string",
+          "title": "a=资产检查检查-存货科目(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_sale_cost_trans": {
+          "type": "string",
+          "title": "a=期末结转检查-销售成本科目(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_added_tax": {
+          "type": "string",
+          "title": "a=应交税费-应交增值税(科目id);b=30;c=001;d=false"
+        },
+        "acct_for_advertisement_fee": {
+          "type": "string",
+          "title": "a=费用检查-广告费(科目id);b=30;c=001;d=false"
+        },
+        "adjust_rate_voucher_gen_type": {
+          "type": "string",
+          "title": "a=期末调汇：1、收益和损失分开结转，2、收益损益同时结转;b=30;c=001;d=false"
+        },
+        "adjust_rate_account": {
+          "type": "string",
+          "title": "a=期末调汇：汇兑收益科目;b=30;c=001;d=false"
+        },
+        "adjust_rate_item": {
+          "type": "string",
+          "title": "a=期末调汇：汇兑收益科目辅助核算;b=30;c=001;d=false"
+        },
+        "adjust_rate_voucher_group": {
+          "type": "string",
+          "title": "a=期末调汇：默认凭证字;b=30;c=001;d=false"
+        },
+        "adjust_rate_account_loss": {
+          "type": "string",
+          "title": "a=期末调汇：汇兑损失科目;b=30;c=001;d=false"
+        },
+        "adjust_rate_dcbybal": {
+          "type": "string",
+          "title": "a=期末调汇：余额方向;b=30;c=001;d=false"
+        },
+        "adjust_rate_voucher_explanation": {
+          "type": "string",
+          "title": "a=期末调汇：摘要;b=30;c=001;d=false"
+        },
+        "adjust_rate_loss_item": {
+          "type": "string",
+          "title": "a=期末调汇：汇兑损失科目辅助核算;b=30;c=001;d=false"
+        },
+        "trans_pl_voucher_gen_type": {
+          "type": "string",
+          "title": "a=结转损益：1、收益损益同时结转，2、收益和损失分开结转，3、按辅助核算分别结转生成;b=1;c=1;d=false"
+        },
+        "trans_pl_account": {
+          "type": "string",
+          "title": "a=结转损益：本年利润科目;b=30;c=001;d=false"
+        },
+        "trans_pl_dc_by_bal": {
+          "type": "boolean",
+          "title": "a=结转损益：是否按余额反向结转;b=1;c=false;d=false"
+        },
+        "trans_pl_voucher_explanation": {
+          "type": "string",
+          "title": "a=结转损益：摘要;b=30;c=001;d=false"
+        },
+        "trans_pl_assist_item": {
+          "type": "string",
+          "title": "a=结转损益：按辅助核算项目结转的辅助核算类型id;b=30;c=001;d=false"
+        },
+        "trans_pl_account_ago": {
+          "type": "string",
+          "title": "a=结转损益：以前年度损益调整科目的结转科目;b=30;c=001;d=false"
+        },
+        "trans_pl_voucher_group": {
+          "type": "string",
+          "title": "a=结转损益：默认凭证字;b=30;c=001;d=false"
+        },
+        "trans_pl_advance_assist_item": {
+          "type": "string",
+          "title": "a=结转损益高级：按辅助项设置转入科目的辅助核算项目;b=30;c=001;d=false"
+        },
+        "trans_pl_advance_by_assist": {
+          "type": "boolean",
+          "title": "a=结转损益高级：按辅助项设置转入科目;b=1;c=false;d=false"
+        },
+        "trans_pl_account_adjust": {
+          "type": "string",
+          "title": "a=结转损益：以前年度损益调整科目;b=30;c=001;d=false"
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "a=下拉显示值;b=30;c=001;d=false"
+        },
+        "value": {
+          "type": "string",
+          "title": "a=下拉后台传输值;b=30;c=001;d=false"
+        }
+      }
+    },
+    "Name": {
+      "type": "object",
+      "properties": {
+        "zh_CN": {
+          "type": "string",
+          "title": "a=简体;c=张三;d=false"
+        }
+      }
+    },
+    "Public": {
+      "type": "object",
+      "properties": {
+        "system_start_period": {
+          "type": "string",
+          "title": "a=系统起始期间;b=1000;c=2020年1期;d=false"
+        },
+        "company_name": {
+          "type": "string",
+          "title": "a=企业信息-公司名称;b=100;c=企业;d=false"
+        },
+        "company_address": {
+          "type": "string",
+          "title": "a=企业信息-公司地址;b=100;c=广东;d=false"
+        },
+        "company_phone": {
+          "type": "string",
+          "title": "a=企业信息-公司电话;b=100;c=88;d=false"
+        },
+        "company_fax": {
+          "type": "string",
+          "title": "a=企业信息-公司传真;b=100;c=88;d=false"
+        },
+        "company_postcode": {
+          "type": "string",
+          "title": "a=企业信息-公司邮编;b=100;c=516;d=false"
+        },
+        "tax_payer_name": {
+          "type": "string",
+          "title": "a=开票信息-纳税人名称;b=100;c=张三;d=false"
+        },
+        "tax_payer_idnumber": {
+          "type": "string",
+          "title": "a=开票信息-纳税人识别号;b=100;c=001;d=false"
+        },
+        "invoice_company_address": {
+          "type": "string",
+          "title": "a=开票信息-公司地址;b=100;c=广东;d=false"
+        },
+        "invoice_company_phone": {
+          "type": "string",
+          "title": "a=开票信息-公司电话;b=100;c=88;d=false"
+        },
+        "invoice_bank": {
+          "type": "string",
+          "title": "a=开票信息-开户银行;b=100;c=招商银行;d=false"
+        },
+        "invoice_account_number": {
+          "type": "string",
+          "title": "a=开票信息-银行账号;b=100;c=44;d=false"
+        },
+        "open_custom_field": {
+          "type": "boolean",
+          "title": "a=是否启用自定义字段;b=1;c=false;d=false"
+        }
+      }
+    },
+    "Pur": {
+      "type": "object",
+      "properties": {
+        "enable_foreign_currency": {
+          "type": "boolean",
+          "title": "a=全局参数-是否启用外币;b=1;c=true;d=false"
+        },
+        "auto_fill_settlement_amt": {
+          "type": "boolean",
+          "title": "a=全局参数-是否启用自动填充结算金额;b=1;c=true;d=false"
+        },
+        "allow_in_qty_gt_order_qty": {
+          "type": "boolean",
+          "title": "a=采购参数-是否允许入库数量大于订单数量;b=1;c=true;d=false"
+        },
+        "pur_fee_edit_after_audit": {
+          "type": "boolean",
+          "title": "a=采购参数-是否允许修改采购费用（已审核采购类单据）;b=1;c=true;d=false"
+        },
+        "pur_ord_auto_create_ap_pre": {
+          "type": "boolean",
+          "title": "a=采购参数-是否采购订单审核时，自动生成预付款;b=1;c=true;d=false"
+        },
+        "allow_out_qty_gt_order_qty": {
+          "type": "boolean",
+          "title": "a=销售参数-是否允许出库数量大于订单数量;b=1;c=true;d=false"
+        },
+        "sal_fee_edit_after_audit": {
+          "type": "boolean",
+          "title": "a=销售参数-是否允许修改销售费用（已审核销售类单据）;b=1;c=true;d=false"
+        },
+        "sal_modify_bill_date_web": {
+          "type": "boolean",
+          "title": "a=销售参数-是否不允许修改销售类单据日期（网页端）;b=1;c=true;d=false"
+        },
+        "sal_modify_bill_date_app": {
+          "type": "boolean",
+          "title": "a=销售参数-是否不允许修改销售类单据日期（移动端）;b=1;c=true;d=false"
+        },
+        "sal_ord_auto_create_ar_pre": {
+          "type": "boolean",
+          "title": "a=销售参数-是否销售订单审核时，自动生成预收款;b=1;c=true;d=false"
+        },
+        "manual_selection": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否手工选择;b=1;c=true;d=false"
+        },
+        "auto_fill_batchno": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否批号顺序出库;b=1;c=true;d=false"
+        },
+        "auto_fill_kfdate": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否近效期先出;b=1;c=true;d=false"
+        },
+        "radio_field5": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否按零售价;b=1;c=true;d=false"
+        },
+        "radio_field6": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否按配送价;b=1;c=true;d=false"
+        },
+        "update_inv_when_save": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否保存时更新;b=1;c=true;d=false"
+        },
+        "update_inv_when_audit": {
+          "type": "boolean",
+          "title": "a=仓存参数-是否审核时更新;b=1;c=true;d=false"
+        },
+        "audited_pur_ord": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否已审核采购订单;b=1;c=true;d=false"
+        },
+        "saved_pur": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核采购入库单;b=1;c=true;d=false"
+        },
+        "audited_tf_out": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否已审核调拨出库单;b=1;c=true;d=false"
+        },
+        "un_push_tf_out": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未入库调拨出库量;b=1;c=true;d=false"
+        },
+        "saved_oi": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核其他入库单;b=1;c=true;d=false"
+        },
+        "saved_gain": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核盘盈单;b=1;c=true;d=false"
+        },
+        "audited_sal_ord": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否已审核销售订单;b=1;c=true;d=false"
+        },
+        "saved_sal": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核销售出库单;b=1;c=true;d=false"
+        },
+        "saved_tf_out": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核调拨出库单;b=1;c=true;d=false"
+        },
+        "saved_oo": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核其他出库单;b=1;c=true;d=false"
+        },
+        "saved_loss": {
+          "type": "boolean",
+          "title": "a=可用库存参数-是否未审核盘亏单;b=1;c=true;d=false"
+        },
+        "disable_exp_check": {
+          "type": "boolean",
+          "title": "a=库存异常检查-是否库存控制不判断浮动单位库存量;b=1;c=true;d=false"
+        },
+        "exp_plus_minus_non": {
+          "type": "boolean",
+          "title": "a=库存异常检查（为正为负）-是否不予控制;b=1;c=true;d=false"
+        },
+        "exp_plus_minus_warn": {
+          "type": "boolean",
+          "title": "a=库存异常检查（为正为负）-是否仅提示;b=1;c=true;d=false"
+        },
+        "exp_plus_minus_error": {
+          "type": "boolean",
+          "title": "a=库存异常检查（为正为负）-是否严格控制;b=1;c=true;d=false"
+        },
+        "exp_zero_nonzero_non": {
+          "type": "boolean",
+          "title": "a=库存异常检查（为零不为零）-是否不予控制;b=1;c=true;d=false"
+        },
+        "exp_zero_nonzero_warn": {
+          "type": "boolean",
+          "title": "a=库存异常检查（为零不为零）-是否仅提示;b=1;c=true;d=false"
+        },
+        "exp_zero_nonzero_error": {
+          "type": "boolean",
+          "title": "a=库存异常检查（为零不为零）-是否严格控制;b=1;c=true;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "SettlingParamRes": {
+      "type": "object",
+      "properties": {
+        "public": {
+          "$ref": "#/definitions/Public",
+          "title": "a=公共参数(基础参数)信息;b=1;c=object;d=false"
+        },
+        "arap": {
+          "$ref": "#/definitions/Arap",
+          "title": "a=应收应付参数信息;b=1;c=object;d=false"
+        },
+        "basedata": {
+          "$ref": "#/definitions/Basedata",
+          "title": "a=商品参数信息;b=1;c=object;d=false"
+        },
+        "pur": {
+          "$ref": "#/definitions/Pur",
+          "title": "a=进销存参数信息;b=1;c=object;d=false"
+        },
+        "gl": {
+          "$ref": "#/definitions/Gl",
+          "title": "a=财税参数信息;b=1;c=object;d=false"
+        },
+        "chhs": {
+          "$ref": "#/definitions/Chhs",
+          "title": "a=存货核算参数信息;b=1;c=object;d=false"
+        },
+        "fa": {
+          "$ref": "#/definitions/Fa",
+          "title": "a=资产管理参数信息;b=1;c=object;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "UserListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserListRes.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "UserListRes.Row": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "title": "a=id;c=1;d=true"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=true"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,578 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "财税云;出纳;日记账",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Journal"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/fi/journal": {
+      "get": {
+        "summary": "日记账列表;获取日记账列表;1.0.6",
+        "operationId": "Journal_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/JournalListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "period",
+            "description": "a=期间;b=6;c=202006;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_start_time",
+            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_end_time",
+            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_start_time",
+            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_end_time",
+            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Journal"
+        ]
+      },
+      "post": {
+        "summary": "日记账保存;日记账新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
+        "operationId": "Journal_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/JournalSaveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Journal"
+        ]
+      }
+    },
+    "/openapi/v2/fi/journal_detail": {
+      "get": {
+        "summary": "日记账详情;获取日记账详情;1.0.8",
+        "operationId": "Journal_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/JournalDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Journal"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "JournalDetailReply": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "account_number": {
+          "type": "string",
+          "title": "a=账户编号;b=30;c=001;d=false"
+        },
+        "account_name": {
+          "type": "string",
+          "title": "a=账户名称;b=30;c=名称;d=false"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=账户id;b=2147483647;c=1;d=false"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=日期;b=10;c=2021-01-27;d=false"
+        },
+        "explanation": {
+          "type": "string",
+          "title": "a=摘要;b=30;c=摘要;d=false"
+        },
+        "source_type": {
+          "type": "string",
+          "title": "a=数据来源：manual：手工 voucher：凭证 bill：单据 account：关联账户;b=10;c=manual;d=true"
+        },
+        "debit_for": {
+          "type": "string",
+          "title": "a=借方金额原币;b=999999999;c=100;d=false"
+        },
+        "credit_for": {
+          "type": "string",
+          "title": "a=贷方金额原币;b=999999999;c=100;d=false"
+        },
+        "check_time": {
+          "type": "string",
+          "title": "a=勾对日期;b=10;c=2021-01-27;d=false"
+        },
+        "is_init": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=是否初始未达数据 （1：是，0：否）;b=1;c=1;d=false"
+        },
+        "bill_entry_id": {
+          "type": "string",
+          "title": "a=单据分录id;b=2147483647;c=1;d=false"
+        },
+        "operator": {
+          "type": "string",
+          "title": "a=经办人;b=2147483647;c=1;d=false"
+        },
+        "supplier": {
+          "type": "string",
+          "title": "a=供应商;b=2147483647;c=1;d=false"
+        },
+        "credit": {
+          "type": "string",
+          "title": "a=贷方金额本位币;b=999999999;c=100;d=false"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=期间;b=6;c=202101;d=false"
+        },
+        "contacts_account_id": {
+          "type": "string",
+          "title": "a=往来账户;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=源单编号;b=30;c=001;d=false"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;b=9999;c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=备注;d=false"
+        },
+        "be_linked_number": {
+          "type": "string",
+          "title": "a=关联日记账编码;b=30;c=001;d=false"
+        },
+        "settle_no": {
+          "type": "string",
+          "title": "a=结算号;b=30;c=001;d=false"
+        },
+        "voucher_no": {
+          "type": "string",
+          "title": "a=凭证字号;b=30;c=记;d=false"
+        },
+        "is_check": {
+          "type": "string",
+          "title": "a=是否勾对（1：是，0：否）;b=1;c=1;d=false"
+        },
+        "bill_type": {
+          "type": "string",
+          "title": "a=源单类型;b=20;c=ap_prepaybill;d=false"
+        },
+        "bill_id": {
+          "type": "string",
+          "title": "a=源单id;b=2147483647;c=1;d=false"
+        },
+        "contacts_account_number": {
+          "type": "string",
+          "title": "a=往来账户编码;b=30;c=001;d=false"
+        },
+        "debit": {
+          "type": "string",
+          "title": "a=借方金额本位币;b=999999999;c=100;d=false"
+        },
+        "biz_date": {
+          "type": "string",
+          "title": "a=业务日期;b=10;c=2021-01-27;d=false"
+        },
+        "voucher_id": {
+          "type": "string",
+          "title": "a=凭证id;b=2147483647;c=1;d=false"
+        },
+        "linked_id": {
+          "type": "string",
+          "title": "a=关联账户id;b=2147483647;c=1;d=false"
+        },
+        "bill_entry_type": {
+          "type": "string",
+          "title": "a=资金转账单分录;b=20;d=false"
+        },
+        "customer": {
+          "type": "string",
+          "title": "a=客户;b=2147483647;c=1;d=false"
+        },
+        "bank_seq": {
+          "type": "string",
+          "title": "a=交易流水号;c=test20230101;d=false"
+        },
+        "custom_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        }
+      }
+    },
+    "JournalListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "JournalSaveRequest": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "account_number": {
+          "type": "string",
+          "title": "a=账户编号,账户编号、id、名称必须要有其中一个;b=30;c=001;d=false"
+        },
+        "account_name": {
+          "type": "string",
+          "title": "a=账户名称,账户编号、id、名称必须要有其中一个;b=30;c=名称;d=false"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=账户id,账户编号、id、名称必须要有其中一个;b=2147483647;c=1;d=false"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=日期;b=10;c=2021-01-27;d=false"
+        },
+        "explanation": {
+          "type": "string",
+          "title": "a=摘要;b=30;c=摘要;d=false"
+        },
+        "source_type": {
+          "type": "string",
+          "title": "a=数据来源：manual：手工 voucher：凭证 bill：单据 account：关联账户;b=10;c=manual;d=true"
+        },
+        "debit_for": {
+          "type": "string",
+          "title": "a=借方金额原币;b=999999999;c=100;d=false"
+        },
+        "credit_for": {
+          "type": "string",
+          "title": "a=贷方金额原币;b=999999999;c=100;d=false"
+        },
+        "check_time": {
+          "type": "string",
+          "title": "a=勾对日期;b=10;c=2021-01-27;d=false"
+        },
+        "is_init": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=是否初始未达数据 （1：是，0：否）;b=1;c=1;d=false"
+        },
+        "bill_entry_id": {
+          "type": "string",
+          "title": "a=单据分录id;b=2147483647;c=1;d=false"
+        },
+        "operator": {
+          "type": "string",
+          "title": "a=经办人;b=2147483647;c=1;d=false"
+        },
+        "supplier": {
+          "type": "string",
+          "title": "a=供应商;b=2147483647;c=1;d=false"
+        },
+        "credit": {
+          "type": "string",
+          "title": "a=贷方金额本位币;b=999999999;c=100;d=false"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=期间;b=6;c=202101;d=false"
+        },
+        "contacts_account_id": {
+          "type": "string",
+          "title": "a=往来账户;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=源单编号;b=30;c=001;d=false"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;b=9999;c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=备注;d=false"
+        },
+        "linked_number": {
+          "type": "string",
+          "title": "a=关联日记账编码;b=30;c=001;d=false"
+        },
+        "settle_no": {
+          "type": "string",
+          "title": "a=结算号;b=30;c=001;d=false"
+        },
+        "voucher_no": {
+          "type": "string",
+          "title": "a=凭证字号;b=30;c=记;d=false"
+        },
+        "is_check": {
+          "type": "string",
+          "title": "a=是否勾对（1：是，0：否）;b=1;c=1;d=false"
+        },
+        "bill_type": {
+          "type": "string",
+          "title": "a=源单类型;b=20;c=ap_prepaybill;d=false"
+        },
+        "bill_id": {
+          "type": "string",
+          "title": "a=源单id;b=2147483647;c=1;d=false"
+        },
+        "contacts_account_number": {
+          "type": "string",
+          "title": "a=往来账户编码;b=30;c=001;d=false"
+        },
+        "debit": {
+          "type": "string",
+          "title": "a=借方金额本位币;b=999999999;c=100;d=false"
+        },
+        "biz_date": {
+          "type": "string",
+          "title": "a=业务日期;b=10;c=2021-01-27;d=false"
+        },
+        "voucher_id": {
+          "type": "string",
+          "title": "a=凭证id;b=2147483647;c=1;d=false"
+        },
+        "linked_id": {
+          "type": "string",
+          "title": "a=关联账户id;b=2147483647;c=1;d=false"
+        },
+        "bill_entry_type": {
+          "type": "string",
+          "title": "a=资金转账单分录;b=20;d=false"
+        },
+        "customer": {
+          "type": "string",
+          "title": "a=客户;b=2147483647;c=1;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;b=2147483647;c=1;d=false"
+        },
+        "custom_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        }
+      }
+    },
+    "Row": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "title": "a=日期;b=10;c=2021-01-27;d=false"
+        },
+        "voucherNo": {
+          "type": "string",
+          "title": "a=凭证字号;b=10;c=记;d=false"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=期间;b=6;c=202101;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;b=100;c=无;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=日记账ID;b=2147483647;c=1;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

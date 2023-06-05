@@ -1,0 +1,1605 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "零售云;门店管理;零售单",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "RetailBill"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/retail_bill": {
+      "get": {
+        "summary": "零售单列表;零售单列表;1.0.7",
+        "operationId": "RetailBill_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RetailBillRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ids",
+            "description": "a=支持ID精确查询;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "member_id",
+            "description": "a=会员ID;c=894148680330821632;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "product_ids",
+            "description": "a=支持根据商品ID查询;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "store_id",
+            "description": "a=支持根据门店过滤查询;c=894148682444750848;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=支持按照订单编号查询;c=5555;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pos_id",
+            "description": "a=支持根据POS机编号过滤查询;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "biz_type",
+            "description": "a=支持根据零售单业务类型查询;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "cashier_id",
+            "description": "a=支持根据收银员查询;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_time",
+            "description": "a=开始时间;c=2022-05-01;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_time",
+            "description": "a=结束时间=30;c=2022-05-01;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "fetch_detail",
+            "description": "a=是否查询详情 默认为是;c=true;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "page_no",
+            "description": "a=页码,第一页从0开始,不传默认为第一页;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=分页大小,不传默认为100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "RetailBill"
+        ]
+      },
+      "post": {
+        "summary": "零售单保存;零售单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.9",
+        "operationId": "RetailBill_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RetailBillSaveRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RetailBillSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "RetailBill"
+        ]
+      }
+    },
+    "/openapi/v2/ls/retail_bill_detail": {
+      "get": {
+        "summary": "零售单详情;零售单详情;1.0.6",
+        "operationId": "RetailBill_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RetailBillDetailRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bill_id",
+            "description": "a=支持ID精确查询，零售单保存接口返回的订单ID;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=支持按照订单编号查询，零售单接口保存返回的订单编号;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "inner_no",
+            "description": "a=商城单据内码，外部对接方系统唯一标识，零售单保存对应的srcBillId;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "RetailBill"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Coupon": {
+      "type": "object",
+      "properties": {
+        "coupons_id": {
+          "type": "string",
+          "title": "a=优惠券ID;c=1;d=false"
+        },
+        "coupons_no": {
+          "type": "string",
+          "title": "a=优惠券编号;c=001;d=false"
+        },
+        "money": {
+          "type": "string",
+          "title": "a=抵扣金额;c=50;d=false"
+        }
+      },
+      "title": "a=优惠券 数组"
+    },
+    "ExtInfo": {
+      "type": "object",
+      "properties": {
+        "bill_no": {
+          "type": "string",
+          "title": "a=订单编号;c=001;d=false"
+        },
+        "delivery_type": {
+          "type": "string",
+          "title": "a=配送类型(1-现提；2-自提；3-同城配送；4-快递；5-店内配送);c=1;d=false"
+        },
+        "delivery_code": {
+          "type": "string",
+          "title": "a=自提码;c=001;d=false"
+        },
+        "receiver_name": {
+          "type": "string",
+          "title": "a=收货人名称;c=收货人A;d=false"
+        },
+        "order_status": {
+          "type": "string",
+          "title": "a=交易状态;c=1;d=false"
+        },
+        "receiver_address_id": {
+          "type": "string",
+          "title": "a=收货人地址;c=地址A;d=false"
+        },
+        "receiver_longitude": {
+          "type": "string",
+          "title": "a=收货人经度;c=50;d=false"
+        },
+        "receiver_latitude": {
+          "type": "string",
+          "title": "a=收货人纬度;c=50;d=false"
+        },
+        "seat_code": {
+          "type": "string",
+          "title": "a=座位码;c=001;d=false"
+        },
+        "shortcode": {
+          "type": "string",
+          "title": "a=订单短码;c=001;d=false"
+        },
+        "lock_tip": {
+          "type": "string",
+          "title": "a=缺货提示，1-直接取消，2-协商，3-发已有;c=1;d=false"
+        },
+        "logistics_number": {
+          "type": "string",
+          "title": "a=物流单号;c=001;d=false"
+        },
+        "logistics_company": {
+          "type": "string",
+          "title": "a=物流公司;c=物流公司A;d=false"
+        }
+      }
+    },
+    "IntegralAdd": {
+      "type": "object",
+      "properties": {
+        "member_card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1;d=false"
+        },
+        "member_card_no": {
+          "type": "string",
+          "title": "a=会员卡编号;c=001;d=false"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/IntegralDetail"
+          },
+          "title": "a=积分详情数组;d=false"
+        }
+      }
+    },
+    "IntegralDetail": {
+      "type": "object",
+      "properties": {
+        "integral": {
+          "type": "string",
+          "title": "a=积分数量，如果是消耗类型，值为负数，比如抵现\t;c=50;d=false"
+        },
+        "type": {
+          "type": "string",
+          "title": "a=操作类型,消费积分 1, 抵现 2,兑换 3,充值赠送 4,促销赠送 5,打卡赠送 6,到期清零 7,退款 8,积分购买 9,积分购买退款 10;c=1;d=false"
+        }
+      },
+      "title": "积分详情"
+    },
+    "IntegralExchange": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "a=操作类型,抵现 2,兑换 3,默认为抵现;c=1;d=false"
+        },
+        "money": {
+          "type": "string",
+          "title": "a=抵扣金额;c=50;d=false"
+        }
+      },
+      "title": "核销积分"
+    },
+    "MemberDeals": {
+      "type": "object",
+      "properties": {
+        "integral_add": {
+          "$ref": "#/definitions/IntegralAdd",
+          "title": "a=会员相关业务按照类型填充;c=object;d=false"
+        },
+        "integral_exchange": {
+          "$ref": "#/definitions/IntegralExchange",
+          "title": "a=核销积分,单据涉及到积分预核销时，该值不能为空;c=object;d=false"
+        },
+        "write_off_coupons": {
+          "$ref": "#/definitions/WriteOffCoupons",
+          "title": "a=优惠券核销，单据涉及到优惠券预核销时，该值不能为空;c=object;d=false"
+        }
+      }
+    },
+    "Order": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=零售单ID;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=零售单据编码;c=001;d=false"
+        },
+        "store_id": {
+          "type": "string",
+          "title": "a=门店ID(单据来源为POS,则必填);c=1;d=false"
+        },
+        "cashier_id": {
+          "type": "string",
+          "title": "a=收银员ID(单据来源为POS,则必填);c=1;d=false"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员ID;c=1;d=false"
+        },
+        "member_id": {
+          "type": "string",
+          "title": "a=会员ID;c=1;d=false"
+        },
+        "customer_id": {
+          "type": "string",
+          "title": "a=客户Id;c=1;d=false"
+        },
+        "amt": {
+          "type": "string",
+          "title": "a=订单金额;c=50;d=false"
+        },
+        "bal_amount": {
+          "type": "string",
+          "title": "a=结算金额(实收金额);c=50;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别;c=1;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=下单时间;c=2022-05-01;d=false"
+        },
+        "source": {
+          "type": "string",
+          "title": "a=订单来源: 1.POS 2.商城;c=1;d=false"
+        },
+        "biz_type": {
+          "type": "string",
+          "title": "a=零售业务类型：60.充值 61.退充 62.销售 63.退货 64.充次 65.退充次 66.还款 67.到期:1.POS,2.商城;c=60;d=false"
+        },
+        "pos_no": {
+          "type": "string",
+          "title": "a=POS机编号;c=001;d=false"
+        },
+        "customer_type": {
+          "type": "string",
+          "title": "a=支付单编号客户类型，1-散客，2-会员c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注信息;c=备注信息;d=false"
+        },
+        "order_state": {
+          "type": "string",
+          "title": "a=下单状态 0：已支付，1:未支付， 2:挂单，3-支付中;c=0;d=false"
+        },
+        "shift_id": {
+          "type": "string",
+          "title": "a=交班id;c=1;d=false"
+        },
+        "daily_id": {
+          "type": "string",
+          "title": "a=日结id;c=1;d=false"
+        },
+        "balance_no": {
+          "type": "string",
+          "title": "a=结存单单号;c=10;d=false"
+        },
+        "balance_msg": {
+          "type": "string",
+          "title": "a=结存信息;c=XXXXX;d=false"
+        },
+        "distribute_state": {
+          "type": "string",
+          "title": "a=配送状态(1-待配送；2-已配送，3-配送中);c=1;d=false"
+        },
+        "materialEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order.MaterialEntries"
+          },
+          "title": "a=商品分录;d=false"
+        },
+        "settle_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order.SettleEntries"
+          },
+          "title": "a=结算分录;d=false"
+        },
+        "payment_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Order.PaymentEntries"
+          },
+          "title": "a=支付详情;d=false"
+        },
+        "ext_info": {
+          "$ref": "#/definitions/ExtInfo",
+          "title": "a=订单扩展信息;c=object;d=false"
+        }
+      }
+    },
+    "Order.MaterialEntries": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "string",
+          "title": "a=分录标识;c=1;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品Id;c=1;d=false"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=商品条码;c=001;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=商品SKU;c=1;d=false"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次编号;c=20020303;d=false"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-12;d=false"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期单位 1天 2月 3年;c=1;d=false"
+        },
+        "kf_period": {
+          "type": "string",
+          "title": "a=保质期;c=180;d=false"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=到期日;c=2022-09-30;d=false"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库ID;c=1;d=false"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位;c=1;d=false"
+        },
+        "free": {
+          "type": "string",
+          "title": "a=赠品类型 0-非赠品；1-手工赠品；2-促销赠品;c=1;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1;d=false"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=1;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=1;d=false"
+        },
+        "return_qty": {
+          "type": "string",
+          "title": "a=可退货数量;c=30;d=false"
+        },
+        "base_qty": {
+          "type": "string",
+          "title": "a=基本单位数量;c=30;d=false"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=单价;c=500;d=false"
+        },
+        "tax_price": {
+          "type": "string",
+          "title": "a=含税单价;c=100;d=false"
+        },
+        "predis_amount": {
+          "type": "string",
+          "title": "a=折前金额;c=100;d=false"
+        },
+        "dis_rate": {
+          "type": "string",
+          "title": "a=折扣率(%);c=50;d=false"
+        },
+        "discount": {
+          "type": "string",
+          "title": "a=折扣(折);c=8;d=false"
+        },
+        "dis_amount": {
+          "type": "string",
+          "title": "a=折扣额(不含税);c=300;d=false"
+        },
+        "dis_amount_before": {
+          "type": "string",
+          "title": "a=折扣额(含税);c=300;d=false"
+        },
+        "dis_price": {
+          "type": "string",
+          "title": "a=折后单价;c=300;d=false"
+        },
+        "bill_dis_before_amount": {
+          "type": "string",
+          "title": "a=整单折前价税合计;c=300;d=false"
+        },
+        "act_tax_price": {
+          "type": "string",
+          "title": "a=实际含税单价;c=300;d=false"
+        },
+        "cess": {
+          "type": "string",
+          "title": "a=增值税税率（%）;c=50;d=false"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=80;d=false"
+        },
+        "bill_dis_distribution": {
+          "type": "string",
+          "title": "a=整单折扣分配额;c=100;d=false"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=100;d=false"
+        },
+        "act_non_tax_price": {
+          "type": "string",
+          "title": "a=实际不含税单价;c=1;d=false"
+        },
+        "act_non_tax_amount": {
+          "type": "string",
+          "title": "a=实际不含税金额;c=1;d=false"
+        },
+        "material_info": {
+          "$ref": "#/definitions/Order.MaterialEntries.MaterialInfo",
+          "title": "a=商品属性;c=object;d=false"
+        },
+        "is_serial": {
+          "type": "boolean",
+          "title": "a=是否序列号商品;c=true;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "is_batch": {
+          "type": "boolean",
+          "title": "a=是否批次商品;c=true;d=false"
+        },
+        "check_type": {
+          "type": "string",
+          "title": "a=商品类别 1：普通 2：套装 3： 服务;c=2;d=false"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计本位币;c=50;d=false"
+        },
+        "serials": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=序列号列表;d=false"
+        },
+        "total_dis_amount": {
+          "type": "string",
+          "title": "a=总优惠额;c=1;d=false"
+        },
+        "total_dis_rate": {
+          "type": "string",
+          "title": "a=总折扣率;c=1;d=false"
+        }
+      }
+    },
+    "Order.MaterialEntries.MaterialInfo": {
+      "type": "object",
+      "properties": {
+        "check_type": {
+          "type": "string",
+          "title": "a=商品类别 1：普通 2：套装 3： 服务;c=1;d=false"
+        },
+        "is_serial": {
+          "type": "string",
+          "title": "a=是否序列商品=30;c=true;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "is_batch": {
+          "type": "string",
+          "title": "a=是否批次商品;c=true;d=false"
+        }
+      }
+    },
+    "Order.PaymentEntries": {
+      "type": "object",
+      "properties": {
+        "payment_id": {
+          "type": "string",
+          "title": "a=支付ID;c=100;d=false"
+        },
+        "payment_no": {
+          "type": "string",
+          "title": "a=支付单编号;c=001;d=false"
+        },
+        "payment_stat": {
+          "type": "string",
+          "title": "a=支付单状态(参考支付单状态枚举);c=001;d=false"
+        },
+        "payment_time": {
+          "type": "string",
+          "title": "a=支付单时间;c=2022-08-03;d=false"
+        }
+      },
+      "title": "a=支付单编号;c=001;d=false"
+    },
+    "Order.SettleEntries": {
+      "type": "object",
+      "properties": {
+        "income_type": {
+          "type": "string",
+          "title": "a=收款类型 11.收款\n12.预收\n13.冲预收\n14.预收退款\n15.应收\n16.冲应收\n17.退款\n18.挂账退款;c=11;d=false"
+        },
+        "pay_type_id": {
+          "type": "string",
+          "title": "a=收款方式Id;c=1;d=false"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=收款账户Id;c=1;d=false"
+        },
+        "settlement_id": {
+          "type": "string",
+          "title": "a=结算方式;c=30;d=false"
+        },
+        "online_pay_type": {
+          "type": "string",
+          "title": "a=否=30;c=1;d=false"
+        },
+        "settle_amt": {
+          "type": "string",
+          "title": "a=结算金额;c=50;d=false"
+        },
+        "settle_currency_amt": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        },
+        "settle_currency_code": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        },
+        "settle_currency_name": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        },
+        "settle_currency_rate": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        }
+      },
+      "title": "a=支付单编号;c=001;d=false\n结算分录"
+    },
+    "PromotionDetails": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "string",
+          "title": "a=商品分录;c=1;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品ID;c=0011d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=skuId;c=1;d=false"
+        },
+        "unit": {
+          "type": "string",
+          "title": "a=单位;c=1;d=false"
+        },
+        "promotion_amt": {
+          "type": "string",
+          "title": "a=优惠金额;c=50;d=false"
+        },
+        "promotion_type": {
+          "type": "string",
+          "title": "a=优惠类型;c=1;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=50;d=false"
+        },
+        "promotion_schema": {
+          "type": "string",
+          "title": "a=优惠方案;c=1;d=false"
+        },
+        "schema_type": {
+          "type": "string",
+          "title": "a=方案类型;c=1;d=false"
+        },
+        "activity_id": {
+          "type": "string",
+          "title": "a=活动Id;c=1;d=false"
+        },
+        "activity_no": {
+          "type": "string",
+          "title": "a=活动编码;c=001;d=false"
+        },
+        "activity_name": {
+          "type": "string",
+          "title": "a=活动名称;c=活动A;d=false"
+        },
+        "coupon_no": {
+          "type": "string",
+          "title": "a=优惠券编号;c=001;d=false"
+        },
+        "point_rule_id": {
+          "type": "string",
+          "title": "a=积分规则ID;c=1;d=false"
+        }
+      },
+      "title": "优惠明细"
+    },
+    "RetailBillDetailRes": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "$ref": "#/definitions/Order",
+          "title": "a=零售单详情信息;c=object;d=false"
+        }
+      }
+    },
+    "RetailBillListRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=零售单ID;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=零售单据编码;c=001;d=false"
+        },
+        "store_id": {
+          "type": "string",
+          "title": "a=门店ID(单据来源为POS,则必填);c=1;d=false"
+        },
+        "cashier_id": {
+          "type": "string",
+          "title": "a=收银员ID(单据来源为POS,则必填);c=1;d=false"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员ID;c=1;d=false"
+        },
+        "member_id": {
+          "type": "string",
+          "title": "a=会员ID;c=1;d=false"
+        },
+        "customer_id": {
+          "type": "string",
+          "title": "a=客户Id;c=1;d=false"
+        },
+        "amt": {
+          "type": "string",
+          "title": "a=订单金额;c=300;d=false"
+        },
+        "bal_amount": {
+          "type": "string",
+          "title": "a=结算金额(实收金额);c=300;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别;c=1;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=下单时间;c=2022-08-02;d=false"
+        },
+        "source": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=订单来源:1.POS 2.商城;c=1;d=false"
+        },
+        "biz_type": {
+          "type": "string",
+          "title": "a=零售业务类型：60.充值61.退充62.销售63.退货64.充次65.退充次66.还款67.到期;c=61;d=false"
+        },
+        "pos_no": {
+          "type": "string",
+          "title": "a=POS机编号;c=001;d=false"
+        },
+        "customer_type": {
+          "type": "string",
+          "title": "a=客户类型;c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注信息;c=备注XXXX;d=false"
+        },
+        "order_state": {
+          "type": "string",
+          "title": "a=1:未支付， 2:挂单，3-支付中，0-已支付;c=1;d=false"
+        },
+        "shift_id": {
+          "type": "string",
+          "title": "a=交班id;c=1;d=false"
+        },
+        "daily_id": {
+          "type": "string",
+          "title": "a=日结id;c=1;d=false"
+        },
+        "balance_no": {
+          "type": "string",
+          "title": "a=结存单单号;c=001;d=false"
+        },
+        "balance_msg": {
+          "type": "string",
+          "title": "a=结存信息;c=结存说明XXXX;d=false"
+        },
+        "msg": {
+          "type": "string",
+          "title": "a=报错信息;c=xxx;d=false"
+        },
+        "material_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillListRes.MaterialEntries"
+          },
+          "title": "a=商品分录;d=false"
+        },
+        "settle_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillListRes.SettleEntries"
+          },
+          "title": "a=结算分录;d=false"
+        },
+        "promotion_summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillListRes.PromotionSummary"
+          },
+          "title": "a=优惠汇总分录;d=false"
+        },
+        "payment_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillListRes.PaymentEntries"
+          },
+          "title": "a=支付详情;d=false"
+        }
+      }
+    },
+    "RetailBillListRes.MaterialEntries": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "string",
+          "title": "a=分录标识;c=1;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品Id;c=1;d=false"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=商品条码;c=001;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=商品SKU;c=1;d=false"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次编号;c=20020303;d=false"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-12;d=false"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期单位 1天 2月 3年;c=1;d=false"
+        },
+        "kf_period": {
+          "type": "string",
+          "title": "a=保质期;c=180;d=false"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=到期日;c=2022-09-30;d=false"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库ID;c=1;d=false"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位;c=1;d=false"
+        },
+        "free": {
+          "type": "string",
+          "title": "a=赠品类型 0-非赠品；1-手工赠品；2-促销赠品;c=1;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1;d=false"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=1;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=1;d=false"
+        },
+        "return_qty": {
+          "type": "string",
+          "title": "a=可退货数量;c=30;d=false"
+        },
+        "base_qty": {
+          "type": "string",
+          "title": "a=基本单位数量;c=30;d=false"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=单价;c=500;d=false"
+        },
+        "tax_price": {
+          "type": "string",
+          "title": "a=含税单价;c=100;d=false"
+        },
+        "predis_amount": {
+          "type": "string",
+          "title": "a=折前金额;c=100;d=false"
+        },
+        "dis_rate": {
+          "type": "string",
+          "title": "a=折扣率(%);c=50;d=false"
+        },
+        "discount": {
+          "type": "string",
+          "title": "a=折扣(折);c=8;d=false"
+        },
+        "dis_amount": {
+          "type": "string",
+          "title": "a=折扣额(不含税);c=300;d=false"
+        },
+        "dis_amount_before": {
+          "type": "string",
+          "title": "a=折扣额(含税);c=300;d=false"
+        },
+        "dis_price": {
+          "type": "string",
+          "title": "a=折后单价;c=300;d=false"
+        },
+        "bill_dis_before_amount": {
+          "type": "string",
+          "title": "a=整单折前价税合计;c=300;d=false"
+        },
+        "act_tax_price": {
+          "type": "string",
+          "title": "a=实际含税单价;c=300;d=false"
+        },
+        "cess": {
+          "type": "string",
+          "title": "a=增值税税率（%）;c=50;d=false"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=80;d=false"
+        },
+        "bill_dis_distribution": {
+          "type": "string",
+          "title": "a=整单折扣分配额;c=100;d=false"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=100;d=false"
+        },
+        "act_non_tax_price": {
+          "type": "string",
+          "title": "a=实际不含税单价;c=1;d=false"
+        },
+        "act_non_tax_amount": {
+          "type": "string",
+          "title": "a=实际不含税金额;c=1;d=false"
+        },
+        "material_info": {
+          "$ref": "#/definitions/RetailBillListRes.MaterialEntries.MaterialInfo",
+          "title": "a=商品属性;c=object;d=false"
+        },
+        "is_serial": {
+          "type": "boolean",
+          "title": "a=是否序列号商品;c=true;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "is_batch": {
+          "type": "boolean",
+          "title": "a=是否批次商品;c=true;d=false"
+        },
+        "check_type": {
+          "type": "string",
+          "title": "a=商品类别 1：普通 2：套装 3： 服务;c=2;d=false"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计本位币;c=50;d=false"
+        },
+        "serials": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=序列号列表;c=[];d=false"
+        },
+        "total_dis_amount": {
+          "type": "string",
+          "title": "a=总优惠额;c=1;d=false"
+        },
+        "total_dis_rate": {
+          "type": "string",
+          "title": "a=总折扣率;c=1;d=false"
+        }
+      }
+    },
+    "RetailBillListRes.MaterialEntries.MaterialInfo": {
+      "type": "object",
+      "properties": {
+        "check_type": {
+          "type": "string",
+          "title": "a=商品类别 1：普通 2：套装 3： 服务;c=1;d=false"
+        },
+        "is_serial": {
+          "type": "string",
+          "title": "a=是否序列商品=30;c=true;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "is_batch": {
+          "type": "string",
+          "title": "a=是否批次商品;c=true;d=false"
+        }
+      }
+    },
+    "RetailBillListRes.PaymentEntries": {
+      "type": "object",
+      "properties": {
+        "payment_id": {
+          "type": "string",
+          "title": "a=支付ID;c=100;d=false"
+        },
+        "payment_no": {
+          "type": "string",
+          "title": "a=支付单编号;c=001;d=false"
+        },
+        "payment_stat": {
+          "type": "string",
+          "title": "a=支付单状态(参考支付单状态枚举);c=001;d=false"
+        },
+        "payment_time": {
+          "type": "string",
+          "title": "a=支付单时间;c=2022-08-03;d=false"
+        }
+      }
+    },
+    "RetailBillListRes.PromotionSummary": {
+      "type": "object",
+      "properties": {
+        "promotion_type": {
+          "type": "string",
+          "title": "a=优惠类型;c=1;d=false"
+        },
+        "promotion_way": {
+          "type": "string",
+          "title": "a=优惠方式;c=1;d=false"
+        },
+        "amt": {
+          "type": "string",
+          "title": "a=优惠金额;c=500;d=false"
+        },
+        "schema_id": {
+          "type": "string",
+          "title": "a=促销方案Id;c=1;d=false"
+        },
+        "activity_id": {
+          "type": "string",
+          "title": "a=促销活动Id;c=1;d=false"
+        },
+        "activity_name": {
+          "type": "string",
+          "title": "a=促销活动名称;c=促销方案;d=false"
+        }
+      },
+      "title": "优惠汇总"
+    },
+    "RetailBillListRes.SettleEntries": {
+      "type": "object",
+      "properties": {
+        "income_type": {
+          "type": "string",
+          "title": "a=收款类型 11.收款，12.预收，13.冲预收，14.预收退款，15.应收，16.冲应收，17.退款18.挂账退款;c=11;d=false"
+        },
+        "pay_type_id": {
+          "type": "string",
+          "title": "a=收款方式Id;c=1;d=false"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=收款账户Id;c=1;d=false"
+        },
+        "settlement_id": {
+          "type": "string",
+          "title": "a=结算方式;c=30;d=false"
+        },
+        "online_pay_type": {
+          "type": "string",
+          "title": "a=否=30;c=1;d=false"
+        },
+        "settle_amt": {
+          "type": "string",
+          "title": "a=结算金额;c=50;d=false"
+        },
+        "settle_currency_amt": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        },
+        "settle_currency_code": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        },
+        "settle_currency_name": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        },
+        "settle_currency_rate": {
+          "type": "string",
+          "title": "a=是;c=1;d=false"
+        }
+      },
+      "title": "结算分录"
+    },
+    "RetailBillRes": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillListRes"
+          }
+        }
+      }
+    },
+    "RetailBillSaveReq": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=支付单编号单据来源，2-商城（酷客多合作伙伴），9-第三方商城，默认2-商城c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=零售单据编码;c=001;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=商城单据内码;c=1;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=下单时间，不填以系统时间为准，格式yyyy-MM-dd HH:mm:ss;c=2022-08-12;d=false"
+        },
+        "store_id": {
+          "type": "string",
+          "title": "a=门店ID;c=1;d=false"
+        },
+        "member_id": {
+          "type": "string",
+          "title": "a=会员ID;c=1;d=false"
+        },
+        "amt": {
+          "type": "string",
+          "title": "a=订单金额;c=10;d=false"
+        },
+        "discount_fee": {
+          "type": "string",
+          "title": "a=整单优惠，包括积分抵现金额，优惠券优惠金额;c=30;d=false"
+        },
+        "bal_amount": {
+          "type": "string",
+          "title": "a=支付单编号结算金额(订单实收金额)c=30;d=false"
+        },
+        "delivery_type": {
+          "type": "string",
+          "title": "a=1 现提, 2 自提, 3、同城配送，4、快递 5、店内配送;c=1;d=false"
+        },
+        "delivery_code": {
+          "type": "string",
+          "title": "a=自提码;c=132123;d=false"
+        },
+        "seat_code": {
+          "type": "string",
+          "title": "a=座位号 店内配送不能为空;c=50;d=false"
+        },
+        "short_code": {
+          "type": "string",
+          "title": "a=订单短码;c=200;d=false"
+        },
+        "lack_tip": {
+          "type": "string",
+          "title": "a=缺货提示，1-订单取消，2-协商，3-发已有;c=1;d=false"
+        },
+        "delivery_start_time": {
+          "type": "string",
+          "title": "a=配送预约开始时间，yyyy-MM-dd HH:mm:ss;c=2022-08-12 12:12:12;d=false"
+        },
+        "delivery_end_time": {
+          "type": "string",
+          "title": "a=配送预约结束时间，yyyy-MM-dd HH:mm:ss;c=2022-08-12 12:12:12;d=false"
+        },
+        "receiver_name": {
+          "type": "string",
+          "title": "a=收货人名称;c=收货人A;d=false"
+        },
+        "receiver_mobile": {
+          "type": "string",
+          "title": "a=收货人的电话号码;c=13311223344;d=false"
+        },
+        "receiver_address_id": {
+          "type": "string",
+          "title": "a=收货人地址ID,星辰地址库中的ID，如果没有使用星辰地址库，不需要传;c=默认地址d=false"
+        },
+        "receiver_address": {
+          "type": "string",
+          "title": "a=收货人的详细地址，如果没有使用星辰地址库，请传收货地址全量信息;c=默认地址d;d=false"
+        },
+        "receiver_longitude": {
+          "type": "string",
+          "title": "a=收货人的经度;c=30;d=false"
+        },
+        "receiver_latitude": {
+          "type": "string",
+          "title": "a=收货人的纬度;c=50;d=false"
+        },
+        "order_status": {
+          "type": "string",
+          "title": "a=交易状态，外部系统单据状态;c=1;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间，yyyy-MM-dd HH:mm:ss;c=2022-08-01 20:10:11;d=false"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间，yyyy-MM-dd HH:mm:ss;c=2022-08-01 20:10:11;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注信息;c=备注XXX;d=false"
+        },
+        "encrypt_key": {
+          "type": "string",
+          "title": "a=重新上传固定值为字符串\"1\";c=1;d=false"
+        },
+        "material_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillSaveReq.MaterialEntries"
+          },
+          "title": "a=商品分录;d=false"
+        },
+        "client_id": {
+          "type": "string"
+        },
+        "settle_entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillSaveReq.SettleEntries"
+          },
+          "title": "a=结算分录;d=false"
+        },
+        "promotion_summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RetailBillSaveReq.PromotionSummary"
+          },
+          "title": "a=优惠汇总分录;d=false"
+        },
+        "promotion_details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PromotionDetails"
+          },
+          "title": "a=优惠明细分录;d=false"
+        },
+        "member_deals": {
+          "$ref": "#/definitions/MemberDeals",
+          "title": "a=会员业务;c=[];d=false"
+        }
+      }
+    },
+    "RetailBillSaveReq.MaterialEntries": {
+      "type": "object",
+      "properties": {
+        "index": {
+          "type": "string",
+          "title": "a=分录标识;c=1;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品Id;c=1;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=商品SKU;c=1;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1;d=false"
+        },
+        "free": {
+          "type": "string",
+          "title": "a=赠品类型 0-非赠品；1-手工赠品；2-促销赠品;c=1;d=false"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=单价;c=500;d=false"
+        },
+        "dis_price": {
+          "type": "string",
+          "title": "a=折后单价;c=300;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=1;d=false"
+        },
+        "discount_fee": {
+          "type": "string",
+          "title": "a=整单优惠，包括积分抵现金额，优惠券优惠金额;c=001;d=false"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=100;d=false"
+        },
+        "flavor": {
+          "type": "string",
+          "title": "a=口味商品的口味属性(\",\"分割的文本字段);c=001;d=false"
+        },
+        "flavor_index": {
+          "type": "string",
+          "title": "a=如果是口味消耗商品,则记录口味商品的分录号，否则为空;c=001;d=false"
+        },
+        "package_no": {
+          "type": "string",
+          "title": "a=套餐编号，当为套餐服务商品时不为空;c=001;d=false"
+        },
+        "package_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/packageList"
+          },
+          "title": "a=套餐编号，当为套餐服务商品时不为空;d=false"
+        }
+      },
+      "title": "商品分录"
+    },
+    "RetailBillSaveReq.PromotionSummary": {
+      "type": "object",
+      "properties": {
+        "promotion_type": {
+          "type": "string",
+          "title": "a=优惠类型;c=1;d=false"
+        },
+        "promotion_amt": {
+          "type": "string",
+          "title": "a=优惠金额;c=30;d=false"
+        },
+        "schema_id": {
+          "type": "string",
+          "title": "a=促销方案Id;c=1;d=false"
+        },
+        "schema_type": {
+          "type": "string",
+          "title": "a=方案类型;c=1;d=false"
+        },
+        "activity_id": {
+          "type": "string",
+          "title": "a=促销活动Id;c=1;d=false"
+        },
+        "activity_name": {
+          "type": "string",
+          "title": "a=促销活动名称;c=促销活动A;d=false"
+        },
+        "coupon_no": {
+          "type": "string",
+          "title": "a=优惠券编号;c=11;d=false"
+        },
+        "point_rule_id": {
+          "type": "string",
+          "title": "a=积分兑换(优惠类型为积分兑换)/抵现(优惠类型为积分抵现)规则;c=1;d=false"
+        },
+        "consume_points": {
+          "type": "string",
+          "title": "a=消耗积分(优惠类型为 积分低限/兑换时消耗的积分值);c=1;d=false"
+        },
+        "gift_points": {
+          "type": "string",
+          "title": "a=促销赠送积分;c=50;d=false"
+        }
+      },
+      "title": "优惠汇总"
+    },
+    "RetailBillSaveReq.SettleEntries": {
+      "type": "object",
+      "properties": {
+        "pay_type": {
+          "type": "string",
+          "title": "a=1-微信、2-支付宝、90-会员卡，归属星辰支付类型 ；4-第三方微信、5-第三方支付宝;c=1;d=false"
+        },
+        "settle_amt": {
+          "type": "string",
+          "title": "a=收款金额;c=30;d=false"
+        }
+      },
+      "title": "结算分录"
+    },
+    "RetailBillSaveRes": {
+      "type": "object",
+      "properties": {
+        "bill_id": {
+          "type": "string",
+          "title": "a=零售单Id;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=零售单编号;c=001;d=false"
+        },
+        "inner_no": {
+          "type": "string",
+          "title": "a=零售单内码;c=001;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "WriteOffCoupons": {
+      "type": "object",
+      "properties": {
+        "coupon_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Coupon"
+          },
+          "title": "a=优惠券核销，单据涉及到优惠券预核销时，该值不能为空;d=false"
+        }
+      },
+      "title": "a=优惠券核销"
+    },
+    "packageList": {
+      "type": "object",
+      "properties": {
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=1;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1;d=false"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=单价;c=001;d=false"
+        },
+        "dis_price": {
+          "type": "string",
+          "title": "a=实收合计 = disPrice * qty - discount_fee;c=50;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=50;d=false"
+        }
+      },
+      "title": "套餐编号"
+    }
+  }
+}

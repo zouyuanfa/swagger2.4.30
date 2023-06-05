@@ -1,0 +1,1030 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "生产云;委外管理;委外加工单",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "WorkOrder"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/pm/subm_workorder": {
+      "get": {
+        "summary": "委外加工单列表;委外加工单列表;1.0.6",
+        "operationId": "WorkOrder_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "dept_id",
+            "description": "a=部门ID;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "emp_id",
+            "description": "a=业务员ID;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "supplier_id",
+            "description": "a=供应商ID;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_status",
+            "description": "a=单据状态（所有：“”，已审核：“C”，未审核：“Z”）;c=C.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），创建日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），创建日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_time",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），修改时间;c=-1.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "end_time",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），修改时间;c=-1.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "search",
+            "description": "a=模糊搜索，支持供应商名称、业务员名称、商品名称、单据编码;c=xxxx.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页（默认1）;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数，（默认10，最大值100）;c=10.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "WorkOrder"
+        ]
+      }
+    },
+    "/openapi/v2/pm/subm_workorder_detail": {
+      "get": {
+        "summary": "委外加工单详情;委外加工单详情;1.0.7",
+        "operationId": "WorkOrder_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WorkOrderDetailRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "WorkOrder"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "Sub_MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "picture": {
+          "type": "string",
+          "title": "a=图片url;c=xxx"
+        },
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=843911133671732224"
+        },
+        "sub_material_id": {
+          "type": "string",
+          "title": "a=商品id;c=843913969650383872"
+        },
+        "sub_material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=序列号01"
+        },
+        "sub_material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=1"
+        },
+        "sub_material_is_multi_unit": {
+          "type": "boolean",
+          "title": "a=商品是否多单位;c=false"
+        },
+        "sub_material_is_serial": {
+          "type": "boolean",
+          "title": "a=商品是否序列号;c=false"
+        },
+        "sub_material_is_asst_attr": {
+          "type": "boolean",
+          "title": "a=商品是否启用辅助属性;c=false"
+        },
+        "sub_material_is_kf_period": {
+          "type": "boolean",
+          "title": "a=商品是否开启保质期;c=false"
+        },
+        "sub_material_is_batch": {
+          "type": "boolean",
+          "title": "a=商品是否开启批次;c=false"
+        },
+        "sub_material_model": {
+          "type": "string",
+          "title": "a=商品规格;c=001"
+        },
+        "sub_stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=1"
+        },
+        "sub_stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=仓库A"
+        },
+        "sub_stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=002"
+        },
+        "sub_stock_is_allow_freight": {
+          "type": "boolean",
+          "title": "a=仓库启用仓位管理;c=false"
+        },
+        "sub_sp_id": {
+          "type": "string",
+          "title": "a=仓位id;c="
+        },
+        "sub_sp_name": {
+          "type": "string",
+          "title": "a=仓位名称;c="
+        },
+        "sub_sp_number": {
+          "type": "string",
+          "title": "a=仓位编码;c="
+        },
+        "sub_aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=1"
+        },
+        "sub_aux_prop_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=辅助属性"
+        },
+        "sub_aux1_id": {
+          "type": "string",
+          "title": "a=辅助属性1id;c=111"
+        },
+        "sub_aux1_name": {
+          "type": "string",
+          "title": "a=辅助属性1名称;c=辅助属性1A"
+        },
+        "sub_aux1_number": {
+          "type": "string",
+          "title": "a=辅助属性1编码;c=001"
+        },
+        "sub_aux2_id": {
+          "type": "string",
+          "title": "a=辅助属性2id;c=2"
+        },
+        "sub_aux2_name": {
+          "type": "string",
+          "title": "a=辅助属性2名称;c=辅助属性2"
+        },
+        "sub_aux2_number": {
+          "type": "string",
+          "title": "a=辅助属性2编码;c=002"
+        },
+        "sub_aux3_id": {
+          "type": "string",
+          "title": "a=辅助属性3id;c=3"
+        },
+        "sub_aux3_name": {
+          "type": "string",
+          "title": "a=辅助属性3名称;c=辅助属性3"
+        },
+        "sub_aux3_number": {
+          "type": "string",
+          "title": "a=辅助属性3编码;c=003"
+        },
+        "sub_aux4_id": {
+          "type": "string",
+          "title": "a=辅助属性4id;c=1"
+        },
+        "sub_aux4_name": {
+          "type": "string",
+          "title": "a=辅助属性4名称;c=辅助属性C"
+        },
+        "sub_aux4_number": {
+          "type": "string",
+          "title": "a=辅助属性4编码;c=003"
+        },
+        "sub_aux5_id": {
+          "type": "string",
+          "title": "a=辅助属性5id;c=1"
+        },
+        "sub_aux5_name": {
+          "type": "string",
+          "title": "a=辅助属性5名称;c=辅助属性C"
+        },
+        "sub_aux5_number": {
+          "type": "string",
+          "title": "a=辅助属性5编码;c=003"
+        },
+        "sub_barcode": {
+          "type": "string",
+          "title": "a=条形码;c=20202002"
+        },
+        "sub_batch_no": {
+          "type": "string",
+          "title": "a=批次号;c=2020202"
+        },
+        "sub_pro_place": {
+          "type": "string",
+          "title": "a=产地;c=深圳"
+        },
+        "sub_pro_reg_no": {
+          "type": "string",
+          "title": "a=注册证号;c=0001"
+        },
+        "sub_pro_license": {
+          "type": "string",
+          "title": "a=生产许可证号;c=123"
+        },
+        "sub_kf_period": {
+          "type": "number",
+          "format": "double",
+          "title": "a=保质期天数;c=180"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=1"
+        },
+        "base_unit_name": {
+          "type": "string",
+          "title": "a=基本单位名称;c=克"
+        },
+        "base_unit_number": {
+          "type": "string",
+          "title": "a=基本单位编码;c=g"
+        },
+        "sub_unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1"
+        },
+        "sub_unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克"
+        },
+        "sub_unit_number": {
+          "type": "string",
+          "title": "a=单位编码;c=g"
+        },
+        "sub_aux_unit_id": {
+          "type": "string",
+          "title": "a=辅助单位id;c=1"
+        },
+        "sub_aux_unit_name": {
+          "type": "string",
+          "title": "a=辅助单位名称;c=克"
+        },
+        "sub_aux_unit_number": {
+          "type": "string",
+          "title": "a=辅助单位编码;c=001"
+        },
+        "sub_conversion_rate": {
+          "type": "string",
+          "title": "a=换算公式;c="
+        },
+        "sub_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量;c=50"
+        },
+        "sub_base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本数量;c=50"
+        },
+        "sub_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助单位数量;c=50"
+        },
+        "sub_aux_coefficient": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助换算率;c=1"
+        },
+        "sub_input_coefficient": {
+          "type": "number",
+          "format": "double",
+          "title": "a=换算率;c=1"
+        },
+        "sub_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=加工费单价;c=1"
+        }
+      }
+    },
+    "WorkOrderDetailRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=843913969650384896"
+        },
+        "trans_type": {
+          "type": "string",
+          "title": "a=业务类型;c=2"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=001"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2022-08-01"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态，Z：未审核，C：已审核;c=C"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-10 09:06:24"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;c=2021-03-10 09:06:24"
+        },
+        "audit_time": {
+          "type": "string",
+          "title": "a=审核时间;c=2021-03-11 09:06:24"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=创建人id;c=739160975466318848"
+        },
+        "creator_name": {
+          "type": "string",
+          "title": "a=创建人名称;c=张三"
+        },
+        "creator_number": {
+          "type": "string",
+          "title": "a=创建人编码;c=1"
+        },
+        "modifier_id": {
+          "type": "string",
+          "title": "a=修改人id;c=739160975466318840"
+        },
+        "modifier_name": {
+          "type": "string",
+          "title": "a=修改人名称;c=李四"
+        },
+        "modifier_number": {
+          "type": "string",
+          "title": "a=修改人编码;c=1"
+        },
+        "auditor_id": {
+          "type": "string",
+          "title": "a=审核人id;c=739160975466318841"
+        },
+        "auditor_name": {
+          "type": "string",
+          "title": "a=审核人名称;c=王五"
+        },
+        "auditor_number": {
+          "type": "string",
+          "title": "a=审核人编码;c=1"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=test"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门id;c=1"
+        },
+        "dept_name": {
+          "type": "string",
+          "title": "a=部门名称;c=部门A"
+        },
+        "dept_number": {
+          "type": "string",
+          "title": "a=部门编码;c=001"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;c=753452507371441152"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=业务员名称;c=小花"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=业务员编码;c=1"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=1"
+        },
+        "supplier_name": {
+          "type": "string",
+          "title": "a=供应商名称;c=供应商A"
+        },
+        "supplier_number": {
+          "type": "string",
+          "title": "a=供应商编码;c=001"
+        },
+        "contact_phone": {
+          "type": "string",
+          "title": "a=联系信息-联系方式;c=13825254099"
+        },
+        "contact_country_id": {
+          "type": "string",
+          "title": "a=客户国家id;c=1"
+        },
+        "contact_country_name": {
+          "type": "string",
+          "title": "a=客户国家名称;c=中国"
+        },
+        "contact_country_number": {
+          "type": "string",
+          "title": "a=客户国家编码;c=001"
+        },
+        "contact_province_id": {
+          "type": "string",
+          "title": "a=客户省份id;c=2"
+        },
+        "contact_province_name": {
+          "type": "string",
+          "title": "a=客户省份名称;c=广东省"
+        },
+        "contact_province_number": {
+          "type": "string",
+          "title": "a=客户省份编码;c=002"
+        },
+        "contact_city_id": {
+          "type": "string",
+          "title": "a=客户市区id;c=3"
+        },
+        "contact_city_name": {
+          "type": "string",
+          "title": "a=客户市区名称;c=深圳市"
+        },
+        "contact_city_number": {
+          "type": "string",
+          "title": "a=客户市区编码;c=003"
+        },
+        "contact_district_id": {
+          "type": "string",
+          "title": "a=客户区县id;c=4"
+        },
+        "contact_district_name": {
+          "type": "string",
+          "title": "a=客户区县名称;c=XX县"
+        },
+        "contact_district_number": {
+          "type": "string",
+          "title": "a=客户区县编码;c=004"
+        },
+        "exchange_rate": {
+          "type": "number",
+          "format": "double",
+          "title": "a=汇率;c=13"
+        },
+        "all_debt": {
+          "type": "number",
+          "format": "double",
+          "title": "a=应付款余额;c=1432"
+        },
+        "last_debt": {
+          "type": "number",
+          "format": "double",
+          "title": "a=上次欠款余额;c=14155"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkOrderDetailRes.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[]"
+        }
+      }
+    },
+    "WorkOrderDetailRes.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "picture": {
+          "type": "string",
+          "title": "a=图片url;c=xxx"
+        },
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=843911133671732224"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=843913969650383872"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=序列号01"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=1"
+        },
+        "material_is_multi_unit": {
+          "type": "boolean",
+          "title": "a=商品是否多单位;c=false"
+        },
+        "material_is_serial": {
+          "type": "boolean",
+          "title": "a=商品是否序列号;c=false"
+        },
+        "material_is_asst_attr": {
+          "type": "boolean",
+          "title": "a=商品是否启用辅助属性;c=false"
+        },
+        "material_is_kf_period": {
+          "type": "boolean",
+          "title": "a=商品是否开启保质期;c=false"
+        },
+        "material_is_batch": {
+          "type": "boolean",
+          "title": "a=商品是否开启批次;c=false"
+        },
+        "material_model": {
+          "type": "string",
+          "title": "a=商品规格;c=001"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=1"
+        },
+        "stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=仓库A"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=002"
+        },
+        "stock_is_allow_freight": {
+          "type": "boolean",
+          "title": "a=仓库启用仓位管理;c=false"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位id;c="
+        },
+        "sp_name": {
+          "type": "string",
+          "title": "a=仓位名称;c="
+        },
+        "sp_number": {
+          "type": "string",
+          "title": "a=仓位编码;c="
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=1"
+        },
+        "aux_prop_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=辅助属性"
+        },
+        "aux_prop_number": {
+          "type": "string",
+          "title": "a=辅助属性编码;c=002"
+        },
+        "aux1_id": {
+          "type": "string",
+          "title": "a=辅助属性1id;c=111"
+        },
+        "aux1_name": {
+          "type": "string",
+          "title": "a=辅助属性1名称;c=辅助属性1A"
+        },
+        "aux1_number": {
+          "type": "string",
+          "title": "a=辅助属性1编码;c=001"
+        },
+        "aux2_id": {
+          "type": "string",
+          "title": "a=辅助属性2id;c=2"
+        },
+        "aux2_name": {
+          "type": "string",
+          "title": "a=辅助属性2名称;c=辅助属性2"
+        },
+        "aux2_number": {
+          "type": "string",
+          "title": "a=辅助属性2编码;c=002"
+        },
+        "aux3_id": {
+          "type": "string",
+          "title": "a=辅助属性3id;c=3"
+        },
+        "aux3_name": {
+          "type": "string",
+          "title": "a=辅助属性3名称;c=辅助属性3"
+        },
+        "aux3_number": {
+          "type": "string",
+          "title": "a=辅助属性3编码;c=003"
+        },
+        "aux4_id": {
+          "type": "string",
+          "title": "a=辅助属性4id;c=1"
+        },
+        "aux4_name": {
+          "type": "string",
+          "title": "a=辅助属性4名称;c=辅助属性C"
+        },
+        "aux4_number": {
+          "type": "string",
+          "title": "a=辅助属性4编码;c=003"
+        },
+        "aux5_id": {
+          "type": "string",
+          "title": "a=辅助属性5id;c=1"
+        },
+        "aux5_name": {
+          "type": "string",
+          "title": "a=辅助属性5名称;c=辅助属性C"
+        },
+        "aux5_number": {
+          "type": "string",
+          "title": "a=辅助属性5编码;c=003"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码;c=20202002"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号;c=2020202"
+        },
+        "pro_place": {
+          "type": "string",
+          "title": "a=产地;c=深圳"
+        },
+        "pro_reg_no": {
+          "type": "string",
+          "title": "a=注册证号;c=0001"
+        },
+        "pro_license": {
+          "type": "string",
+          "title": "a=生产许可证号;c=123"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-02"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=有效日期;c=2022-08-08"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型，1：天，2：月，3：年;c=3"
+        },
+        "kf_period": {
+          "type": "number",
+          "format": "double",
+          "title": "a=保质期天数;c=180"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=1"
+        },
+        "base_unit_name": {
+          "type": "string",
+          "title": "a=基本单位名称;c=克"
+        },
+        "base_unit_number": {
+          "type": "string",
+          "title": "a=基本单位编码;c=g"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编码;c=g"
+        },
+        "aux_unit_id": {
+          "type": "string",
+          "title": "a=辅助单位id;c=1"
+        },
+        "aux_unit_name": {
+          "type": "string",
+          "title": "a=辅助单位名称;c=克"
+        },
+        "aux_unit_number": {
+          "type": "string",
+          "title": "a=辅助单位编码;c=001"
+        },
+        "conversion_rate": {
+          "type": "string",
+          "title": "a=换算公式;c="
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量;c=50"
+        },
+        "base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本数量;c=50"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助单位数量;c=50"
+        },
+        "aux_coefficient": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助换算率;c=1"
+        },
+        "input_coefficient": {
+          "type": "number",
+          "format": "double",
+          "title": "a=换算率;c=1"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=加工费单价;c=001"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=行备注;c=行备注"
+        },
+        "src_bill_no": {
+          "type": "string",
+          "title": "a=源单id;b=2147483647;c=1;d=false"
+        },
+        "src_bill_type_id": {
+          "type": "string",
+          "title": "a=源单类型id;c=2"
+        },
+        "src_inter_id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=源单id;c=001"
+        },
+        "src_seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=源单行号;c=1"
+        },
+        "src_entry_id": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=源单分录id;c=1"
+        },
+        "cess": {
+          "type": "number",
+          "format": "double",
+          "title": "a=增值税率;c=13"
+        },
+        "sub_material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Sub_MaterialEntity"
+          },
+          "title": "a=商品;c=[]"
+        }
+      }
+    },
+    "WorkOrderListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "cur_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/WorkOrderListRes.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "WorkOrderListRes.Row": {
+      "type": "object",
+      "properties": {
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-10 09:04:55"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期，yyyy-MM-dd;c=2020-03-10"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=843913969650384896"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=WWCHRK-20200310-00004"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态，已审核：“C”，未审核：“Z”;c=C"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=739162890728163328"
+        },
+        "supplier_name": {
+          "type": "string",
+          "title": "a=供应商名称;c=企业互联"
+        },
+        "supplier_number": {
+          "type": "string",
+          "title": "a=供应商编码;c=GYS0001"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;c=753452507371441152"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=业务员名称;c=小张"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=业务员编码;c=ZY0008"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=test"
+        }
+      }
+    }
+  }
+}

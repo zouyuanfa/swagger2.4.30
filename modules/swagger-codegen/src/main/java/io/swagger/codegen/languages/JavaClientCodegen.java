@@ -178,6 +178,7 @@ public class JavaClientCodegen extends AbstractJavaCodegen
 
         final String invokerFolder = (sourceFolder + '/' + invokerPackage).replace(".", "/");
         final String authFolder = (sourceFolder + '/' + invokerPackage + ".auth").replace(".", "/");
+        final String unitFolder = (sourceFolder + '/' + invokerPackage + ".unit").replace(".", "/");
         final String apiFolder = (sourceFolder + '/' + apiPackage).replace(".", "/");
 
         //Common files
@@ -239,6 +240,8 @@ public class JavaClientCodegen extends AbstractJavaCodegen
         } else if ("okhttp-gson".equals(getLibrary()) || "okhttp4-gson".equals(getLibrary()) || StringUtils.isEmpty(getLibrary())) {
             // the "okhttp-gson" and "okhttp4-gson" library template requires "ApiCallback.mustache" for async call
             supportingFiles.add(new SupportingFile("ApiCallback.mustache", invokerFolder, "ApiCallback.java"));
+            supportingFiles.add(new SupportingFile("KingdeeResponse.mustache", invokerFolder, "KingdeeResponse.java"));
+            supportingFiles.add(new SupportingFile("unit/SHAUtil.mustache", unitFolder, "SHAUtil.java"));
             supportingFiles.add(new SupportingFile("ApiResponse.mustache", invokerFolder, "ApiResponse.java"));
             supportingFiles.add(new SupportingFile("JSON.mustache", invokerFolder, "JSON.java"));
             supportingFiles.add(new SupportingFile("ProgressRequestBody.mustache", invokerFolder, "ProgressRequestBody.java"));

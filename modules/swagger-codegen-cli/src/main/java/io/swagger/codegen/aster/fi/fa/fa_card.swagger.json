@@ -1,0 +1,1255 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "财税云;资产管理;资产",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "FaCard"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/fi/fa_card": {
+      "get": {
+        "summary": "资产列表;获取资产列表;1.0.13",
+        "operationId": "FaCard_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CardListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_use_date",
+            "description": "a=开始使用日期-开始日期（yyyy-MM-dd）;c=2020-10-10;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_use_date",
+            "description": "a=开始使用日期-结束日期（yyyy-MM-dd）（yyyy-MM-dd）;c=2020-10-10;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_record_date",
+            "description": "a=入账日期-结束日期（yyyy-MM-dd）（yyyy-MM-dd）;c=2020-10-10;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_clear",
+            "description": "a=是否清理（0-未清理，1-部分清理，2-全部清理);c=0;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_split",
+            "description": "a=是否拆分（0-未拆分，1-已拆分）;c=0;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_due",
+            "description": "a=是否到期（0-没有，1到期）;c=0;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_init",
+            "description": "a=是否初始卡片，true-是;c=0;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "FaCard"
+        ]
+      }
+    },
+    "/openapi/v2/fi/fa_card_detail": {
+      "get": {
+        "summary": "资产详情;获取资产详情;1.0.13",
+        "operationId": "FaCard_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CardDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=单据ID;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FaCard"
+        ]
+      }
+    },
+    "/openapi/v2/fi/fa_card_save": {
+      "post": {
+        "summary": "资产保存;资产保存;1.0.13",
+        "operationId": "FaCard_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CardSaveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FaCard"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "CardDetailReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=1;"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码（*id与number二选一）;b=30;c=001"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001"
+        },
+        "is_init": {
+          "type": "boolean",
+          "title": "a=是否初始未达数据 （1：是，0：否）;c=false"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=资产类别id;b=2147483647;c=1"
+        },
+        "group_number": {
+          "type": "string",
+          "title": "a=资产类别编码;b=30;c=001"
+        },
+        "group_name": {
+          "type": "string",
+          "title": "a=资产类别名称;b=30;c=名称"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=001"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=50"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位ID;b=2147483647;c=1"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编码;b=2147483647;c=1"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;b=2147483647;c=1"
+        },
+        "alter_mode_id": {
+          "type": "string",
+          "title": "a=变动方式ID;b=2147483647;c=1"
+        },
+        "alter_mode_number": {
+          "type": "string",
+          "title": "a=变动方式编码;b=2147483647;c=1"
+        },
+        "alter_mode_name": {
+          "type": "string",
+          "title": "a=单位名称;b=2147483647;c=1"
+        },
+        "dept_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardDetailReply.Deptlist"
+          },
+          "title": "a=数据行;c=[]"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;b=2147483647;c=1"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=业务员编码;b=30;c=001"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=业务员名称;b=20;c=李四"
+        },
+        "depr_method_id": {
+          "type": "string",
+          "title": "a=折旧方法ID ;c=1"
+        },
+        "depr_method_number": {
+          "type": "string",
+          "title": "a=折旧方法编码 ;c=1"
+        },
+        "depr_method_name": {
+          "type": "string",
+          "title": "a=折旧方法名称 ;c=折旧方法1"
+        },
+        "depr_type": {
+          "type": "string",
+          "title": "a=折旧依据（0-按净值，1-按原值）;c=1"
+        },
+        "begin_use_date": {
+          "type": "string",
+          "title": "a=开始使用日期（yyyy-MM-dd）;c=2020-10-10"
+        },
+        "record_date": {
+          "type": "string",
+          "title": "入账日期，yyyy-MM-dd ;c=2020-10-10"
+        },
+        "record_period": {
+          "type": "string",
+          "title": "入账期间 ;c=入账期间1"
+        },
+        "max_depr_periods": {
+          "type": "string",
+          "title": "a=预计折旧期间数/预计总工作量 ;c=1"
+        },
+        "used_periods": {
+          "type": "string",
+          "title": "a=已折旧期间数/已使用工作量 ;c=1"
+        },
+        "max_used_periods": {
+          "type": "string",
+          "title": "a=预计使用期间量 ;c=1"
+        },
+        "location_id": {
+          "type": "string",
+          "title": "a=存放地点ID;c=950031698668560384"
+        },
+        "location_number": {
+          "type": "string",
+          "title": "a=存放地点编码;c=CK00022"
+        },
+        "location_name": {
+          "type": "string",
+          "title": "a=存放地点名称;c=负库存"
+        },
+        "device_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Devicelist"
+          },
+          "title": "a=附属设备;c=[]"
+        },
+        "original_value": {
+          "type": "string",
+          "title": "a=原值本位币合计金额 ;c=1"
+        },
+        "orgval_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardDetailReply.Orgvallist"
+          },
+          "title": "a=附属设备;c=[]"
+        },
+        "tax": {
+          "type": "string",
+          "title": "a=税额 ;c=1"
+        },
+        "dec_pre_value": {
+          "type": "string",
+          "title": "a=减值准备 ;c=1"
+        },
+        "residue_value": {
+          "type": "string",
+          "title": "a=预计净残值 ;c=1"
+        },
+        "net_value": {
+          "type": "string",
+          "title": "a=净值 ;c=1"
+        },
+        "net_amount": {
+          "type": "string",
+          "title": "a=净额 ;c=1"
+        },
+        "month_depr": {
+          "type": "string",
+          "title": "a=月折旧 ;c=1"
+        },
+        "acc_um_depr": {
+          "type": "string",
+          "title": "a=累计折旧 ;c=1"
+        },
+        "year_org_val": {
+          "type": "string",
+          "title": "a=年初原值（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_org_val_diff": {
+          "type": "string",
+          "title": "a=本年原值调整（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_depr": {
+          "type": "string",
+          "title": "a=年初计提折旧（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_acc_um_depr": {
+          "type": "string",
+          "title": "a=年初累计折旧（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_acc_um_depr_diff": {
+          "type": "string",
+          "title": "a=本年累计折旧调整（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_dec_pre_val": {
+          "type": "string",
+          "title": "a=年初减值准备（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_dec_pre_diff": {
+          "type": "string",
+          "title": "a=本年减值准备调整（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_qty": {
+          "type": "string",
+          "title": "a=年初数量（初始化资产且年中启用的情况） ;c=1"
+        },
+        "year_qty_diff": {
+          "type": "string",
+          "title": "a=本年数量调整（初始化资产且年中启用的情况） ;c=1"
+        },
+        "asset_acct_id": {
+          "type": "string",
+          "title": "a=固定资产科目ID ;c=1"
+        },
+        "asset_acct_number": {
+          "type": "string",
+          "title": "a=固定资产科目编码 ;c=1"
+        },
+        "asset_acct_name": {
+          "type": "string",
+          "title": "a=固定资产科目名称 ;c=固定资产1"
+        },
+        "asset_detail_id": {
+          "type": "string",
+          "title": "a=固定资产科目核算项目id ;c=1"
+        },
+        "depr_acct_id": {
+          "type": "string",
+          "title": "a=累计折旧科目ID ;c=1"
+        },
+        "depr_acct_number": {
+          "type": "string",
+          "title": "a=累计折旧科目编码 ;c=1"
+        },
+        "depr_acct_name": {
+          "type": "string",
+          "title": "a=累计折旧科目名称 ;c=累计折旧科目1"
+        },
+        "depr_detail_id": {
+          "type": "string",
+          "title": "a=累计折旧科目核算项目id ;c=1"
+        },
+        "tax_acct_id": {
+          "type": "string",
+          "title": "a=税金科目ID ;c=1"
+        },
+        "tax_acct_number": {
+          "type": "string",
+          "title": "a=税金科目编码 ;c=1211222"
+        },
+        "tax_acct_name": {
+          "type": "string",
+          "title": "a=税金科目名称 ;c=税金科目1"
+        },
+        "tax_detail_id": {
+          "type": "string",
+          "title": "a=税金科目核算项目id ;c=1"
+        },
+        "dec_pre_acct_id": {
+          "type": "string",
+          "title": "a=减值准备科目ID ;c=1"
+        },
+        "dec_pre_acct_number": {
+          "type": "string",
+          "title": "a=减值准备科目编 ;c=1"
+        },
+        "dec_pre_acct_name": {
+          "type": "string",
+          "title": "a=减值准备科目名称 ;c=减值准备科目1"
+        },
+        "dec_pre_detail_id": {
+          "type": "string",
+          "title": "a=减值准备科目核算项目id ;c=1"
+        },
+        "expense_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardDetailReply.Expenselist"
+          },
+          "title": "a=折旧费用分配科目"
+        },
+        "opposite_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardDetailReply.Oppositelist"
+          },
+          "title": "a=列表对象 oppositelist（减值准备对方科目）"
+        },
+        "supplier": {
+          "type": "string",
+          "title": "a=供应商;c=1"
+        },
+        "contacts": {
+          "type": "string",
+          "title": "a=联系人（维保信息）;c=联系人1"
+        },
+        "contact": {
+          "type": "string",
+          "title": "a=联系方式 （维保信息）;c=联系方式1"
+        },
+        "maintain_date": {
+          "type": "string",
+          "title": "a=维保到期（维保信息） （维保信息）;c=联系方式1"
+        },
+        "maintain_info": {
+          "type": "string",
+          "title": "a=维保说明（维保信息）|;c=联系方式1"
+        },
+        "is_clear": {
+          "type": "string",
+          "title": "a=是否清理（0-未清理，1-部分清理，2-全部清理);c=0"
+        },
+        "is_split": {
+          "type": "string",
+          "title": "a=是否拆分（0-未拆分，1-已拆分）;c=0"
+        },
+        "is_due": {
+          "type": "string",
+          "title": "a=是否到期（0-没有，1到期）;c=0"
+        },
+        "is_invalid": {
+          "type": "boolean",
+          "title": "a=是否报废（false-否，true-是）;c=false"
+        },
+        "base_currency": {
+          "type": "string",
+          "title": "a=本位币id;c=511145541"
+        },
+        "voucher_id": {
+          "type": "string",
+          "title": "a=凭证id;c=12355442554"
+        }
+      }
+    },
+    "CardDetailReply.Deptlist": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "title": "a=序号;b=2147483647;c=1"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门id;c=739162466113570816"
+        },
+        "dept_name": {
+          "type": "string",
+          "title": "a=部门名称;c=动物园"
+        },
+        "dept_number": {
+          "type": "string",
+          "title": "a=部门编码;c=BM01"
+        },
+        "percent": {
+          "type": "string",
+          "title": "a=折旧分配比例（%）;c=5%"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=1"
+        }
+      }
+    },
+    "CardDetailReply.Expenselist": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "title": "a=序号;b=2147483647;c=1"
+        },
+        "expense_list_dept_id": {
+          "type": "string",
+          "title": "a=部门ID ;b=1;c=1"
+        },
+        "expense_list_dept_number": {
+          "type": "string",
+          "title": "a=部门编码 ;b=99999;c=1"
+        },
+        "expense_list_dept_name": {
+          "type": "string",
+          "title": "a=部门名称;b=99999;c=1"
+        },
+        "expense_list_acct_id": {
+          "type": "string",
+          "title": "a=科目ID ;b=99999;c=1"
+        },
+        "expense_list_acct_number": {
+          "type": "string",
+          "title": "a=科目编码;b=99999;c=1"
+        },
+        "expense_list_acct_name": {
+          "type": "string",
+          "title": "a=科目名称;b=科目名称y一;c=1"
+        },
+        "expense_list_detail_id": {
+          "type": "string",
+          "title": "a=核算项目ID;b=99999;c=1"
+        },
+        "expense_list_percent": {
+          "type": "string",
+          "title": "a=折旧分配比例（%），部门下的占比 ;b=0;c=1"
+        },
+        "expense_list_all_pct": {
+          "type": "string",
+          "title": "a=折旧分配比例（%），部门下的占比 ;b=25;c=1"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        }
+      }
+    },
+    "CardDetailReply.Oppositelist": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "title": "a=序号;b=2147483647;c=1;d=false"
+        },
+        "opposite_list_dept_id": {
+          "type": "string",
+          "title": "a=部门ID ;b=1;c=1;d=false"
+        },
+        "opposite_list_dept_number": {
+          "type": "string",
+          "title": "a=部门编码 ;b=99999;c=001;d=false"
+        },
+        "opposite_list_dept_name": {
+          "type": "string",
+          "title": "a=部门名称;b=99999;c=部门001;d=false"
+        },
+        "opposite_list_acct_id": {
+          "type": "string",
+          "title": "a=科目ID ;b=99999;c=1;d=false"
+        },
+        "opposite_list_acct_number": {
+          "type": "string",
+          "title": "a=科目编码 ;b=99999;c=22144411;d=false"
+        },
+        "opposite_list_acct_name": {
+          "type": "string",
+          "title": "a=科目名称;b=科目名称;c=科目名称1;d=false"
+        },
+        "opposite_list_detail_id": {
+          "type": "string",
+          "title": "a=核算项目ID;c=1;d=false"
+        },
+        "opposite_percent": {
+          "type": "string",
+          "title": "a=折旧分配比例（%），部门下的占比 ;b=25;c=1;d=false"
+        },
+        "opposite_list_all_pct": {
+          "type": "string",
+          "title": "a=资产下的占比（%），部门下的占比 ;b=25;c=1;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID; c= 11546"
+        }
+      }
+    },
+    "CardDetailReply.Orgvallist": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "title": "a=序号;b=2147483647;c=1"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;b=30;c=1"
+        },
+        "currency_number": {
+          "type": "string",
+          "title": "a=币别编码;b=30;c=001"
+        },
+        "currency_name": {
+          "type": "string",
+          "title": "a=币别名称;b=30;c=001"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;b=99999;c=1"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=本位币金额;b=999999999;c=100"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=原币金额;b=999999999;c=100"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        }
+      }
+    },
+    "CardListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总条数;b=999999;c=1"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardListReply.Row"
+          },
+          "title": "a=数据行;b=999999;c=[]"
+        }
+      },
+      "title": "科目列表查询返回对象"
+    },
+    "CardListReply.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1;d=true"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=名字;b=30;c=科目一"
+        },
+        "is_init": {
+          "type": "boolean",
+          "title": "a=是否初始未达数据 （1：是，0：否）;b=1;c=1"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=资产类别id;b=2147483647;c=1"
+        },
+        "group_number": {
+          "type": "string",
+          "title": "a=资产类别编码;b=30;c=001"
+        },
+        "group_name": {
+          "type": "string",
+          "title": "a=资产类别名称;b=30;c=名称"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=001"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=50"
+        },
+        "alter_mode_id": {
+          "type": "string",
+          "title": "a=变动方式ID;b=2147483647;c=1"
+        },
+        "alter_mode_number": {
+          "type": "string",
+          "title": "a=变动方式编码 ;b=2147483647;c=1"
+        },
+        "alter_mode_name": {
+          "type": "string",
+          "title": "a=变动方式名称 ;c=变动方式1"
+        },
+        "depr_method_id": {
+          "type": "string",
+          "title": "a=折旧方法ID ;c=1"
+        },
+        "depr_method_number": {
+          "type": "string",
+          "title": "a=折旧方法编码 ;c=13563635552411"
+        },
+        "depr_method_name": {
+          "type": "string",
+          "title": "a=折旧方法名称 ;c=折旧方法1"
+        },
+        "depr_type": {
+          "type": "string",
+          "title": "a=折旧依据（0-按净值，1-按原值）;c=1"
+        },
+        "begin_use_date": {
+          "type": "string",
+          "title": "a=开始使用日期（yyyy-MM-dd）;c=2020-10-10"
+        },
+        "record_date": {
+          "type": "string",
+          "title": "入账日期，yyyy-MM-dd ;c=2020-10-10"
+        },
+        "max_depr_periods": {
+          "type": "string",
+          "title": "a=预计折旧期间数/预计总工作量 ;c=1"
+        },
+        "depr_periods": {
+          "type": "string",
+          "title": "a=已折旧期间数/已使用工作量 ;c=1"
+        },
+        "original_value": {
+          "type": "string",
+          "title": "a=原值本位币合计金额 ;c=1"
+        },
+        "tax": {
+          "type": "string",
+          "title": "a=税额 ;c=1"
+        },
+        "dec_pre_value": {
+          "type": "string",
+          "title": "a=减值准备 ;c=1"
+        },
+        "residue_value": {
+          "type": "string",
+          "title": "a=预计净残值 ;c=1"
+        },
+        "net_value": {
+          "type": "string",
+          "title": "a=净值 ;c=1"
+        },
+        "net_amount": {
+          "type": "string",
+          "title": "a=净额 ;c=1"
+        },
+        "month_depr": {
+          "type": "string",
+          "title": "a=月折旧 ;c=1"
+        },
+        "acc_um_depr": {
+          "type": "string",
+          "title": "a=累计折旧 ;c=1"
+        }
+      },
+      "title": "科目查询返回对象"
+    },
+    "CardSaveRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id（修改时必填，新增保存返回id）;c=1; d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=名字;b=30;c=001;d=false"
+        },
+        "is_init": {
+          "type": "boolean",
+          "title": "a=是否初始未达数据 （1：是，0：否）;b=1;c=false;d=true"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=资产类别id;b=2147483647;c=1;d=true"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=50 ;d=true"
+        },
+        "alter_mode_id": {
+          "type": "string",
+          "title": "a=变动方式ID;b=2147483647;c=1;d=true"
+        },
+        "dept_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardSaveRequest.Deptlist"
+          },
+          "title": "a=数据行;c=[];d=true"
+        },
+        "depr_method_id": {
+          "type": "string",
+          "title": "a=折旧方法ID ;c=1;d=true"
+        },
+        "depr_type": {
+          "type": "string",
+          "title": "a=折旧依据（0-按净值，1-按原值）;c=1;d=true"
+        },
+        "begin_use_date": {
+          "type": "string",
+          "title": "a=开始使用日期（yyyy-MM-dd）;c=2020-10-10;d=true"
+        },
+        "record_date": {
+          "type": "string",
+          "title": "入账日期，yyyy-MM-dd ;c=2020-10-10;d=true"
+        },
+        "max_depr_periods": {
+          "type": "string",
+          "title": "a=预计折旧期间数/预计总工作量 ;c=1;d=true"
+        },
+        "used_periods": {
+          "type": "string",
+          "title": "a=已折旧期间数/已使用工作量 ;c=1;d=true"
+        },
+        "orgval_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardSaveRequest.Orgvallist"
+          },
+          "title": "a=附属设备;c=[];d=true"
+        },
+        "asset_acct_id": {
+          "type": "string",
+          "title": "a=固定资产科目ID ;c=222145841;d=true"
+        },
+        "asset_acct_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonAssist"
+          },
+          "title": "a=原值明细 ;c=1;d=true"
+        },
+        "asset_detail_id": {
+          "type": "string",
+          "title": "a=固定资产科目核算项目id ;c=1;d=true"
+        },
+        "depr_detail_id": {
+          "type": "string",
+          "title": "a=累计折旧科目核算项目id ;c=1;d=true"
+        },
+        "expense_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FaCard.Expenselist"
+          },
+          "title": "a=折旧费用分配科目（资产参数与总账连用时必录） ;c=[];d=true"
+        },
+        "tax_acct_id": {
+          "type": "string",
+          "title": "a=税金科目ID;c=001;d=false"
+        },
+        "tax_acct_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonAssist"
+          },
+          "title": "a=税金科目启用了必录核算项目是必录（与tax)detail_id_id二选一） ;c=[];d=false"
+        },
+        "tax_detail_id": {
+          "type": "string",
+          "title": "a=税金科目核算项目id ;c=001;d=false"
+        },
+        "dec_pre_acct_id": {
+          "type": "string",
+          "title": "a=减值准备科目ID ;c=001;d=false"
+        },
+        "dec_pre_acct_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonAssist"
+          },
+          "title": "减值准备科目启用了必录核算项目是必录（与dec_pre_detail_id二选一） ;c=1;d=false"
+        },
+        "dec_pre_detail_id": {
+          "type": "string",
+          "title": "a=减值准备科目核算项目id ;c=1;d=false"
+        },
+        "alter_acct_id": {
+          "type": "string",
+          "title": "a=减值准备科目核算项目id ;c=1;d=false"
+        },
+        "alter_acct_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonAssist"
+          },
+          "title": "减产变动科目启用了必录核算项目是必录（与alter_detail_id二选一） | ;c=1;d=false"
+        },
+        "alter_detail_id": {
+          "type": "string",
+          "title": "a=资产变动科目辅助核算id，与alter_acct_id_assist二选一 ;c=1;d=false"
+        },
+        "oppo_site_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardSaveRequest.Oppositelist"
+          },
+          "title": "减产变动科目启用了必录核算项目是必录（与alter_detail_id二选一） | ;c=1;d=false"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=001"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位ID;b=2147483647;c=1;d=false"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;b=2147483647;c=1;d=false"
+        },
+        "max_used_periods": {
+          "type": "string",
+          "title": "a=预计使用期间量 ;c=1;d=false"
+        },
+        "location_id": {
+          "type": "string",
+          "title": "a=存放地点ID;c=950031698668560384;d=false"
+        },
+        "location_name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Devicelist"
+          },
+          "title": "a=附属设备"
+        },
+        "tax": {
+          "type": "string",
+          "title": "a=税额 ;c=1;d=false"
+        },
+        "dec_pre_value": {
+          "type": "string",
+          "title": "a=减值准备 ;c=1;d=false"
+        },
+        "residue_value": {
+          "type": "string",
+          "title": "a=预计净残值 ;c=1;d=false"
+        },
+        "net_value": {
+          "type": "string",
+          "title": "a=净值 ;c=1;d=false"
+        },
+        "net_amount": {
+          "type": "string",
+          "title": "a=净额 ;c=1;d=false"
+        },
+        "accum_depr": {
+          "type": "string",
+          "title": "a=累计折旧 ;c=1;d=false"
+        },
+        "depr_acct_id": {
+          "type": "string",
+          "title": "a=累计折旧科目ID ;c=1"
+        }
+      }
+    },
+    "CardSaveRequest.Deptlist": {
+      "type": "object",
+      "properties": {
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门id;c=739162466113570816 ;d=true"
+        },
+        "percent": {
+          "type": "string",
+          "title": "a=折旧分配比例（%）;c=20 ; d=true"
+        }
+      }
+    },
+    "CardSaveRequest.Oppositelist": {
+      "type": "object",
+      "properties": {
+        "opposite_dept_id": {
+          "type": "string",
+          "title": "a=部门ID ;b=1;c=1;d=true"
+        },
+        "opposite_acct_id": {
+          "type": "string",
+          "title": "a=科目ID ;b=99999;c=1;d=true"
+        },
+        "opposite_acct_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonAssist"
+          },
+          "title": "a=原值明细 ;c=1;d=true"
+        },
+        "opposite_detail_id": {
+          "type": "string",
+          "title": "a=核算项目ID;c=1;d=false"
+        },
+        "opposite_percent": {
+          "type": "string",
+          "title": "a=折旧分配比例（%），部门下的占比 ;b=25;c=1;d=true"
+        }
+      }
+    },
+    "CardSaveRequest.Orgvallist": {
+      "type": "object",
+      "properties": {
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;b=30;c=1;d=false"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;b=99999;c=1;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=本位币金额;b=999999999;c=100;d=true"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=原币金额;b=999999999;c=100;d=false"
+        }
+      }
+    },
+    "CommonAssist": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "a=辅助核算类别(客户-bd_customer，供应商-bd_supplier， 商品-bd_material，部门-bd_department，职员-bd_employee，仓库-bd_store)， 辅助资料-bd_auxinfo;c=; d=true"
+        },
+        "bd_aux_info_type_id": {
+          "type": "string",
+          "title": "a=当type为bd_auxinfo时，辅助资料类别id;b=2147483647;c=1;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID; c= 1 ;d=true"
+        }
+      }
+    },
+    "Devicelist": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "string",
+          "title": "a=序号;b=2147483647;c=1;d=false"
+        },
+        "device_name": {
+          "type": "string",
+          "title": "a=设备名称;c=设备1;d=false"
+        },
+        "device_number": {
+          "type": "string",
+          "title": "a=设备编码;c=739162466113570816"
+        },
+        "device_model": {
+          "type": "string",
+          "title": "a=规格型号;c=型号1 ;d=false"
+        },
+        "device_qty": {
+          "type": "string",
+          "title": "a=数量;c=7 ;d=false"
+        },
+        "device_unit_id": {
+          "type": "string",
+          "title": "a=单位ID;c=001 ;d=false"
+        },
+        "device_unit_number": {
+          "type": "string",
+          "title": "a=单位编码;c=51425554152 ;d=false"
+        },
+        "device_unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=XX单位 ;d=false"
+        },
+        "device_amount": {
+          "type": "string",
+          "title": "a=金额;c=12 ;d=false"
+        },
+        "device_date": {
+          "type": "string",
+          "title": "a=登记日期，yyyy-MM-dd;c=2012-02-01 ;d=false"
+        },
+        "device_note": {
+          "type": "string",
+          "title": "a=部门id;c=5611174965 ;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID; c=11546"
+        }
+      }
+    },
+    "FaCard.Expenselist": {
+      "type": "object",
+      "properties": {
+        "expense_dept_id": {
+          "type": "string",
+          "title": "a=部门ID，;c=00011;d=true"
+        },
+        "expense_acct_id": {
+          "type": "string",
+          "title": "a=科目ID;b=2147483647;c=1;d=true"
+        },
+        "expense_acct_id_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonAssist"
+          },
+          "title": "a=科目启用了必录核算项目是必录（与expense_id二选一）;c=1;d=true"
+        },
+        "expense_detail_id": {
+          "type": "string",
+          "title": "a=核算项目ID（与expense_acct_id_assist二选一） |;c=;d=false"
+        },
+        "expense_percent": {
+          "type": "string",
+          "title": "a=折旧分配比例（%），部门下的占比;c=;d=true"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

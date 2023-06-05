@@ -1,0 +1,502 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "零售云;门店管理;",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "MaterialDetailList"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/material": {
+      "get": {
+        "summary": "门店商品列表;门店商品列表;1.0.6",
+        "operationId": "MaterialDetailList_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MaterialDetailListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "store_id",
+            "description": "a=门店ID;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "parent_id",
+            "description": "a=分类ID;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称，支持模糊查询;c=商品名;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=页数，默认1;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=页数，默认10;c=10;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "is_flatten",
+            "description": "a=是否简化返回格式，默认false(历史原因)，为true时，返回格式会简化，建议填true，具体看文档底部说明;c=true;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "fetch_inventory",
+            "description": "a=是否查询关联库存，默认为true，当true时，门店ID必填;c=false;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "fetch_price",
+            "description": "a=是否查询关联价格，默认为true，当true时，门店ID必填;c=1333333333;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "fetch_on_shelf",
+            "description": "a=是否查询关联上架状态，默认为true，当true时，门店ID必填;c=1333333333;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "check_type",
+            "description": "a=商品类型，1-普通，2-套装，3-服务;c=[];d=true.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "MaterialDetailList"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "AuxGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分组属性id，业务单据时传递;c=1;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=分组属性名称;c=名称;d=false"
+        },
+        "aux_props": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AuxProp"
+          },
+          "title": "a=分组属性名称;c=[];d=false"
+        }
+      }
+    },
+    "AuxProp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=1;d=false"
+        },
+        "group_id": {
+          "type": "string",
+          "title": "a=属性组id;c=1;d=false"
+        },
+        "group_name": {
+          "type": "string",
+          "title": "a=属性组名称;c=1;d=false"
+        }
+      }
+    },
+    "Auxentity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=辅助属性id，业务单据时传递;c=1333333333;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=1333333333;d=false"
+        },
+        "sku_number": {
+          "type": "string",
+          "title": "a=SKU编码;c=1333333333;d=false"
+        },
+        "shelf_status": {
+          "type": "string",
+          "title": "a=上下架状态，0-未上架，1-上架;c=1333333333;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=及时库存数量;c=1333333333;d=false"
+        },
+        "picture_url": {
+          "type": "string",
+          "title": "a=图片URL;c=1333333333;d=false"
+        },
+        "aux_combination_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=1333333333;d=false"
+        },
+        "concat_type_id": {
+          "type": "string",
+          "title": "a=辅助属性分组联合ID;c=1333333333;d=false"
+        }
+      }
+    },
+    "Barcodeentity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=商品价格id;c=1333333333;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=skuID;c=1333333333;d=false"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条码;c=1333333333;d=false"
+        },
+        "prop_aux_id": {
+          "type": "string",
+          "title": "a=条码;c=1333333333;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位ID;c=1333333333;d=false"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=1333333333;d=false"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编号;c=1333333333;d=false"
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1;d=true"
+        },
+        "index": {
+          "type": "string",
+          "title": "a=序号id;c=1;d=true"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=0;d=false"
+        },
+        "url": {
+          "type": "string",
+          "title": "a=图片地址;c=url;d=true"
+        }
+      }
+    },
+    "MaterialDetailListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=10;d=false"
+        },
+        "cur_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;c=1;d=false"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总条数;c=100;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaterialDetailListRes.Row"
+          },
+          "title": "a=数据列表;c=[];d=false"
+        }
+      }
+    },
+    "MaterialDetailListRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=商品id（修改商品时必填）;c=1333333333;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=商品编码;c=1333333333;d=true"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=商品名称;c=1333333333;d=true"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位ID;c=1333333333;d=false"
+        },
+        "base_unit_name": {
+          "type": "string",
+          "title": "a=基本单位名称;c=1333333333;d=false"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码;c=1333333333;d=false"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=1333333333;d=false"
+        },
+        "brand_id": {
+          "type": "string",
+          "title": "a=品牌ID;c=1333333333;d=false"
+        },
+        "brand_name": {
+          "type": "string",
+          "title": "a=品牌名称;c=1333333333;d=false"
+        },
+        "brand_number": {
+          "type": "string",
+          "title": "a=品牌编号;c=1333333333;d=false"
+        },
+        "is_multi_unit": {
+          "type": "boolean",
+          "title": "a=是否启用多单位,默认false，不启用;c=false;d=false"
+        },
+        "sale_unit_id": {
+          "type": "string",
+          "title": "a=销售单位ID，业务单据使用，比如保存单据时商品单位ID;c=1333333333;d=false"
+        },
+        "sale_unit_name": {
+          "type": "string",
+          "title": "a=销售单位名称;c=1333333333;d=false"
+        },
+        "sale_unit_number": {
+          "type": "string",
+          "title": "a=销售单位编号;c=1333333333;d=false"
+        },
+        "is_serial": {
+          "type": "boolean",
+          "title": "a=是否启用序列号管理;c=false;d=false"
+        },
+        "is_batch": {
+          "type": "boolean",
+          "title": "a=是否启用批次管理;c=false;d=false"
+        },
+        "is_sale": {
+          "type": "boolean",
+          "title": "a=是否可销售;c=false;d=false"
+        },
+        "is_weight": {
+          "type": "boolean",
+          "title": "a=是否称重;c=false;d=false"
+        },
+        "aux_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Auxentity"
+          },
+          "title": "a=辅助属性;c=[];d=false"
+        },
+        "barcode_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Barcodeentity"
+          },
+          "title": "a=商品条码;c=[];d=false"
+        },
+        "price_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Priceentity"
+          },
+          "title": "a=商品价格;c=[];d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=及时库存;c=1333333333;d=false"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Image"
+          },
+          "title": "a=商品图片;c=[];d=false"
+        },
+        "shelf_status": {
+          "type": "string",
+          "title": "a=上下架状态，0-未上架，1-上架;c=0;d=false"
+        },
+        "min_price": {
+          "type": "string",
+          "title": "a=最低价;c=20;d=false"
+        },
+        "max_price": {
+          "type": "string",
+          "title": "a=最高价;c=1333333333;d=false"
+        },
+        "sale_unit_min_price": {
+          "type": "string",
+          "title": "a=商品销售单位最低价;c=1333333333;d=false"
+        },
+        "sale_unit_max_price": {
+          "type": "string",
+          "title": "a=换算单位3;c=1333333333;d=false"
+        },
+        "is_asst_attr": {
+          "type": "boolean",
+          "title": "a=是否辅助商品;c=false;d=false"
+        },
+        "aux_groups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AuxGroup"
+          },
+          "title": "a=商品属性分组;c=[];d=false"
+        }
+      }
+    },
+    "Priceentity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=商品价格id;c=1333333333;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;c=1333333333;d=false"
+        },
+        "aux_id": {
+          "type": "string",
+          "title": "a=属性ID;c=1333333333;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=skuID;c=1333333333;d=false"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条码;c=1333333333;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位ID;c=1333333333;d=false"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=1333333333;d=false"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编号;c=1333333333;d=false"
+        },
+        "retail_price": {
+          "type": "string",
+          "title": "a=零售价;c=1333333333;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

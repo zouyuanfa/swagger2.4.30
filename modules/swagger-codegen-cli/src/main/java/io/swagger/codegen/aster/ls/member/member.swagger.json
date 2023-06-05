@@ -1,0 +1,566 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "零售云;会员资料",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Member"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/member": {
+      "get": {
+        "summary": "会员列表;会员列表;1.0.6",
+        "operationId": "Member_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MemberListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": "a=当前页，从1开始;c=001;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数;c=001;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_modified",
+            "description": "a=开始修改时间;c=2022-01-01;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_modified",
+            "description": "a=结束修改时间;c=2022-01-01;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "enable",
+            "description": "a=状态，0-禁用，1-可用;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "a=名称;c=名称;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "a=会员ID;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Member"
+        ]
+      },
+      "post": {
+        "summary": "会员保存;会员保存;1.0.7",
+        "operationId": "Member_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MemberSaveRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MemberSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "Member"
+        ]
+      }
+    },
+    "/openapi/v2/ls/member_detail": {
+      "get": {
+        "summary": "会员详情;会员详情;1.0.6",
+        "operationId": "Member_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MemberDetailRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=会员id;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "description": "a=手机号;c=1333333333;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Member"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "MemberDetailRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=会员id;c=1;d=false"
+        },
+        "mobile": {
+          "type": "string",
+          "title": "a=手机号;c=13333333333;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=会员名称;c=会员A;d=false"
+        },
+        "card_no": {
+          "type": "string",
+          "title": "a=会员卡号;c=1;d=false"
+        },
+        "card_id": {
+          "type": "string",
+          "title": "a=会员卡ID;c=1;d=false"
+        },
+        "level_name": {
+          "type": "string",
+          "title": "a=会员级别;c=金卡;d=false"
+        },
+        "usable": {
+          "type": "string",
+          "title": "a=可用积分;c=300;d=false"
+        },
+        "available": {
+          "type": "string",
+          "title": "a=可用充值余额;c=300;d=false"
+        }
+      }
+    },
+    "MemberListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=10;d=false"
+        },
+        "cur_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;c=1;d=false"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总条数;c=100;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MemberListRes.Row"
+          },
+          "title": "a=数据列表;c=[];d=false"
+        }
+      }
+    },
+    "MemberListRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=会员id;c=1;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-08-11 09:42:59.0;d=false"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;c=2020-08-11 09:42:59.0;d=false"
+        },
+        "enable": {
+          "type": "string",
+          "title": "a=状态;c=1;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=会员名称;c=会员A;d=false"
+        },
+        "mobile": {
+          "type": "string",
+          "title": "a=手机号;c=13399887744;d=false"
+        },
+        "mb_url": {
+          "type": "string",
+          "title": "a=头像;d=false"
+        },
+        "source": {
+          "type": "string",
+          "title": "a=会员来源;c=1;d=false"
+        },
+        "join_way": {
+          "type": "string",
+          "title": "a=入会方式;c=1;d=false"
+        },
+        "birthday": {
+          "type": "string",
+          "title": "a=生日;c=2022-08-01;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=这里是备注;d=false"
+        },
+        "address": {
+          "type": "string",
+          "title": "a=行政区划;d=false"
+        },
+        "detail_address": {
+          "type": "string",
+          "title": "a=详细地址;d=false"
+        },
+        "is_delete": {
+          "type": "string",
+          "title": "a=是否删除;c=false;d=false"
+        },
+        "sex_group": {
+          "type": "string",
+          "title": "a=性别，1 男，0 女;d=false"
+        },
+        "customer_id": {
+          "type": "string",
+          "title": "a=关联客户id;c=1;d=false"
+        },
+        "customer_number": {
+          "type": "string",
+          "title": "a=关联客户编码;c=KH00001;d=false"
+        },
+        "customer_name": {
+          "type": "string",
+          "title": "a=关联客户名称;c=客户A;d=false"
+        },
+        "mb_card_id_card_no": {
+          "type": "string",
+          "title": "a=引荐人会员卡卡号;c=001;d=false"
+        },
+        "mb_card_id": {
+          "type": "string",
+          "title": "a=引荐人会员卡id;c=1;d=false"
+        },
+        "shop_id": {
+          "type": "string",
+          "title": "a=开卡门店id;c=1;d=false"
+        },
+        "shop_number": {
+          "type": "string",
+          "title": "a=开卡门店编码;c=门店A;d=false"
+        },
+        "shop_name": {
+          "type": "string",
+          "title": "a=开卡门店名称;c=门店A;d=false"
+        },
+        "level_id": {
+          "type": "string",
+          "title": "a=会员卡级别id;c=1;d=false"
+        },
+        "level_number": {
+          "type": "string",
+          "title": "a=会员卡级别编码;c=levelnumber;d=false"
+        },
+        "level_name": {
+          "type": "string",
+          "title": "a=会员卡级别名称;c=金卡;d=false"
+        },
+        "referreremp_id": {
+          "type": "string",
+          "title": "a=营业员id;c=1;d=false"
+        },
+        "referreremp_enable": {
+          "type": "string",
+          "title": "a=营业员状态;c=1;d=false"
+        },
+        "referreremp_number": {
+          "type": "string",
+          "title": "a=营业员编码;c=001;d=false"
+        },
+        "referreremp_name": {
+          "type": "string",
+          "title": "a=营业员名称;c=营业员A;d=false"
+        },
+        "referreremp_mobile": {
+          "type": "string",
+          "title": "a=营业员手机号;c=13333333333;d=false"
+        },
+        "referreremp_email": {
+          "type": "string",
+          "title": "a=营业员邮箱;d=false"
+        },
+        "referreremp_gender": {
+          "type": "string",
+          "title": "a=营业员性别;d=false"
+        },
+        "referreremp_idnumber": {
+          "type": "string",
+          "title": "a=营业员身份证;c=XXX;d=false"
+        },
+        "referreremp_birthday": {
+          "type": "string",
+          "title": "a=营业员生日;c=2022-08-01;d=false"
+        },
+        "referreremp_hiredate": {
+          "type": "string",
+          "title": "a=营业员入职日期;c=2022-08-01;d=false"
+        },
+        "referreremp_wechat": {
+          "type": "string",
+          "title": "a=营业员微信号;c=xxx;d=false"
+        },
+        "referreremp_departmen_id": {
+          "type": "string",
+          "title": "a=营业员部门id;c=1;d=false"
+        },
+        "referreremp_departmen_number": {
+          "type": "string",
+          "title": "a=营业员部门编码;c=001;d=false"
+        },
+        "referreremp_departmen_name": {
+          "type": "string",
+          "title": "a=营业员部门名称;c=部门A;d=false"
+        }
+      }
+    },
+    "MemberSaveReq": {
+      "type": "object",
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "title": "a=手机号;c=13333333333;d=true"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=姓名;c=会员A;d=true"
+        },
+        "label": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=标签;d=false"
+        },
+        "customer": {
+          "type": "string",
+          "title": "a=关联客户;c=001;d=false"
+        },
+        "source": {
+          "type": "string",
+          "title": "a=会员来源 1-门店 2-微信 3-电商 4-微商城 5-自建商城;c=1;d=false"
+        },
+        "join_way": {
+          "type": "string",
+          "title": "a=入会方式 1-营业员发展 2-会员推荐;c=1;d=false"
+        },
+        "referrere_mp": {
+          "type": "string",
+          "title": "a=入会业务员;c=1;d=false"
+        },
+        "mbcard_id": {
+          "type": "string",
+          "title": "a=入会推荐人会员卡;c=1;d=false"
+        },
+        "sex_group": {
+          "type": "string",
+          "title": "a=性别 1-男 2-女;c=1;d=false"
+        },
+        "birthday": {
+          "type": "string",
+          "title": "a=生日;c=2022-08-01;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=备注;d=false"
+        },
+        "address": {
+          "type": "string",
+          "title": "a=行政区域;c=410;d=false"
+        },
+        "detail_address": {
+          "type": "string",
+          "title": "a=详细地址;c=XXX;d=false"
+        },
+        "enable": {
+          "type": "string",
+          "title": "a=状态 1-有效 0-失效;c=1;d=false"
+        },
+        "is_delete": {
+          "type": "string",
+          "title": "a=是否删除 0-未删除 1-已删除;c=0;d=false"
+        },
+        "level": {
+          "type": "string",
+          "title": "a=会员级别，1-普通会员;c=1;d=false"
+        },
+        "shop": {
+          "type": "string",
+          "title": "a=开卡门店;c=850693217107061760;d=false"
+        },
+        "custom_no": {
+          "type": "string",
+          "title": "a=自定义卡号;c=1;d=false"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=有效期管理 1-长期有效 2-限期有效;c=1;d=false"
+        },
+        "start_date": {
+          "type": "string",
+          "title": "a=有效开始日期;c=2022-01-01;d=false"
+        },
+        "end_date": {
+          "type": "string",
+          "title": "a=有效结束日期;c=2022-01-01;d=false"
+        },
+        "sale_shop": {
+          "type": "string",
+          "title": "a=消费门店;c=1;d=false"
+        }
+      }
+    },
+    "MemberSaveRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1534104111400644608;d=true"
+        },
+        "enable": {
+          "type": "string",
+          "title": "a=是否启用;c=1;"
+        },
+        "db_modify_time": {
+          "type": "string",
+          "title": "a=修改时间;c=2022-11-01 11:01:34;"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=会员名称;c=腾讯;d=false"
+        },
+        "mobile": {
+          "type": "string",
+          "title": "a=会员手机号;c=13200663322;d=false"
+        },
+        "custom_no": {
+          "type": "string",
+          "title": "a=客户编码;c=1;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

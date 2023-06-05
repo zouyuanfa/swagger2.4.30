@@ -1,0 +1,69 @@
+{{>licenseInfo}}
+
+package {{invokerPackage}}.unit;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+
+
+public class SHAUtil {
+    public static String byteToHexString(byte[] b) {
+        StringBuilder hs = new StringBuilder();
+        for (int n = 0; b != null && n < b.length; n++) {
+            String stmp = Integer.toHexString(b[n] & 0xFF);
+            if (stmp.length() == 1)
+                hs.append('0');
+                hs.append(stmp);
+        }
+        return hs.toString();
+    }
+
+    public static String SHA256HMAC(String message, String secret) {
+        try {
+            Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
+            SecretKeySpec secret_key = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
+            sha256_HMAC.init(secret_key);
+            return byteToHexString(sha256_HMAC.doFinal(message.getBytes(StandardCharsets.UTF_8)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String SHA256(String strText) {
+        return SHA(strText, "SHA-256");
+    }
+
+    public static String SHA512(String strText) {
+        return SHA(strText, "SHA-512");
+    }
+
+    public static String SHAMD5(String strText) {
+        return SHA(strText, "MD5");
+    }
+
+    private static String SHA(String strText, String strType) {
+        String strResult = null;
+        if (strText != null && strText.length() > 0)
+            try {
+                MessageDigest messageDigest = MessageDigest.getInstance(strType);
+                messageDigest.update(strText.getBytes());
+                byte[] byteBuffer = messageDigest.digest();
+                StringBuilder hexString = new StringBuilder();
+                for (int i = 0; i < byteBuffer.length; i++) {
+                    String hex = Integer.toHexString(0xFF & byteBuffer[i]);
+                    if (hex.length() == 1)
+                    hexString.append('0');
+                    hexString.append(hex);
+                }
+                strResult = hexString.toString();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+        return strResult;
+    }
+}

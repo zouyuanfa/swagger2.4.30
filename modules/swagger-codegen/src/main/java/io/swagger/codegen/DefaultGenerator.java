@@ -6,6 +6,8 @@ import io.swagger.codegen.ignore.CodegenIgnoreProcessor;
 import io.swagger.codegen.languages.AbstractJavaCodegen;
 import io.swagger.codegen.utils.ImplementationVersion;
 import io.swagger.models.*;
+import io.swagger.models.auth.ApiKeyAuthDefinition;
+import io.swagger.models.auth.In;
 import io.swagger.models.auth.OAuth2Definition;
 import io.swagger.models.auth.SecuritySchemeDefinition;
 import io.swagger.models.parameters.Parameter;
@@ -122,7 +124,7 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         if (!StringUtils.isEmpty(swagger.getHost())) {
             hostBuilder.append(swagger.getHost());
         } else {
-            hostBuilder.append("localhost");
+            hostBuilder.append("api.kingdee.com");
             LOGGER.warn("'host' not defined in the spec. Default to 'localhost'.");
         }
         return hostBuilder.toString();
@@ -736,6 +738,11 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         bundle.put("models", allModels);
         bundle.put("apiFolder", config.apiPackage().replace('.', File.separatorChar));
         bundle.put("modelPackage", config.modelPackage());
+        Map<String, SecuritySchemeDefinition> securityDefinitions = new LinkedHashMap<>();
+        SecuritySchemeDefinition apiKeyAuthDefinition = new ApiKeyAuthDefinition("app-token", In.HEADER) ;
+        apiKeyAuthDefinition.setType("apiKey");
+        securityDefinitions.put("app_token",apiKeyAuthDefinition);
+        swagger.setSecurityDefinitions(securityDefinitions);
         List<CodegenSecurity> authMethods = config.fromSecurity(swagger.getSecurityDefinitions());
         if (authMethods != null && !authMethods.isEmpty()) {
             bundle.put("authMethods", authMethods);
@@ -834,14 +841,15 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
     public Map<String, List<CodegenOperation>> processPaths(Map<String, Path> paths) {
         Map<String, List<CodegenOperation>> ops = new TreeMap<String, List<CodegenOperation>>();
         for (String resourcePath : paths.keySet()) {
+            String  url = resourcePath.replace("openapi", "jdy");
             Path path = paths.get(resourcePath);
-            processOperation(resourcePath, "get", path.getGet(), ops, path);
-            processOperation(resourcePath, "head", path.getHead(), ops, path);
-            processOperation(resourcePath, "put", path.getPut(), ops, path);
-            processOperation(resourcePath, "post", path.getPost(), ops, path);
-            processOperation(resourcePath, "delete", path.getDelete(), ops, path);
-            processOperation(resourcePath, "patch", path.getPatch(), ops, path);
-            processOperation(resourcePath, "options", path.getOptions(), ops, path);
+            processOperation(url, "get", path.getGet(), ops, path);
+            processOperation(url, "head", path.getHead(), ops, path);
+            processOperation(url, "put", path.getPut(), ops, path);
+            processOperation(url, "post", path.getPost(), ops, path);
+            processOperation(url, "delete", path.getDelete(), ops, path);
+            processOperation(url, "patch", path.getPatch(), ops, path);
+            processOperation(url, "options", path.getOptions(), ops, path);
         }
         return ops;
     }
@@ -981,6 +989,11 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         int counter = 0;
         for (CodegenOperation op : ops) {
             String opId = op.nickname;
+            if(op.httpMethod.equals(HttpMethod.GET)){
+//                op.setAllParams();
+                List<CodegenParameter> allParams = op.allParams;
+            }
+
             if (opIds.contains(opId)) {
                 counter++;
                 op.nickname += "_" + counter;
