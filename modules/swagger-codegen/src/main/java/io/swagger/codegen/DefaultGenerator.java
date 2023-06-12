@@ -485,6 +485,13 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
                         return ObjectUtils.compare(one.operationId, another.operationId);
                     }
                 });
+                for (CodegenOperation codegenOperation : ops) {
+                    if(codegenOperation.httpMethod.equalsIgnoreCase(HttpMethod.GET.name()) && codegenOperation.queryParams.size() == 0){
+//                        codegenOperation.setis
+                        codegenOperation.setCustomizeGet(true);
+                    }
+                }
+
                 Map<String, Object> operation = processOperations(config, tag, ops, allModels);
 
                 operation.put("hostWithoutBasePath", getHostWithoutBasePath());
@@ -989,10 +996,14 @@ public class DefaultGenerator extends AbstractGenerator implements Generator {
         int counter = 0;
         for (CodegenOperation op : ops) {
             String opId = op.nickname;
-            if(op.httpMethod.equals(HttpMethod.GET)){
+            //测试
+//            if(op.httpMethod.equalsIgnoreCase(HttpMethod.GET.name()) && op.bodyParams.size() > 0){
 //                op.setAllParams();
-                List<CodegenParameter> allParams = op.allParams;
-            }
+//                List<CodegenParameter> allParams = op.allParams;
+//                for (CodegenParameter allParam : allParams) {
+//                    String collectionFormat = allParam.collectionFormat;
+//                }
+//            }
 
             if (opIds.contains(opId)) {
                 counter++;

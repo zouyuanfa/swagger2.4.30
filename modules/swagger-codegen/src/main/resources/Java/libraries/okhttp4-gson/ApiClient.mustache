@@ -821,6 +821,7 @@ public class ApiClient {
                     String value = URLEncoder.encode(query.getValue(), StandardCharsets.UTF_8.toString());
                     list.add(key + "=" + value);
                 }
+                Collections.sort(list);
                 String rawQueryString = String.join("&", (Iterable)list);
                 String[] queryStrings = rawQueryString.split("&");
                 list.clear();

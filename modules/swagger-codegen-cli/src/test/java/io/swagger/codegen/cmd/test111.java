@@ -1,9 +1,8 @@
 package io.swagger.codegen.cmd;
 
-import io.swagger.codegen.ClientOptInput;
-import io.swagger.codegen.kingdee.KingdeeTest;
 
-import mockit.Injectable;
+
+import mockit.Mocked;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -11,10 +10,12 @@ import java.io.IOException;
 public class test111 {
 
 
+
     @Test
     public void test() throws IOException {
+
+        AsterSwaggerCodegen asterSwaggerCodegen = new AsterSwaggerCodegen();
         System.out.println(System.getProperty("user.dir"));
-        KingdeeTest kingdeeTest = new KingdeeTest();
-        kingdeeTest.test("src/main/resources/aster.swagger.json");
+        asterSwaggerCodegen.Codegen("src/main/resources/aster.swagger.json");
     }
 }

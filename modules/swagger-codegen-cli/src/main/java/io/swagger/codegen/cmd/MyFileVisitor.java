@@ -1,4 +1,4 @@
-package io.swagger.codegen.kingdee;
+package io.swagger.codegen.cmd;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;

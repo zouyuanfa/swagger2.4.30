@@ -2,6 +2,9 @@
 
 package {{package}};
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import {{invokerPackage}}.ApiCallback;
 import {{invokerPackage}}.ApiClient;
 import {{invokerPackage}}.ApiException;
@@ -16,7 +19,6 @@ import {{invokerPackage}}.KingdeeResponse;
 import {{invokerPackage}}.BeanValidationException;
 {{/performBeanValidation}}
 
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
@@ -39,10 +41,7 @@ import java.lang.reflect.Type;
 
 import java.lang.reflect.Type;
 {{^fullJavaUtil}}
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 {{/fullJavaUtil}}
 
 {{#operations}}
@@ -103,6 +102,20 @@ public class {{classname}} {
         {{javaUtilPrefix}}Map<String, Object> {{localVariablePrefix}}localVarFormParams = new {{javaUtilPrefix}}HashMap<String, Object>();{{#formParams}}
         if ({{paramName}} != null)
         {{localVariablePrefix}}localVarFormParams.put("{{baseName}}", {{paramName}});{{/formParams}}
+
+        {{#isCustomizeGet}}
+                JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(body));
+                Set<Map.Entry<String, Object>> entries = jsonObject.entrySet();
+                for (Map.Entry<String, Object> entry : entries) {
+                    if(entry.getValue() != null){
+                        if(entry.getValue() instanceof JSONArray){
+                            localVarQueryParams.addAll(apiClient.parameterToPairs("multi",entry.getKey(), Arrays.asList(((JSONArray) entry.getValue()).toArray())));
+                        }else{
+                            localVarQueryParams.addAll(apiClient.parameterToPair(entry.getKey(), entry.getValue()));
+                        }
+                    }
+                }
+        {{/isCustomizeGet}}
 
         final String[] {{localVariablePrefix}}localVarAccepts = {
             {{#produces}}"{{{mediaType}}}"{{#hasMore}}, {{/hasMore}}{{/produces}}
@@ -217,7 +230,7 @@ public class {{classname}} {
     {{/isDeprecated}}
     public ApiResponse<KingdeeResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}>> {{operationId}}WithHttpInfo({{#allParams}}{{#useBeanValidation}}{{>beanValidationQueryParams}}{{/useBeanValidation}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}) throws ApiException {
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}null, null);
-        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<KingdeeResponse<{{{returnType}}}>>(){}.getType();
+        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeReference<KingdeeResponse<{{{returnType}}}>>(){}.getType();
         return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}
     }
 
@@ -261,7 +274,7 @@ public class {{classname}} {
         }
 
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}progressListener, progressRequestListener);
-        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeToken<{{{returnType}}}>(){}.getType();
+        {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeReference<{{{returnType}}}>(){}.getType();
         {{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType, callback);{{/returnType}}{{^returnType}}{{localVariablePrefix}}apiClient.executeAsync({{localVariablePrefix}}call, callback);{{/returnType}}
         return {{localVariablePrefix}}call;
     }

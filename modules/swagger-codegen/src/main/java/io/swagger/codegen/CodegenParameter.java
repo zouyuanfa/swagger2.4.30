@@ -283,6 +283,14 @@ public class CodegenParameter {
 
     }
 
+    public void setCollectionFormatMulti(boolean collectionFormatMulti) {
+        isCollectionFormatMulti = collectionFormatMulti;
+    }
+
+    public void setCollectionFormat(String collectionFormat) {
+        this.collectionFormat = collectionFormat;
+    }
+
     @Override
     public int hashCode() {
         int result = isFormParam ? 13:31;
