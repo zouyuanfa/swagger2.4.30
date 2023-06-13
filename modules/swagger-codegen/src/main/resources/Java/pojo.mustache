@@ -64,9 +64,9 @@ public class {{classname}} {{#parent}}extends {{{parent}}} {{/parent}}{{#parcela
   {{/isXmlAttribute}}
   {{/withXml}}
   {{#gson}}
-  @JSONField(name = "{{baseName}}")
   @SerializedName("{{baseName}}")
   {{/gson}}
+  @JSONField(name = "{{baseName}}")
   {{#isContainer}}
   private {{{datatypeWithEnum}}} {{name}}{{#required}} = {{{defaultValue}}}{{/required}}{{^required}} = null{{/required}};
   {{/isContainer}}

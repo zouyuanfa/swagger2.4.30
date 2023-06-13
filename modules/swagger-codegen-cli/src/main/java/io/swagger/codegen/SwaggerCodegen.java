@@ -20,6 +20,7 @@ public class SwaggerCodegen {
 
 
     public static void main(String[] args) {
+//        System.setProperty("apiTests","false");
         String version = Version.readVersionFromResources();
         @SuppressWarnings("unchecked")
         Cli.CliBuilder<Runnable> builder =

@@ -1,5 +1,5 @@
 {
-
+  "library": "okhttp4-gson",
   "developerName": "kingdee",
   "developerOrganization": "open.jdy.com",
   "invokerPackage": "com.kingdee.service",
