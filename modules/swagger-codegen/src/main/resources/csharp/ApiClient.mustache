@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Net.Http;
 {{^netStandard}}
 {{^supportsUWP}}
 using System.Web;
@@ -17,9 +18,11 @@ using Newtonsoft.Json;
 {{#netStandard}}
 using RestSharp.Portable;
 using RestSharp.Portable.HttpClient;
+
 {{/netStandard}}
 {{^netStandard}}
 using RestSharp;
+using Kingdee.API.SDK;
 {{/netStandard}}
 
 namespace {{packageName}}.Client
@@ -206,6 +209,7 @@ namespace {{packageName}}.Client
             RestClient.UserAgent = Configuration.UserAgent;
 
             InterceptRequest(request);
+            /*
             {{#netStandard}}
             var response = RestClient.Execute(request).Result;
             {{/netStandard}}
@@ -221,6 +225,25 @@ namespace {{packageName}}.Client
             InterceptResponse(request, response);
 
             return (Object) response;
+            */
+            APIClient client = new APIClient("236883", "c61140fbd74d9a431f311b927df1e0d7");
+            var app_token = @"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHQiOnsiYWNjb3VudElkIjoiMTU4NDI0NDU3MDgzNTA1NzE3MyIsImdyb3VwTmFtZSI6Im5zLXY3ZzYiLCJhcHBfa2V5IjoianFFQ0NMTTMiLCJ0ZW5hbnRJZCI6Ijc5MjE0OTEzOTI3MSIsInVzZXJOYW1lIjoia2luZ2RlZXRlc3QwMDAwIn0sImdycCI6Im5zLXY3ZzYiLCJleHAiOjE2ODY4NDU1NzksImFpZCI6IjE1ODQyNDQ1NzA4MzUwNTcxNzMiLCJpYXQiOjE2ODY3NTkxNzl9.Ihdnxgt2w4lifqPdQ_XlWTpLxR47f1krwNaDpSB3pxc";
+
+            queryParams = queryParams ?? new List<KeyValuePair<string, string>>();
+            //附加app_token
+            if(queryParams.Count(o => o.Key.Equals("app-token")) == 0)
+            {
+                queryParams.Add(new KeyValuePair<string, string>("app-token", app_token));
+            }
+
+            var result= client.Execute(new APIRequest() {
+                    Method = MethodConvert(method),
+                    Params = queryParams.ToDictionary(o => o.Key,o=>o.Value),
+                    Path = path,
+                    Body=   postBody,
+                    ContentType=contentType
+            }).Result.Content.ReadAsStringAsync().Result;
+            return result;
         }
         {{#supportsAsync}}
         /// <summary>
@@ -590,6 +613,33 @@ namespace {{packageName}}.Client
         private static bool IsCollection(object value)
         {
             return value is IList || value is ICollection;
+        }
+
+
+        /// <summary>
+        /// Method 转换
+        /// </summary>
+        /// <param name="restSharpMethod"></param>
+        /// <returns></returns>
+        static HttpMethod MethodConvert(RestSharp.Method restSharpMethod)
+        {
+            switch (restSharpMethod)
+            {
+                case Method.GET:
+                    return HttpMethod.Get;
+                case Method.POST:
+                    return HttpMethod.Post;
+                case Method.PUT:
+                    return HttpMethod.Put;
+                case Method.DELETE:
+                    return HttpMethod.Delete;
+                case Method.HEAD:
+                    return HttpMethod.Head;
+                case Method.OPTIONS:
+                    return HttpMethod.Options;
+                default:
+                    return HttpMethod.Post;
+            }
         }
     }
 }

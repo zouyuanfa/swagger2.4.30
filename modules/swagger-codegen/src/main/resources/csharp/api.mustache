@@ -12,6 +12,7 @@ using RestSharp;
 using {{packageName}}.Client;
 {{#hasImport}}using {{packageName}}.{{modelPackage}};
 {{/hasImport}}
+using Newtonsoft.Json;
 
 namespace {{packageName}}.{{apiPackage}}
 {
@@ -283,6 +284,7 @@ namespace {{packageName}}.{{apiPackage}}
             {{/authMethods}}
 
             // make the HTTP request
+            /*
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.{{httpMethod}}, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
@@ -305,6 +307,21 @@ namespace {{packageName}}.{{apiPackage}}
                 localVarResponse.Headers.ToDictionary(x => x.{{^netStandard}}Name{{/netStandard}}{{#netStandard}}Key{{/netStandard}}, x => x.Value.ToString()),
                 null);
             {{/returnType}}
+                */
+             var restResponse = this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+                ClientResponse<{{{returnType}}}> clientReponse = JsonConvert.DeserializeObject<ClientResponse<{{{returnType}}}>>(restResponse.ToString());
+                int localVarStatusCode = clientReponse.ErrCode;//(int) localVarResponse.StatusCode;
+
+                if (localVarStatusCode != 0)
+                {
+                    Exception exception = ExceptionFactory("AccountList", new RestResponse() { ErrorMessage=clientReponse.Description });
+                    if (exception != null) throw exception;
+                }
+
+                return new ApiResponse<{{{returnType}}}>(clientReponse.ErrCode, null, clientReponse.Data);
         }
 
         {{#supportsAsync}}

@@ -28,7 +28,7 @@ import java.util.Set;
 
 public abstract class AbstractCSharpCodegen extends DefaultCodegen implements CodegenConfig {
 
-    protected boolean optionalAssemblyInfoFlag = true;
+    protected boolean optionalAssemblyInfoFlag = false;
     protected boolean optionalProjectFileFlag = true;
     protected boolean optionalEmitDefaultValue = false;
     protected boolean optionalMethodArgumentFlag = true;
@@ -41,12 +41,12 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
     protected String modelPropertyNaming = CodegenConstants.MODEL_PROPERTY_NAMING_TYPE.PascalCase.name();
 
     protected String packageVersion = "1.0.0";
-    protected String packageName = "IO.Swagger";
-    protected String packageTitle = "Swagger Library";
+    protected String packageName = "Kingdee.SDK";
+    protected String packageTitle = "Kingdee API SDK";
     protected String packageProductName = "SwaggerLibrary";
     protected String packageDescription = "A library generated from a Swagger doc";
     protected String packageCompany = "Swagger";
-    protected String packageCopyright = "No Copyright";
+    protected String packageCopyright = "Copyright";
     protected String packageAuthors = "Swagger";
 
     protected String interfacePrefix = "I";

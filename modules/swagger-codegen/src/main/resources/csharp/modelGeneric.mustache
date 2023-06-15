@@ -128,15 +128,17 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public {{#parent}}{{^isArrayModel}}override {{/isArrayModel}}{{/parent}}{{^parent}}virtual {{/parent}}string ToJson()
+        public {{#parent}}{{^isArrayModel}} {{/isArrayModel}}{{/parent}}{{^parent}}virtual {{/parent}}string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
+
 
         /// <summary>
         /// Returns true if objects are equal
@@ -237,6 +239,7 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
         {
 {{/discriminator}}
 {{^discriminator}}
+
         /// <summary>
         /// To validate all properties of the instance
         /// </summary>
@@ -244,6 +247,8 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            return null;
+    /*
 {{/discriminator}}
             {{#parent}}
             {{^isArrayModel}}
@@ -298,6 +303,12 @@ this.{{name}} = {{#lambda.camelcase_param}}{{name}}{{/lambda.camelcase_param}};
             {{/hasValidation}}
             {{/vars}}
             yield break;
+*/
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            throw new NotImplementedException();
         }
 {{/validatable}}
 {{/netStandard}}

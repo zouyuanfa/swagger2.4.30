@@ -11,6 +11,7 @@
 {{#version}}OpenAPI spec version: {{{version}}}{{/version}}
 {{#infoEmail}}Contact: {{{infoEmail}}}{{/infoEmail}}
 -->
+<!--
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,7 +22,7 @@
     <RootNamespace>{{testPackageName}}</RootNamespace>
     <AssemblyName>{{testPackageName}}</AssemblyName>
     {{^supportsUWP}}
-    <TargetFrameworkVersion>{{targetFramework}}</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     {{/supportsUWP}}
     {{#supportsUWP}}
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -97,5 +98,37 @@
           <Name>{{packageName}}</Name>
       </ProjectReference>
   </ItemGroup>
+</Project>
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net461</TargetFramework>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+        <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="RestSharp" Version="105.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Kingdee.SDK\Kingdee.SDK.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Data.DataSetExtensions" />
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Data" />
+        <Reference Include="System.Runtime.Serialization" />
+        <Reference Include="System.Xml" />
+        <Reference Include="Newtonsoft.Json" />
+    </ItemGroup>
 </Project>
 

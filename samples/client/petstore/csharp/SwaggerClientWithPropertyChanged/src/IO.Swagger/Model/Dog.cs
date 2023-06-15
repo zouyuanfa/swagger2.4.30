@@ -139,6 +139,12 @@ namespace IO.Swagger.Model
             }
         }
 
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            throw new NotImplementedException();
+        }
+
+/*
         /// <summary>
         /// To validate all properties of the instance
         /// </summary>
@@ -149,6 +155,7 @@ namespace IO.Swagger.Model
             foreach(var x in BaseValidate(validationContext)) yield return x;
             yield break;
         }
+ */
     }
 
 }
