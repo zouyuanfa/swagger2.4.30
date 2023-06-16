@@ -27,7 +27,7 @@
 
 ## Versioning
 
-**NOTE:** version 2.X (`io.swagger`) and 3.X (`io.swagger.codegen.v3`) have **different** group ids.
+**NOTE:** version 2.X (`io.swagger`) and 3.X (`io.swagger.codegen.v3`) have **different** group ids. 
 
 2.X and 3.X version lines of Swagger Codegen are available; 2.X (`master` branch) supports Swagger/OpenAPI version 2,
 while 3.X ([`3.0.0` branch](https://github.com/swagger-api/swagger-codegen/tree/3.0.0)) supports OpenAPI version 3 (and version 2 via spec conversion to version 3).
