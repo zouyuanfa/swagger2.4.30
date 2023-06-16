@@ -8,54 +8,54 @@ using System.Threading.Tasks;
 
 namespace {{packageName}}.Client
 {
-public class ApiSignatureRequest
-{
-private string _path = "";
+    public class ApiSignatureRequest
+    {
+        private string _path = "";
 
-/// <summary>
-    /// 请求路径
-    /// </summary>
-public string Path
-{
-get
-{
-return _path?.TrimStart('/').TrimEnd('/');
-}
-set
-{
-_path = value;
-}
-}
+        /// <summary>
+        /// 请求路径
+        /// </summary>
+        public string Path
+        {
+            get
+            {
+                return _path?.TrimStart('/').TrimEnd('/');
+            }
+            set
+            {
+                _path = value;
+            }
+        }
 
-/// <summary>
-    /// 请求Method
-    /// </summary>
-public HttpMethod Method { get; set; } = HttpMethod.Get;
+        /// <summary>
+        /// 请求Method
+        /// </summary>
+        public HttpMethod Method { get; set; } = HttpMethod.Get;
 
-/// <summary>
-    /// 请求ContentType，默认为 application/json
-    /// </summary>
-public string ContentType { get; set; } = "application/json";
+        /// <summary>
+        /// 请求ContentType，默认为 application/json
+        /// </summary>
+        public string ContentType { get; set; } = "application/json";
 
-/// <summary>
-    /// Param 参数
-    /// </summary>
-public IDictionary<string, string> Params { get; set; } = new Dictionary<string, string>();
+        /// <summary>
+        /// Param 参数
+        /// </summary>
+        public IDictionary<string, string> Params { get; set; } = new Dictionary<string, string>();
 
-/// <summary>
-    /// 附加的Http Header
-    /// </summary>
-public IDictionary<string, string> Header { get; set; } = new Dictionary<string, string>();
+        /// <summary>
+        /// 附加的Http Header
+        /// </summary>
+        public IDictionary<string, string> Header { get; set; } = new Dictionary<string, string>();
 
-/// <summary>
-    /// 请求体
-    /// </summary>
-public object Body { get; set; }
+        /// <summary>
+        /// 请求体
+        /// </summary>
+        public object Body { get; set; }
 
-/// <summary>
-    /// 上传文件的路径
-    /// </summary>
-public string File { get; set; }
-}
+        /// <summary>
+        /// 上传文件的路径
+        /// </summary>
+        public string File { get; set; }
+    }
 
 }

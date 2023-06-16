@@ -33,7 +33,11 @@ namespace {{packageName}}.Test
         [SetUp]
         public void Init()
         {
-            instance = new {{classname}}();
+            instance = new {{classname}}(new Configuration(){
+                ClientId = "",
+                ClientSecret = "",
+                AppToken = @""
+            });
         }
 
         /// <summary>

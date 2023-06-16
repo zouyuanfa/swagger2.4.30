@@ -6,45 +6,48 @@ using System.Text;
 using System.Threading.Tasks;
 namespace {{packageName}}.Client
 {
-internal class SHAHelper
-{
-/// <summary>
-    /// 实现HMAC SHA256签名算法
+    /// <summary>
+    /// SHA帮助类
     /// </summary>
-/// <param name="secret">加密秘钥</param>
-/// <param name="signContent">加密内容</param>
-/// <returns></returns>
-public static string HmacSHA256(string secret, string signContent)
-{
-string signRet = string.Empty;
-using (HMACSHA256 mac = new HMACSHA256(Encoding.UTF8.GetBytes(secret)))
-{
-byte[] hash = mac.ComputeHash(Encoding.UTF8.GetBytes(signContent));
-signRet = ToHexString(hash);
-}
-var hexBytes = Encoding.UTF8.GetBytes(signRet);
-return Convert.ToBase64String(hexBytes);
-}
+    public class SHAHelper
+    {
+        /// <summary>
+        /// 实现HMAC SHA256签名算法
+        /// </summary>
+        /// <param name="secret">加密秘钥</param>
+        /// <param name="signContent">加密内容</param>
+        /// <returns></returns>
+        public static string HmacSHA256(string secret, string signContent)
+        {
+            string signRet = string.Empty;
+            using (HMACSHA256 mac = new HMACSHA256(Encoding.UTF8.GetBytes(secret)))
+            {
+                byte[] hash = mac.ComputeHash(Encoding.UTF8.GetBytes(signContent));
+                signRet = ToHexString(hash);
+            }
+            var hexBytes = Encoding.UTF8.GetBytes(signRet);
+            return Convert.ToBase64String(hexBytes);
+        }
 
-/// <summary>
-    ///  转16进制
-    /// </summary>
-/// <param name="bytes"></param>
-/// <returns></returns>
-protected static string ToHexString(byte[] bytes)
-{
-string hexString = string.Empty;
-if (bytes != null)
-{
-StringBuilder strB = new StringBuilder();
-foreach (byte b in bytes)
-{
-strB.AppendFormat("{0:x2}", b);
-}
-hexString = strB.ToString();
-}
-return hexString;
-}
-}
+        /// <summary>
+        ///  转16进制
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        protected static string ToHexString(byte[] bytes)
+        {
+            string hexString = string.Empty;
+            if (bytes != null)
+            {
+                StringBuilder strB = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    strB.AppendFormat("{0:x2}", b);
+                }
+                hexString = strB.ToString();
+            }
+            return hexString;
+        }
+    }
 
 }
