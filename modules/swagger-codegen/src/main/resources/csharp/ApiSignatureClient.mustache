@@ -1,0 +1,198 @@
+
+using System;
+using System.IO;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using Newtonsoft.Json;
+
+namespace {{packageName}}.Client
+{
+public class ApiSignatureClient
+{
+/// <summary>
+    /// 请求服务器域名,默认http://api.kingdee.com/
+    /// </summary>
+private string _baseUrl = "http://api.kingdee.com/";
+
+/// <summary>
+    /// 客户Id
+    /// </summary>
+private string _clientId = "";
+
+/// <summary>
+    /// 客户秘钥
+    /// </summary>
+private string _clientSecret = "";
+
+/// <summary>
+    /// 超时时间（秒）
+    /// </summary>
+public int Timeout { get; set; } = 10;
+
+/// <summary>
+    /// 构造一个API客户端对象
+    /// </summary>
+/// <param name="clientId">客户Id</param>
+/// <param name="clientSecret">客户秘钥</param>
+/// /// <param name="baseUrl">请求域名</param>
+public ApiSignatureClient(string clientId, string clientSecret, string baseUrl)
+{
+this._clientId = clientId;
+this._clientSecret = clientSecret;
+this._baseUrl = baseUrl;
+}
+
+/// <summary>
+    /// 构造一个API客户端对象
+    /// </summary>
+/// <param name="clientId">客户Id</param>
+/// <param name="clientSecret">客户秘钥</param>
+public ApiSignatureClient(string clientId, string clientSecret)
+{
+this._clientId = clientId;
+this._clientSecret = clientSecret;
+}
+
+/// <summary>
+    /// 发起请求
+    /// </summary>
+/// <param name="request"></param>
+/// <returns></returns>
+public async Task<HttpResponseMessage> Execute(ApiSignatureRequest request)
+    {
+    using (HttpClient _client = new HttpClient())
+    {
+    _client.Timeout = TimeSpan.FromSeconds((double)Timeout);
+    BuildRequestHeader(_client.DefaultRequestHeaders, request);
+
+    var uri = _baseUrl.TrimEnd('/') + "/" + request.Path + "?" + GetQueryString(request);
+    if (request.Method == HttpMethod.Post)
+    {
+    if (string.IsNullOrEmpty(request.File))
+    {
+    var json = request.Body == null ? string.Empty : JsonConvert.SerializeObject(request.Body);// JsonSerializer.Serialize(request.Body);
+    return await _client.PostAsync(uri, new StringContent(json, Encoding.UTF8, request.ContentType));
+    }
+    else
+    {
+    //文件上传
+    string boundary = $"----WebKitFormBoundary{DateTime.Now.Ticks:x}";
+    MultipartFormDataContent content = new MultipartFormDataContent(boundary);
+    if (!File.Exists(request.File))
+    {
+    throw new Exception($"路径不存在:{request.File}");
+    }
+
+    using (FileStream fStream = File.Open(request.File, FileMode.Open, FileAccess.Read))
+    {
+    content.Add(new StreamContent(fStream, (int)fStream.Length), "file", Path.GetFileName(request.File));
+    return await _client.PostAsync(uri, content);
+    }
+    }
+    }
+    else if (request.Method == HttpMethod.Get)
+    {
+    return await _client.GetAsync(uri);
+    }
+    else if (request.Method == HttpMethod.Put)
+    {
+    var json = request.Body == null ? string.Empty : JsonConvert.SerializeObject(request.Body);
+    return await _client.PutAsync(uri, new StringContent(json, Encoding.UTF8, request.ContentType));
+    }
+    else if (request.Method == HttpMethod.Delete)
+    {
+    return await _client.DeleteAsync(uri);
+    }
+    else
+    {
+    throw new Exception($"Method:{request.Method} 参数不支持!");
+    }
+    }
+    }
+
+    private void BuildRequestHeader(HttpRequestHeaders headers, ApiSignatureRequest request)
+    {
+    var api_nonce = new Random().Next(100000000, 999999999);
+    var timeStamp = (int)(DateTime.Now.ToLocalTime() - DateTime.Parse("1970-01-01").ToLocalTime()).TotalSeconds;
+
+    headers.Add("X-Api-Nonce", api_nonce.ToString());
+    headers.Add("X-Api-Auth-Version", "2.0");
+    headers.Add("X-Api-TimeStamp", timeStamp.ToString());
+    headers.Add("X-Api-ClientID", _clientId);
+    headers.Add("X-Api-Signature", GetSignature(request, api_nonce.ToString(), timeStamp.ToString()));
+    headers.Add("X-Api-SignHeaders", "X-Api-Nonce,X-Api-TimeStamp");
+
+    if (request.Header.Any())
+    {
+    foreach (var hk in request.Header.Keys)
+    {
+    headers.Add(hk, request.Header[hk]);
+    }
+    }
+    }
+
+    private string GetSignature(ApiSignatureRequest request, string nonce, string timestamp)
+    {
+    var querySign = GetQueryString(request, true);
+
+    StringBuilder sb = new StringBuilder();
+    sb.Append(request.Method.ToString().ToUpper());
+    sb.Append('\n');
+    sb.Append(PathEncode(request.Path));
+    sb.Append('\n');
+    sb.Append(querySign);
+    sb.Append('\n');
+    sb.Append($"x-api-nonce:{nonce}");
+    sb.Append('\n');
+    sb.Append($"x-api-timestamp:{timestamp}");
+    sb.Append('\n');
+    return SHAHelper.HmacSHA256(_clientSecret, sb.ToString());
+    }
+
+    /// <summary>
+        /// Url Path部分Url编码
+        /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    private static string PathEncode(string path) => HttpUtility.UrlEncode("/" + path.TrimStart('/'))
+    .Replace("%2f", "%2F")
+    .Replace("%2d", "%2D")
+    .Replace("(", "%28")
+    .Replace(")", "%29");
+
+    /// <summary>
+        /// 查询字符串部分拼接
+        /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    private static string GetQueryString(ApiSignatureRequest request, bool doubleEncode = false)
+    {
+    var querySign = string.Empty;
+    if (request.Params != null && request.Params.Keys != null)
+    {
+    foreach (var key in request.Params.Keys)
+    {
+    if (doubleEncode)
+    {
+    querySign = querySign
+    + $"&{key}="
+    + HttpUtility.UrlEncode(HttpUtility.UrlEncode(request.Params[key]));
+    }
+    else
+    {
+    querySign = querySign
+    + $"&{key}="
+    + HttpUtility.UrlEncode(request.Params[key]);
+    }
+    }
+    querySign = querySign.TrimStart('&');
+    }
+    return querySign;
+    }
+    }
+
+}
