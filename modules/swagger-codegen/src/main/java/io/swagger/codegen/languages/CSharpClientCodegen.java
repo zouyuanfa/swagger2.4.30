@@ -201,12 +201,12 @@ public class CSharpClientCodegen extends AbstractCSharpCodegen {
         }
 
 
-        if (isEmpty(apiPackage)) {
+//        if (isEmpty(apiPackage)) {
             setApiPackage("Api");
-        }
-        if (isEmpty(modelPackage)) {
+//        }
+//        if (isEmpty(modelPackage)) {
             setModelPackage("Model");
-        }
+//        }
         clientPackage = "Client";
 
         Boolean excludeTests = false;

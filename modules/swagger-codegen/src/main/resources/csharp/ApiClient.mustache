@@ -14,7 +14,6 @@ using System.Web;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web;
 using Newtonsoft.Json;
 {{#netStandard}}
 using RestSharp.Portable;
@@ -235,12 +234,23 @@ namespace {{packageName}}.Client
                 queryParams.Add(new KeyValuePair<string, string>("app-token", Configuration.AppToken));
             }
 
+            byte[] fileBytes = null;
+            if (fileParams != null && fileParams.Count > 0 && fileParams.FirstOrDefault().Value != null)
+            {
+                fileParams.FirstOrDefault().Value.Writer = (o) =>
+                {
+                    fileBytes = new byte[o.Length];
+                    o.Read(fileBytes, 0, (int)o.Length);
+                };
+            }
+
             var result= client.Execute(new ApiSignatureRequest() {
                     Method = MethodConvert(method),
                     Params = queryParams.ToDictionary(o => o.Key,o=>o.Value),
                     Path = path,
                     Body=   postBody,
-                    ContentType=contentType
+                    ContentType = contentType,
+                    UploadData = fileBytes
             }).Result.Content.ReadAsStringAsync().Result;
             return result;
         }

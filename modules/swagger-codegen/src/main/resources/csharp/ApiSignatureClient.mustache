@@ -66,13 +66,13 @@ namespace {{packageName}}.Client
         {
             using (HttpClient _client = new HttpClient())
             {
-                _client.Timeout = TimeSpan.FromSeconds((double)Timeout);
+                 _client.Timeout = TimeSpan.FromSeconds((double)Timeout);
                 BuildRequestHeader(_client.DefaultRequestHeaders, request);
 
                 var uri = _baseUrl.TrimEnd('/') + "/" + request.Path + "?" + GetQueryString(request);
                 if (request.Method == HttpMethod.Post)
                 {
-                    if (string.IsNullOrEmpty(request.File))
+                    if (request.UploadData == null || request.UploadData.Length==0)
                     {
                         var json = request.Body == null ? string.Empty : JsonConvert.SerializeObject(request.Body);// JsonSerializer.Serialize(request.Body);
                         return await _client.PostAsync(uri, new StringContent(json, Encoding.UTF8, request.ContentType));
@@ -82,16 +82,13 @@ namespace {{packageName}}.Client
                     //文件上传
                     string boundary = $"----WebKitFormBoundary{DateTime.Now.Ticks:x}";
                     MultipartFormDataContent content = new MultipartFormDataContent(boundary);
-                    if (!File.Exists(request.File))
+                    using (MemoryStream stream = new MemoryStream())
                     {
-                        throw new Exception($"路径不存在:{request.File}");
+                        stream.Write(request.UploadData, 0, request.UploadData.Length);
+                        content.Add(new StreamContent(stream, (int)stream.Length), "file");
+                        request.UploadData = null;
                     }
-
-                    using (FileStream fStream = File.Open(request.File, FileMode.Open, FileAccess.Read))
-                    {
-                        content.Add(new StreamContent(fStream, (int)fStream.Length), "file", Path.GetFileName(request.File));
-                        return await _client.PostAsync(uri, content);
-                    }
+                    return await _client.PostAsync(uri, content);
                     }
                 }
                 else if (request.Method == HttpMethod.Get)
