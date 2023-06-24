@@ -79,16 +79,16 @@ namespace {{packageName}}.Client
                     }
                     else
                     {
-                    //文件上传
-                    string boundary = $"----WebKitFormBoundary{DateTime.Now.Ticks:x}";
-                    MultipartFormDataContent content = new MultipartFormDataContent(boundary);
-                    using (MemoryStream stream = new MemoryStream())
-                    {
-                        stream.Write(request.UploadData, 0, request.UploadData.Length);
-                        content.Add(new StreamContent(stream, (int)stream.Length), "file");
-                        request.UploadData = null;
-                    }
-                    return await _client.PostAsync(uri, content);
+                        //文件上传
+                        string boundary = $"----WebKitFormBoundary{DateTime.Now.Ticks:x}";
+                        MultipartFormDataContent content = new MultipartFormDataContent(boundary);
+                        using (MemoryStream stream = new MemoryStream())
+                        {
+                            stream.Write(request.UploadData, 0, request.UploadData.Length);
+                            content.Add(new StreamContent(stream, (int)stream.Length), "file");
+                            request.UploadData = null;
+                            return await _client.PostAsync(uri, content);
+                        }
                     }
                 }
                 else if (request.Method == HttpMethod.Get)
