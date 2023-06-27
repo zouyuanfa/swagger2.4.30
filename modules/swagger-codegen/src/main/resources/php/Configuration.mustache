@@ -67,6 +67,27 @@ class Configuration
     protected $password = '';
 
     /**
+     * appid for header authentication
+     *
+     * @var string
+     */
+    protected $appid = '';
+
+    /**
+     * appsec for header authentication
+     *
+     * @var string
+     */
+    protected $appsec = '';
+
+    /**
+     * app_token for header authentication
+     *
+     * @var string
+     */
+    protected $app_token = '';
+
+    /**
      * The host
      *
      * @var string
@@ -228,6 +249,75 @@ class Configuration
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+    * Sets the appid
+    *
+    * @param string $appid
+    *
+    * @return $this
+    */
+    public function setAppID($appid)
+    {
+        $this->appid = $appid;
+        return $this;
+    }
+
+    /**
+    * Gets the appid
+    *
+    * @return string appid
+    */
+    public function getAppID()
+    {
+        return $this->appid;
+    }
+
+    /**
+    * Sets the appsec
+    *
+    * @param string $appsec
+    *
+    * @return $this
+    */
+    public function setAppSec($appsec)
+    {
+        $this->appsec = $appsec;
+        return $this;
+    }
+
+    /**
+    * Gets the appsec
+    *
+    * @return string appsec
+    */
+    public function getAppSec()
+    {
+        return $this->appsec;
+    }
+
+    /**
+    * Sets the app_token
+    *
+    * @param string $app_token
+    *
+    * @return $this
+    */
+    public function setAppToken($app_token)
+    {
+        $this->app_token = $app_token;
+        return $this;
+    }
+
+    /**
+    * Gets the app_token
+    *
+    * @return string app_token
+    */
+    public function getAppToken()
+    {
+        return $this->app_token;
     }
 
     /**

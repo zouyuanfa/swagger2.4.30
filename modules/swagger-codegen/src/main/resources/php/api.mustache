@@ -491,6 +491,35 @@ use {{invokerPackage}}\ObjectSerializer;
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        // 增加头部签名
+        $headers['Content-Type'] = 'application/json; charset=UTF-8';
+        //固定字符串
+        $headers['X-Api-SignHeaders'] = 'X-Api-TimeStamp,X-Api-Nonce';
+        $headers['X-Api-Auth-Version'] = '2.0';
+        $headers['X-Api-ClientID'] = $this->config->getAppID();
+        //当前时间戳
+        list($msec, $sec) = explode(' ', microtime());
+        $timestamp = (float)sprintf('%.0f', (floatval($msec) + floatval($sec)) * 1000);
+        //随机数
+        $nonce = rand(1000000, 9999999);
+        $headers['X-Api-TimeStamp'] = $timestamp;
+        $headers['X-Api-Nonce'] = $nonce;
+
+        //参数处理
+        $urlencode_params = '';
+        if (!empty($queryParams)) {
+            $values = array();
+            foreach ($queryParams as $key => $val) {
+                $values[] = rawurlencode(rawurlencode($key)) . "=" . rawurlencode(rawurlencode($val));
+            }
+            $urlencode_params = implode("&", $values);
+            unset($values);
+        }
+        $data = strtoupper({{httpMethod}}) . "\n" . urlencode($resourcePath) . "\n" . $urlencode_params . "\nx-api-nonce:" . $nonce . "\nx-api-timestamp:" . $timestamp . "\n";
+        //密钥
+        $seckey = $this->config->getAppSec();
+        $headers['X-Api-Signature'] = base64_encode(hash_hmac('sha256', $data, $seckey, false));
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
