@@ -1,0 +1,8 @@
+{
+  "developerName": "kingdee",
+  "developerOrganization": "open_jdy_com",
+  "invokerPackage": "com_kingdee_service",
+  "modelPackage": "com_kingdee_service\\data\\entity",
+  "apiPackage": "com_kingdee_service\\data\\api",
+  "artifactId": "kingdee-xw-openapi"
+}
