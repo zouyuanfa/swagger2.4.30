@@ -83,7 +83,7 @@ public class {{classname}} {
     {{#isDeprecated}}
     @Deprecated
     {{/isDeprecated}}
-    public okhttp3.Call {{operationId}}Call({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private okhttp3.Call {{operationId}}Call({{#allParams}}{{{dataType}}} {{paramName}}, {{/allParams}}final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object {{localVariablePrefix}}localVarPostBody = {{#bodyParam}}{{paramName}}{{/bodyParam}}{{^bodyParam}}null{{/bodyParam}};
 
         // create path and map variables
@@ -104,17 +104,19 @@ public class {{classname}} {
         {{localVariablePrefix}}localVarFormParams.put("{{baseName}}", {{paramName}});{{/formParams}}
 
         {{#isCustomizeGet}}
-                JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(body));
-                Set<Map.Entry<String, Object>> entries = jsonObject.entrySet();
-                for (Map.Entry<String, Object> entry : entries) {
-                    if(entry.getValue() != null){
-                        if(entry.getValue() instanceof JSONArray){
-                            localVarQueryParams.addAll(apiClient.parameterToPairs("multi",entry.getKey(), Arrays.asList(((JSONArray) entry.getValue()).toArray())));
-                        }else{
-                            localVarQueryParams.addAll(apiClient.parameterToPair(entry.getKey(), entry.getValue()));
-                        }
+        JSONObject jsonObject = JSONObject.parseObject(JSONObject.toJSONString(body));
+        if(jsonObject != null){
+            Set<Map.Entry<String, Object>> entries = jsonObject.entrySet();
+            for (Map.Entry<String, Object> entry : entries) {
+                if(entry.getValue() != null){
+                    if(entry.getValue() instanceof JSONArray){
+                        localVarQueryParams.addAll(apiClient.parameterToPairs("multi",entry.getKey(), Arrays.asList(((JSONArray) entry.getValue()).toArray())));
+                    }else{
+                        localVarQueryParams.addAll(apiClient.parameterToPair(entry.getKey(), entry.getValue()));
                     }
                 }
+            }
+        }
         {{/isCustomizeGet}}
 
         final String[] {{localVariablePrefix}}localVarAccepts = {
@@ -228,7 +230,7 @@ public class {{classname}} {
     {{#isDeprecated}}
     @Deprecated
     {{/isDeprecated}}
-    public ApiResponse<KingdeeResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}>> {{operationId}}WithHttpInfo({{#allParams}}{{#useBeanValidation}}{{>beanValidationQueryParams}}{{/useBeanValidation}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}) throws ApiException {
+    private ApiResponse<KingdeeResponse<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}Void{{/returnType}}>> {{operationId}}WithHttpInfo({{#allParams}}{{#useBeanValidation}}{{>beanValidationQueryParams}}{{/useBeanValidation}}{{{dataType}}} {{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}}) throws ApiException {
         okhttp3.Call {{localVariablePrefix}}call = {{operationId}}ValidateBeforeCall({{#allParams}}{{paramName}}, {{/allParams}}null, null);
         {{#returnType}}Type {{localVariablePrefix}}localVarReturnType = new TypeReference<KingdeeResponse<{{{returnType}}}>>(){}.getType();
         return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call, {{localVariablePrefix}}localVarReturnType);{{/returnType}}{{^returnType}}return {{localVariablePrefix}}apiClient.execute({{localVariablePrefix}}call);{{/returnType}}

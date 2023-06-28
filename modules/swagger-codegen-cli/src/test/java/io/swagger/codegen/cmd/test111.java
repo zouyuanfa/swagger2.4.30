@@ -16,6 +16,6 @@ public class test111 {
 
         AsterSwaggerCodegen asterSwaggerCodegen = new AsterSwaggerCodegen();
         System.out.println(System.getProperty("user.dir"));
-        asterSwaggerCodegen.Codegen("src/main/resources/aster.swagger.json");
+        asterSwaggerCodegen.Codegen("src/main/resources/old.aster.swagger.json");
     }
 }

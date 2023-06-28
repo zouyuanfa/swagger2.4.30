@@ -1,0 +1,143 @@
+{
+  "swagger":"2.0",
+  "info":{
+    "title":"星辰",
+    "version":"version not set"
+  },
+  "tags":[
+  ],
+  "consumes":[
+    "application/json"
+  ],
+  "produces":[
+    "application/json"
+  ],
+  "paths":{
+    "/jdyconnector/app_management/kingdee_auth_token": {
+      "get": {
+        "tags": [
+          "获取AppToken"
+        ],
+        "summary": "AsterAppToken",
+        "operationId": "AsterAppToken",
+        "parameters": [
+          {
+            "name": "app_key",
+            "in": "query",
+            "description": "app_key",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "app_signature",
+            "in": "query",
+            "description": "app_signature",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uid",
+            "in": "query",
+            "description": "uid",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AsterAppTokenRes"
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/jdyconnector/app_management/push_app_authorize": {
+      "post": {
+        "tags": [
+          "获取Authorize信息"
+        ],
+        "summary": "AsterAuthorize",
+        "operationId": "AsterAuthorize",
+        "parameters": [
+          {
+            "name": "outerInstanceId",
+            "in": "query",
+            "description": "outerInstanceId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AsterAuthorizeRes"
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions":{
+    "AsterAppTokenRes": {
+      "type": "object",
+      "properties": {
+        "app-token": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "AsterAppTokenRes"
+    },
+    "AsterAuthorizeRes": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "accountName": {
+          "type": "string"
+        },
+        "agreementCompanyName": {
+          "type": "string"
+        },
+        "appKey": {
+          "type": "string"
+        },
+        "appSecret": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "groupName": {
+          "type": "string"
+        },
+        "outerInstanceId": {
+          "type": "string"
+        },
+        "serviceId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "AsterAuthorizeRes"
+    }
+  }
+}
