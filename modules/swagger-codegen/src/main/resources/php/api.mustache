@@ -99,7 +99,7 @@ use {{invokerPackage}}\ObjectSerializer;
      */
     public function {{operationId}}({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
-        {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{#returnType}}
+        {{#returnType}}$response = {{/returnType}}$this->{{operationId}}WithHttpInfo({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{#returnType}}
         return $response;{{/returnType}}
     }
 
@@ -166,14 +166,10 @@ use {{invokerPackage}}\ObjectSerializer;
                 }
             }
 
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return $content;
             {{/returnType}}
             {{^returnType}}
-            return [null, $statusCode, $response->getHeaders()];
+            return null;
             {{/returnType}}
 
         } catch (ApiException $e) {
@@ -257,14 +253,10 @@ use {{invokerPackage}}\ObjectSerializer;
                         }
                     }
 
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return $content;
                     {{/returnType}}
                     {{^returnType}}
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    return null;
                 {{/returnType}}
                 },
                 function ($exception) {
@@ -515,10 +507,11 @@ use {{invokerPackage}}\ObjectSerializer;
             $urlencode_params = implode("&", $values);
             unset($values);
         }
-        $data = strtoupper({{httpMethod}}) . "\n" . urlencode($resourcePath) . "\n" . $urlencode_params . "\nx-api-nonce:" . $nonce . "\nx-api-timestamp:" . $timestamp . "\n";
+        $data = strtoupper('{{httpMethod}}') . "\n" . urlencode($resourcePath) . "\n" . $urlencode_params . "\nx-api-nonce:" . $nonce . "\nx-api-timestamp:" . $timestamp . "\n";
         //密钥
         $seckey = $this->config->getAppSec();
         $headers['X-Api-Signature'] = base64_encode(hash_hmac('sha256', $data, $seckey, false));
+        $headers['app-token'] = $this->config->getAppToken();
 
         $headers = array_merge(
             $defaultHeaders,
