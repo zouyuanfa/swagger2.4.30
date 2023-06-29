@@ -120,7 +120,7 @@ use {{invokerPackage}}\ObjectSerializer;
      *
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return mixed of {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}null{{/returnType}}, HTTP status code, HTTP response headers (array of strings)
+     * @return string
      */
     public function {{operationId}}WithHttpInfo({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
