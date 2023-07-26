@@ -208,6 +208,7 @@ namespace {{packageName}}.{{apiPackage}}
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
+
             Object localVarPostBody = null;
 
             // to determine the Content-Type header
@@ -308,8 +309,14 @@ namespace {{packageName}}.{{apiPackage}}
                 null);
             {{/returnType}}
                 */
+             {{#bodyParam}}
+             if (Method.{{httpMethod}} == Method.GET && nameof({{operationId}}WithHttpInfo).Contains("List"))
+             {
+                 localVarQueryParams = ApiClient.ObjectToParamaters({{paramName}});
+             }
+             {{/bodyParam}}
              var restResponse = this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.{{httpMethod}}, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
                 ClientResponse<{{{returnType}}}> clientReponse = JsonConvert.DeserializeObject<ClientResponse<{{{returnType}}}>>(restResponse.ToString());
@@ -317,7 +324,7 @@ namespace {{packageName}}.{{apiPackage}}
 
                 if (localVarStatusCode != 0)
                 {
-                    Exception exception = ExceptionFactory("AccountList", new RestResponse() { ErrorMessage=clientReponse.Description });
+                    Exception exception = ExceptionFactory("{{operationId}}", new RestResponse() { ErrorMessage=clientReponse.Description });
                     if (exception != null) throw exception;
                 }
 
@@ -436,6 +443,12 @@ namespace {{packageName}}.{{apiPackage}}
             {{/authMethods}}
 
             // make the HTTP request
+             {{#bodyParam}}
+            if (Method.{{httpMethod}} == Method.GET && nameof({{operationId}}WithHttpInfo).Contains("List"))
+             {
+                 localVarQueryParams = ApiClient.ObjectToParamaters({{paramName}});
+             }
+             {{/bodyParam}}
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.{{httpMethod}}, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
