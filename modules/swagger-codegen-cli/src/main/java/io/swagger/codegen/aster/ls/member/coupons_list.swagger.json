@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/coupons": {
       "get": {
-        "summary": "会员优惠券查询;会员优惠券查询;1.0.6",
+        "summary": "会员优惠券查询;会员优惠券查询;1.0.8",
         "operationId": "CouponsList_list",
         "responses": {
           "200": {
@@ -75,7 +75,7 @@
             "description": "a=true 获取有效期内的 false 获取有效期外的;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "cashier_id",
@@ -93,14 +93,14 @@
           },
           {
             "name": "start_time",
-            "description": "a=更新时间范围起始;c=2022-05-01;d=false.",
+            "description": "a=开始时间的时间戳(毫秒);b=13;c=1534567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_time",
-            "description": "a=更新时间范围结束;c=2022-05-01;d=false.",
+            "description": "a=结束时间的时间戳(毫秒);b=13;c=1534567990123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"

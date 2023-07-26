@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/bd/customer": {
       "get": {
-        "summary": "客户列表;获取客户列表;1.0.7",
+        "summary": "客户列表;获取客户列表;1.0.9",
         "operationId": "Customer_customerList",
         "responses": {
           "200": {
@@ -161,7 +161,7 @@
           },
           {
             "name": "order_by",
-            "description": "a=排序；编码升序：number asc（默认），编码降序：number desc，名称升序：name asc，名称降序：name desc;c=name desc;d=false.",
+            "description": "影响性能，不生成对外API文档:排序.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -171,49 +171,49 @@
             "description": "a=是否添加数据权限校验，默认false;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_debt",
             "description": "a=是否显示客户欠款;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_trace_info",
             "description": "a=是否显示最近一条跟进记录;b=2147483647;c=001;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_un_visit_days",
             "description": "a=是否显示未拜访天数；默认false-不显示;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_business_time",
             "description": "a=是否显示最近交易时间；默认false-不显示;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_alarm",
             "description": "a=是否显示客户预警信息；默认false-不显示;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_contact_detail",
             "description": "a=是否显示客户联系人信息；默认false-不显示;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           }
         ],
         "tags": [
@@ -221,7 +221,7 @@
         ]
       },
       "post": {
-        "summary": "客户保存;客户新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.9",
+        "summary": "客户保存;客户新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.15",
         "operationId": "Customer_customerSave",
         "responses": {
           "200": {
@@ -254,7 +254,7 @@
     },
     "/openapi/v2/bd/customer_detail": {
       "get": {
-        "summary": "客户详情;获取客户详情;1.0.9",
+        "summary": "客户详情;获取客户详情;1.0.15",
         "operationId": "Customer_customerDetail",
         "responses": {
           "200": {
@@ -273,7 +273,7 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id;b=2147483647;c=1;d=true.",
+            "description": "a=number与id字段二选一;b=2147483647;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -290,28 +290,28 @@
             "description": "a=是否查询周期信息，true-查询，false-不查询；默认为：false;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_un_visit_days",
             "description": "a=是否显示未拜访天数；默认false-不显示;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_business_time",
             "description": "a=是否查询客户最近交易时间，true-查询，false-不查询；默认为：false;b=1;c=1;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_debt",
             "description": "a=是否查询客户欠款，true-查询，false-不查询；默认为：false;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           }
         ],
         "tags": [
@@ -337,11 +337,11 @@
       "properties": {
         "birthday": {
           "type": "string",
-          "title": "a=生日;b=10;c=2020-03-23;d=false"
+          "title": "a=生日 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=10;c=2020-03-23;d=false"
         },
         "qq": {
           "type": "string",
-          "title": "a=QQ;b=10;c=345991905;d=false"
+          "title": "a=QQ [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=10;c=345991905;d=false"
         },
         "contact_person": {
           "type": "string",
@@ -405,15 +405,15 @@
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机;b=11;c=13005443543;d=false"
+          "title": "a=手机 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=11;c=13005443543;d=false"
         },
         "wechat": {
           "type": "string",
-          "title": "a=微信;b=20;c=text;d=false"
+          "title": "a=微信 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=20;c=text;d=false"
         },
         "phone": {
           "type": "string",
-          "title": "a=座机;b=20;c=25776639;d=false"
+          "title": "a=座机 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=20;c=25776639;d=false"
         },
         "is_default_linkman": {
           "type": "boolean",
@@ -425,7 +425,7 @@
         },
         "contact_address": {
           "type": "string",
-          "title": "a=地址;b=1000;c=大门;d=false"
+          "title": "a=地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=1000;c=大门;d=false"
         },
         "seq": {
           "type": "string",
@@ -433,7 +433,7 @@
         },
         "email": {
           "type": "string",
-          "title": "a=邮箱;b=50;c=xxx@qq.com;d=false"
+          "title": "a=邮箱 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=50;c=xxx@qq.com;d=false"
         }
       }
     },
@@ -520,7 +520,7 @@
         },
         "bank_account": {
           "type": "string",
-          "title": "a=银行账号;b=40;c=001;d=false"
+          "title": "a=银行账号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=40;c=001;d=false"
         },
         "bank": {
           "type": "string",
@@ -635,7 +635,7 @@
         },
         "addr": {
           "type": "string",
-          "title": "a=详细地址;b=1000;c=测试地址;d=false"
+          "title": "a=详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=1000;c=测试地址;d=false"
         },
         "group_id": {
           "type": "string",
@@ -679,6 +679,23 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "setting_term_id": {
+          "type": "string",
+          "title": "a=结算期限id;c=0009;d=false"
+        },
+        "setting_term_number": {
+          "type": "string",
+          "title": "a=结算期限编码;c=0009;d=false"
+        },
+        "setting_term_name": {
+          "type": "string",
+          "title": "a=结算期限;c=0009;d=false"
+        },
+        "credit_limit": {
+          "type": "number",
+          "format": "double",
+          "title": "a=信用额度;c=500.000;d=false"
         }
       }
     },
@@ -761,15 +778,15 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id（修改客户时与number选一必填）;b=2147483647;c=1;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=编码,不传递则由后台生成（不设置有编码规则和更新时必传）;b=30;c=001;d=false"
+          "title": "a=编码,不传递则由后台生成（不设置有编码规则和更新时必传）;b=30;c=001;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=001;d=false"
+          "title": "a=名称;b=20;c=001;d=true"
         },
         "group_id": {
           "type": "string",
@@ -876,6 +893,14 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "setting_term_id": {
+          "type": "string",
+          "title": "a=结算期限id;c=0009;d=false"
+        },
+        "setting_term_number": {
+          "type": "string",
+          "title": "a=结算期限编码;c=0009;d=false"
         }
       }
     },

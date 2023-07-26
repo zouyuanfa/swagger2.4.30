@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/sal_quota": {
       "get": {
-        "summary": "销售报价单列表;销售报价单列表;1.0.2",
+        "summary": "销售报价单列表;销售报价单列表;1.0.6",
         "operationId": "SalQuotaOrder_list",
         "responses": {
           "200": {
@@ -154,7 +154,7 @@
           },
           {
             "name": "search",
-            "description": "a=模糊搜索，支持客户名称、职员名称、商品名称、单据编码、商品条码;c=1234567890123;.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -196,13 +196,6 @@
             "type": "string"
           },
           {
-            "name": "order_by",
-            "description": "a=排序；编码升序：number asc（默认），编码降序：number desc，名称升序：name asc，名称降序：name desc;c=.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "top",
             "description": "a=截取单据前top个商品数据返回;c=.",
             "in": "query",
@@ -215,18 +208,74 @@
             "description": "a=是否统计商品种类和数量到单据，默认false;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "show_only_push_move",
             "description": "a=是否仅返回符合下推移仓单的数据(未关闭，未执行或部分执行)，默认false;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "barcode",
             "description": "a=商品条码;c=1;.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_number",
+            "description": "a=客户编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_name",
+            "description": "a=客户名称;c=客户名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "emp_number",
+            "description": "a=业务员编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "dept_number",
+            "description": "a=部门编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_number",
+            "description": "a=商品编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_model",
+            "description": "a=商品规格型号;c=001.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -237,7 +286,7 @@
         ]
       },
       "post": {
-        "summary": "销售报价单保存;销售报价单保存;1.0.3",
+        "summary": "销售报价单保存;销售报价单保存;1.0.11",
         "operationId": "SalQuotaOrder_save",
         "responses": {
           "200": {
@@ -270,7 +319,7 @@
     },
     "/openapi/v2/scm/sal_quota_detail": {
       "get": {
-        "summary": "销售报价单详情;销售报价单详情;1.0.2",
+        "summary": "销售报价单详情;销售报价单详情;1.0.8",
         "operationId": "SalQuotaOrder_detail",
         "responses": {
           "200": {
@@ -289,14 +338,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -333,7 +382,7 @@
         },
         "contact_phone": {
           "type": "string",
-          "title": "a=客户联系电话;c=13322112211"
+          "title": "a=客户联系电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13322112211"
         },
         "contact_country_id": {
           "type": "string",
@@ -393,7 +442,7 @@
         },
         "contact_address": {
           "type": "string",
-          "title": "a=联系地址;c=1"
+          "title": "a=联系地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=1"
         },
         "dispatcher_country_id": {
           "type": "string",
@@ -445,7 +494,7 @@
         },
         "dispatcher_address": {
           "type": "string",
-          "title": "a=发货详细地址;c="
+          "title": "a=发货详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c="
         },
         "dispatcher_linkman": {
           "type": "string",
@@ -453,7 +502,7 @@
         },
         "dispatcher_phone": {
           "type": "string",
-          "title": "a=发货联系电话;c=13222445566"
+          "title": "a=发货联系电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13222445566"
         },
         "recevice_delivery": {
           "type": "string",
@@ -499,7 +548,7 @@
         "f_logistics_id": {
           "type": "number",
           "format": "double",
-          "title": "a=物流公司内码;c=12"
+          "title": "a=物流公司id;c=12"
         },
         "cost_fee": {
           "type": "number",
@@ -667,6 +716,10 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
         }
       }
     },
@@ -1125,9 +1178,9 @@
           "format": "int32",
           "title": "a=保质期天数;c=200"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=6060"
+          "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",
@@ -1195,6 +1248,11 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本数量;c=22;"
         }
       }
     },
@@ -1337,7 +1395,7 @@
         },
         "id": {
           "type": "string",
-          "title": "a=单据ID，修改单据时必填;c=1"
+          "title": "a=单据ID，新增不填，更新时必填（id为空时代表新增单据），修改单据时必填;c=1"
         },
         "name": {
           "type": "string",
@@ -1484,7 +1542,7 @@
           "items": {
             "$ref": "#/definitions/SalQuotaSaveReq.MaterialEntity"
           },
-          "title": "a=商品分录;c=[]"
+          "title": "a=商品分录;c=[];d=true"
         },
         "attachments_url": {
           "type": "array",
@@ -1530,6 +1588,10 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
         }
       }
     },
@@ -1538,7 +1600,7 @@
       "properties": {
         "url": {
           "type": "string",
-          "title": "a=附件地址;c=http://a=a=172.17.6.188:8080/ierp/attachment/preview.do?path=/%2Fjdyattachmentimage%2F1000105%2Ftf-188%2F1000105%2F202008%2Fsal%2Fsal_competing_reported%2F967850832403903488%2Fattachments%2F140744107516493824%2Fimage.png"
+          "title": "a=附件地址;c=https://xxx.png"
         }
       }
     },
@@ -1665,7 +1727,7 @@
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品;c=741945988993837056"
+          "title": "a=商品;c=741945988993837056;d=true"
         },
         "material_number": {
           "type": "string",
@@ -1682,16 +1744,16 @@
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=数量;c=1"
+          "title": "a=数量;c=1;d=true"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=单位;c=1"
+          "title": "a=单位;c=1;d=true"
         },
         "price": {
           "type": "number",
           "format": "double",
-          "title": "a=单价;c=50"
+          "title": "a=单价;c=50;d=true"
         },
         "tax_price": {
           "type": "number",
@@ -1741,7 +1803,7 @@
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性；辅助属性商品必填;c=1"
+          "title": "a=辅助属性(辅助属性商品必填);c=1;d=true"
         },
         "delivery_date": {
           "type": "string",
@@ -1757,6 +1819,14 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "is_free": {
+          "type": "boolean",
+          "title": "a=是否赠品;c=true"
+        },
+        "pro_license": {
+          "type": "string",
+          "title": "a=生产许可证号;c=111201"
         }
       }
     },

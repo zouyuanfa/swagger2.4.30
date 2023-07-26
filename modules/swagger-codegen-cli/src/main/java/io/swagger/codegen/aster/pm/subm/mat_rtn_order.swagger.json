@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/pm/mat_order_ret": {
       "get": {
-        "summary": "委外退料单列表;委外退料单列表;1.0.6",
+        "summary": "委外退料单列表;委外退料单列表;1.0.10",
         "operationId": "MatRtnOrder_list",
         "responses": {
           "200": {
@@ -72,16 +72,14 @@
             "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），创建时间;c=1660026408425.",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "end_time",
             "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），创建时间;c=1660026408425.",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "search",
@@ -105,6 +103,34 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "begin_time",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1660026408425.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_time",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1660026408425.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "begin_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -114,7 +140,7 @@
     },
     "/openapi/v2/pm/mat_order_ret_detail": {
       "get": {
-        "summary": "委外退料单详情;委外退料单详情;1.0.7",
+        "summary": "委外退料单详情;委外退料单详情;1.0.9",
         "operationId": "MatRtnOrder_detail",
         "responses": {
           "200": {
@@ -133,14 +159,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -558,9 +584,9 @@
           "format": "int32",
           "title": "a=保质期;c=200"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=6060"
+          "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",

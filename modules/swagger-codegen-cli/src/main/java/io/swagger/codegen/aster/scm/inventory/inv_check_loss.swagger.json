@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/inv_check_loss_bill": {
       "get": {
-        "summary": "盘亏单列表;盘亏单列表;1.0.7",
+        "summary": "盘亏单列表;盘亏单列表;1.0.9",
         "operationId": "InventoryCheckLoss_invCheckLossBillList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -104,6 +104,20 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -111,7 +125,7 @@
         ]
       },
       "post": {
-        "summary": "盘亏单保存;盘亏单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.11",
+        "summary": "盘亏单保存;盘亏单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.14",
         "operationId": "InventoryCheckLoss_invCheckLossBillSave",
         "responses": {
           "200": {
@@ -144,7 +158,7 @@
     },
     "/openapi/v2/scm/inv_check_loss_bill_detail": {
       "get": {
-        "summary": "盘亏单详情;盘亏单详情;1.0.8",
+        "summary": "盘亏单详情;盘亏单详情;1.0.13",
         "operationId": "InventoryCheckLoss_invCheckLossBillDetail",
         "responses": {
           "200": {
@@ -163,14 +177,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -275,7 +289,7 @@
         },
         "voucher_id": {
           "type": "string",
-          "title": "a=凭证内码;c=0"
+          "title": "a=凭证ID;c=0"
         },
         "material_entity": {
           "type": "array",
@@ -290,6 +304,18 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门id;c=001"
+        },
+        "dept_number": {
+          "type": "string",
+          "title": "a=部门编码;c=001"
+        },
+        "dept_name": {
+          "type": "string",
+          "title": "a=部门详情;c=001"
         }
       }
     },
@@ -458,9 +484,9 @@
           "format": "int32",
           "title": "a=保质期天数;c=180"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=333"
+          "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",
@@ -710,7 +736,7 @@
         },
         "id": {
           "type": "string",
-          "title": "a=单据ID，修改单据时必填，新增不传该字段;c=1"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;c=1"
         },
         "remark": {
           "type": "string",
@@ -733,6 +759,10 @@
         "operation_key": {
           "type": "string",
           "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=001;d=false"
         }
       }
     },
@@ -802,7 +832,7 @@
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期;c=2022-08-08"
+          "title": "a=生产日期（保质期商品必填，示例：2022-01-12）;c=2022-08-08"
         },
         "valid_date": {
           "type": "string",
@@ -810,16 +840,16 @@
         },
         "kf_type": {
           "type": "string",
-          "title": "a=保质期类型，1：天，2：月，3：年;c=1"
+          "title": "a=保质期类型：1/天，2/月，3/年（保质期商品必填）;c=1"
         },
         "kf_period": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期天数;c=180"
+          "title": "a=保质期天数（保质期商品必填）;c=180"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=123213"
+          "title": "a=序列号（序列号商品必填,多个序列号以英文\";\"字符分隔，格式如：\"001:备注1;002:备注2\"）;c=001"
         },
         "sn_list_id": {
           "type": "string",

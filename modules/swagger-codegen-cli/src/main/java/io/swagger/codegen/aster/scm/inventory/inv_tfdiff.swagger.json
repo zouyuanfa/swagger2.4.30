@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/inv_tfdiff": {
       "get": {
-        "summary": "调拨差异单列表;调拨差异单列表;1.0.6",
+        "summary": "调拨差异单列表;调拨差异单列表;1.0.10",
         "operationId": "InvTf_invTfDiffList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -137,6 +137,13 @@
           {
             "name": "transfer_status",
             "description": "a=调拨状态，0：未出库，1：未入库，2：部分入库，3：全部入库;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "top",
+            "description": "固定值字段，不生成对外API文档.",
             "in": "query",
             "required": false,
             "type": "string"

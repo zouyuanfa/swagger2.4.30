@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/sa_item": {
       "get": {
-        "summary": "工资项目列表;获取工资项目列表;1.0.2",
+        "summary": "工资项目列表;获取工资项目列表;1.0.3",
         "operationId": "salaryItems_salaryItemsList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊查询条件;b=20;c=名称;d=true.",
+            "description": "a=模糊查询条件;b=20;c=名称;d=false.",
             "in": "query",
             "required": false,
             "type": "string"

@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/mall_recharge": {
       "post": {
-        "summary": "会员充值;会员充值;1.0.7",
+        "summary": "会员充值;会员充值;1.0.8",
         "operationId": "MallRecharge_list",
         "responses": {
           "200": {
@@ -106,7 +106,8 @@
           "title": "a=来源 ISV都填写9;c=9;d=true"
         },
         "client_id": {
-          "type": "string"
+          "type": "string",
+          "title": "隐藏字段，不需要展示，星辰校验需要"
         }
       }
     },

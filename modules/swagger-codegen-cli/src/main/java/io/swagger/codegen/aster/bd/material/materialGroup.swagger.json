@@ -18,8 +18,8 @@
   "paths": {
     "/openapi/v2/bd/material_group": {
       "get": {
-        "summary": "商品分类列表;商品分类列表;1.0.8",
-        "operationId": "MaterialGroup_groupDetail",
+        "summary": "商品分类列表;商品分类列表;1.0.15",
+        "operationId": "MaterialGroup_groupList",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -36,15 +36,8 @@
         },
         "parameters": [
           {
-            "name": "enable",
-            "description": "a=可用状态，1：可用，0：禁用;b=1;c=1;d=false.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "search",
-            "description": "模糊搜索-名称;b=200;c=名称;d=false.",
+            "description": "a=模糊搜索-名称;b=200;c=名称;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -59,6 +52,41 @@
               "type": "string"
             },
             "collectionFormat": "multi"
+          },
+          {
+            "name": "create_start_time",
+            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "create_end_time",
+            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_start_time",
+            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "modify_end_time",
+            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "default_select_fields",
+            "description": "固定值字段，不生成对外API文档.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           },
           {
             "name": "page",
@@ -80,7 +108,7 @@
         ]
       },
       "post": {
-        "summary": "商品分类保存;商品分类新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.7",
+        "summary": "商品分类保存;商品分类新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.10",
         "operationId": "MaterialGroup_groupSave",
         "responses": {
           "200": {
@@ -113,8 +141,8 @@
     },
     "/openapi/v2/bd/material_group_detail": {
       "get": {
-        "summary": "商品分类详情;商品分类详情;1.0.6",
-        "operationId": "MaterialGroup_groupList",
+        "summary": "商品分类详情;商品分类详情;1.0.9",
+        "operationId": "MaterialGroup_groupDetail",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -132,14 +160,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -276,6 +304,14 @@
         "is_leaf": {
           "type": "boolean",
           "title": "a=是否叶子节点;b=1;c=true;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-10 16:36:24"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;c=2022-07-01 13:41:28"
         }
       }
     },
@@ -284,15 +320,15 @@
       "properties": {
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=编码;b=30;c=001;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=零食;d=false"
+          "title": "a=名称;b=20;c=零食;d=true"
         },
         "id": {
           "type": "string",
-          "title": "a=id;b=2147483647;c=1;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
         },
         "parent_id": {
           "type": "string",
@@ -305,6 +341,10 @@
         "description": {
           "type": "string",
           "title": "a=描述;b=100;c=描述;d=false"
+        },
+        "ignore_warn": {
+          "type": "boolean",
+          "title": "a=是否忽略告警信息(如：名称：” 值 “12345” 已存在，请输入其他值。)分类保存;b=1;c=false;d=false"
         }
       },
       "title": "商品类别保存请求参数"

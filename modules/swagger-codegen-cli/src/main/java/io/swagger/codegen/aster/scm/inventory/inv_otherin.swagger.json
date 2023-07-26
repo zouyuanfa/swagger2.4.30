@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/inv_other_in": {
       "get": {
-        "summary": "其他入库单列表;其他入库单列表;1.0.8",
+        "summary": "其他入库单列表;其他入库单列表;1.0.10",
         "operationId": "OtherIn_otherInList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -137,6 +137,55 @@
               "type": "string"
             },
             "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_number",
+            "description": "a=客户编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_name",
+            "description": "a=客户名称;c=客户名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "dept_number",
+            "description": "a=部门编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_number",
+            "description": "a=商品编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_model",
+            "description": "a=商品规格型号;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -144,7 +193,7 @@
         ]
       },
       "post": {
-        "summary": "其他入库单保存;其他入库单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.12",
+        "summary": "其他入库单保存;其他入库单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.17",
         "operationId": "OtherIn_otherInSave",
         "responses": {
           "200": {
@@ -177,7 +226,7 @@
     },
     "/openapi/v2/scm/inv_other_in_detail": {
       "get": {
-        "summary": "其他入库单详情;其他入库单详情;1.0.10",
+        "summary": "其他入库单详情;其他入库单详情;1.0.14",
         "operationId": "OtherIn_otherInDetail",
         "responses": {
           "200": {
@@ -196,14 +245,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -360,7 +409,7 @@
         },
         "contact_phone": {
           "type": "string",
-          "title": "a=联系电话;c=13322112211"
+          "title": "a=联系电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13322112211"
         },
         "contact_city": {
           "type": "string",
@@ -416,7 +465,7 @@
         },
         "contact_address": {
           "type": "string",
-          "title": "a=具体地址;c=xxxxxxxx"
+          "title": "a=具体地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=xxxxxxxx"
         },
         "material_entity": {
           "type": "array",
@@ -599,9 +648,9 @@
           "format": "int32",
           "title": "a=保质期天数;c=180"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=2020"
+          "title": "a=序列号 格式：001:备注1（序列号:序列号备注,多个序列号以英文分号字符分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",
@@ -780,7 +829,7 @@
           "items": {
             "$ref": "#/definitions/OtherInListRes.Row"
           },
-          "title": "返回数据列表;c=[]"
+          "title": "a=返回数据列表;c=[]"
         }
       }
     },
@@ -863,7 +912,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据ID，修改单据时必填，新增不传该字段"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）"
         },
         "bill_date": {
           "type": "string",
@@ -956,11 +1005,11 @@
         "aux_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助数量;c=0;d=true"
+          "title": "a=辅助数量（多单位商品，需要使用辅助单位时必填）;c=0;d=false"
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位id;c=1;d=true"
+          "title": "a=辅助单位（多单位商品，需要使用辅助单位时必填）;c=1;d=false"
         },
         "aux_prop_id": {
           "type": "string",
@@ -1000,7 +1049,7 @@
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期;c=2022-08-08"
+          "title": "a=生产日期（保质期商品必填，示例：2022-01-12）;c=2022-08-08"
         },
         "valid_date": {
           "type": "string",
@@ -1008,16 +1057,16 @@
         },
         "kf_type": {
           "type": "string",
-          "title": "a=保质期类型，1：天，2：月，3：年;c=1"
+          "title": "a=保质期类型：1/天，2/月，3/年（保质期商品必填）;c=1"
         },
         "kf_period": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期天数;c=30"
+          "title": "a=保质期天数（保质期商品必填）;c=30"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=22"
+          "title": "a=序列号 格式：001:备注1（序列号:序列号备注,多个序列号以英文分号字符分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",

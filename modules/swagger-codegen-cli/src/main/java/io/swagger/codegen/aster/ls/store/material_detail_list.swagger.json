@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/material": {
       "get": {
-        "summary": "门店商品列表;门店商品列表;1.0.6",
+        "summary": "门店商品列表;门店商品列表;1.0.9",
         "operationId": "MaterialDetailList_list",
         "responses": {
           "200": {
@@ -74,7 +74,7 @@
           },
           {
             "name": "is_flatten",
-            "description": "a=是否简化返回格式，默认false(历史原因)，为true时，返回格式会简化，建议填true，具体看文档底部说明;c=true;d=true.",
+            "description": "固定值字段，不生成对外API文档-是否简化返回格式，默认false(历史原因)，为true时，返回格式会简化，建议填true，具体看文档底部说明.",
             "in": "query",
             "required": false,
             "type": "boolean"
@@ -84,21 +84,21 @@
             "description": "a=是否查询关联库存，默认为true，当true时，门店ID必填;c=false;d=true.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "fetch_price",
             "description": "a=是否查询关联价格，默认为true，当true时，门店ID必填;c=1333333333;d=true.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "fetch_on_shelf",
             "description": "a=是否查询关联上架状态，默认为true，当true时，门店ID必填;c=1333333333;d=true.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "check_type",

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "基础资料;商品资料;商品标签",
+    "title": "基础资料;商品资料;标签中心",
     "version": "version not set"
   },
   "tags": [
@@ -108,7 +108,7 @@
         ]
       },
       "post": {
-        "summary": "商品标签保存;商品信息分类新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.7",
+        "summary": "商品标签保存;商品信息分类新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
         "operationId": "MaterialLabel_labelSave",
         "responses": {
           "200": {
@@ -228,23 +228,15 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id;b=2147483647;c=1;d=false"
-        },
-        "number": {
-          "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=品牌;d=false"
+          "title": "a=名称;b=20;c=品牌;d=true"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=上级id;b=2147483647;c=1;d=false"
-        },
-        "description": {
-          "type": "string",
-          "title": "a=备注;b=100;c=备注;d=false"
+          "title": "a=上级id;b=2147483647;c=1;d=true"
         }
       },
       "title": "商品标签保存请求参数"

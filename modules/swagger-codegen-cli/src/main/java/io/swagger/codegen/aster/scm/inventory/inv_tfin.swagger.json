@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/inv_tfin": {
       "get": {
-        "summary": "调拨入库单列表;调拨入库单列表;1.0.6",
+        "summary": "调拨入库单列表;调拨入库单列表;1.0.8",
         "operationId": "InvTfIn_invTfInList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -104,6 +104,48 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_number",
+            "description": "a=商品编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_model",
+            "description": "a=商品规格型号;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "in_stock_number",
+            "description": "a=调入仓库编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "out_stock_number",
+            "description": "a=调出仓库编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -111,7 +153,7 @@
         ]
       },
       "post": {
-        "summary": "调拨入库单保存;调拨入库单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.12",
+        "summary": "调拨入库单保存;调拨入库单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.24",
         "operationId": "InvTfIn_invTfInSave",
         "responses": {
           "200": {
@@ -144,7 +186,7 @@
     },
     "/openapi/v2/scm/inv_tfin_detail": {
       "get": {
-        "summary": "调拨入库单详情;调拨入库单详情;1.0.8",
+        "summary": "调拨入库单详情;调拨入库单详情;1.0.23",
         "operationId": "InvTfIn_invTfInDetail",
         "responses": {
           "200": {
@@ -163,14 +205,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -310,6 +352,119 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "allocate_rule": {
+          "type": "string",
+          "title": "a=费用分摊规则；1: 按价税合计分摊（默认）； 2:按数量分摊;c=1"
+        },
+        "cost_fee_entity": {
+          "$ref": "#/definitions/InvTfInDetailRes.CostFeeEntity",
+          "title": "a=异价调拨的费用明细(当为异价调拨时);c=Object"
+        }
+      }
+    },
+    "InvTfInDetailRes.CostFeeEntity": {
+      "type": "object",
+      "properties": {
+        "fee_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvTfInDetailRes.CostFeeEntity.FeeRecords"
+          },
+          "title": "a=费用分录信息;c=[]"
+        }
+      }
+    },
+    "InvTfInDetailRes.CostFeeEntity.FeeRecords": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=销售费用id;c=1"
+        },
+        "pacct_type_id": {
+          "type": "string",
+          "title": "a=支付类型id;c=1"
+        },
+        "pacct_type_number": {
+          "type": "string",
+          "title": "a=支付类型编码;b=30;c=001"
+        },
+        "pacct_type_name": {
+          "type": "string",
+          "title": "a=支付类型名称;b=30;c=001"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=739162890728163328"
+        },
+        "supplier_number": {
+          "type": "string",
+          "title": "a=供应商编码;c=GYS0001"
+        },
+        "supplier_name": {
+          "type": "string",
+          "title": "a=供应商名称;c=GYS0001"
+        },
+        "settle_supplier_id": {
+          "type": "string",
+          "title": "a=费用结算供应商id;c=1"
+        },
+        "settle_supplier_number": {
+          "type": "string",
+          "title": "a=费用结算供应商编码;c=1"
+        },
+        "settle_supplier_name": {
+          "type": "string",
+          "title": "a=费用结算供应商名称;c=1"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=费用;c=100.0"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=费用本位币;c=321"
+        },
+        "cess": {
+          "type": "string",
+          "title": "a=税率;c=1"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=20.0"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=应付金额（不含税金额+税额=应付金额）;c=120.0"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计本位币;c=120.0"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=备注1"
+        },
+        "currency_number": {
+          "type": "string",
+          "title": "a=币别编码;c=备注1"
+        },
+        "currency_name": {
+          "type": "string",
+          "title": "a=币别id;c=备注1"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;c=false"
+        },
+        "linked_bill_no": {
+          "type": "string",
+          "title": "a=生成的其他应付单号;c=1"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=费用明细备注;c=120.0"
         }
       }
     },
@@ -498,9 +653,9 @@
           "format": "int32",
           "title": "a=保质期天数;c=180"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=2020"
+          "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",
@@ -677,6 +832,16 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "cost_share_percent": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调入费用分摊比例，有费用分摊时必填且所有分录合计为100;c=100"
+        },
+        "fee": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调入费用分摊;c=100"
         }
       }
     },
@@ -775,7 +940,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据ID，修改单据时必填，新增不传该字段;c=1"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;c=1"
         },
         "bill_no": {
           "type": "string",
@@ -822,6 +987,95 @@
         "operation_key": {
           "type": "string",
           "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+        },
+        "allocate_rule": {
+          "type": "string",
+          "title": "a=费用分摊规则；1: 按价税合计分摊（默认）； 2:按数量分摊;c=1"
+        },
+        "cost_fee_entity": {
+          "$ref": "#/definitions/InvTfInSaveReq.CostFeeEntity",
+          "title": "a=异价调拨的费用明细(当为异价调拨时);c=Object"
+        },
+        "cost_fee": {
+          "type": "string",
+          "title": "a=调拨费用;c=1"
+        }
+      }
+    },
+    "InvTfInSaveReq.CostFeeEntity": {
+      "type": "object",
+      "properties": {
+        "fee_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvTfInSaveReq.CostFeeEntity.FeeRecords"
+          },
+          "title": "a=费用记录;c=[]"
+        },
+        "del_ids": {
+          "type": "string",
+          "title": "a=需要删除的调拨费用分录ID，多个用英文逗号隔开；已经生成了其他应付单的费用不能删除，前端需要控制;c=1"
+        }
+      }
+    },
+    "InvTfInSaveReq.CostFeeEntity.FeeRecords": {
+      "type": "object",
+      "properties": {
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=1;d=true"
+        },
+        "settle_supplier_id": {
+          "type": "string",
+          "title": "a=结算供应商id;c=1;d=true"
+        },
+        "pacct_type_id": {
+          "type": "string",
+          "title": "a=支出类型;c=1;d=true"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=费用;c=100.0;d=true"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=费用本位币;c=321;d=true"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=20.0"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=120.0;d=true"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计本位币;c=120.0;d=true"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=备注;c=120.0"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=备注1"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;c=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1"
+        },
+        "linked_bill_no": {
+          "type": "string",
+          "title": "a=生成的其他应付单号;c=1"
+        },
+        "pay_bill_rule": {
+          "type": "boolean",
+          "title": "a=是否待支出;c=1"
         }
       }
     },
@@ -834,11 +1088,11 @@
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品;c=768111411250384896"
+          "title": "a=商品;c=768111411250384896;d=true"
         },
         "in_stock_id": {
           "type": "string",
-          "title": "a=调入仓库;c=742589086056905728"
+          "title": "a=调入仓库;c=742589086056905728;d=true"
         },
         "in_sp_id": {
           "type": "string",
@@ -846,7 +1100,7 @@
         },
         "out_stock_id": {
           "type": "string",
-          "title": "a=调出仓库;c=739166249459664896"
+          "title": "a=调出仓库;c=739166249459664896;d=true"
         },
         "out_sp_id": {
           "type": "string",
@@ -854,11 +1108,11 @@
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性；辅助属性商品必填;c=1"
+          "title": "a=辅助属性(辅助属性商品必填);c=1"
         },
         "batch_no": {
           "type": "string",
-          "title": "a=批次号，批次商品必填;c=205022"
+          "title": "a=批次号（批次商品必填）;c=205022"
         },
         "pro_place": {
           "type": "string",
@@ -874,7 +1128,7 @@
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期;c=2022-08-08"
+          "title": "a=生产日期（保质期商品必填，示例：2022-01-12）;c=2022-08-08"
         },
         "valid_date": {
           "type": "string",
@@ -883,30 +1137,30 @@
         "kf_period": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期;c=180"
+          "title": "a=保质期天数（保质期商品必填）;c=180"
         },
         "kf_type": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期单位;c=180"
+          "title": "a=保质期类型：1/天，2/月，3/年（保质期商品必填）;c=180"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=数量;c=50"
+          "title": "a=数量;c=50;d=true"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=单位;c=1"
+          "title": "a=单位;c=1;d=true"
         },
         "aux_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助数量;c=50"
+          "title": "a=辅助数量（多单位商品，需要使用辅助单位时必填）;c=50"
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位id;c=50"
+          "title": "a=辅助单位（多单位商品，需要使用辅助单位时必填）;c=50"
         },
         "in_price": {
           "type": "number",
@@ -940,6 +1194,16 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "cost_share_percent": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调入费用分摊比例，有费用分摊时必填且所有分录合计为100;c=100"
+        },
+        "fee": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调入费用分摊;c=100"
         }
       }
     },

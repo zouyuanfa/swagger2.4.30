@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/voucher_attachment": {
       "get": {
-        "summary": "凭证附件列表;获取凭证附件列表;1.0.6",
+        "summary": "凭证附件列表;获取凭证附件列表;1.0.8",
         "operationId": "VoucherAttachment_list",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "period",
-            "description": "a=期间;b=6;c=202206;d=false.",
+            "description": "a=期间;b=6;c=202206;d=true.",
             "in": "query",
             "required": false,
             "type": "string"

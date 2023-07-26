@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/bd/space": {
       "post": {
-        "summary": "仓位保存;仓位新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
+        "summary": "仓位保存;仓位新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.12",
         "operationId": "Space_spaceSave",
         "responses": {
           "200": {
@@ -51,7 +51,7 @@
     },
     "/openapi/v2/bd/space_detail": {
       "get": {
-        "summary": "仓位详情;获取仓位详情;1.0.6",
+        "summary": "仓位详情;获取仓位详情;1.0.9",
         "operationId": "Space_spaceDetail",
         "responses": {
           "200": {
@@ -70,14 +70,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -90,7 +90,7 @@
     },
     "/openapi/v2/bd/spaces": {
       "get": {
-        "summary": "仓位列表;获取仓位列表;1.0.7",
+        "summary": "仓位列表;获取仓位列表;1.0.9",
         "operationId": "Space_spaceList",
         "responses": {
           "200": {
@@ -164,7 +164,7 @@
             "type": "string"
           },
           {
-            "name": "groupid",
+            "name": "stock_id",
             "description": "a=类别ID;b=2147483647;c=[];d=false.",
             "in": "query",
             "required": false,
@@ -228,13 +228,13 @@
           "type": "string",
           "title": "a=名称;b=20;c=名称;d=false"
         },
-        "groupid_id": {
-          "type": "string",
-          "title": "a=类别ID;b=2147483647;c=1;d=false"
-        },
         "enable": {
           "type": "string",
           "title": "a=状态，1代表启用，0代表禁用;b=1;c=1;d=false"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;b=2147483647;c=1;d=false"
         }
       }
     },
@@ -251,7 +251,7 @@
           "format": "int32",
           "title": "a=当前页条数;b=100;c=1;d=false"
         },
-        "currentPage": {
+        "current_page": {
           "type": "integer",
           "format": "int32",
           "title": "a=当前页码;b=100;c=1;d=true"
@@ -305,23 +305,23 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id;b=2147483647;c=1;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=编码;b=30;c=001;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=名称;d=false"
-        },
-        "groupid_id": {
-          "type": "string",
-          "title": "a=类别ID;b=2147483647;c=1;d=false"
+          "title": "a=名称;b=20;c=名称;d=true"
         },
         "enable": {
           "type": "string",
           "title": "a=状态，1代表启用，0代表禁用;b=1;c=1;d=false"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;b=2147483647;c=1;d=true"
         }
       }
     },

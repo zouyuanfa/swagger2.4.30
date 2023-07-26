@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/sal_out_bound": {
       "get": {
-        "summary": "销售出库单列表;销售出库单列表;1.0.10",
+        "summary": "销售出库单列表;销售出库单列表;1.0.26",
         "operationId": "SalOutBound_list",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -197,14 +197,14 @@
           },
           {
             "name": "total_fields",
-            "description": "a=合计值字段，多个字段用英文逗号隔开，支持的字段：total（默认：价税合计）、totalunsettleamount（未收金额）、totalinsamount（收款合计）、totalamount（本次应收账款）;c=totalunsettleamount.",
+            "description": "a=合计值字段，多个字段用英文逗号隔开，支持的字段：allamount（默认：价税合计）、totalunsettleamount（未收金额）、totalinsamount（收款合计）、totalamount（本次应收账款）;c=allamount.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "order_by",
-            "description": "a=排序；编码升序：number asc（默认），编码降序：number desc，名称升序：name asc，名称降序：name desc;c=createtime desc.",
+            "description": "影响性能，不生成对外API文档:排序.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -214,11 +214,81 @@
             "description": "a=是否统计商品种类和数量到单据，默认false;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "bill_no",
             "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_number",
+            "description": "a=客户编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_name",
+            "description": "a=客户名称;c=客户名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "dept_number",
+            "description": "a=部门编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_number",
+            "description": "a=商品编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_model",
+            "description": "a=商品规格型号;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "emp_number",
+            "description": "a=业务员编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "default_select_fields",
+            "description": "固定值字段，不生成对外API文档.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "top",
+            "description": "a=截取单据前top个商品数据返回;c=10;.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "src_bill_no",
+            "description": "a=源单单号;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -229,7 +299,7 @@
         ]
       },
       "post": {
-        "summary": "销售出库单保存;销售出库单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.20",
+        "summary": "销售出库单保存;销售出库单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.35",
         "operationId": "SalOutBound_save",
         "responses": {
           "200": {
@@ -262,7 +332,7 @@
     },
     "/openapi/v2/scm/sal_out_bound_detail": {
       "get": {
-        "summary": "销售出库单详情;销售出库单详情;1.0.13",
+        "summary": "销售出库单详情;销售出库单详情;1.0.33",
         "operationId": "SalOutBound_detail",
         "responses": {
           "200": {
@@ -281,14 +351,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -311,6 +381,44 @@
       },
       "additionalProperties": {},
       "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "Row.ExpressEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录id;c=1;d=true"
+        },
+        "express_company_id": {
+          "type": "string",
+          "title": "a=物流公司Id;c=1"
+        },
+        "delivery_bill_no": {
+          "type": "string",
+          "title": "a=物流单号;c=WL8439139696"
+        },
+        "delivery_time": {
+          "type": "string",
+          "title": "a=发货时间;c=2023-01-01 15:12:12;"
+        },
+        "express_remark": {
+          "type": "string",
+          "title": "a=物流备注;c=备注1"
+        }
+      }
+    },
+    "Row.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=843913969650383872"
+        },
+        "cost": {
+          "type": "string",
+          "title": "a=出库成本;c=50.2"
+        }
+      }
     },
     "SalOutBound.CostFeeEntity": {
       "type": "object",
@@ -389,6 +497,10 @@
             "$ref": "#/definitions/SalOutBound.ReceiveInfoRows"
           },
           "title": "a=付款信息单据体;c=[]"
+        },
+        "settle_supplier_id": {
+          "type": "string",
+          "title": "a=结算供应商id;c=1"
         }
       }
     },
@@ -406,62 +518,6 @@
         "income_comment": {
           "type": "string",
           "title": "a=客户承担费用备注;c=备注"
-        }
-      }
-    },
-    "SalOutBound.ExpressEntity": {
-      "type": "object",
-      "properties": {
-        "seq": {
-          "type": "integer",
-          "format": "int32",
-          "title": "a=分录序号;c=1"
-        },
-        "id": {
-          "type": "string",
-          "title": "a=分录ID;c=1"
-        },
-        "delivery_bill_no": {
-          "type": "string",
-          "title": "a=物流单号;c=002"
-        },
-        "delivery_time": {
-          "type": "string",
-          "title": "a=发货时间;c=2022-01-01 10:22:22"
-        },
-        "express_company_id": {
-          "type": "string",
-          "title": "a=物流公司id;c=1"
-        },
-        "express_company_number": {
-          "type": "string",
-          "title": "a=物流公司编码;c=002"
-        },
-        "express_company_name": {
-          "type": "string",
-          "title": "a=物流公司名称;c=物流公司A"
-        }
-      }
-    },
-    "SalOutBound.PaymentEntry": {
-      "type": "object",
-      "properties": {
-        "settle_account_id": {
-          "type": "string",
-          "title": "a=收款账户;c=1"
-        },
-        "pay_type_id": {
-          "type": "string",
-          "title": "a=收款方式;c=微信"
-        },
-        "paid_amount": {
-          "type": "number",
-          "format": "double",
-          "title": "a=收款金额;c=20"
-        },
-        "pay_comment": {
-          "type": "string",
-          "title": "a=备注;c=备注XXXX"
         }
       }
     },
@@ -495,7 +551,7 @@
         },
         "contact_phone": {
           "type": "string",
-          "title": "a=客户联系电话;c=13322112211"
+          "title": "a=客户联系电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13322112211"
         },
         "contact_country_id": {
           "type": "string",
@@ -555,7 +611,7 @@
         },
         "contact_address": {
           "type": "string",
-          "title": "a=联系地址;c=1"
+          "title": "a=联系地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=1"
         },
         "dispatcher_country_id": {
           "type": "string",
@@ -607,7 +663,7 @@
         },
         "dispatcher_address": {
           "type": "string",
-          "title": "a=发货详细地址;c="
+          "title": "a=发货详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c="
         },
         "dispatcher_linkman": {
           "type": "string",
@@ -615,7 +671,7 @@
         },
         "dispatcher_phone": {
           "type": "string",
-          "title": "a=发货联系电话;c=13222445566"
+          "title": "a=发货联系电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13222445566"
         },
         "recevice_delivery": {
           "type": "string",
@@ -674,7 +730,7 @@
         "f_logistics_id": {
           "type": "number",
           "format": "double",
-          "title": "a=物流公司内码;c=12"
+          "title": "a=物流公司id;c=12"
         },
         "cost_fee": {
           "type": "number",
@@ -729,7 +785,7 @@
         },
         "customer_id": {
           "type": "string",
-          "title": "a=客户详情字段\t客户;c=1"
+          "title": "a=客户id\t;c=1"
         },
         "bill_dis_amount": {
           "type": "number",
@@ -818,6 +874,60 @@
         "delivery_type_number": {
           "type": "string",
           "title": "a=交货方式编码;c=001"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
+        },
+        "due_date": {
+          "type": "string",
+          "title": "a=结算日期;c=2020-01-13"
+        },
+        "setting_term_id": {
+          "type": "string",
+          "title": "a=结算期限id;c=1"
+        },
+        "setting_term_number": {
+          "type": "string",
+          "title": "a=结算期限编码;c=001"
+        },
+        "setting_term_name": {
+          "type": "string",
+          "title": "a=结算期限名称;c=结算期限名称"
+        },
+        "express_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundDetailReply.ExpressEntity"
+          },
+          "title": "a=物流信息;c=[]"
+        },
+        "vrp_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundDetailReply.VrpEntity"
+          },
+          "title": "a=车辆配送信息;c=[]"
+        },
+        "customer_number": {
+          "type": "string",
+          "title": "a=客户编码;b=30;c=001;d=false"
+        },
+        "customer_name": {
+          "type": "string",
+          "title": "a=客户名称;b=30;c=客户001;d=false"
+        },
+        "cost_fee_entity": {
+          "$ref": "#/definitions/SalOutBoundDetailReply.CostFeeEntity",
+          "title": "a=销售费用明细;c=Object"
+        },
+        "currency_name": {
+          "type": "string",
+          "title": "a=币别;b=30;c=人民币"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;b=30;c=6.5"
         }
       }
     },
@@ -831,6 +941,128 @@
         "panel": {
           "type": "string",
           "title": "a=附件面板，暂时无用;c="
+        }
+      }
+    },
+    "SalOutBoundDetailReply.CostFeeEntity": {
+      "type": "object",
+      "properties": {
+        "fee_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundDetailReply.CostFeeEntity.CostFeeRows"
+          },
+          "title": "a=销售费用分录;c=[]"
+        }
+      }
+    },
+    "SalOutBoundDetailReply.CostFeeEntity.CostFeeRows": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=销售费用分录ID，修改时必传，否则为新增;c=1"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商，当付款金额合计等于费用时为非必填项;c=1"
+        },
+        "pacct_type_id": {
+          "type": "string",
+          "title": "a=支出类型;c=1"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=费用;c=50.5"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=费用本位币;c=30.2"
+        },
+        "cess": {
+          "type": "string",
+          "title": "a=税率;c=13"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=10.3"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=100"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计本位币;c=20"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;c=13"
+        },
+        "linked_bill_no": {
+          "type": "string",
+          "title": "a=生成的其他应付单号;c=001"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=备注;c=这是备注"
+        },
+        "receive_info_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBound.ReceiveInfoRows"
+          },
+          "title": "a=付款信息单据体;c=[]"
+        },
+        "settle_supplier_id": {
+          "type": "string",
+          "title": "a=结算供应商id;c=1"
+        },
+        "settle_supplier_name": {
+          "type": "string",
+          "title": "a=结算供应商名称;c=结算供应商001"
+        },
+        "settle_supplier_number": {
+          "type": "string",
+          "title": "a=结算供应商id，当付款金额合计等于费用时为非必填项;c=1"
+        }
+      }
+    },
+    "SalOutBoundDetailReply.ExpressEntity": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        },
+        "delivery_bill_no": {
+          "type": "string",
+          "title": "a=物流单号;c=002"
+        },
+        "delivery_time": {
+          "type": "string",
+          "title": "a=发货时间;c=2022-01-01 10:22:22"
+        },
+        "express_company_id": {
+          "type": "string",
+          "title": "a=物流公司id;c=1"
+        },
+        "express_company_number": {
+          "type": "string",
+          "title": "a=物流公司编码;c=002"
+        },
+        "express_company_name": {
+          "type": "string",
+          "title": "a=物流公司名称;c=物流公司A"
         }
       }
     },
@@ -1028,11 +1260,6 @@
           "format": "double",
           "title": "a=基本库存数量;c=50"
         },
-        "return_qty_unit": {
-          "type": "number",
-          "format": "double",
-          "title": "a=退货数量;c=20"
-        },
         "return_qty": {
           "type": "number",
           "format": "double",
@@ -1146,10 +1373,6 @@
           "format": "int32",
           "title": "a=保质期天数;c=200"
         },
-        "sn": {
-          "type": "string",
-          "title": "a=序列号;c=6060"
-        },
         "sn_list_id": {
           "type": "string",
           "title": "a=序列号流转ID;c=1"
@@ -1208,7 +1431,7 @@
         },
         "src_bill_no": {
           "type": "string",
-          "title": "a=源单id;b=2147483647;c=1;d=false"
+          "title": "a=源单编码;b=2147483647;c=1;d=false"
         },
         "src_bill_type_id": {
           "type": "string",
@@ -1224,7 +1447,7 @@
         },
         "src_inter_id": {
           "type": "string",
-          "title": "a=源单id;c=1"
+          "title": "a=源单内码;c=1"
         },
         "src_bill_date": {
           "type": "string",
@@ -1249,6 +1472,15 @@
         "sn_list": {
           "type": "string",
           "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=1"
+        },
+        "base_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=基本数量;c=22;"
+        },
+        "dis_tax_amount": {
+          "type": "string",
+          "title": "a=含税折扣额;c=102;"
         }
       }
     },
@@ -1291,6 +1523,54 @@
           "type": "integer",
           "format": "int32",
           "title": "a=序号;c=1"
+        }
+      }
+    },
+    "SalOutBoundDetailReply.VrpEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        },
+        "vehicle_id": {
+          "type": "string",
+          "title": "a=车牌号id，对应车牌号辅助资料的id信息;c=002"
+        },
+        "vehicle_number": {
+          "type": "string",
+          "title": "a=车牌号number;c=002"
+        },
+        "vehicle_name": {
+          "type": "string",
+          "title": "a=车牌号number;c=002"
+        },
+        "delivery_remark": {
+          "type": "string",
+          "title": "a=物流单号;c=002"
+        },
+        "deliveryman_id": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundDetailReply.VrpEntity.VrpCommon"
+          },
+          "title": "a=配送员（多选基础资料）;c=[]"
+        },
+        "driver_id": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundDetailReply.VrpEntity.VrpCommon"
+          },
+          "title": "a=司机（多选基础资料）;c=[]"
+        }
+      }
+    },
+    "SalOutBoundDetailReply.VrpEntity.VrpCommon": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "a=物流公司编码;c=002"
         }
       }
     },
@@ -1341,6 +1621,14 @@
         "total_amount": {
           "type": "string",
           "title": "a=列表价税合计汇总，符合条件所有单据价税合计汇总，包含本页之外的数据;c=200.2"
+        },
+        "total_ins_amount": {
+          "type": "string",
+          "title": "a=列表收款合计汇总，符合条件所有单据收款合计汇总，包含本页之外的数据;c=200.2"
+        },
+        "total_un_settle_amount": {
+          "type": "string",
+          "title": "a=列表未收金额汇总，符合条件所有单据未收金额汇总，包含本页之外的数据;c=200.2"
         }
       }
     },
@@ -1419,19 +1707,37 @@
         "bill_dis_amount": {
           "type": "string",
           "title": "a=整单折扣额;c=1.0"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[]"
+        },
+        "express_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row.ExpressEntity"
+          },
+          "title": "a=物流信息;c=[]"
+        },
+        "ivc_status ": {
+          "type": "string",
+          "title": "a=单据开票状态[1:未开票,2:部分开票,3:已开票];c=1"
         }
       }
     },
     "SalOutBoundSaveReq": {
       "type": "object",
       "properties": {
-        "bill_source": {
+        "default_bill_source": {
           "type": "string",
-          "title": "a=单据来源（第三方：ISV）;c=ISV;d=false"
+          "title": "固定值字段，不生成对外API文档"
         },
         "id": {
           "type": "string",
-          "title": "a=单据ID，修改单据时必填;c=1"
+          "title": "a=单据ID，新增不填，更新时必填（id为空时代表新增单据），修改单据时必填;c=1"
         },
         "bill_no": {
           "type": "string",
@@ -1507,7 +1813,7 @@
         },
         "delivery_type_id": {
           "type": "string",
-          "title": "a=交货方式id,6:物流配送;c=6"
+          "title": "a=交货方式id,6:物流配送，8:车辆配送，9:客户自提;c=6"
         },
         "bill_dis_amount": {
           "type": "number",
@@ -1531,7 +1837,7 @@
         "express_entity": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SalOutBound.ExpressEntity"
+            "$ref": "#/definitions/SalOutBoundSaveReq.ExpressEntity"
           },
           "title": "a=物流配送明细;c=[]"
         },
@@ -1562,7 +1868,7 @@
         "payment_entry": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/SalOutBound.PaymentEntry"
+            "$ref": "#/definitions/SalOutBoundSaveReq.PaymentEntry"
           },
           "title": "a=收款账户;c=[]"
         },
@@ -1581,9 +1887,9 @@
         "attachments_url": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/SalOutBoundSaveReq.AttachmentsUrl"
           },
-          "title": "a=上传的附件url;c=[]"
+          "title": "a=附件地址;b=100;c=[];d=false"
         },
         "cus_bear_fee_entry": {
           "type": "array",
@@ -1622,6 +1928,72 @@
         "operation_key": {
           "type": "string",
           "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
+        },
+        "due_date": {
+          "type": "string",
+          "title": "a=结算日期，结算日期与结算期间同时传入时，以结算日期为准;c=2020-01-13"
+        },
+        "setting_term_id": {
+          "type": "string",
+          "title": "a=结算期限id;c=1"
+        },
+        "vrp_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundSaveReq.VrpEntity"
+          },
+          "title": "a=车辆配送信息;c=[]"
+        },
+        "cus_bear_amount": {
+          "type": "string",
+          "title": "a=客户承担费用;c=100"
+        },
+        "input_coefficient_option": {
+          "type": "string",
+          "title": "a=obverse:数量*换算率=辅助数量；reverse:辅助数量*换算率=数量;c=obverse"
+        }
+      }
+    },
+    "SalOutBoundSaveReq.AttachmentsUrl": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "a=附件地址;b=1000;c=http;d=false"
+        }
+      }
+    },
+    "SalOutBoundSaveReq.ExpressEntity": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        },
+        "delivery_bill_no": {
+          "type": "string",
+          "title": "a=物流单号;c=002"
+        },
+        "delivery_time": {
+          "type": "string",
+          "title": "a=发货时间;c=2022-01-01 10:22:22"
+        },
+        "express_company_id": {
+          "type": "string",
+          "title": "a=物流公司id;c=1"
+        },
+        "express_company_number": {
+          "type": "string",
+          "title": "a=物流公司编码（express_company_id和express_company_number二选一）;c=002"
         }
       }
     },
@@ -1639,10 +2011,6 @@
         "material_id": {
           "type": "string",
           "title": "a=商品id;c=697140092908614656;d=true"
-        },
-        "material_name": {
-          "type": "string",
-          "title": "a=商品名称;c=序列号01"
         },
         "material_number": {
           "type": "string",
@@ -1680,10 +2048,6 @@
           "type": "string",
           "title": "a=仓库id;c=697105306978627584;d=true"
         },
-        "stock_name": {
-          "type": "string",
-          "title": "a=仓库名称;c=仓库A"
-        },
         "stock_number": {
           "type": "string",
           "title": "a=仓库编码;c=001"
@@ -1694,23 +2058,15 @@
         },
         "sp_id": {
           "type": "string",
-          "title": "a=仓位id;c="
-        },
-        "sp_name": {
-          "type": "string",
-          "title": "a=仓位名称;c="
+          "title": "a=仓位id（sp_id和sp_name二选一）;c="
         },
         "sp_number": {
           "type": "string",
-          "title": "a=仓位编码;c="
+          "title": "a=仓位编码，sp_id和sp_name二选一;c="
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性id;c=1"
-        },
-        "aux_prop_name": {
-          "type": "string",
-          "title": "a=辅助属性名称;c=蓝/L"
+          "title": "a=辅助属性id (辅助属性商品必填);c=1"
         },
         "aux_prop_number": {
           "type": "string",
@@ -1720,10 +2076,6 @@
           "type": "string",
           "title": "a=辅助属性1id;c=1"
         },
-        "aux_name1": {
-          "type": "string",
-          "title": "a=辅助属性1名称;c=辅助属性A"
-        },
         "aux_number1": {
           "type": "string",
           "title": "a=辅助属性1编码;c=001"
@@ -1732,10 +2084,6 @@
           "type": "string",
           "title": "a=辅助属性2id;c=2"
         },
-        "aux_name2": {
-          "type": "string",
-          "title": "a=辅助属性2名称;c=辅助属性B"
-        },
         "aux_number2": {
           "type": "string",
           "title": "a=辅助属性2编码;c=002"
@@ -1743,10 +2091,6 @@
         "aux_id3": {
           "type": "string",
           "title": "a=辅助属性3id;c=1"
-        },
-        "aux_name3": {
-          "type": "string",
-          "title": "a=辅助属性3名称;c=辅助属性C"
         },
         "aux_number3": {
           "type": "string",
@@ -1764,7 +2108,7 @@
         "tax_price": {
           "type": "number",
           "format": "double",
-          "title": "a=含税单价;c=101;d=true"
+          "title": "a=含税单价;c=101"
         },
         "act_tax_price": {
           "type": "number",
@@ -1775,10 +2119,6 @@
           "type": "string",
           "title": "a=基本单位id;c=1"
         },
-        "base_unit_name": {
-          "type": "string",
-          "title": "a=基本单位名称;c=克"
-        },
         "base_unit_number": {
           "type": "string",
           "title": "a=基本单位编码;c=g"
@@ -1787,22 +2127,9 @@
           "type": "string",
           "title": "a=单位id;c=697110094189441024;d=true"
         },
-        "unit_name": {
-          "type": "string",
-          "title": "a=单位名称;c=克"
-        },
         "unit_number": {
           "type": "string",
           "title": "a=单位编码;c=g"
-        },
-        "coefficient": {
-          "type": "number",
-          "format": "double",
-          "title": "a=换算率;c=1.0000000000"
-        },
-        "conversion_rate": {
-          "type": "string",
-          "title": "a=换算公式;c=xx"
         },
         "qty": {
           "type": "number",
@@ -1906,7 +2233,7 @@
         },
         "batch_no": {
           "type": "string",
-          "title": "a=批次号;c=2022506"
+          "title": "a=批次号（批次商品必填）;c=2022506"
         },
         "pro_place": {
           "type": "string",
@@ -1922,7 +2249,7 @@
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期;c=2020-01-01"
+          "title": "a=生产日期（保质期商品必填，示例：2022-01-12）;c=2020-01-01"
         },
         "valid_date": {
           "type": "string",
@@ -1930,16 +2257,12 @@
         },
         "kf_type": {
           "type": "string",
-          "title": "a=保质期类型，1：天，2：月，3：年;c=2"
+          "title": "a= 保质期类型：1/天，2/月，3/年（保质期商品必填）;c=2"
         },
         "kf_period": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期天数;c=200"
-        },
-        "sn": {
-          "type": "string",
-          "title": "a=序列号;c=6060"
+          "title": "a=保质期天数（保质期商品必填）;c=200"
         },
         "sn_list_id": {
           "type": "string",
@@ -1947,25 +2270,16 @@
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位id;c=697110094189441024;d=true"
-        },
-        "aux_unit_name": {
-          "type": "string",
-          "title": "a=辅助单位名称;c=克"
+          "title": "a=辅助单位（多单位商品，需要使用辅助单位时必填）;c=697110094189441024"
         },
         "aux_unit_number": {
           "type": "string",
           "title": "a=辅助单位编码;c=001"
         },
-        "aux_coefficient": {
-          "type": "number",
-          "format": "double",
-          "title": "a=辅助换算率;c=50"
-        },
         "aux_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助单位数量;c=1;d=true"
+          "title": "a=辅助数量（多单位商品，需要使用辅助单位时必填）;c=1"
         },
         "cess": {
           "type": "number",
@@ -1987,7 +2301,7 @@
         },
         "is_free": {
           "type": "boolean",
-          "title": "a=是否赠品;c=false;d=true"
+          "title": "a=是否赠品;c=false"
         },
         "comment": {
           "type": "string",
@@ -2014,7 +2328,98 @@
         },
         "sn_list": {
           "type": "string",
-          "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=1"
+          "title": "a=序列号（序列号商品必填,多个序列号以英文\";\"字符分隔，格式如：\"001:备注1;002:备注2\"）;c=1"
+        },
+        "outside_material_number": {
+          "type": "string",
+          "title": "a=外部商品编码， materialid_id和outside_material_number二选一，都传必须匹配;c=WBSP0001"
+        },
+        "outside_material_unit": {
+          "type": "string",
+          "title": "a=外部商品单位;c=1000001"
+        },
+        "dis_tax_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=含税折扣额;c=1000001"
+        },
+        "pick_inspect_id": {
+          "type": "string",
+          "title": "a=拣货单内码(该字段为拣验货单下推接口返回必传);c=11"
+        },
+        "pick_inspect_entry_id": {
+          "type": "string",
+          "title": "a=拣货单分录内码(该字段为拣验货单下推接口返回必传必传必传);c=1"
+        },
+        "scheme_id": {
+          "type": "string",
+          "title": "a=客户价格方案id，取价接口会返回，传递则会根据该方案id进行限价;c=1"
+        }
+      }
+    },
+    "SalOutBoundSaveReq.PaymentEntry": {
+      "type": "object",
+      "properties": {
+        "settle_account_id": {
+          "type": "string",
+          "title": "a=收款账户;c=1"
+        },
+        "pay_type_id": {
+          "type": "string",
+          "title": "a=收款方式;c=微信"
+        },
+        "paid_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=收款金额;c=20"
+        },
+        "pay_comment": {
+          "type": "string",
+          "title": "a=备注;c=备注XXXX"
+        }
+      }
+    },
+    "SalOutBoundSaveReq.VrpEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=分录ID;c=1"
+        },
+        "vehicle_id": {
+          "type": "string",
+          "title": "a=车牌号id，对应车牌号辅助资料的id信息;c=1"
+        },
+        "vrp_delivery_time": {
+          "type": "string",
+          "title": "a=配送时间，格式：yyyy-MM-dd HH:mm:ss;c=2023-11-09 11:11:11"
+        },
+        "delivery_remark": {
+          "type": "string",
+          "title": "a=配送备注;c=配送1"
+        },
+        "driver": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundSaveReq.VrpEntity.VrpCommon"
+          },
+          "title": "a=司机;c=[]"
+        },
+        "deliveryman": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SalOutBoundSaveReq.VrpEntity.VrpCommon"
+          },
+          "title": "a=配送员;c=[]"
+        }
+      }
+    },
+    "SalOutBoundSaveReq.VrpEntity.VrpCommon": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "title": "a=编码;c=002"
         }
       }
     },

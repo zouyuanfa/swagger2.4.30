@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/member": {
       "get": {
-        "summary": "会员列表;会员列表;1.0.6",
+        "summary": "会员列表;会员列表;1.0.10",
         "operationId": "Member_list",
         "responses": {
           "200": {
@@ -90,6 +90,20 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "level_id",
+            "description": "a=会员级别ID;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "shop_id",
+            "description": "a=开卡门店ID;c=1011;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -130,7 +144,7 @@
     },
     "/openapi/v2/ls/member_detail": {
       "get": {
-        "summary": "会员详情;会员详情;1.0.6",
+        "summary": "会员详情;会员详情;1.0.9",
         "operationId": "Member_detail",
         "responses": {
           "200": {
@@ -149,7 +163,7 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=会员id;c=1;d=false.",
+            "description": "a=会员id,传入mobile时，id非必填;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -189,7 +203,7 @@
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机号;c=13333333333;d=false"
+          "title": "a=手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13333333333;d=false"
         },
         "name": {
           "type": "string",
@@ -279,7 +293,7 @@
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机号;c=13399887744;d=false"
+          "title": "a=手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13399887744;d=false"
         },
         "mb_url": {
           "type": "string",
@@ -295,7 +309,7 @@
         },
         "birthday": {
           "type": "string",
-          "title": "a=生日;c=2022-08-01;d=false"
+          "title": "a=生日 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=2022-08-01;d=false"
         },
         "remark": {
           "type": "string",
@@ -307,7 +321,7 @@
         },
         "detail_address": {
           "type": "string",
-          "title": "a=详细地址;d=false"
+          "title": "a=详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
         },
         "is_delete": {
           "type": "string",
@@ -315,7 +329,7 @@
         },
         "sex_group": {
           "type": "string",
-          "title": "a=性别，1 男，0 女;d=false"
+          "title": "a=性别，1 男，0 女 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
         },
         "customer_id": {
           "type": "string",
@@ -379,11 +393,11 @@
         },
         "referreremp_mobile": {
           "type": "string",
-          "title": "a=营业员手机号;c=13333333333;d=false"
+          "title": "a=营业员手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13333333333;d=false"
         },
         "referreremp_email": {
           "type": "string",
-          "title": "a=营业员邮箱;d=false"
+          "title": "a=营业员邮箱 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
         },
         "referreremp_gender": {
           "type": "string",
@@ -391,11 +405,11 @@
         },
         "referreremp_idnumber": {
           "type": "string",
-          "title": "a=营业员身份证;c=XXX;d=false"
+          "title": "a=营业员身份证 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=XXX;d=false"
         },
         "referreremp_birthday": {
           "type": "string",
-          "title": "a=营业员生日;c=2022-08-01;d=false"
+          "title": "a=营业员生日 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=2022-08-01;d=false"
         },
         "referreremp_hiredate": {
           "type": "string",
@@ -403,7 +417,7 @@
         },
         "referreremp_wechat": {
           "type": "string",
-          "title": "a=营业员微信号;c=xxx;d=false"
+          "title": "a=营业员微信号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=xxx;d=false"
         },
         "referreremp_departmen_id": {
           "type": "string",

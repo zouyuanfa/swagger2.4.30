@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_altermode": {
       "get": {
-        "summary": "变动方式列表;获取变动方式列表;1.0.7",
+        "summary": "变动方式列表;获取变动方式列表;1.0.8",
         "operationId": "AlterMode_list",
         "responses": {
           "200": {
@@ -44,7 +44,7 @@
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=每页显示条数默认100;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -64,7 +64,7 @@
     },
     "/openapi/v2/fi/fa_altermode_save": {
       "post": {
-        "summary": "变动方式保存;获取变动方式保存;1.0.9",
+        "summary": "变动方式保存;获取变动方式保存;1.0.11",
         "operationId": "AlterMode_FaSave",
         "responses": {
           "200": {
@@ -177,11 +177,11 @@
         },
         "name": {
           "type": "string",
-          "title": "a=名字;b=30;c=001;d=true"
+          "title": "a=变动方式名称;b=30;c=001;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=true"
+          "title": "a=变动方式编码;b=30;c=001;d=true"
         },
         "note": {
           "type": "string",
@@ -189,7 +189,7 @@
         },
         "group_id": {
           "type": "string",
-          "title": "a=资产类别id;b=2147483647;c=1;d=true"
+          "title": "a=变动方式类别id;b=2147483647;c=1;d=true"
         }
       }
     },

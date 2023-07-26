@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/journal": {
       "get": {
-        "summary": "日记账列表;获取日记账列表;1.0.6",
+        "summary": "日记账列表;获取日记账列表;1.0.7",
         "operationId": "Journal_list",
         "responses": {
           "200": {
@@ -90,7 +90,7 @@
         ]
       },
       "post": {
-        "summary": "日记账保存;日记账新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
+        "summary": "日记账保存;日记账新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.10",
         "operationId": "Journal_save",
         "responses": {
           "200": {
@@ -123,7 +123,7 @@
     },
     "/openapi/v2/fi/journal_detail": {
       "get": {
-        "summary": "日记账详情;获取日记账详情;1.0.8",
+        "summary": "日记账详情;获取日记账详情;1.0.11",
         "operationId": "Journal_detail",
         "responses": {
           "200": {
@@ -142,14 +142,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -241,7 +241,7 @@
           "type": "string",
           "title": "a=期间;b=6;c=202101;d=false"
         },
-        "contacts_account_id": {
+        "contacts_account_name": {
           "type": "string",
           "title": "a=往来账户;b=2147483647;c=1;d=false"
         },
@@ -283,7 +283,7 @@
         },
         "contacts_account_number": {
           "type": "string",
-          "title": "a=往来账户编码;b=30;c=001;d=false"
+          "title": "a=往来账户编码 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=30;c=001;d=false"
         },
         "debit": {
           "type": "string",
@@ -375,11 +375,11 @@
         },
         "account_id": {
           "type": "string",
-          "title": "a=账户id,账户编号、id、名称必须要有其中一个;b=2147483647;c=1;d=false"
+          "title": "a=账户id,账户编号、id、名称必须要有其中一个;b=2147483647;c=1;d=true"
         },
         "date": {
           "type": "string",
-          "title": "a=日期;b=10;c=2021-01-27;d=false"
+          "title": "a=日期;b=10;c=2021-01-27;d=true"
         },
         "explanation": {
           "type": "string",
@@ -426,9 +426,9 @@
           "type": "string",
           "title": "a=期间;b=6;c=202101;d=false"
         },
-        "contacts_account_id": {
+        "contacts_account_name": {
           "type": "string",
-          "title": "a=往来账户;b=2147483647;c=1;d=false"
+          "title": "a=往来账户名称;b=100;c=往来账户一;d=false"
         },
         "bill_no": {
           "type": "string",
@@ -496,7 +496,7 @@
         },
         "currency_id": {
           "type": "string",
-          "title": "a=币别id;b=2147483647;c=1;d=false"
+          "title": "a=币别id;b=2147483647;c=1;d=true"
         },
         "custom_field": {
           "type": "object",
@@ -514,7 +514,7 @@
           "type": "string",
           "title": "a=日期;b=10;c=2021-01-27;d=false"
         },
-        "voucherNo": {
+        "voucher_no": {
           "type": "string",
           "title": "a=凭证字号;b=10;c=记;d=false"
         },

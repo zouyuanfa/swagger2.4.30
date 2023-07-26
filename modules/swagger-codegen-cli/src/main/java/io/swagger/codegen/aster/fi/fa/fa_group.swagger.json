@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_group": {
       "get": {
-        "summary": "资产类别列表;获取资产类别列表;1.0.13",
+        "summary": "资产类别列表;获取资产类别列表;1.0.14",
         "operationId": "FaGroup_list",
         "responses": {
           "200": {
@@ -64,7 +64,7 @@
     },
     "/openapi/v2/fi/fa_group_save": {
       "post": {
-        "summary": "资产类别保存;资产类别保存;1.0.13",
+        "summary": "资产类别保存;资产类别保存;1.0.16",
         "operationId": "FaGroup_save",
         "responses": {
           "200": {
@@ -172,7 +172,7 @@
           "type": "boolean",
           "title": "a=是否明细（是-true， 否-false） ;c=false ;d=false"
         },
-        "parent_number": {
+        "parent_name": {
           "type": "string",
           "title": "a=上级类别名称（没有上级不返回）c=类别一"
         },
@@ -228,11 +228,11 @@
         },
         "name": {
           "type": "string",
-          "title": "a=名字;b=30;c=001;d=false"
+          "title": "a=资产类别名称;b=30;c=001;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=true"
+          "title": "a=资产类别编码;b=30;c=001;d=true"
         },
         "note": {
           "type": "string",

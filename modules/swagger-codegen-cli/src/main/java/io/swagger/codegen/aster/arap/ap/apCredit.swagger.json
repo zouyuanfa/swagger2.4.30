@@ -146,7 +146,7 @@
         ]
       },
       "post": {
-        "summary": "付款单保存;付款单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.15",
+        "summary": "付款单保存;付款单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.21",
         "operationId": "ApCredit_save",
         "responses": {
           "200": {
@@ -179,7 +179,7 @@
     },
     "/openapi/v2/arap/ap_credit_detail": {
       "get": {
-        "summary": "付款单详情;获取付款单详情;1.0.11",
+        "summary": "付款单详情;获取付款单详情;1.0.12",
         "operationId": "ApCredit_detail",
         "responses": {
           "200": {
@@ -198,14 +198,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id与number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -622,7 +622,11 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id，修改单据时必填;b=2147483647;c=1;d=false"
+          "title": "a=单据id，新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=SKD-20200310-00001;d=true"
         },
         "default_bill_source": {
           "type": "string",
@@ -634,7 +638,7 @@
         },
         "supplier_id": {
           "type": "string",
-          "title": "a=供应商id;b=2147483647;c=1;d=false"
+          "title": "a=供应商id;b=2147483647;c=1;d=true"
         },
         "currency_id": {
           "type": "string",
@@ -665,14 +669,14 @@
           "items": {
             "$ref": "#/definitions/ApCreditSaveRequest.PayEntry"
           },
-          "title": "a=付款信息分录;b=100;c=[];d=false"
+          "title": "a=付款信息分录;b=100;c=[];d=true"
         },
         "source_bill_entry_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApCreditSaveRequest.SourceBillEntry"
           },
-          "title": "a=源单信息分录;b=100;c=[];d=false"
+          "title": "a=源单信息分录;b=100;c=[];d=true"
         },
         "attachments_url_list": {
           "type": "array",
@@ -688,9 +692,13 @@
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
         },
-        "operation_key": {
+        "operate_type": {
           "type": "string",
-          "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+          "title": "a=操作类型,审核audit和反审核unaudit;c=audit;d=false"
+        },
+        "pay_from_to_type": {
+          "type": "string",
+          "title": "固定值字段，不生成对外API文档 1 : 按单核销 2：按分录核销"
         }
       }
     },
@@ -712,7 +720,7 @@
         },
         "settle_account_id": {
           "type": "string",
-          "title": "a=付款账户id;b=2147483647;c=1;d=false"
+          "title": "a=付款账户id;b=2147483647;c=1;d=true"
         },
         "pay_type_id": {
           "type": "string",
@@ -720,7 +728,7 @@
         },
         "amount": {
           "type": "string",
-          "title": "a=付款金额（应大于0）;b=999999999;c=100;d=false"
+          "title": "a=付款金额（应大于0）;b=999999999;c=100;d=true"
         },
         "comment": {
           "type": "string",
@@ -752,11 +760,11 @@
         },
         "src_bill_id": {
           "type": "string",
-          "title": "a=源单id;b=2147483647;c=1;d=false"
+          "title": "a=源单id;b=2147483647;c=1;d=true"
         },
         "src_bill_type_id": {
           "type": "string",
-          "title": "a=源单类型:采购入库单pur_bill_inbound,采购退货单sal_bill_inbound,其他支出单ap_otherpaybill;b=30;c=sal_bill_outbound;d=false"
+          "title": "a=源单类型:采购入库单pur_bill_inbound,采购退货单sal_bill_inbound,其他支出单ap_otherpaybill;b=30;c=sal_bill_outbound;d=true"
         },
         "cur_settle_amount": {
           "type": "string",
@@ -765,6 +773,10 @@
         "src_comment": {
           "type": "string",
           "title": "a=备注;b=100;c=备注;d=false"
+        },
+        "unsettle_amount": {
+          "type": "string",
+          "title": "a=源单未核销金额(修改时必传);b=100;c=1"
         }
       }
     },

@@ -1,0 +1,508 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "财税云;资产;资产变动",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "FaAlter"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/fi/fa_alter_detail": {
+      "get": {
+        "summary": "资产变动详情;资产变动详情;1.0.7",
+        "operationId": "FaAlter_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AlterDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id;b=2147483647;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FaAlter"
+        ]
+      }
+    },
+    "/openapi/v2/fi/fa_alter_list": {
+      "get": {
+        "summary": "资产变动列表;资产变动列表;1.0.5",
+        "operationId": "FaAlter_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AlterListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_size",
+            "description": "a=页大小;c=10.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "search",
+            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_bill_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_bill_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "FaAlter"
+        ]
+      }
+    },
+    "/openapi/v2/fi/fa_alter_save": {
+      "post": {
+        "summary": "资产变动保存;资产变动保存;1.0.8",
+        "operationId": "FaAlter_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AlterSaveRequest"
+            }
+          }
+        ],
+        "tags": [
+          "FaAlter"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "AlterDetailReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=变动单id;c=100001"
+        },
+        "period": {
+          "type": "string",
+          "title": "a=期间;c=1"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=制单人id;c=12345001"
+        },
+        "creator_number": {
+          "type": "string",
+          "title": "a=制单人编码;c=ZDR0001"
+        },
+        "creator_name": {
+          "type": "string",
+          "title": "a= 制单人名称;c=z"
+        },
+        "voucher_id": {
+          "type": "string",
+          "title": "a=凭证id，id值=0标识没有生成凭证，生成凭证不能修改和删除;c=0001"
+        },
+        "create_date": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-10 16:36:24"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=单据编码;c=DBCK-20200310-00001"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=单据日期;c=2020-03-10;d=true"
+        },
+        "alter_items": {
+          "type": "string",
+          "title": "a=变动项（收尾都有英文符号）;c="
+        },
+        "entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AlterDetailReply.Entry"
+          },
+          "title": "a=资产分录;b=100;c=[];d=false"
+        }
+      }
+    },
+    "AlterDetailReply.Entry": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=序号;c=1"
+        },
+        "asset_id": {
+          "type": "string",
+          "title": "a=资产ID;c=1;d=true"
+        },
+        "asset_number": {
+          "type": "string",
+          "title": "a=资产编码;c=1;d=true"
+        },
+        "asset_name": {
+          "type": "string",
+          "title": "a=资产名称;c=1;d=true"
+        },
+        "mode_id": {
+          "type": "string",
+          "title": "a=变动方式;b=30;c=规格型号001"
+        },
+        "mode_number": {
+          "type": "string",
+          "title": "a=变动方式编码;b=30;c=001"
+        },
+        "mode_name": {
+          "type": "string",
+          "title": "a=变动方式名称;b=20;c=名称;d=false"
+        },
+        "sub_entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubEntry"
+          },
+          "title": "a=变动分录;b=100;c=[];d=false"
+        }
+      }
+    },
+    "AlterList": {
+      "type": "object",
+      "properties": {
+        "alter_type": {
+          "type": "string",
+          "title": "a=变动类型,详细传值看[变动项类型](https://open.jdy.com/#/files/api/detail?index=3\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=946baa86479f11ee8c8b274522b4ea62);c=c=txtdept;d=true"
+        },
+        "alter_value": {
+          "type": "string",
+          "title": "a=变动后的值，alter_value 与 alter_value_list二选一，根据alter_type确定传值类型为String时，使用该字段传值，详细传值看[变动项类型](https://open.jdy.com/#/files/api/detail?index=3\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=946baa86479f11ee8c8b274522b4ea62);;c=;d=false"
+        },
+        "alter_value_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AlterValueList"
+          },
+          "title": "a=变动后的值，alter_value 与 alter_value_list二选一，根据alter_type确定传值类型为array时，使用该字段传值，详细传值看[变动项类型](https://open.jdy.com/#/files/api/detail?index=3\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=946baa86479f11ee8c8b274522b4ea62);;c=[];d=false"
+        },
+        "alter_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FaClean.Assist"
+          },
+          "title": "a=减值准备科目核算项目id ;c=1;d=false"
+        }
+      },
+      "title": "资产的变动分录"
+    },
+    "AlterListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AlterListReply.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "AlterListReply.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=单据编码;c=001;d=false"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=制单人id;c=12345001"
+        },
+        "creator_number": {
+          "type": "string",
+          "title": "a=制单人编码;c=ZDR0001"
+        },
+        "creator_name": {
+          "type": "string",
+          "title": "a= 制单人名称;c=z"
+        },
+        "alter_items": {
+          "type": "string",
+          "title": "a=变动项;c=变动项1"
+        },
+        "voucher_id": {
+          "type": "string",
+          "title": "a=凭证id，id值=0标识没有生成凭证，生成凭证不能修改和删除;c=0001"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=单据日期;c=2019-12-11;d=true"
+        }
+      }
+    },
+    "AlterSaveRequest": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string",
+          "title": "a=单据编码;c=DBCK-20200310-00001"
+        },
+        "date": {
+          "type": "string",
+          "title": "a=单据日期;c=2020-03-10;d=true"
+        },
+        "asset_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetList"
+          },
+          "title": "a=资产的变动分录（每个资产的alter_type值要一致，数量和值都需要相同;c=[]"
+        }
+      }
+    },
+    "AlterValueList": {
+      "type": "object",
+      "properties": {
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门ID;c=0111"
+        },
+        "percent": {
+          "type": "string",
+          "title": "a=部门占比（%），范围（0,100],所有precent合计为100;c=5%"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=币别汇率（数值），不赋值默认为1;b=99999;c=1;d=false"
+        },
+        "amount_for": {
+          "type": "string",
+          "title": "a=原币金额，不赋值默认为amount的值，不会检测汇率与原币，本位币金额是否一致;b=999999999;c=100;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=本位币金额;c=20"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=折旧分配科目id;b=2147483647;c=1;d=false"
+        },
+        "assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FaClean.Assist"
+          },
+          "title": "a=科目对应的核算项目，科目启用了必录核算项目是必录;c=[];d=false"
+        }
+      }
+    },
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "AssetList": {
+      "type": "object",
+      "properties": {
+        "asset_id": {
+          "type": "string",
+          "title": "a=资产ID;c=1;d=true"
+        },
+        "mode": {
+          "type": "string",
+          "title": "a=变动方式id;b=30;c=0001001;d=true"
+        },
+        "alter_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AlterList"
+          },
+          "title": "a=变动后的值，根据alter_type确定类型，见变动项类型 alter_type说明;c=[]"
+        }
+      },
+      "title": "变动的资产分录"
+    },
+    "FaClean.Assist": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "a=辅助核算类别(客户-bd_customer，供应商-bd_supplier， 商品-bd_material，部门-bd_department，职员-bd_employee，仓库-bd_store，辅助资料-bd_auxinfo);c=1"
+        },
+        "bd_aux_info_type_id": {
+          "type": "string",
+          "title": "a=当type为bd_auxinfo时必填，辅助资料类别id;b=2147483647;c=1;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=type类别下的基础资料id，例如：type=“bu_customer”时，id值为客户id;c=1;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "SubEntry": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "a=变动项值;c=1"
+        },
+        "old_val": {
+          "type": "string",
+          "title": "a=变动前值;c=1"
+        },
+        "new_val": {
+          "type": "string",
+          "title": "a=变动后值;c=1"
+        }
+      }
+    }
+  }
+}

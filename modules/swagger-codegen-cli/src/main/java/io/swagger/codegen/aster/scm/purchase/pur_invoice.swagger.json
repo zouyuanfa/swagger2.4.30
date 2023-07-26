@@ -1,0 +1,1338 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "进销存云;采购单据;采购发票",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "purInvoice"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/scm/pur_invoice": {
+      "get": {
+        "summary": "采购发票单列表;采购发票单列表;1.0.3",
+        "operationId": "purInvoice_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "supplier_id",
+            "description": "a=供应商ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "dept_id",
+            "description": "a=部门ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "emp_id",
+            "description": "a=职员ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "stock_id",
+            "description": "a=仓库ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "sp_id",
+            "description": "a=仓位ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_stock_id",
+            "description": "a=表头仓库ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_sp_id",
+            "description": "a=表头仓位ID;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_status",
+            "description": "a=单据状态（所有：“”，已审核：“C”，未审核：“Z”）;c=C;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ivc_type",
+            "description": "a=发票类型 （所有：”“，普票：”1“，专票：“2”）;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "hook_status",
+            "description": "a=入库状态 （所有：”“，未入库：”0“，部分入库：“1”，全部入库：“2”）;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "account_check",
+            "description": "a=对账状态 （所有：”“，已对账：”1“，未对账：“0”）;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），创建日期 ;c=2020-02-22;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），创建日期;c=2020-02-22;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "begin_time",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_time",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页（默认1）;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数，（默认10，最大值100）;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "total_fields",
+            "description": "a=合计值字段，多个字段用英文逗号隔开，支持的字段：totalunsettleamount（未收金额）、totalinsamount（收款合计）、totalamount（本次应收账款）;c=totalunsettleamount;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "barcode",
+            "description": "a=商品条码;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "default_select_fields",
+            "description": "固定值字段，不生成对外API文档:新增返回字段:关闭状态.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "purInvoice"
+        ]
+      },
+      "post": {
+        "summary": "采购发票单保存;采购发票单保存。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.7",
+        "operationId": "purInvoice_save",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvoiceSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "purInvoice"
+        ]
+      }
+    },
+    "/openapi/v2/scm/pur_invoice_detail": {
+      "get": {
+        "summary": "采购发票单详情;采购发票单详情;1.0.5",
+        "operationId": "purInvoice_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceDetailReq"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "purInvoice"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "InvoiceDetailReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=843913969650384896"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=001"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2022-08-01"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态，Z：未审核，C：已审核;c=C"
+        },
+        "bill_trans_type": {
+          "type": "string",
+          "title": "a=单据业务类型，0：入库，1：退货;c=122212;d=true"
+        },
+        "ivc_type": {
+          "type": "string",
+          "title": "a=发票类型，1：普票，2：专票;c=1;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-10 09:06:24"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;c=2021-03-10 09:06:24"
+        },
+        "audit_time": {
+          "type": "string",
+          "title": "a=审核时间;c=2021-03-11 09:06:24"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=创建人id;c=739160975466318848"
+        },
+        "creator_name": {
+          "type": "string",
+          "title": "a=创建人名称;c=张三"
+        },
+        "creator_number": {
+          "type": "string",
+          "title": "a=创建人编码;c=1"
+        },
+        "modifier_id": {
+          "type": "string",
+          "title": "a=修改人id;c=739160975466318840"
+        },
+        "modifier_name": {
+          "type": "string",
+          "title": "a=修改人名称;c=李四"
+        },
+        "modifier_number": {
+          "type": "string",
+          "title": "a=修改人编码;c=1"
+        },
+        "auditor_id": {
+          "type": "string",
+          "title": "a=审核人id;c=739160975466318841"
+        },
+        "auditor_name": {
+          "type": "string",
+          "title": "a=审核人名称;c=王五"
+        },
+        "auditor_number": {
+          "type": "string",
+          "title": "a=审核人编码;c=1"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=test"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门id;c=1"
+        },
+        "dept_name": {
+          "type": "string",
+          "title": "a=部门名称;c=部门A"
+        },
+        "dept_number": {
+          "type": "string",
+          "title": "a=部门编码;c=001"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;c=753452507371441152"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=业务员名称;c=小花"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=业务员编码;c=1"
+        },
+        "settle_supplier_id": {
+          "type": "string",
+          "title": "a=结算供应商id;c=1"
+        },
+        "settle_supplier_name": {
+          "type": "string",
+          "title": "a=结算供应商名称;c=客户A"
+        },
+        "settle_supplier_number": {
+          "type": "string",
+          "title": "a=结算供应商编码;c=001"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=1"
+        },
+        "supplier_name": {
+          "type": "string",
+          "title": "a=供应商名称;c=供应商A"
+        },
+        "supplier_number": {
+          "type": "string",
+          "title": "a=供应商编码;c=001"
+        },
+        "contact_phone": {
+          "type": "string",
+          "title": "a=联系信息-联系方式 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13825254099"
+        },
+        "contact_country_id": {
+          "type": "string",
+          "title": "a=供应商发货地址国家id;c=1"
+        },
+        "contact_country_name": {
+          "type": "string",
+          "title": "a=供应商发货地址国家名称;c=中国"
+        },
+        "contact_country_number": {
+          "type": "string",
+          "title": "a=供应商发货地址国家编码;c=001"
+        },
+        "contact_province_id": {
+          "type": "string",
+          "title": "a=供应商发货地址省份id;c=2"
+        },
+        "contact_province_name": {
+          "type": "string",
+          "title": "a=供应商发货地址省份名称;c=广东省"
+        },
+        "contact_province_number": {
+          "type": "string",
+          "title": "a=供应商发货地址省份编码;c=002"
+        },
+        "contact_city_id": {
+          "type": "string",
+          "title": "a=供应商发货地址市区id;c=3"
+        },
+        "contact_city_name": {
+          "type": "string",
+          "title": "a=供应商发货地址市区名称;c=深圳市"
+        },
+        "contact_city_number": {
+          "type": "string",
+          "title": "a=供应商发货地址市区编码;c=003"
+        },
+        "contact_district_id": {
+          "type": "string",
+          "title": "a=供应商发货地址区县id;c=4"
+        },
+        "contact_district_name": {
+          "type": "string",
+          "title": "a=供应商发货地址区县名称;c=XX县"
+        },
+        "contact_district_number": {
+          "type": "string",
+          "title": "a=供应商发货地址区县编码;c=004"
+        },
+        "contact_address": {
+          "type": "string",
+          "title": "a=联系地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=1"
+        },
+        "total_unsettle_amount": {
+          "type": "string",
+          "title": "a=本单未付;c=1"
+        },
+        "total_unsettle_amount_for": {
+          "type": "string",
+          "title": "a=未核销金额（本位币）;c=12"
+        },
+        "settle_status": {
+          "type": "string",
+          "title": "a=本单核销状态;c=1"
+        },
+        "exchange_rate": {
+          "type": "string",
+          "title": "a=汇率;c=10.3"
+        },
+        "all_debt": {
+          "type": "string",
+          "title": "a=应付款余额;c=12"
+        },
+        "custom_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "last_debt": {
+          "type": "string",
+          "title": "a=上次欠款余额;c=5"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=本次应付账款;c=12"
+        },
+        "total_pre_amount": {
+          "type": "string",
+          "title": "a=抵扣预付款;c=12"
+        },
+        "bill_dis_amount": {
+          "type": "string",
+          "title": "a=整单折扣额;c=5"
+        },
+        "bill_dis_rate": {
+          "type": "string",
+          "title": "a=整单折扣率;c=1"
+        },
+        "total_ins_amount": {
+          "type": "string",
+          "title": "a=本次付款合计;c=1"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceDetailReq.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[]"
+        },
+        "payment_entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceDetailReq.PaymentEntry"
+          },
+          "title": "a=收款账户;c=[]"
+        }
+      }
+    },
+    "InvoiceDetailReq.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=商品分录id;c=1"
+        },
+        "picture": {
+          "type": "string",
+          "title": "a=图片url;c=xxx"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=843913969650383872"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=序列号01"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=1"
+        },
+        "material_is_multi_unit": {
+          "type": "boolean",
+          "title": "a=商品是否多单位;c=false"
+        },
+        "material_is_serial": {
+          "type": "boolean",
+          "title": "a=商品是否序列号;c=false"
+        },
+        "material_is_asst_attr": {
+          "type": "boolean",
+          "title": "a=商品是否启用辅助属性;c=false"
+        },
+        "material_is_kf_period": {
+          "type": "boolean",
+          "title": "a=商品是否开启保质期;c=false"
+        },
+        "material_is_batch": {
+          "type": "boolean",
+          "title": "a=商品是否开启批次;c=false"
+        },
+        "material_model": {
+          "type": "string",
+          "title": "a=商品规格;c=001"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=788176130963169280"
+        },
+        "stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=仓库A"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=002"
+        },
+        "stock_is_allow_freight": {
+          "type": "boolean",
+          "title": "a=仓库启用仓位管理;c=false"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位id;c=1"
+        },
+        "sp_name": {
+          "type": "string",
+          "title": "a=仓位名称;c=仓位"
+        },
+        "sp_number": {
+          "type": "string",
+          "title": "a=仓位编码;c=001"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=1"
+        },
+        "aux_prop_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=辅助属性"
+        },
+        "aux_prop_number": {
+          "type": "string",
+          "title": "a=辅助属性编码;c=002"
+        },
+        "aux_id1": {
+          "type": "string",
+          "title": "a=辅助属性1id;c=111"
+        },
+        "aux_name1": {
+          "type": "string",
+          "title": "a=辅助属性1名称;c=辅助属性1"
+        },
+        "aux_number1": {
+          "type": "string",
+          "title": "a=辅助属性1编码;c=001"
+        },
+        "aux_id2": {
+          "type": "string",
+          "title": "a=辅助属性2id;c=2"
+        },
+        "aux_name2": {
+          "type": "string",
+          "title": "a=辅助属性2名称;c=辅助属性2"
+        },
+        "aux_number2": {
+          "type": "string",
+          "title": "a=辅助属性2编码;c=002"
+        },
+        "aux_id3": {
+          "type": "string",
+          "title": "a=辅助属性3id;c=3"
+        },
+        "aux_name3": {
+          "type": "string",
+          "title": "a=辅助属性3名称;c=辅助属性3"
+        },
+        "aux_number3": {
+          "type": "string",
+          "title": "a=辅助属性3编码;c=003"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码;c=20202002"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=单价;c=10.2"
+        },
+        "tax_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=含税单价;c=10.2"
+        },
+        "act_tax_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=实际含税单价;c=10.2"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=1"
+        },
+        "base_unit_name": {
+          "type": "string",
+          "title": "a=基本单位名称;c=个"
+        },
+        "base_unit_number": {
+          "type": "string",
+          "title": "a=基本单位编码;c=ge"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克"
+        },
+        "unit_number": {
+          "type": "string",
+          "title": "a=单位编码;c=g"
+        },
+        "coefficient": {
+          "type": "number",
+          "format": "double",
+          "title": "a=换算率;c=1.0000000000"
+        },
+        "conversion_rate": {
+          "type": "string",
+          "title": "a=换算公式;c=xx"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量;c=15"
+        },
+        "all_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=价税合计;c=10.2"
+        },
+        "tax_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=税额;c=10.2"
+        },
+        "bill_dis_distribution": {
+          "type": "number",
+          "format": "double",
+          "title": "a=整单折扣分配额;c=10.2"
+        },
+        "discount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折扣;c=10"
+        },
+        "dis_rate": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折算率;c=10"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=金额;c=10.2"
+        },
+        "pre_dis_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折前金额;c=10.2"
+        },
+        "act_non_tax_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=实际不含税金额;c=10.2"
+        },
+        "cur_settle_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=本次付款金额;c=10.2"
+        },
+        "dis_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折扣额;c=10.2"
+        },
+        "dis_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折扣单价;c=10.2"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号;c=102202"
+        },
+        "pro_place": {
+          "type": "string",
+          "title": "a=产地;c=深圳"
+        },
+        "pro_reg_no": {
+          "type": "string",
+          "title": "a=注册证号;c=2002010"
+        },
+        "pro_license": {
+          "type": "string",
+          "title": "a=生产许可证号;c=111201"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2022-08-02"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=到期日;c=2022-08-08"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型，1：天，2：月，3：年;c=3"
+        },
+        "kf_period": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=保质期;c=180"
+        },
+        "aux_unit_id": {
+          "type": "string",
+          "title": "a=辅助单位id;c=1"
+        },
+        "aux_unit_name": {
+          "type": "string",
+          "title": "a=辅助单位名称;c=克"
+        },
+        "aux_unit_number": {
+          "type": "string",
+          "title": "a=辅助单位编码;c=g"
+        },
+        "aux_coefficient": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助换算率;c=50"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助数量;c=50"
+        },
+        "cess": {
+          "type": "number",
+          "format": "double",
+          "title": "a=增值税率;c=14"
+        },
+        "seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=分录序号;c=1"
+        },
+        "entry_settle_status": {
+          "type": "string",
+          "title": "a=行付款状态，未收款：A，部分收款：B，全部收款：C;c=C"
+        },
+        "is_free": {
+          "type": "boolean",
+          "title": "a=是否赠品;c=false"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=备注;c=备注"
+        },
+        "src_bill_no": {
+          "type": "string",
+          "title": "a=源单编码;b=2147483647;c=1;d=false"
+        },
+        "src_bill_type_id": {
+          "type": "string",
+          "title": "a=源单类型：采购订单-pur_bill_order，采购入库单-pur_bill_inbound;c=pur_bill_inbound"
+        },
+        "src_bill_type_name": {
+          "type": "string",
+          "title": "a=源单类型名称;c=销售出库单"
+        },
+        "src_bill_type_number": {
+          "type": "string",
+          "title": "a=源单类型编码;c=sal_bill_outbound"
+        },
+        "src_inter_id": {
+          "type": "string",
+          "title": "a=源单id;c=1"
+        },
+        "src_seq": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=源单行号;c=1"
+        },
+        "src_entry_id": {
+          "type": "string",
+          "title": "a=源单分录id;c=1"
+        },
+        "custom_entity_field": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "cur_settle_amount_for": {
+          "type": "string",
+          "title": "a=本次付款金额本币位;c=1;"
+        }
+      }
+    },
+    "InvoiceDetailReq.PaymentEntry": {
+      "type": "object",
+      "properties": {
+        "pay_type_id": {
+          "type": "string",
+          "title": "a=付款方式id;c=1"
+        },
+        "pay_type_name": {
+          "type": "string",
+          "title": "a=付款方式名称;c=ZZZ"
+        },
+        "settle_account_id": {
+          "type": "string",
+          "title": "a=付款账户id;c=123"
+        },
+        "settle_account_name": {
+          "type": "string",
+          "title": "a=付款账户名称;c=112"
+        },
+        "settle_account_number": {
+          "type": "string",
+          "title": "a=付款账户编码;c=111"
+        }
+      }
+    },
+    "InvoiceList": {
+      "type": "object",
+      "properties": {
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2020-03-04 17:21:27"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期，yyyy-MM-dd;c=2020-03-04"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=单据ID;c=839814480568271872"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=CGDD-20200304-00003"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态，已审核：“C”，未审核：“Z”;c=C"
+        },
+        "settle_status": {
+          "type": "string",
+          "title": "a=付款状态(全部收款：“C”，部分收款：“B”，未收款：“A”);c=C"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=830891577957170176"
+        },
+        "supplier_name": {
+          "type": "string",
+          "title": "a=供应商名称;c=LIU的供应商"
+        },
+        "supplier_number": {
+          "type": "string",
+          "title": "a=供应商编码;c=GYS00019"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员id;c=830891390555667456"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=业务员名称;c=alina-liu"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=业务员编码;c=ZY00026"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=test"
+        }
+      }
+    },
+    "InvoiceListResp": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceList"
+          },
+          "title": "a=返回数据列表;c=[]"
+        },
+        "headers": {
+          "$ref": "#/definitions/InvoiceListResp.Header",
+          "title": "a=返回数据头信息;c=[]"
+        }
+      }
+    },
+    "InvoiceListResp.Header": {
+      "type": "object",
+      "properties": {
+        "total_amount": {
+          "type": "string",
+          "title": "a=列表价税合计汇总，符合条件所有单据价税合计汇总，包含本页之外的数据;c=200.2"
+        },
+        "total_ins_amount": {
+          "type": "string",
+          "title": "a=列表收款合计汇总，符合条件所有单据收款合计汇总，包含本页之外的数据;c=200.2"
+        },
+        "total_un_settle_amount": {
+          "type": "string",
+          "title": "a=列表未收金额汇总，符合条件所有单据未收金额汇总，包含本页之外的数据;c=200.2"
+        }
+      }
+    },
+    "InvoiceSaveReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=单据ID，修改单据时必填，新增不传该字段;c=122212"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=122212"
+        },
+        "operation_key": {
+          "type": "string",
+          "title": "a=操作类型，固定取值：special_save，执行特殊保存是必填;c=122212"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2024-08-01"
+        },
+        "bill_trans_type": {
+          "type": "string",
+          "title": "a=单据业务类型，0：入库，1：退货；默认为0;c=1"
+        },
+        "ivc_type": {
+          "type": "string",
+          "title": "a=发票类型，1：普票，2：专票；默认为2;c=1"
+        },
+        "settle_supplier_id": {
+          "type": "string",
+          "title": "a=结算供应商;c=122212"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=122212"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=部门;c=122212"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=业务员;c=122212"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商;c=122212;d=true"
+        },
+        "contact_phone": {
+          "type": "string",
+          "title": "a=结算供应商联系电话;c=122212"
+        },
+        "contact_linkman": {
+          "type": "string",
+          "title": "a=联系信息-联系人;c=联系人A"
+        },
+        "contact_country_id": {
+          "type": "string",
+          "title": "a=联系国家;c=122212"
+        },
+        "contact_province_id": {
+          "type": "string",
+          "title": "a=省份;c=122212"
+        },
+        "contact_city_id": {
+          "type": "string",
+          "title": "a=城市;c=122212"
+        },
+        "contact_district_id": {
+          "type": "string",
+          "title": "a=区域;c=122212"
+        },
+        "contact_address": {
+          "type": "string",
+          "title": "a=结算供应商详细地址;c=122212"
+        },
+        "diff_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=付款抹零;c=122212"
+        },
+        "deduction_balance": {
+          "type": "string",
+          "title": "a=抵扣预付款;c=122212"
+        },
+        "deduction_entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceSaveReq.DeductionEntry"
+          },
+          "title": "a=抵扣预付款分录体;c=[]"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceSaveReq.MaterialEntity"
+          },
+          "title": "a=商品分录;c=[];d=true"
+        },
+        "reverse_condition_calculate": {
+          "type": "string",
+          "title": "a=是否从反算单价（保存修改应保持一致传参），true:反算，默认false;c=122212"
+        },
+        "out_side_pk_id": {
+          "type": "string",
+          "title": "a=外部单号，如果第三方不使用星辰的ID，可以确保该单号唯一的情况下，新增与更新带上它;c=122212"
+        }
+      }
+    },
+    "InvoiceSaveReq.DeductionEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=修改时必传;c=122212"
+        },
+        "arap_src_inter_id": {
+          "type": "string",
+          "title": "a=源单（预付款单or客户应付初始单据）单据id;c=122212;d=true"
+        },
+        "arap_src_bill_type_id": {
+          "type": "string",
+          "title": "a=单据类型；预付款单：ap_prepaybill，客户应付初始单据：ap_initbasebill;c=122212;d=true"
+        },
+        "arap_cur_settle_amount": {
+          "type": "string",
+          "title": "a=本次核销金额;c=122212;d=true"
+        }
+      }
+    },
+    "InvoiceSaveReq.MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=商品分录id，新增不传该字段，修改必传;c=1"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品;c=753454885214650368;d=true"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库;c=1;d=false"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位;c=1"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量;c=1;d=true"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位;c=3;d=true"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性(辅助属性商品必填);c=1"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=条形码);c=202001"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号 (批次商品必填);c=202001"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2024-02-12"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=到期日;c=2024-02-12"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型，1：天，2：月，3：年;c=13"
+        },
+        "kf_period": {
+          "type": "string",
+          "title": "a=保质期;c=12"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=价格;c=12;d=true"
+        },
+        "tax_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=含税单价;c=13"
+        },
+        "cess": {
+          "type": "number",
+          "format": "double",
+          "title": "a=税率;c=12"
+        },
+        "all_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=价税合计;c=100"
+        },
+        "tax_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=税额;c=22.2"
+        },
+        "dis_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折扣额;c=20"
+        },
+        "dis_count": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折扣;c=2"
+        },
+        "dis_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折后单价;c=20"
+        },
+        "amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=折后金额;c=20"
+        },
+        "comment": {
+          "type": "string",
+          "title": "a=备注;c=备注行"
+        },
+        "src_bill_type_id": {
+          "type": "string",
+          "title": "a=源单类型：采购订单-pur_bill_order，采购入库单-pur_bill_inbound;c=pur_bill_inbound"
+        },
+        "src_inter_id": {
+          "type": "string",
+          "title": "a=源单id;c=1"
+        },
+        "src_entry_id": {
+          "type": "string",
+          "title": "a=源单分录id;c=1"
+        },
+        "is_free": {
+          "type": "boolean",
+          "title": "a=是否赠品;c=true"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计本位币;c=21"
+        },
+        "src_seq": {
+          "type": "string",
+          "title": "a=源单行号;c=12;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id与编码map;c={};d=true"
+        }
+      },
+      "title": "保存返回id数组对象"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

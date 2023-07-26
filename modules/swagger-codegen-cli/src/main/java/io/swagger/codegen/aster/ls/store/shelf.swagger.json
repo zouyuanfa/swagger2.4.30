@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/shelf": {
       "get": {
-        "summary": "商品上下架列表;商品上下架列表;1.0.6",
+        "summary": "商品上下架列表;商品上下架列表;1.0.8",
         "operationId": "Shelf_list",
         "responses": {
           "200": {
@@ -67,7 +67,7 @@
           },
           {
             "name": "store_id",
-            "description": "a=门店id;c=001;d=false.",
+            "description": "a=门店id;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "string"

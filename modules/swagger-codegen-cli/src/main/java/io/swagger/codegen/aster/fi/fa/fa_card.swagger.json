@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;资产管理;资产",
+    "title": "财税云;资产;资产新增",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_card": {
       "get": {
-        "summary": "资产列表;获取资产列表;1.0.13",
+        "summary": "资产列表;获取资产列表;1.0.17",
         "operationId": "FaCard_list",
         "responses": {
           "200": {
@@ -113,7 +113,7 @@
     },
     "/openapi/v2/fi/fa_card_detail": {
       "get": {
-        "summary": "资产详情;获取资产详情;1.0.13",
+        "summary": "资产详情;获取资产详情;1.0.14",
         "operationId": "FaCard_detail",
         "responses": {
           "200": {
@@ -145,7 +145,7 @@
     },
     "/openapi/v2/fi/fa_card_save": {
       "post": {
-        "summary": "资产保存;资产保存;1.0.13",
+        "summary": "资产保存;资产保存;1.0.21",
         "operationId": "FaCard_save",
         "responses": {
           "200": {
@@ -740,11 +740,11 @@
         },
         "name": {
           "type": "string",
-          "title": "a=编码;b=30;c=001"
+          "title": "a=资产名字;b=30;c=科目一"
         },
         "number": {
           "type": "string",
-          "title": "a=名字;b=30;c=科目一"
+          "title": "a=资产编码;b=30;c=001"
         },
         "is_init": {
           "type": "boolean",
@@ -858,11 +858,11 @@
         },
         "name": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=true"
+          "title": "a=名称;b=30;c=001;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=名字;b=30;c=001;d=false"
+          "title": "a=资产编码;b=30;c=001;d=false"
         },
         "is_init": {
           "type": "boolean",
@@ -901,7 +901,7 @@
         },
         "record_date": {
           "type": "string",
-          "title": "入账日期，yyyy-MM-dd ;c=2020-10-10;d=true"
+          "title": "a=入账日期，yyyy-MM-dd ;c=2020-10-10;d=true"
         },
         "max_depr_periods": {
           "type": "string",
@@ -909,7 +909,7 @@
         },
         "used_periods": {
           "type": "string",
-          "title": "a=已折旧期间数/已使用工作量 ;c=1;d=true"
+          "title": "a=已折旧期间数/已使用工作量 ;c=1;d=false"
         },
         "orgval_list": {
           "type": "array",
@@ -927,7 +927,7 @@
           "items": {
             "$ref": "#/definitions/CommonAssist"
           },
-          "title": "a=原值明细 ;c=1;d=true"
+          "title": "a=固定资产科目启用了必录核算项目是必录(与asset_detail_id二选一);c=1;d=true"
         },
         "asset_detail_id": {
           "type": "string",
@@ -935,7 +935,14 @@
         },
         "depr_detail_id": {
           "type": "string",
-          "title": "a=累计折旧科目核算项目id ;c=1;d=true"
+          "title": "隐藏 累计折旧科目核算项目id,开放 depracctid_assist"
+        },
+        "depr_acct_assist": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CardSaveRequest.Assist"
+          },
+          "title": "a=累计折旧科目启用了必录核算项目是必录;c=1;d=true"
         },
         "expense_list": {
           "type": "array",
@@ -968,22 +975,22 @@
           "items": {
             "$ref": "#/definitions/CommonAssist"
           },
-          "title": "减值准备科目启用了必录核算项目是必录（与dec_pre_detail_id二选一） ;c=1;d=false"
+          "title": "a=减值准备科目启用了必录核算项目是必录（与dec_pre_detail_id二选一）;c=1;d=false"
         },
         "dec_pre_detail_id": {
           "type": "string",
-          "title": "a=减值准备科目核算项目id ;c=1;d=false"
+          "title": "a=减值准备科目核算项目id;c=1;d=false"
         },
         "alter_acct_id": {
           "type": "string",
-          "title": "a=减值准备科目核算项目id ;c=1;d=false"
+          "title": "a=减值准备科目核算项目id;c=1;d=false"
         },
         "alter_acct_assist": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CommonAssist"
           },
-          "title": "减产变动科目启用了必录核算项目是必录（与alter_detail_id二选一） | ;c=1;d=false"
+          "title": "a=减产变动科目启用了必录核算项目是必录（与alter_detail_id二选一）;c=1;d=false"
         },
         "alter_detail_id": {
           "type": "string",
@@ -1050,6 +1057,23 @@
         "depr_acct_id": {
           "type": "string",
           "title": "a=累计折旧科目ID ;c=1"
+        }
+      }
+    },
+    "CardSaveRequest.Assist": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=type类别下的基础资料id，例如type=“bd_customer”，id值为客户id;c=20;d=true"
+        },
+        "bd_aux_info_type_id": {
+          "type": "string",
+          "title": "a=辅助资料类别id(当type为bd_auxinfo时必填);c=739;d=false"
+        },
+        "type": {
+          "type": "string",
+          "title": "a=辅助核算类别(客户-bd_customer，供应商-bd_supplier， 商品-bd_material，部门-bd_department，职员-bd_employee，仓库-bd_store)， 辅助资料-bd_auxinfo;c=20;d=true"
         }
       }
     },
@@ -1205,7 +1229,7 @@
         },
         "expense_detail_id": {
           "type": "string",
-          "title": "a=核算项目ID（与expense_acct_id_assist二选一） |;c=;d=false"
+          "title": "a=核算项目ID（与expense_acct_id_assist二选一）;c=;d=false"
         },
         "expense_percent": {
           "type": "string",

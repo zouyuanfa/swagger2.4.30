@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/retail_bill": {
       "get": {
-        "summary": "零售单列表;零售单列表;1.0.7",
+        "summary": "零售单列表;零售单列表;1.0.15",
         "operationId": "RetailBill_list",
         "responses": {
           "200": {
@@ -118,7 +118,7 @@
             "description": "a=是否查询详情 默认为是;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "page_no",
@@ -135,6 +135,13 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "is_return_paging",
+            "description": "固定值字段，不生成对外API文档:新增返回字段:关闭状态.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "tags": [
@@ -142,7 +149,7 @@
         ]
       },
       "post": {
-        "summary": "零售单保存;零售单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.9",
+        "summary": "零售单保存;零售单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.13",
         "operationId": "RetailBill_save",
         "responses": {
           "200": {
@@ -175,7 +182,7 @@
     },
     "/openapi/v2/ls/retail_bill_detail": {
       "get": {
-        "summary": "零售单详情;零售单详情;1.0.6",
+        "summary": "零售单详情;零售单详情;1.0.10",
         "operationId": "RetailBill_detail",
         "responses": {
           "200": {
@@ -194,14 +201,14 @@
         "parameters": [
           {
             "name": "bill_id",
-            "description": "a=支持ID精确查询，零售单保存接口返回的订单ID;c=1;d=false.",
+            "description": "a=支持ID精确查询，零售单保存接口返回的订单ID;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "bill_no",
-            "description": "a=支持按照订单编号查询，零售单接口保存返回的订单编号;c=001;d=false.",
+            "description": "a=bill_no与ill_id二选一;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -212,6 +219,39 @@
             "in": "query",
             "required": false,
             "type": "string"
+          }
+        ],
+        "tags": [
+          "RetailBill"
+        ]
+      }
+    },
+    "/openapi/v2/ls/retail_bill_return": {
+      "post": {
+        "summary": "零售单退货;零售单退货;1.0.5",
+        "operationId": "RetailBill_retailBillReturn",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RetailBillReturnRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RetailBillReturnReq"
+            }
           }
         ],
         "tags": [
@@ -355,6 +395,21 @@
       },
       "title": "核销积分"
     },
+    "MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "src_entry_id": {
+          "type": "string",
+          "title": "a=零售订单商品分录行id，通过零售单详情获得;c=1;d=true"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=退货数量;c=1;d=true"
+        }
+      },
+      "title": "商品分录"
+    },
     "MemberDeals": {
       "type": "object",
       "properties": {
@@ -487,6 +542,22 @@
         "ext_info": {
           "$ref": "#/definitions/ExtInfo",
           "title": "a=订单扩展信息;c=object;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=商城源单id;c=1;d=false"
+        },
+        "src_bill_no": {
+          "type": "string",
+          "title": "a=商城源单编码;c=1;d=false"
+        },
+        "src_bill_inner_no": {
+          "type": "string",
+          "title": "a=商城源单内码;c=1;d=false"
+        },
+        "cost": {
+          "type": "string",
+          "title": "a=出库成本;c=1;d=false"
         }
       }
     },
@@ -663,6 +734,10 @@
         "total_dis_rate": {
           "type": "string",
           "title": "a=总折扣率;c=1;d=false"
+        },
+        "out_cost": {
+          "type": "string",
+          "title": "a=出库成本;c=3.05;d=false"
         }
       }
     },
@@ -945,6 +1020,22 @@
             "$ref": "#/definitions/RetailBillListRes.PaymentEntries"
           },
           "title": "a=支付详情;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=商城源单id;c=1;d=false"
+        },
+        "src_bill_no": {
+          "type": "string",
+          "title": "a=商城源单编码;c=1;d=false"
+        },
+        "src_bill_inner_no": {
+          "type": "string",
+          "title": "a=商城源单内码;c=1;d=false"
+        },
+        "cost": {
+          "type": "string",
+          "title": "a=出库成本;c=1;d=false"
         }
       }
     },
@@ -1121,6 +1212,10 @@
         "total_dis_rate": {
           "type": "string",
           "title": "a=总折扣率;c=1;d=false"
+        },
+        "out_cost": {
+          "type": "string",
+          "title": "a=出库成本;c=3.05;d=false"
         }
       }
     },
@@ -1249,7 +1344,78 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/RetailBillListRes"
-          }
+          },
+          "title": "a=返回数据列表;c=[]"
+        },
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        }
+      }
+    },
+    "RetailBillReturnReq": {
+      "type": "object",
+      "properties": {
+        "ext_no": {
+          "type": "string",
+          "title": "a=外部系统编码,第三方外部系统唯一标识，可用于重复校验；属于退货业务，不能与零售单据编码retail_bill_no相同;c=894148680330821632;d=true"
+        },
+        "retail_bill_no": {
+          "type": "string",
+          "title": "a=零售单据编码;c=894148680330821632;d=true"
+        },
+        "return_all": {
+          "type": "boolean",
+          "title": "a=是否整单退。默认true;c=894148680330821632;d=false"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaterialEntity"
+          },
+          "title": "a=退货商品分录，部分退的情况必填;c=[];d=false"
+        },
+        "is_flatten": {
+          "type": "string",
+          "title": "固定值字段，不生成对外API文档:简化请求参数"
+        }
+      }
+    },
+    "RetailBillReturnRes": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=零售单退货id;c=123;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=零售单退货编码;c=123;d=false"
+        },
+        "ext_no": {
+          "type": "string",
+          "title": "a=外部系统编码;c=123;d=false"
         }
       }
     },
@@ -1267,7 +1433,7 @@
         },
         "src_bill_id": {
           "type": "string",
-          "title": "a=商城单据内码;c=1;d=false"
+          "title": "a=商城单据内码;c=1;d=true"
         },
         "bill_date": {
           "type": "string",
@@ -1275,7 +1441,7 @@
         },
         "store_id": {
           "type": "string",
-          "title": "a=门店ID;c=1;d=false"
+          "title": "a=门店ID;c=1;d=true"
         },
         "member_id": {
           "type": "string",
@@ -1283,7 +1449,7 @@
         },
         "amt": {
           "type": "string",
-          "title": "a=订单金额;c=10;d=false"
+          "title": "a=订单金额;c=10;d=true"
         },
         "discount_fee": {
           "type": "string",
@@ -1295,7 +1461,7 @@
         },
         "delivery_type": {
           "type": "string",
-          "title": "a=1 现提, 2 自提, 3、同城配送，4、快递 5、店内配送;c=1;d=false"
+          "title": "a=1 现提, 2 自提, 3、同城配送，4、快递 5、店内配送;c=1;d=true"
         },
         "delivery_code": {
           "type": "string",
@@ -1370,7 +1536,7 @@
           "items": {
             "$ref": "#/definitions/RetailBillSaveReq.MaterialEntries"
           },
-          "title": "a=商品分录;d=false"
+          "title": "a=商品分录;d=true"
         },
         "client_id": {
           "type": "string"
@@ -1380,7 +1546,7 @@
           "items": {
             "$ref": "#/definitions/RetailBillSaveReq.SettleEntries"
           },
-          "title": "a=结算分录;d=false"
+          "title": "a=结算分录;d=true"
         },
         "promotion_summary": {
           "type": "array",
@@ -1411,7 +1577,7 @@
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品Id;c=1;d=false"
+          "title": "a=商品Id;c=1;d=true"
         },
         "sku_id": {
           "type": "string",
@@ -1419,7 +1585,7 @@
         },
         "unit_id": {
           "type": "string",
-          "title": "a=单位id;c=1;d=false"
+          "title": "a=单位id;c=1;d=true"
         },
         "free": {
           "type": "string",
@@ -1427,7 +1593,7 @@
         },
         "price": {
           "type": "string",
-          "title": "a=单价;c=500;d=false"
+          "title": "a=单价;c=500;d=true"
         },
         "dis_price": {
           "type": "string",
@@ -1435,7 +1601,7 @@
         },
         "qty": {
           "type": "string",
-          "title": "a=数量;c=1;d=false"
+          "title": "a=数量;c=1;d=true"
         },
         "discount_fee": {
           "type": "string",
@@ -1518,11 +1684,11 @@
       "properties": {
         "pay_type": {
           "type": "string",
-          "title": "a=1-微信、2-支付宝、90-会员卡，归属星辰支付类型 ；4-第三方微信、5-第三方支付宝;c=1;d=false"
+          "title": "a=1-微信、2-支付宝、90-会员卡，归属星辰支付类型 ；4-第三方微信、5-第三方支付宝;c=1;d=true"
         },
         "settle_amt": {
           "type": "string",
-          "title": "a=收款金额;c=30;d=false"
+          "title": "a=收款金额;c=30;d=true"
         }
       },
       "title": "结算分录"

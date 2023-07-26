@@ -71,6 +71,13 @@
             "type": "string"
           },
           "title": "a=id数组;c=[\"1\"];d=true"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=失败信息数组;c=[\"失败\"];d=true"
         }
       }
     },

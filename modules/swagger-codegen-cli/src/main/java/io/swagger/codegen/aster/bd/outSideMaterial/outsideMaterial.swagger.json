@@ -1,0 +1,283 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "基础资料;商品资料;商品信息",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "OutSideMaterial"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/bd/outside_material": {
+      "get": {
+        "summary": "外部商品库列表;外部商品库列表;1.0.3",
+        "operationId": "OutSideMaterial_OutSideMaterialList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutSideMaterialListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=模糊搜索-名称;b=2147483647;c=苹果;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "out_side_pks",
+            "description": "a=外部唯一标识id;b=1220001;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "ids",
+            "description": "a=星辰id集合查询;b=2147483647;c=c=[\"123456\",\"25455\"];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "numbers",
+            "description": "a=外部商品编码集合;b=1;c=c=[\"123456\",\"25455\"];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "outside_units",
+            "description": "a=外部单位集合查询;b=10;c=[\"123456\",\"25455\"];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "is_bind_relation",
+            "description": "a=是否绑定，true：是，false：否;b=100;c=false;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "OutSideMaterial"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "OutSideMaterialListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      },
+      "title": "商品列表返回参数"
+    },
+    "Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;;d=false"
+        },
+        "outside_pk_id": {
+          "type": "string",
+          "title": "a=外部唯一标识id;b=1000;c=http;d=false"
+        },
+        "type": {
+          "type": "string",
+          "title": "a=1:供应商，2：客户;b=2;c=1;d=false"
+        },
+        "type_name": {
+          "type": "string",
+          "title": "a=类型的文本解释：供应商或者客户;b=100;c=供应商;d=false"
+        },
+        "customer_id": {
+          "type": "string",
+          "title": "a=客户id;c=1"
+        },
+        "customer_number": {
+          "type": "string",
+          "title": "a=客户编码;c=001"
+        },
+        "customer_name": {
+          "type": "string",
+          "title": "a=客户名称;c=客户名称"
+        },
+        "supplier_id": {
+          "type": "string",
+          "title": "a=供应商id;c=1"
+        },
+        "supplier_name": {
+          "type": "string",
+          "title": "a=供应商名称;c=供应商A"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=编码;b=30;c=001;d=false"
+        },
+        "outside_model": {
+          "type": "string",
+          "title": "a=外部规格型号;b=100;c=型号1;d=false"
+        },
+        "outside_barcode": {
+          "type": "string",
+          "title": "a=外部条型码;b=20;c=001;d=false"
+        },
+        "outside_unit": {
+          "type": "string",
+          "title": "a=外部单位;b=30;c=kg;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=843913969650383872"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=序列号01"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位名称;c=克"
+        },
+        "prop_ux_id": {
+          "type": "string",
+          "title": "a=辅助属性id;b=20;c=001;d=false"
+        },
+        "prop_aux_number": {
+          "type": "string",
+          "title": "a=SKU编码;b=30;c=GDVKH001;d=false"
+        },
+        "is_bind_relation": {
+          "type": "boolean",
+          "title": "a=是否绑定，true：是，false：否;b=100;c=false;d=false"
+        },
+        "outside_aux_unit": {
+          "type": "string",
+          "title": "a=外部多单位;b=10;c=kg;d=false"
+        },
+        "match_unit": {
+          "type": "string",
+          "title": "a=单位匹配;b=10;c=001;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

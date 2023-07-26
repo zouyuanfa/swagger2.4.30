@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/account_balance_report": {
       "get": {
-        "summary": "科目余额表;查询科目余额表;1.0.6",
+        "summary": "科目余额表;查询科目余额表;1.0.8",
         "operationId": "AccountBook_accountBalance",
         "responses": {
           "200": {
@@ -73,8 +73,8 @@
             "format": "int32"
           },
           {
-            "name": "currency_Id",
-            "description": "a=币别id （特别的 0：综合本位币，-1：所有币别，默认0）;b=2147483647;c=1;d=false.",
+            "name": "currency_id",
+            "description": "a=币别id（0：综合本位币，-1：所有币别，默认0）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -101,9 +101,83 @@
         ]
       }
     },
+    "/openapi/v2/fi/assist_type_list": {
+      "get": {
+        "summary": "辅助核算类别列表;辅助核算类别列表（星辰3.1以上版本支持）;1.0.3",
+        "operationId": "AccountBook_assistType",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/assistTypeReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_size",
+            "description": "a=页大小;c=10.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "AccountBook"
+        ]
+      }
+    },
+    "/openapi/v2/fi/assistdetail_report": {
+      "post": {
+        "summary": "核算项目明细账;核算项目明细账（星辰3.1以上版本支持）;1.0.3",
+        "operationId": "AccountBook_itemAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/assistDetailReportReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/assistDetailReportReq"
+            }
+          }
+        ],
+        "tags": [
+          "AccountBook"
+        ]
+      }
+    },
     "/openapi/v2/fi/qty_sum": {
       "get": {
-        "summary": "数量金额总账;查询数量金额总账;1.0.6",
+        "summary": "数量金额总账;查询数量金额总账;1.0.12",
         "operationId": "AccountBook_qtySum",
         "responses": {
           "200": {
@@ -133,14 +207,14 @@
           },
           {
             "name": "start_period",
-            "description": "a=开始年度期间;b=6;c=201903;d=false.",
+            "description": "a=开始年度期间;b=6;c=201903;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_period",
-            "description": "a=结束年度期间;b=6;c=201903;d=false.",
+            "description": "a=结束年度期间;b=6;c=201903;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -163,14 +237,14 @@
           },
           {
             "name": "currency_id",
-            "description": "a=期间;b=2147483647;c=001;d=false.",
+            "description": "a=币别id（0：综合本位币，-1：所有币别，默认0）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=期间;b=2147483647;c=001;d=false.",
+            "description": "a=当前页（默认1，如page页超出最大页，则取最后一页）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -178,7 +252,7 @@
           },
           {
             "name": "page_size",
-            "description": "a=期间;b=2147483647;c=001;d=false.",
+            "description": "a=每页显示条数，大于0，不传该字段表示不分页;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -235,6 +309,17 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "account_no",
+            "description": "a=科目编码;b=30;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
           }
         ],
         "tags": [
@@ -244,7 +329,7 @@
     },
     "/openapi/v2/fi/sub_ledger_report": {
       "get": {
-        "summary": "明细账;查询明细账;1.0.6",
+        "summary": "明细账;查询明细账;1.0.8",
         "operationId": "AccountBook_subLedger",
         "responses": {
           "200": {
@@ -263,21 +348,21 @@
         "parameters": [
           {
             "name": "account_id",
-            "description": "a=科目ID;b=2147483647;c=1;d=false.",
+            "description": "a=科目ID;b=2147483647;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_period",
-            "description": "a=开始年度期间;b=6;c=201903;d=false.",
+            "description": "a=开始年度期间;b=6;c=201903;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_period",
-            "description": "a=结束年度期间;b=6;c=201903;d=false.",
+            "description": "a=结束年度期间;b=6;c=201903;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -419,6 +504,116 @@
       },
       "additionalProperties": {},
       "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "AssistList": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "a=辅助核算类别id，通过接口assist_type_list获取;c=f0001;d=true"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=过滤具体的辅助核算id，与number同时有值，以id为准；2）与number二选一必录;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=过滤具体的辅助核算编码：1）与id同时有值，以id为准；2）与id二选一必录;c=KH00010;d=true"
+        }
+      }
+    },
+    "Items": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "title": "a=日期;c=2"
+        },
+        "type": {
+          "type": "string",
+          "title": "a=凭证字号;c=11"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=凭证id;c=1"
+        },
+        "explanation": {
+          "type": "string",
+          "title": "a=摘要;c=aa"
+        },
+        "account_number": {
+          "type": "string",
+          "title": "a=科目编码;c=1"
+        },
+        "account_name": {
+          "type": "string",
+          "title": "a=科目名称;c=1"
+        },
+        "currency": {
+          "type": "string",
+          "title": "a=币别/汇率;c=1"
+        },
+        "unit": {
+          "type": "string",
+          "title": "a=单位;c=1"
+        },
+        "debit_qty": {
+          "type": "string",
+          "title": "a=借方数量;c=1"
+        },
+        "debit_price": {
+          "type": "string",
+          "title": "a=借方单价;c=1"
+        },
+        "debit_amount_for": {
+          "type": "string",
+          "title": "a=借方原币金额;c=aa"
+        },
+        "debit_amount": {
+          "type": "string",
+          "title": "a=借方本位币金额;c=1"
+        },
+        "credit_qty": {
+          "type": "string",
+          "title": "a=贷方数量;c=1"
+        },
+        "credit_price": {
+          "type": "string",
+          "title": "a=贷方单价;c=1"
+        },
+        "credit_amount_for": {
+          "type": "string",
+          "title": "a=贷方原币金额;c=1"
+        },
+        "credit_amount": {
+          "type": "string",
+          "title": "a=贷方本位币金额;c=1"
+        },
+        "balance_dc": {
+          "type": "string",
+          "title": "a=余额方向;c=1"
+        },
+        "balance_qty": {
+          "type": "string",
+          "title": "a=余额数量;c=aa"
+        },
+        "balance_price": {
+          "type": "string",
+          "title": "a=余额单价;c=1"
+        },
+        "balance_amount_for": {
+          "type": "string",
+          "title": "a=余额原币金额;c=1"
+        },
+        "balance_amount": {
+          "type": "string",
+          "title": "a=余额本位币金额;c=1"
+        },
+        "data_type": {
+          "type": "string",
+          "title": "a=数据类型，0：期初数据，1：凭证数据，2：本期合计，3：本年累计;c=1"
+        }
+      }
     },
     "QtySumReply": {
       "type": "object",
@@ -634,6 +829,154 @@
           "type": "integer",
           "format": "int32",
           "title": "a=余额方向 1借 -1贷 0平;b=1;c=1;d=false"
+        }
+      }
+    },
+    "assistDetailReportReply": {
+      "type": "object",
+      "properties": {
+        "total_count": {
+          "type": "string",
+          "title": "a=科目总数;c=202"
+        },
+        "page_count": {
+          "type": "string",
+          "title": "a=当前页返回行数;c=2"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Items"
+          },
+          "title": "a=数据行;c=[]"
+        }
+      }
+    },
+    "assistDetailReportReq": {
+      "type": "object",
+      "properties": {
+        "start_period": {
+          "type": "string",
+          "title": "a=开始年度期间（例：“202405”）;c=202405;d=true"
+        },
+        "end_period": {
+          "type": "string",
+          "title": "a=结束年度期间（例：“202405”）;c=202405;d=true"
+        },
+        "assist_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssistList"
+          },
+          "title": "a=辅助核算参数列表;c=[];d=true"
+        },
+        "account_id": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=科目id，与科目编码同时有值，以id为准;c=[]"
+        },
+        "account_number": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=科目编码，与科目id同时有值,以id为准;c=[]"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id(0：综合本位币，-1：所有币别，默认0);c=客户"
+        },
+        "explanation": {
+          "type": "string",
+          "title": "a=摘要;c=aa"
+        },
+        "hide_balance_zero": {
+          "type": "string",
+          "title": "a=余额为0不显示（1：是，0：否，默认0）;c=1"
+        },
+        "hide_no_happen": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=无发生额且余额为0不显示（1：是，0：否，默认0）;c=1"
+        },
+        "hide_total": {
+          "type": "string",
+          "title": "a=发生额为0不显示本期合计、本年累计（1：是，0：否，默认1）;c=1"
+        },
+        "qty_scale": {
+          "type": "string",
+          "title": "a=数量精度（默认2位）;c=1"
+        },
+        "price_scale": {
+          "type": "string",
+          "title": "a=单价精度（默认4位）;c=1"
+        },
+        "page": {
+          "type": "string",
+          "title": "a=当前页（默认1，如page页超出最大页，则取最后一页）;c=1"
+        },
+        "page_size": {
+          "type": "string",
+          "title": "a=每页显示条数，大于0，不传该字段表示不分页;c=1"
+        }
+      }
+    },
+    "assistTypeReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/assistTypeReply.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "assistTypeReply.Row": {
+      "type": "object",
+      "properties": {
+        "flex_fie_id": {
+          "type": "string",
+          "title": "a=辅助核算类别id，例如：f0001、f0002;c=f0002"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=辅助核算类别，例如：客户、辅助资料下的具体类别;c=客户"
+        },
+        "value_source_name": {
+          "type": "string",
+          "title": "a=辅助核算类别值来源名称;c=客户"
+        },
+        "value_source_id": {
+          "type": "string",
+          "title": "a=辅助核算类别值来源id;c=bd_customer"
+        },
+        "assistanttype_id": {
+          "type": "string",
+          "title": "a=辅助资料类别id(value_source_id= \"bd_auxinfo\",才会有类别id);c=0001"
         }
       }
     }

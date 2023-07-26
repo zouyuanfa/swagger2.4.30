@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/coupons_distribute": {
       "post": {
-        "summary": "优惠券发放(领用);优惠券发放(领用);1.0.6",
+        "summary": "优惠券发放(领用);优惠券发放(领用);1.0.8",
         "operationId": "CouponsDistribute_list",
         "responses": {
           "200": {
@@ -95,7 +95,7 @@
         },
         "channel": {
           "type": "string",
-          "title": "a=领用渠道：\n1.扫码领用\n2.促销赠送\n3.转增\n4.购买\n5.支付有礼\n6.入门有礼\n7.签到有礼\n8.精准营销\n9.导入\n10.领券中心;c=1;d=false"
+          "title": "a=领券中心;c=1;d=true"
         },
         "qty": {
           "type": "string",

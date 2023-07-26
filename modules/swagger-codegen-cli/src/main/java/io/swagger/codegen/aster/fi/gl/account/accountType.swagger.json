@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/account_type": {
       "get": {
-        "summary": "科目类别列表;获取科目类别列表;1.0.6",
+        "summary": "科目类别列表;获取科目类别列表;1.0.7",
         "operationId": "AccountType_list",
         "responses": {
           "200": {
@@ -68,7 +68,7 @@
         },
         "name": {
           "type": "string",
-          "title": "科目类别名称;b=100;c=名称;d=false"
+          "title": "a=科目类别名称;b=100;c=名称;d=false"
         },
         "number": {
           "type": "string",

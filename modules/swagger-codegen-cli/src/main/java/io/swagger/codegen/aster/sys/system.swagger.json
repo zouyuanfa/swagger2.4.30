@@ -16,9 +16,42 @@
     "application/json"
   ],
   "paths": {
+    "/openapi/v2/basedata/image_upload": {
+      "post": {
+        "summary": "图片上传;图片单个上传;1.0.2",
+        "operationId": "System_imageUp",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/imageUploadResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/imageUploadReq"
+            }
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
     "/openapi/v2/sys/bill_push": {
       "post": {
-        "summary": "单据下推;调用单据下推将直接保存新建目标单据并返回单据id;1.0.13",
+        "summary": "单据下推;调用单据下推将直接保存新建目标单据并返回单据id;1.0.15",
         "operationId": "System_billPush",
         "responses": {
           "200": {
@@ -84,7 +117,7 @@
     },
     "/openapi/v2/sys/country_load": {
       "get": {
-        "summary": "国家行政区域查询;国家行政区域查询;1.0.6",
+        "summary": "国家行政区域查询;国家行政区域查询;1.0.8",
         "operationId": "System_countryLoad",
         "responses": {
           "200": {
@@ -121,6 +154,13 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页;b=1;c=1;d=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -130,7 +170,7 @@
     },
     "/openapi/v2/sys/current_user_info": {
       "get": {
-        "summary": "当前用户信息查询;当前用户信息查询;1.0.7",
+        "summary": "当前用户信息查询;当前用户信息查询;1.0.8",
         "operationId": "System_currentUserInfo",
         "responses": {
           "200": {
@@ -237,9 +277,99 @@
         ]
       }
     },
+    "/openapi/v2/sys/mutex_list": {
+      "get": {
+        "summary": "网络锁;查询网络锁;1.0.4",
+        "operationId": "System_MutexList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MutexListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ids",
+            "description": "a=单据id集合;b=12;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_type",
+            "description": "a=单据或基础资料类型id，参照《系统设置》-《基础资料及业务单据类型》;b=12;c=inv_product_bill;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
+    "/openapi/v2/sys/outside_msg": {
+      "post": {
+        "summary": "第三方消息;消息中心添加第三方消息接口;1.0.4",
+        "operationId": "System_OutsideMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/OutsideMsgRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OutsideMsgRequest"
+            }
+          }
+        ],
+        "tags": [
+          "System"
+        ]
+      }
+    },
     "/openapi/v2/sys/system_param": {
       "get": {
-        "summary": "系统参数查询;系统参数查询;1.0.7",
+        "summary": "系统参数查询;系统参数查询;1.0.9",
         "operationId": "System_settlingParam",
         "responses": {
           "200": {
@@ -258,7 +388,7 @@
         "parameters": [
           {
             "name": "type",
-            "description": "a=系统参数类型；取值如下： public：公共参数(基础参数) arap：应收应付参数 basedata：商品参数 pur：进销存参数（默认值） gl：财税参数 chhs：存货核算参数 fa：资产管理参数 A：查询全部系统参数;b=20;c=public;d=true.",
+            "description": "a=系统参数类型；取值如下： public：公共参数(基础参数) arap：应收应付参数 basedata：商品参数 pur：进销存参数（默认值） gl：财务参数 fp：税务参数 chhs：存货核算参数 fa：资产管理参数 A：查询全部系统参数;b=20;c=public;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -269,9 +399,32 @@
         ]
       }
     },
+    "/openapi/v2/sys/user_func_perm_list": {
+      "get": {
+        "summary": "获取当前用户功能权限;获取当前用户功能权限;1.0.1",
+        "operationId": "System_UserFuncPermList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/UserFuncPermListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "tags": [
+          "System"
+        ]
+      }
+    },
     "/openapi/v2/sys/user_list": {
       "get": {
-        "summary": "用户信息列表;用户信息列表;1.0.8",
+        "summary": "用户信息列表;用户信息列表;1.0.11",
         "operationId": "System_userList",
         "responses": {
           "200": {
@@ -312,6 +465,13 @@
           {
             "name": "page_size",
             "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "description": "a=模糊搜索，支持手机号;b=11;c=13333333333;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -475,6 +635,10 @@
         "target_bill": {
           "type": "string",
           "title": "a=目标单标识（采购入库pur_bill_inbound、付款单ap_paybill、销售出库sal_bill_outbound、收款单ar_creditbill、调拨入库inv_tfin_bill_inbound、采购订单pur_bill_order、委托代销退货单sal_bill_entrust_rtn）;c=pur_bill_inbound;d=true"
+        },
+        "merge_push": {
+          "type": "boolean",
+          "title": "a=true:多个单据id下推后合并成为一个目标单据id，目前仅支持销售订单下推销售出库单，默认false;b=1;c=false;d=false"
         }
       }
     },
@@ -729,7 +893,7 @@
         },
         "phone": {
           "type": "string",
-          "title": "a=联系方式;b=20;c=188;d=false"
+          "title": "a=联系方式 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=20;c=188;d=false"
         },
         "status": {
           "type": "string",
@@ -976,6 +1140,30 @@
     "EmptyReply": {
       "type": "object"
     },
+    "Entity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=12;c=1;d=true"
+        },
+        "text": {
+          "type": "string",
+          "title": "a=菜单名称;b=12;c=1;d=true"
+        },
+        "parent_id": {
+          "type": "string",
+          "title": "a=上级应用id;b=12;c=1001;d=true"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Perm"
+          },
+          "title": "a=菜单功能权限;b=9999;c=[];d=true"
+        }
+      }
+    },
     "Fa": {
       "type": "object",
       "properties": {
@@ -1006,6 +1194,39 @@
         "depreciate_field": {
           "type": "boolean",
           "title": "a=是否不折旧（整个系统）;b=1;c=false;d=false"
+        }
+      }
+    },
+    "Fp": {
+      "type": "object",
+      "properties": {
+        "kp_taxpayername": {
+          "type": "string",
+          "title": "a=纳税人名称;c=纳税人名称;d=false"
+        },
+        "kp_tax_payer_id_number": {
+          "type": "string",
+          "title": "a=纳税人识别号;c=001;d=false"
+        },
+        "kp_invoice_company_address": {
+          "type": "string",
+          "title": "a=公司地址;c=地址;d=false"
+        },
+        "kp_invoice_company_phone": {
+          "type": "string",
+          "title": "a=公司电话;c=188;d=false"
+        },
+        "kp_invoice_bank": {
+          "type": "string",
+          "title": "a=开户银行;c=银行;d=false"
+        },
+        "kp_invoice_account_number": {
+          "type": "string",
+          "title": "a=银行账号;c=001;d=false"
+        },
+        "kp_expected_tax_rate": {
+          "type": "string",
+          "title": "a=增值税行业税负率;c=1;d=false"
         }
       }
     },
@@ -1272,12 +1493,155 @@
         }
       }
     },
+    "MutexListRes": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "currentPage": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=100;c=1;d=true"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MutexListRes.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "MutexListRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=ID;b=12;c=1"
+        },
+        "object_id": {
+          "type": "string",
+          "title": "a=单据id;b=12;c=1"
+        },
+        "user_id": {
+          "type": "string",
+          "title": "a=用户ID;b=12;c=1"
+        },
+        "user_name": {
+          "type": "string",
+          "title": "a=用户名称;b=12;c=1"
+        },
+        "operation_key": {
+          "type": "string",
+          "title": "a=操作key;b=12;c=push"
+        },
+        "client": {
+          "type": "string",
+          "title": "a=客户端;b=12;c=api"
+        },
+        "itself": {
+          "type": "string",
+          "title": "a=标识当前会话;b=12;c=1"
+        },
+        "entity_key_id": {
+          "type": "string",
+          "title": "a=单据或基础资料类型id;b=12;c=inv_product_bill"
+        }
+      }
+    },
     "Name": {
       "type": "object",
       "properties": {
         "zh_CN": {
           "type": "string",
           "title": "a=简体;c=张三;d=false"
+        }
+      }
+    },
+    "OutsideMsgRequest": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "a=消息标题;c=第三方消息标题;d=true"
+        },
+        "content": {
+          "type": "string",
+          "title": "a=消息内容;c=第三方消息内容;d=true"
+        },
+        "source": {
+          "type": "string",
+          "title": "固定值字段，不生成对外API文档"
+        },
+        "channel": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=推送渠道，格式：[\"XXZX\",\"APP\"],目前支持4个渠道：XXZX：消息中心（建议默认带上）；APP：金蝶云APP，QYWX：企微，DD：钉钉;c=[\"XXZX\",\"APP\"];d=true"
+        },
+        "receivers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=消息接收人，格式：[\"userId\",\"userId\"];c=[\"333\"];d=true"
+        }
+      }
+    },
+    "OutsideMsgRes": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "title": "a=执行成功描述;c=执行成功;d=true"
+        },
+        "success": {
+          "type": "boolean",
+          "title": "a=是否执行成功，true：成功，false：失败;c=true;d=true"
+        },
+        "message": {
+          "type": "string",
+          "title": "a=失败原因;c=失败原因;d=true"
+        }
+      }
+    },
+    "Perm": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=12;c=1;d=true"
+        },
+        "text": {
+          "type": "string",
+          "title": "a=权限名称;b=12;c=1;d=true"
+        },
+        "has_perm": {
+          "type": "boolean",
+          "title": "a=是否有权限，true：有、false：无;b=12;c=false;d=true"
         }
       }
     },
@@ -1533,6 +1897,10 @@
         "fa": {
           "$ref": "#/definitions/Fa",
           "title": "a=资产管理参数信息;b=1;c=object;d=false"
+        },
+        "fp": {
+          "$ref": "#/definitions/Fp",
+          "title": "a=税务参数信息;b=1;c=object;d=false"
         }
       }
     },
@@ -1553,6 +1921,39 @@
           }
         }
       }
+    },
+    "UserFuncPermListRes": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserFuncPermListRes.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "UserFuncPermListRes.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=12;c=1"
+        },
+        "text": {
+          "type": "string",
+          "title": "a=应用名称;b=12;c=1"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entity"
+          },
+          "title": "a=应用下的菜单;b=999999;c=[]"
+        }
+      },
+      "title": "返回数据列表"
     },
     "UserListRes": {
       "type": "object",
@@ -1600,6 +2001,48 @@
         "name": {
           "type": "string",
           "title": "a=名称;b=20;c=名称;d=true"
+        },
+        "phone": {
+          "type": "string",
+          "title": "a=[敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=20;c=13322442211;d=false"
+        }
+      }
+    },
+    "imageUploadReq": {
+      "type": "object",
+      "properties": {
+        "save_temp": {
+          "type": "string",
+          "title": "a=是否上传到临时服务器,默认为true;c=false;d=false"
+        },
+        "filename": {
+          "type": "string",
+          "title": "a=文件名称,带文件后缀;b=100;c=smip4.jpg;d=true"
+        },
+        "base_string": {
+          "type": "string",
+          "title": "a=base64字符串,包含头部data信息;c=data:image/jpeg;base64,/9j/4S/+RXhpZgAATU0*****;d=true"
+        }
+      }
+    },
+    "imageUploadResp": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/imageUploadResp.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "imageUploadResp.Row": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "a=图片的绝对路径;c=false"
         }
       }
     }

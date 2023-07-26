@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_usestatus": {
       "get": {
-        "summary": "使用状态列表;获取使用状态列表;1.0.8",
+        "summary": "使用状态列表;获取使用状态列表;1.0.9",
         "operationId": "UseStatus_list",
         "responses": {
           "200": {
@@ -64,7 +64,7 @@
     },
     "/openapi/v2/fi/fa_usestatus_save": {
       "post": {
-        "summary": "使用状态保存;使用状态保存;1.0.7",
+        "summary": "使用状态保存;使用状态保存;1.0.8",
         "operationId": "UseStatus_FaSave",
         "responses": {
           "200": {
@@ -214,11 +214,11 @@
         },
         "name": {
           "type": "string",
-          "title": "a=名字;b=30;c=使用状态1;d=true"
+          "title": "a=使用状态名称;b=30;c=使用状态1;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=true"
+          "title": "a=使用状态编码;b=30;c=001;d=true"
         },
         "note": {
           "type": "string",

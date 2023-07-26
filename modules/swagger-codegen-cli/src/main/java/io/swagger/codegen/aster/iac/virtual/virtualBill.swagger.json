@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/virtual": {
       "get": {
-        "summary": "外部单据列表;获取外部单据列表;1.0.6",
+        "summary": "外部单据列表;获取外部单据列表;1.0.7",
         "operationId": "VirtualBill_list",
         "responses": {
           "200": {
@@ -112,7 +112,7 @@
         ]
       },
       "post": {
-        "summary": "外部单据保存;外部单据新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
+        "summary": "外部单据保存;外部单据新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.18",
         "operationId": "VirtualBill_save",
         "responses": {
           "200": {
@@ -145,7 +145,7 @@
     },
     "/openapi/v2/fi/virtual_detail": {
       "get": {
-        "summary": "外部单据详情;获取外部单据详情;1.0.7",
+        "summary": "外部单据详情;获取外部单据详情;1.0.14",
         "operationId": "VirtualBill_detail",
         "responses": {
           "200": {
@@ -164,14 +164,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id与number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -228,7 +228,7 @@
         },
         "amount": {
           "type": "string",
-          "title": "a=金额;b=9999999999;c=100;d=false"
+          "title": "a=金额;b=9999999999;c=100;d=true"
         },
         "amount_for": {
           "type": "string",
@@ -256,7 +256,7 @@
         },
         "pacct_type_id": {
           "type": "string",
-          "title": "a=收入类别id;b=2147483647;c=1;d=false"
+          "title": "a=[收入类别id](https://open.jdy.com/#/files/api/detail?index=3\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9ca83052712511eda0b3fb728b849f6b);b=2147483647;c=1;d=false"
         },
         "pacct_type_number": {
           "type": "string",
@@ -264,7 +264,7 @@
         },
         "payout_type_id": {
           "type": "string",
-          "title": "a=支出类别id;b=2147483647;c=1;d=false"
+          "title": "a=[支出类别id](https://open.jdy.com/#/files/api/detail?index=3\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9cb1f455712511eda0b3f9a4bd5a6b8e);b=2147483647;c=1;d=false"
         },
         "payout_type_number": {
           "type": "string",
@@ -310,85 +310,105 @@
           "type": "string",
           "title": "a=自定义本位币金额5;b=999999999;c=100;d=false本位币"
         },
-        "custom_item_type1": {
-          "type": "string",
-          "title": "a=自定义项目类型1;b=20;c=bd_auxinfo;d=true"
-        },
         "custom_item_id1": {
           "type": "string",
-          "title": "a=自定义项目id1;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目id1。举例，若按照部门核算，则传部门id，若按照辅助资料核算，则传辅助资料id，其他核算项目同理;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_number1": {
           "type": "string",
-          "title": "a=自定义项目编码1;b=20;c=bd_auxinfo;d=true"
-        },
-        "custom_item_type2": {
-          "type": "string",
-          "title": "a=自定义项目类型2;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目编码1。举例，若按照部门核算，则传部门number，若按照辅助资料核算，则传辅助资料number，其他核算项目同理;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_id2": {
           "type": "string",
-          "title": "a=自定义项目id2;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目id2;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_number2": {
           "type": "string",
-          "title": "a=自定义项目编码2;b=20;c=bd_auxinfo;d=true"
-        },
-        "custom_item_type3": {
-          "type": "string",
-          "title": "a=自定义项目类型3;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目编码2;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_id3": {
           "type": "string",
-          "title": "a=自定义项目id3;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目id3;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_number3": {
           "type": "string",
-          "title": "a=自定义项目编码3;b=20;c=bd_auxinfo;d=true"
-        },
-        "custom_item_type4": {
-          "type": "string",
-          "title": "a=自定义项目类型4;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目编码3;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_id4": {
           "type": "string",
-          "title": "a=自定义项目id4;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目id4;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_number4": {
           "type": "string",
-          "title": "a=自定义项目编码4;b=20;c=bd_auxinfo;d=true"
-        },
-        "custom_item_type5": {
-          "type": "string",
-          "title": "a=自定义项目类型5;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目编码4;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_id5": {
           "type": "string",
-          "title": "a=自定义项目id5;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目id5;b=20;c=bd_auxinfo;d=false"
         },
         "custom_item_number5": {
           "type": "string",
-          "title": "a=自定义项目编码5;b=2 0;c=bd_auxinfo;d=true"
+          "title": "a=自定义项目编码5;b=2 0;c=bd_auxinfo;d=false"
+        },
+        "custom_item_id6": {
+          "type": "string",
+          "title": "a=自定义项目id6;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_item_number6": {
+          "type": "string",
+          "title": "a=自定义项目编码6;b=2 0;c=bd_auxinfo;d=false"
+        },
+        "custom_item_id7": {
+          "type": "string",
+          "title": "a=自定义项目id7;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_item_number7": {
+          "type": "string",
+          "title": "a=自定义项目编码7;b=2 0;c=bd_auxinfo;d=false"
+        },
+        "custom_item_id8": {
+          "type": "string",
+          "title": "a=自定义项目id8;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_item_number8": {
+          "type": "string",
+          "title": "a=自定义项目编码8;b=2 0;c=bd_auxinfo;d=false"
+        },
+        "custom_item_id9": {
+          "type": "string",
+          "title": "a=自定义项目id9;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_item_number9": {
+          "type": "string",
+          "title": "a=自定义项目编码9;b=2 0;c=bd_auxinfo;d=false"
+        },
+        "custom_item_id10": {
+          "type": "string",
+          "title": "a=自定义项目id10;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_item_number10": {
+          "type": "string",
+          "title": "a=自定义项目编码10;b=2 0;c=bd_auxinfo;d=false"
         },
         "custom_text1": {
           "type": "string",
-          "title": "a=自定义文本1;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义文本1;b=20;c=bd_auxinfo;d=false"
         },
         "custom_text2": {
           "type": "string",
-          "title": "a=自定义文本2;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义文本2;b=20;c=bd_auxinfo;d=false"
         },
         "custom_text3": {
           "type": "string",
-          "title": "a=自定义文本3;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义文本3;b=20;c=bd_auxinfo;d=false"
         },
         "custom_text4": {
           "type": "string",
-          "title": "a=自定义文本4;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义文本4;b=20;c=bd_auxinfo;d=false"
         },
         "custom_text5": {
           "type": "string",
-          "title": "a=自定义文本5;b=20;c=bd_auxinfo;d=true"
+          "title": "a=自定义文本5;b=20;c=bd_auxinfo;d=false"
         },
         "tax_amount": {
           "type": "string",
@@ -405,6 +425,66 @@
         "dis_amount_for": {
           "type": "string",
           "title": "a=本位币折扣;c=1;d=false"
+        },
+        "custom_amount6": {
+          "type": "string",
+          "title": "a=自定义金额6;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for6": {
+          "type": "string",
+          "title": "a=自定义本位币金额6;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount7": {
+          "type": "string",
+          "title": "a=自定义金额7;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for7": {
+          "type": "string",
+          "title": "a=自定义本位币金额7;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount8": {
+          "type": "string",
+          "title": "a=自定义金额8;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for8": {
+          "type": "string",
+          "title": "a=自定义本位币金额8;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount9": {
+          "type": "string",
+          "title": "a=自定义金额9;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for9": {
+          "type": "string",
+          "title": "a=自定义本位币金额9;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount10": {
+          "type": "string",
+          "title": "a=自定义金额10;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for10": {
+          "type": "string",
+          "title": "a=自定义本位币金额10;b=999999999;c=100;d=false本位币"
+        },
+        "custom_text6": {
+          "type": "string",
+          "title": "a=自定义文本6;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text7": {
+          "type": "string",
+          "title": "a=自定义文本7;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text8": {
+          "type": "string",
+          "title": "a=自定义文本8;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text9": {
+          "type": "string",
+          "title": "a=自定义文本9;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text10": {
+          "type": "string",
+          "title": "a=自定义文本10;b=20;c=bd_auxinfo;d=false"
         }
       }
     },
@@ -851,6 +931,82 @@
         "custom_text5": {
           "type": "string",
           "title": "a=自定义文本5;b=20;c=bd_auxinfo;d=true"
+        },
+        "custom_text6": {
+          "type": "string",
+          "title": "a=自定义文本6;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text7": {
+          "type": "string",
+          "title": "a=自定义文本7;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text8": {
+          "type": "string",
+          "title": "a=自定义文本8;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text9": {
+          "type": "string",
+          "title": "a=自定义文本9;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_text10": {
+          "type": "string",
+          "title": "a=自定义文本10;b=20;c=bd_auxinfo;d=false"
+        },
+        "custom_amount6": {
+          "type": "string",
+          "title": "a=自定义金额6;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for6": {
+          "type": "string",
+          "title": "a=自定义本位币金额6;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount7": {
+          "type": "string",
+          "title": "a=自定义金额7;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for7": {
+          "type": "string",
+          "title": "a=自定义本位币金额7;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount8": {
+          "type": "string",
+          "title": "a=自定义金额8;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for8": {
+          "type": "string",
+          "title": "a=自定义本位币金额8;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount9": {
+          "type": "string",
+          "title": "a=自定义金额9;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for9": {
+          "type": "string",
+          "title": "a=自定义本位币金额9;b=999999999;c=100;d=false本位币"
+        },
+        "custom_amount10": {
+          "type": "string",
+          "title": "a=自定义金额10;b=999999999;c=100;d=false"
+        },
+        "custom_amount_for10": {
+          "type": "string",
+          "title": "a=自定义本位币金额10;b=999999999;c=100;d=false本位币"
+        },
+        "material_parent_name": {
+          "type": "string",
+          "title": "a=商品类别名称;b=999999999;c=电器;d=false"
+        },
+        "material_parent_id": {
+          "type": "string",
+          "title": "a=商品类别id;b=999999999;c=1000011;d=false"
+        },
+        "material_parent_number": {
+          "type": "string",
+          "title": "a=商品类别编码;b=999999999;c=DQ001001;d=false"
+        },
+        "all_amount_for": {
+          "type": "string",
+          "title": "a=价税合计;b=999999999;c=1001;d=false"
         }
       }
     },
@@ -929,7 +1085,7 @@
           "type": "string",
           "title": "a=总价税合计金额-本位币;b=999999999;c=100;d=false"
         },
-        "voucherNo": {
+        "voucher_no": {
           "type": "string",
           "title": "a=凭证字号;b=10;c=记;d=false"
         },
@@ -972,7 +1128,7 @@
         },
         "bill_no": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=编码;b=30;c=001;d=true"
         },
         "bill_date": {
           "type": "string",
@@ -994,18 +1150,18 @@
         },
         "group_id": {
           "type": "string",
-          "title": "a=分类id;b=2147483647;c=1;d=false"
+          "title": "a=外部单据分类id;b=2147483647;c=1;d=false"
         },
         "group_number": {
           "type": "string",
-          "title": "a=分类编码;b=30;c=001;d=false"
+          "title": "a=外部单据分类编码;b=30;c=001;d=false"
         },
         "entry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Item.Entry"
           },
-          "title": "a=分录列表;b=100;c=[];d=false"
+          "title": "a=分录列表;b=100;c=[];d=true"
         },
         "emp_id": {
           "type": "string",
@@ -1046,6 +1202,106 @@
         "currency_number": {
           "type": "string",
           "title": "a=币别编码;b=30;c=001;d=false"
+        },
+        "bill_custom_item1_id": {
+          "type": "string",
+          "title": "a=自定义项目1id（如果在单据字段设置中设置了自定义项目1的对应项目类别为客户，则此字段只能填写客户的id，billcustomitem2~5_id 同理;b=30;c=001;d=false"
+        },
+        "bill_custom_item_type1": {
+          "type": "string",
+          "title": "a=自定义项目1类型，如已设置客户，则需传入bd_customer，billcustomitemtype2~5 同理;b=30;c=bd_material;d=false"
+        },
+        "bill_custom_item2_id": {
+          "type": "string",
+          "title": "a=自定义项目2id;b=30;c=001;d=false"
+        },
+        "bill_custom_item_type2": {
+          "type": "string",
+          "title": "a=自定义项目2类型;b=30;c=bd_material;d=false"
+        },
+        "bill_custom_item3_id": {
+          "type": "string",
+          "title": "a=自定义项目3id;b=30;c=001;d=false"
+        },
+        "bill_custom_item_type3": {
+          "type": "string",
+          "title": "a=自定义项目3类型;b=30;c=bd_material;d=false"
+        },
+        "bill_custom_item4_id": {
+          "type": "string",
+          "title": "a=币别自定义项目4id编码;b=30;c=001;d=false"
+        },
+        "bill_custom_item_type4": {
+          "type": "string",
+          "title": "a=自定义项目4类型;b=30;c=bd_material;d=false"
+        },
+        "bill_custom_item5_id": {
+          "type": "string",
+          "title": "a=自定义项目5id;b=30;c=001;d=false"
+        },
+        "bill_custom_item_type5": {
+          "type": "string",
+          "title": "a=自定义项目5类型;b=30;c=bd_material;d=false"
+        },
+        "bill_custom_amount1": {
+          "type": "string",
+          "title": "a=自定义金额1;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount_for1": {
+          "type": "string",
+          "title": "a=自定义本位币金额1;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount2": {
+          "type": "string",
+          "title": "a=自定义金额2;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount_for2": {
+          "type": "string",
+          "title": "a=自定义本位币金额2;b=999999999;c=001;d=false"
+        },
+        "bill_custom_amount3": {
+          "type": "string",
+          "title": "a=自定义金额3;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount_for3": {
+          "type": "string",
+          "title": "a=自定义本位币金额3;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount4": {
+          "type": "string",
+          "title": "a=自定义金额4;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount_for4": {
+          "type": "string",
+          "title": "a=自定义本位币金额4;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount5": {
+          "type": "string",
+          "title": "a=自定义金额5;b=999999999;c=100;d=false"
+        },
+        "bill_custom_amount_for5": {
+          "type": "string",
+          "title": "a=自定义本位币金额5;b=999999999;c=100;d=false"
+        },
+        "bill_custom_text1": {
+          "type": "string",
+          "title": "a=自定义文本1;b=30;c=bd_auxinfo;d=false"
+        },
+        "bill_custom_text2": {
+          "type": "string",
+          "title": "a=自定义文本2;b=30;c=bd_auxinfo;d=false"
+        },
+        "bill_custom_text3": {
+          "type": "string",
+          "title": "a=自定义文本3;b=30;c=bd_auxinfo;d=false"
+        },
+        "bill_custom_text4": {
+          "type": "string",
+          "title": "a=自定义文本4;b=30;c=bd_auxinfo;d=false"
+        },
+        "bill_custom_text5": {
+          "type": "string",
+          "title": "a=自定义文本5;b=30;c=bd_auxinfo;d=false"
         }
       }
     }

@@ -1,0 +1,302 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "零售云;门店管理;零售结存单",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "BalanceBill"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/balance_bill": {
+      "get": {
+        "summary": "零售结存单列表;零售结存单列表;1.0.7",
+        "operationId": "BalanceBill_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/BalanceOrderResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "a=客户id;b=30;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "dept_id",
+            "description": "a=部门ID;b=30;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "emp_id",
+            "description": "a=收银员ID;b=30;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "currency_id",
+            "description": "a=币别;b=30;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_status",
+            "description": "a=单据状态(新增：“A”，已审核：“C”，未审核：“Z”);b=30;c=Z;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "settle_status",
+            "description": "a=本单核销状态(全部收款：“C”，部分收款：“B”，未收款：“A”);b=30;c=A;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），创建日期;c=2022-02-12;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），创建日期;c=2022-02-12;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "begin_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-12;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-12;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=页数,从1开始;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "biz_type",
+            "description": "a=零售业务类型：60.充值61.退充62.销售63.退货64.充次65.退充次66.还款67.到期;c=61;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=分页大小,不传默认为100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "BalanceBill"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "BalanceOrderResp": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页条数;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=总条数;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=每页条数;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页码;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=零售单id;d=false"
+        },
+        "bill_type": {
+          "type": "string",
+          "title": "a=单据类型（页面元数据标识）;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编号;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;d=false"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=应收金额;d=false"
+        },
+        "debt_amount": {
+          "type": "string",
+          "title": "a=欠款金额;d=false"
+        },
+        "total_settle_amount": {
+          "type": "string",
+          "title": "a=累计收款金额;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;d=false"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;d=false"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=单据状态;d=false"
+        },
+        "settle_status": {
+          "type": "string",
+          "title": "a=收款核销状态;d=false"
+        },
+        "retail_biz_type": {
+          "type": "string",
+          "title": "a=零售业务类型;d=false"
+        },
+        "b_emp": {
+          "type": "string",
+          "title": "a=业务员;d=false"
+        },
+        "emp": {
+          "type": "string",
+          "title": "a=收银员;d=false"
+        },
+        "out_cost": {
+          "type": "string",
+          "title": "a=出库成本;d=false"
+        },
+        "src_bill_id": {
+          "type": "string",
+          "title": "a=原单id;d=false"
+        },
+        "src_bill_no": {
+          "type": "string",
+          "title": "a=原单单号;d=false"
+        },
+        "total_ins_amount": {
+          "type": "string",
+          "title": "a=现收金额;d=false"
+        },
+        "total_pre_amount": {
+          "type": "string",
+          "title": "a=预收金额;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

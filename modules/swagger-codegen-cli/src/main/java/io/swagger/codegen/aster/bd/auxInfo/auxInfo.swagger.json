@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/bd/aux_info": {
       "get": {
-        "summary": "辅助资料列表;获取辅助资料列表;1.0.6",
+        "summary": "辅助资料列表;获取辅助资料列表;1.0.11",
         "operationId": "AuxInfo_AuxinfoList",
         "responses": {
           "200": {
@@ -126,6 +126,13 @@
               "type": "string"
             },
             "collectionFormat": "multi"
+          },
+          {
+            "name": "default_select_fields",
+            "description": "固定值字段，不生成对外API文档.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -133,7 +140,7 @@
         ]
       },
       "post": {
-        "summary": "辅助资料保存;辅助资料新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.7",
+        "summary": "辅助资料保存;辅助资料新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.9",
         "operationId": "AuxInfo_AuxinfoSave",
         "responses": {
           "200": {
@@ -166,7 +173,7 @@
     },
     "/openapi/v2/bd/aux_info_detail": {
       "get": {
-        "summary": "辅助资料详情;获取辅助资料详情;1.0.6",
+        "summary": "辅助资料详情;获取辅助资料详情;1.0.7",
         "operationId": "AuxInfo_AuxinfoDetail",
         "responses": {
           "200": {
@@ -185,14 +192,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -342,15 +349,20 @@
           "title": "a=名称;b=20;c=名称;d=false"
         },
         "group": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "a=类别id（系统预置类别： 1-客户等级 2-交货方式 3-退货原因 4-其它入库类型 5-其它出库类型）;b=100;c=[];d=false"
+          "type": "string",
+          "title": "a=类别id（系统预置类别： 1-客户等级 2-交货方式 3-退货原因 4-其它入库类型 5-其它出库类型）;b=100;c=1;d=false"
         },
         "enable": {
           "type": "string",
           "title": "a=状态，1代表启用，0代表禁用;b=1;c=1;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;b=19;c=2022-04-01 21:54:47;d=false"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=修改时间;b=19;c=2022-04-01 21:54:47;d=false"
         }
       }
     },
@@ -359,23 +371,27 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id;b=2147483647;c=1;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=编码;b=30;c=001;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=名称;d=false"
+          "title": "a=名称;b=20;c=名称;d=true"
         },
         "group_id": {
           "type": "string",
-          "title": "a=分类id;b=2147483647;c=1;d=false"
+          "title": "a=分类id;b=2147483647;c=1;d=true"
         },
         "remark": {
           "type": "string",
           "title": "a=备注;b=1000;c=备注;d=false"
+        },
+        "ignore_warn": {
+          "type": "boolean",
+          "title": "a=是否忽略告警信息(如：名称：” 值 “12345” 已存在，请输入其他值。)分类保存;b=1;c=false;d=false"
         }
       }
     },

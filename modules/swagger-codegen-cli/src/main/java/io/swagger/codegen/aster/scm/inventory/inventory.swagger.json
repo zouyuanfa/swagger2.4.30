@@ -16,9 +16,243 @@
     "application/json"
   ],
   "paths": {
+    "/openapi/v2/inv/inv_inventory_ims": {
+      "get": {
+        "summary": "库存查询表;库存查询表;1.0.3",
+        "operationId": "Inventory_invInventoryIms",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/invInventoryResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=页大小，可选50/100/500/1000，默认100;c=100.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "filter_date",
+            "description": "a=日期，opt_group_inv_query_type为2是要传递；格式：yyyy-MM-dd;c=2022-05-12;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search",
+            "description": "a=模糊搜索，支持商品名称;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "a=查询类型，1：卡片；2：列表，默认2;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "show_aux_prop_id",
+            "description": "a=是否显示辅助属性;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "show_sp",
+            "description": "a=是否显示仓位;c=false;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "show_batch_no_kf_period",
+            "description": "a=是否显示批次和保质期;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "show_zero",
+            "description": "a=是否显示零库存;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "show_forbidden",
+            "description": "a=是否显示禁用商品;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "show_no_bus",
+            "description": "a=是否显示无发生额商品;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "calc_cost",
+            "description": "a=是否计算成本;c=false.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "filter_material_category",
+            "description": "a=商品类别id;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter_material_id",
+            "description": "a=商品id;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter_sp_id",
+            "description": "a=仓位id;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter_stock_id",
+            "description": "a=仓库id;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter_stock_category",
+            "description": "a=仓库分类id;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter_material_label",
+            "description": "a=商品标签id;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "filter_aux_unit_choice",
+            "description": "a=辅助单位；1：库存单位；2：采购单位；3：销售单位；4：报表辅助单位;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "filter_material_model",
+            "description": "a=规格型号 ;c=11.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "opt_group_inv_query_type",
+            "description": "a=查询类型：1：即时库存；2：指定日期;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Inventory"
+        ]
+      }
+    },
+    "/openapi/v2/inv/inv_synchronous": {
+      "get": {
+        "summary": "库存同步列表;库存查询列表;1.0.3",
+        "operationId": "Inventory_invSysList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvSynchronousResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ids",
+            "description": "a=库存id集合(即订阅库存消息后,库存变动时所推送的id),最大不能超过100条;c=[],d=true.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "Inventory"
+        ]
+      }
+    },
     "/openapi/v2/scm/batch_kfperiod_inventory": {
       "get": {
-        "summary": "批次保质期及库存列表;批次保质期及库存列表;1.0.7",
+        "summary": "批次保质期及库存列表;批次保质期及库存列表;1.0.10",
         "operationId": "Inventory_batchKfperiodInvList",
         "responses": {
           "200": {
@@ -113,7 +347,7 @@
     },
     "/openapi/v2/scm/inv_detail": {
       "get": {
-        "summary": "商品收发明细表列表;商品收发明细表列表;1.0.7",
+        "summary": "商品收发明细表列表;商品收发明细表列表;1.0.11",
         "operationId": "Inventory_invDetailList",
         "responses": {
           "200": {
@@ -224,14 +458,10 @@
           },
           {
             "name": "filter_batch_no",
-            "description": "a=批次；格式：[,];c=[11,22].",
+            "description": "a=批次;c=1057992072985868292.",
             "in": "query",
             "required": false,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi"
+            "type": "string"
           },
           {
             "name": "filter_dept_id",
@@ -246,10 +476,14 @@
           },
           {
             "name": "filter_bill_type_id",
-            "description": "a=单据类型, 详见单据类型表格；格式：[,];c=[11,22].",
+            "description": "a=单据类型, 详见单据类型表格；格式：[\"bd_material\",\"bd_department\"];c=[\"bd_material\",\"bd_department\"].",
             "in": "query",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
           },
           {
             "name": "filter_audit_status",
@@ -266,13 +500,13 @@
     },
     "/openapi/v2/scm/inv_occupy": {
       "post": {
-        "summary": "库存占用;库存占用;1.0.8",
+        "summary": "库存占用;库存占用;1.0.11",
         "operationId": "Inventory_invOccupy",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SaveReply"
+              "$ref": "#/definitions/InvOccupySaveReply"
             }
           },
           "default": {
@@ -299,13 +533,13 @@
     },
     "/openapi/v2/scm/inv_release_occupy": {
       "post": {
-        "summary": "库存占用释放;库存占用释放;1.0.7",
+        "summary": "库存占用释放;库存占用释放;1.0.11",
         "operationId": "Inventory_invReleaseOccupy",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/SaveReply"
+              "type": "string"
             }
           },
           "default": {
@@ -332,7 +566,7 @@
     },
     "/openapi/v2/scm/inventory": {
       "get": {
-        "summary": "商品库存列表;商品库存列表;1.0.6",
+        "summary": "商品库存列表;商品库存列表;1.0.9",
         "operationId": "Inventory_invList",
         "responses": {
           "200": {
@@ -493,7 +727,7 @@
             "description": "a=是否包含批次、保质期；true-是，false-否;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "total_fields",
@@ -511,7 +745,7 @@
             "description": "a=启用整件散包合计,商品ID集合只能有一个;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           }
         ],
         "tags": [
@@ -521,7 +755,7 @@
     },
     "/openapi/v2/scm/inventory_serial_status": {
       "get": {
-        "summary": "序列号状态表列表;序列号状态表列表;1.0.7",
+        "summary": "序列号状态表列表;序列号状态表列表;1.0.11",
         "operationId": "Inventory_invSerialStatusList",
         "responses": {
           "200": {
@@ -547,7 +781,7 @@
           },
           {
             "name": "filter_material_category",
-            "description": "a=商品类别；格式：[,];c=[1,2].",
+            "description": "a=商品类别;c=[1,2].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -558,7 +792,7 @@
           },
           {
             "name": "filter_material_label",
-            "description": "a=商品标签；格式：[,];c=[1,2].",
+            "description": "a=商品标签;c=[1,2].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -569,7 +803,7 @@
           },
           {
             "name": "filter_stock_id",
-            "description": "a=仓库；格式：[,];c=[1,2].",
+            "description": "a=仓库;c=[1,2].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -580,7 +814,7 @@
           },
           {
             "name": "filter_sp_id",
-            "description": "a=仓位；格式：[,];c=[1,2].",
+            "description": "a=仓位;c=[1,2].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -591,7 +825,7 @@
           },
           {
             "name": "filter_supplier_id",
-            "description": "a=供应商；格式：[,];c=[1,2].",
+            "description": "a=供应商;c=[1,2].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -602,7 +836,7 @@
           },
           {
             "name": "filter_customer_id",
-            "description": "a=客户；格式：[,];c=[1,2].",
+            "description": "a=客户;c=[1,2].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -613,7 +847,7 @@
           },
           {
             "name": "filter_aux_prop_id",
-            "description": "a=辅助属性；格式：[,];c=[1057992072985868292].",
+            "description": "a=辅助属性;c=[1057992072985868292].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -656,6 +890,22 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=第几页，默认1 ;c=2.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=页大小,默认100;c=50.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "tags": [
@@ -665,7 +915,7 @@
     },
     "/openapi/v2/scm/inventory_stock": {
       "get": {
-        "summary": "商品仓库库存查询;商品仓库库存查询;1.0.7",
+        "summary": "商品仓库库存查询;商品仓库库存查询;1.0.8",
         "operationId": "Inventory_materialStock",
         "responses": {
           "200": {
@@ -701,14 +951,14 @@
             "description": "a=是否显示仓位，默认：false;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "is_show_zero_im_qty",
             "description": "a=是否显示零库存，默认：false;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           }
         ],
         "tags": [
@@ -1100,6 +1350,14 @@
         "remain_cost": {
           "type": "string",
           "title": "a=期末库存成本;c=50"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=SP0001"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2024-01-01"
         }
       }
     },
@@ -1235,6 +1493,15 @@
         "batch_no": {
           "type": "string",
           "title": "a=批次号;c=00526"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=辅助基本单位库存数量;c=50"
+        },
+        "valid_aux_qty": {
+          "type": "string",
+          "title": "a=辅助基本单位库存可用量;c=4.0000000000"
         }
       }
     },
@@ -1247,7 +1514,7 @@
         },
         "bill_id": {
           "type": "string",
-          "title": "a=单据内码;c=951372470512833536;d=true"
+          "title": "a=单据id;c=951372470512833536;d=true"
         },
         "bill_no": {
           "type": "string",
@@ -1258,7 +1525,7 @@
           "title": "a=单据日期;c=2020-08-10 00:00:00;"
         },
         "is_re_calc_qty": {
-          "type": "boolean",
+          "type": "string",
           "title": "a=是否重算基本单位数量与默认浮动单位数量;c=true;"
         },
         "material_entity": {
@@ -1287,7 +1554,7 @@
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品内码;c=950505500796002304;d=true"
+          "title": "a=商品id;c=950505500796002304;d=true"
         },
         "aux_prop_name": {
           "type": "string",
@@ -1295,7 +1562,7 @@
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性内码(辅助属性商品必填）;c=001"
+          "title": "a=辅助属性id(辅助属性商品必填）;c=001"
         },
         "stock_name": {
           "type": "string",
@@ -1303,7 +1570,7 @@
         },
         "stock_id": {
           "type": "string",
-          "title": "a=a=仓库内码;c=150505500796002302;d=true"
+          "title": "a=a=仓库id;c=150505500796002302;d=true"
         },
         "space_name": {
           "type": "string",
@@ -1311,7 +1578,7 @@
         },
         "sp_id": {
           "type": "string",
-          "title": "a=仓位内码;c=1"
+          "title": "a=仓位id;c=1"
         },
         "batch_no": {
           "type": "string",
@@ -1339,7 +1606,7 @@
         },
         "unit": {
           "type": "string",
-          "title": "a=单位内码;c=95048862702712799988;d=true"
+          "title": "a=单位id;c=95048862702712799988;d=true"
         },
         "aux_qty": {
           "type": "string",
@@ -1347,7 +1614,7 @@
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位内码（多单位必传）;c=1"
+          "title": "a=辅助单位id（多单位必传）;c=1"
         },
         "base_qty": {
           "type": "string",
@@ -1371,6 +1638,25 @@
         }
       }
     },
+    "InvOccupySaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+        },
+        "retIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=id;c=[\"1\"];d=true"
+        }
+      }
+    },
     "InvReleaseOccupyReq": {
       "type": "object",
       "properties": {
@@ -1384,7 +1670,7 @@
         },
         "src_inter_id": {
           "type": "string",
-          "title": "a=单据内码;c=951372470512833536;d=true"
+          "title": "a=单据id;c=951372470512833536;d=true"
         },
         "bill_no": {
           "type": "string",
@@ -1395,7 +1681,7 @@
           "title": "a=单据日期;c=2020-08-10 00:00:00;d=true"
         },
         "is_re_calc_qty": {
-          "type": "boolean",
+          "type": "string",
           "title": "a=是否重算基本单位数量与默认浮动单位数量;c=true;"
         },
         "material_entity": {
@@ -1424,7 +1710,7 @@
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品内码;c=950505500796002304;d=true"
+          "title": "a=商品id;c=950505500796002304;d=true"
         },
         "aux_prop_name": {
           "type": "string",
@@ -1440,7 +1726,7 @@
         },
         "stock_id": {
           "type": "string",
-          "title": "a=仓库内码;c=150505500796002302;d=true"
+          "title": "a=仓库id;c=150505500796002302;d=true"
         },
         "space_name": {
           "type": "string",
@@ -1448,7 +1734,7 @@
         },
         "sp_id": {
           "type": "string",
-          "title": "a=仓位内码;c=1"
+          "title": "a=仓位id;c=1"
         },
         "batch_no": {
           "type": "string",
@@ -1476,7 +1762,7 @@
         },
         "unit": {
           "type": "string",
-          "title": "a=单位内码;c=95048862702712799988;d=true"
+          "title": "a=单位id;c=95048862702712799988;d=true"
         },
         "base_unit": {
           "type": "string",
@@ -1496,7 +1782,7 @@
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位内码（多单位必传）;c=50"
+          "title": "a=辅助单位id（多单位必传）;c=50"
         },
         "sn_list": {
           "type": "string",
@@ -1607,6 +1893,211 @@
         }
       }
     },
+    "InvSynchronousResp": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvSynchronousResp.Row"
+          },
+          "title": "a=数据行;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "InvSynchronousResp.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=库存id;c=2"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=8440"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=8440"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=8440"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性ID;c=0001"
+        },
+        "auxprop_number": {
+          "type": "string",
+          "title": "a=辅助属性编码;c=0001"
+        },
+        "aux_prop_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=辅助属性1"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=1"
+        },
+        "stock_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=1"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=1"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位id;c=121"
+        },
+        "sp_number": {
+          "type": "string",
+          "title": "a=仓位编码;c=121"
+        },
+        "sp_name": {
+          "type": "string",
+          "title": "a=仓位名称;c=121"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次号;c=001"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=2"
+        },
+        "kf_period": {
+          "type": "number",
+          "format": "double",
+          "title": "a=保质期;c=12"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型(保质期类型 1:天,2:月,3:年);c=1"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=有效日期;c=15"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量（基本）;c=1"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=数量（辅助）;c=1"
+        },
+        "valid_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=可用量（辅助）;c=1"
+        },
+        "exp_valid_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=预计可用量;c=1"
+        },
+        "exp_valid_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=预计可用量（辅助）;c=1"
+        },
+        "pur_transit_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=采购在途量;c=1"
+        },
+        "pur_transit_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=采购在途量（辅助）;c=1"
+        },
+        "pur_prein_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=采购待入量（辅助）;c=1"
+        },
+        "pur_pre_in_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=采购待入量;c=1"
+        },
+        "tf_transit_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调拨在途量;c=1"
+        },
+        "tf_transit_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调拨在途量(辅助);c=1"
+        },
+        "tf_pre_out_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调拨待出量;c=11"
+        },
+        "tf_pre_out_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=调拨待出量（辅助）;c=11"
+        },
+        "other_pre_in_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=其他待入量;c=11"
+        },
+        "other_pre_in_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=其他待入量（辅助）;c=1"
+        },
+        "other_pre_out_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=其他待出量;c=1"
+        },
+        "other_pre_out_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=其他待入量（辅助）;c=1"
+        },
+        "sal_lock_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售锁定量;c=1"
+        },
+        "sal_lock_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售锁定量（辅助）;c=11"
+        },
+        "sal_occupy_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售占用量;c=11"
+        },
+        "sal_occupy_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售占用量（辅助）;c=1"
+        },
+        "sal_pre_out_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售待出量;c=1"
+        },
+        "sal_pre_out_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售待出量（辅助）;c=1"
+        }
+      }
+    },
     "MaterIalEntry": {
       "type": "object",
       "properties": {
@@ -1665,26 +2156,6 @@
         }
       }
     },
-    "SaveReply": {
-      "type": "object",
-      "properties": {
-        "ids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
-        },
-        "id_number_map": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          },
-          "title": "a=id与编码map;c={};d=true"
-        }
-      },
-      "title": "保存返回id数组对象"
-    },
     "SpEntry": {
       "type": "object",
       "properties": {
@@ -1734,6 +2205,273 @@
         "name": {
           "type": "string",
           "title": "a=仓库名称;c=广州仓"
+        }
+      }
+    },
+    "Sun": {
+      "type": "object",
+      "properties": {
+        "material_num": {
+          "type": "string",
+          "title": "a=商品个数;c=3"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=即时库存;c=10"
+        },
+        "valid_qty": {
+          "type": "string",
+          "title": "a=可用库存;c=3"
+        },
+        "aux_qty": {
+          "type": "string",
+          "title": "a=辅助即时库存;c=10"
+        },
+        "retail_amount": {
+          "type": "string",
+          "title": "a=零售总金额;c=3"
+        },
+        "trade_amount": {
+          "type": "string",
+          "title": "a=即时库存;c=10"
+        },
+        "purchase_amount": {
+          "type": "string",
+          "title": "a=采购总金额;c=3"
+        },
+        "cost": {
+          "type": "string",
+          "title": "a=成本，勾选计算成本时才返回;c=10"
+        }
+      }
+    },
+    "invInventoryResp": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=3"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页大小;c=10"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总计条目;c=30"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=页大小;c=10"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/invInventoryResp.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        },
+        "sum": {
+          "$ref": "#/definitions/Sun",
+          "title": "a=合计;c=object"
+        }
+      }
+    },
+    "invInventoryResp.Row": {
+      "type": "object",
+      "properties": {
+        "material_picture": {
+          "type": "string",
+          "title": "a=商品图片;c=2"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=8440"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=8440"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=8440"
+        },
+        "material_category_name": {
+          "type": "string",
+          "title": "a=商品类别名称;c=0001"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=商品条码;c=0001"
+        },
+        "material_model": {
+          "type": "string",
+          "title": "a=规格型号;c=11"
+        },
+        "material_help_code": {
+          "type": "string",
+          "title": "a=助记码;c=1"
+        },
+        "material_is_asst_attr": {
+          "type": "boolean",
+          "title": "a=是否开启辅助属性;c=false"
+        },
+        "material_is_batch": {
+          "type": "boolean",
+          "title": "a=是否开启批次;c=false"
+        },
+        "material_is_kf_period": {
+          "type": "boolean",
+          "title": "a=是否开启保质期;c=false"
+        },
+        "material_brand_name": {
+          "type": "string",
+          "title": "a=商品品牌名称;c=121"
+        },
+        "aux_prop_id": {
+          "type": "string",
+          "title": "a=辅助属性id;c=121"
+        },
+        "aux_prop_name": {
+          "type": "string",
+          "title": "a=辅助属性名称;c=001"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次;c=2"
+        },
+        "kf_period": {
+          "type": "string",
+          "title": "a=保质期;c=12"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期类型(保质期类型 1:天,2:月,3:年);c=1"
+        },
+        "valid_date": {
+          "type": "string",
+          "title": "a=有效日期;c=15"
+        },
+        "kf_date": {
+          "type": "string",
+          "title": "a=生产日期;c=121"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位id;c=001"
+        },
+        "stock_id": {
+          "type": "string",
+          "title": "a=仓库id;c=2"
+        },
+        "stock_number": {
+          "type": "string",
+          "title": "a=仓库编码;c=12"
+        },
+        "stockid_name": {
+          "type": "string",
+          "title": "a=仓库名称;c=AA"
+        },
+        "stock_is_allow_freight": {
+          "type": "boolean",
+          "title": "a=仓库是否开启仓位;c=false"
+        },
+        "aux_unit_id": {
+          "type": "string",
+          "title": "a=辅助单位id;c=2"
+        },
+        "aux_unit_name": {
+          "type": "string",
+          "title": "a=辅助单位名称;c=12"
+        },
+        "cost": {
+          "type": "number",
+          "format": "double",
+          "title": "a=成本;c=1"
+        },
+        "unit_cost": {
+          "type": "number",
+          "format": "double",
+          "title": "a=单位成本;c=15"
+        },
+        "retail_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=参考零售价;c=121"
+        },
+        "retail_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=参考零售总金额;c=001"
+        },
+        "purchase_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=参考采购价;c=2"
+        },
+        "purchase_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=参考采购总金额;c=12"
+        },
+        "trade_price": {
+          "type": "number",
+          "format": "double",
+          "title": "a=参考批发价;c=11"
+        },
+        "trade_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=参考批发总金额;c=1"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=即时库存(基本单位);c=1"
+        },
+        "aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=即时库存(辅助单位);c=12"
+        },
+        "pkg_qty": {
+          "type": "string",
+          "title": "a=即时库存（整件散包）;c=11"
+        },
+        "valid_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=可用库存（基本单位）;c=1"
+        },
+        "valid_aux_qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=可用库存（辅助单位）;c=1"
+        },
+        "pkg_valid_qty": {
+          "type": "string",
+          "title": "a=可用库存（整件散包）;c=1"
+        },
+        "sp_id": {
+          "type": "string",
+          "title": "a=仓位id;c=121"
+        },
+        "sp_number": {
+          "type": "string",
+          "title": "a=仓位编码;c=121"
+        },
+        "sp_name": {
+          "type": "string",
+          "title": "a=仓位名称;c=121"
         }
       }
     }

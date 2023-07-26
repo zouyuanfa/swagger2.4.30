@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "进销存云;委托代销;委托代销退货单",
+    "title": "进销存云;销售单据;委托代销退货单",
     "version": "version not set"
   },
   "tags": [
@@ -16,9 +16,9 @@
     "application/json"
   ],
   "paths": {
-    "/openapi/v2/scm/entrust_rnt": {
+    "/openapi/v2/scm/entrust_rtn": {
       "get": {
-        "summary": "委托代销退货列表;委托代销退货列表;1.0.12",
+        "summary": "委托代销退货列表;委托代销退货列表;1.0.20",
         "operationId": "EntrustRnt_list",
         "responses": {
           "200": {
@@ -241,7 +241,7 @@
           },
           {
             "name": "search",
-            "description": "a=模糊搜索，支持客户名称、职员名称、商品名称、单据编码、商品条码;c=1234567890123;.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -282,18 +282,11 @@
             "type": "string"
           },
           {
-            "name": "orderby",
-            "description": "a=排序；编码升序：number asc（默认），编码降序：number desc，名称升序：name asc，名称降序：name desc;c=.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
             "name": "show_material_total",
             "description": "a=是否统计商品种类和数量到单据，默认false;c=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "src_bill_no",
@@ -310,22 +303,67 @@
             "type": "string"
           },
           {
-            "name": "out_side_pks",
-            "description": "a=外部标识集合查询;c=[];.",
-            "in": "query",
-            "required": false,
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "collectionFormat": "multi"
-          },
-          {
             "name": "bind_supplier",
             "description": "a=详情是否需要返回外部商品相关信息，需要传true即可;c=true.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_number",
+            "description": "a=客户编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customer_name",
+            "description": "a=客户名称;c=客户名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "dept_number",
+            "description": "a=部门编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_number",
+            "description": "a=商品编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_model",
+            "description": "a=商品规格型号;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "emp_number",
+            "description": "a=业务员编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -333,7 +371,7 @@
         ]
       },
       "post": {
-        "summary": "委托代销退货保存;委托代销退货新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.19",
+        "summary": "委托代销退货保存;委托代销退货新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.28",
         "operationId": "EntrustRnt_save",
         "responses": {
           "200": {
@@ -366,7 +404,7 @@
     },
     "/openapi/v2/scm/entrust_rtn_detail": {
       "get": {
-        "summary": "委托代销退货详情;委托代销退货详情;1.0.14",
+        "summary": "委托代销退货详情;委托代销退货详情;1.0.21",
         "operationId": "EntrustRnt_detail",
         "responses": {
           "200": {
@@ -385,14 +423,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -429,7 +467,7 @@
         },
         "contact_phone": {
           "type": "string",
-          "title": "a=客户联系电话;c=13322112211"
+          "title": "a=客户联系电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13322112211"
         },
         "contact_country_id": {
           "type": "string",
@@ -489,67 +527,7 @@
         },
         "contact_address": {
           "type": "string",
-          "title": "a=联系地址;c=1"
-        },
-        "dispatcher_country_id": {
-          "type": "string",
-          "title": "a=发货国家id;c=5"
-        },
-        "dispatcher_country_name": {
-          "type": "string",
-          "title": "a=发货国家名称;c=巴基斯坦"
-        },
-        "dispatcher_country_number": {
-          "type": "string",
-          "title": "a=发货国家编码;c=005"
-        },
-        "dispatcher_province_id": {
-          "type": "string",
-          "title": "a=发货省份id;c=xxx"
-        },
-        "dispatcher_province_name": {
-          "type": "string",
-          "title": "a=发货省份名称;c=xxx"
-        },
-        "dispatcher_province_number": {
-          "type": "string",
-          "title": "a=发货省份编码;c=xxx"
-        },
-        "dispatcher_city_id": {
-          "type": "string",
-          "title": "a=发货市区id;c=16"
-        },
-        "dispatcher_city_name": {
-          "type": "string",
-          "title": "a=发货市区名称;c=xxx"
-        },
-        "dispatcher_city_number": {
-          "type": "string",
-          "title": "a=发货市区编码;c=006"
-        },
-        "dispatcher_district_id": {
-          "type": "string",
-          "title": "a=发货区县id;c=7"
-        },
-        "dispatcher_district_name": {
-          "type": "string",
-          "title": "a=发货区县名称;c=xxx"
-        },
-        "dispatcher_district_number": {
-          "type": "string",
-          "title": "a=发货区县编码;c=007"
-        },
-        "dispatcher_address": {
-          "type": "string",
-          "title": "a=发货详细地址;c="
-        },
-        "dispatcher_linkman": {
-          "type": "string",
-          "title": "a=发货人;c=小微"
-        },
-        "dispatcher_phone": {
-          "type": "string",
-          "title": "a=发货联系电话;c=13222445566"
+          "title": "a=联系地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=1"
         },
         "recevice_delivery": {
           "type": "string",
@@ -593,7 +571,7 @@
         },
         "f_logistics_id": {
           "type": "string",
-          "title": "a=物流公司内码;c=12"
+          "title": "a=物流公司id;c=12"
         },
         "cost_fee": {
           "type": "string",
@@ -1020,9 +998,9 @@
           "type": "string",
           "title": "a=保质期天数;c=200"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=6060"
+          "title": "a=序列号 格式：001:备注1;002:备注2 （序列号:序列号备注 多个序列号以英文分号字符;分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",
@@ -1114,6 +1092,10 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=币别id;c=1"
         }
       },
       "title": "商品分录"
@@ -1233,7 +1215,7 @@
         },
         "id": {
           "type": "string",
-          "title": "a=单据ID，修改单据时必填;c=1"
+          "title": "a=单据ID，新增不填，更新时必填（id为空时代表新增单据）;c=1"
         },
         "bill_no": {
           "type": "string",
@@ -1354,7 +1336,7 @@
           "items": {
             "$ref": "#/definitions/SalEntrustRntSaveReq.MaterialEntity"
           },
-          "title": "a=商品分录;c=[]"
+          "title": "a=商品分录;c=[];d=true"
         },
         "attachments_url": {
           "type": "array",
@@ -1387,12 +1369,8 @@
           "title": "a=是否忽略告警信息(如：单价为0)保存订单，true:忽略，默认false;c=false"
         },
         "reverse_condition_calculate": {
-          "type": "string",
+          "type": "boolean",
           "title": "a=是否从反算单价（保存修改应保持一致传参），true:反算，默认false;c=false"
-        },
-        "outside_pk_id": {
-          "type": "string",
-          "title": "a=外部单号，如果第三方不使用星辰的ID，可以确保该单号唯一的情况下，新增与更新带上它;c=123"
         },
         "custom_field": {
           "type": "object",
@@ -1463,11 +1441,7 @@
         },
         "express_company_number": {
           "type": "string",
-          "title": "a=物流公司编码;c=002"
-        },
-        "express_company_name": {
-          "type": "string",
-          "title": "a=物流公司名称;c=物流公司A"
+          "title": "a=物流公司编码，express_company_id和express_company_number二选一;c=002"
         }
       }
     },
@@ -1489,10 +1463,6 @@
         "material_id": {
           "type": "string",
           "title": "a=商品id;c=697140092908614656;d=true"
-        },
-        "material_name": {
-          "type": "string",
-          "title": "a=商品名称;c=序列号01"
         },
         "material_number": {
           "type": "string",
@@ -1530,10 +1500,6 @@
           "type": "string",
           "title": "a=仓库id;c=697105306978627584;d=true"
         },
-        "stock_name": {
-          "type": "string",
-          "title": "a=仓库名称;c=仓库A"
-        },
         "stock_number": {
           "type": "string",
           "title": "a=仓库编码;c=001"
@@ -1546,33 +1512,21 @@
           "type": "string",
           "title": "a=仓位id;c="
         },
-        "sp_name": {
-          "type": "string",
-          "title": "a=仓位名称;c="
-        },
         "sp_number": {
           "type": "string",
-          "title": "a=仓位编码;c="
+          "title": "a=仓位编码，sp_id和sp_number二选一;c="
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性id;c=1"
-        },
-        "aux_prop_name": {
-          "type": "string",
-          "title": "a=辅助属性名称;c=蓝/L"
+          "title": "a=辅助属性id(辅助属性商品必填);c=1"
         },
         "aux_prop_number": {
           "type": "string",
-          "title": "a=辅助属性编码;c=001"
+          "title": "a=辅助属性编码，aux_prop_id和aux_prop_number二选一;c=001"
         },
         "aux_id1": {
           "type": "string",
           "title": "a=辅助属性1id;c=1"
-        },
-        "aux_name1": {
-          "type": "string",
-          "title": "a=辅助属性1名称;c=辅助属性A"
         },
         "aux_number1": {
           "type": "string",
@@ -1582,10 +1536,6 @@
           "type": "string",
           "title": "a=辅助属性2id;c=2"
         },
-        "aux_name2": {
-          "type": "string",
-          "title": "a=辅助属性2名称;c=辅助属性B"
-        },
         "aux_number2": {
           "type": "string",
           "title": "a=辅助属性2编码;c=002"
@@ -1593,10 +1543,6 @@
         "aux_id3": {
           "type": "string",
           "title": "a=辅助属性3id;c=1"
-        },
-        "aux_name3": {
-          "type": "string",
-          "title": "a=辅助属性3名称;c=辅助属性C"
         },
         "aux_number3": {
           "type": "string",
@@ -1622,33 +1568,17 @@
           "type": "string",
           "title": "a=基本单位id;c=1"
         },
-        "base_unit_name": {
-          "type": "string",
-          "title": "a=基本单位名称;c=克"
-        },
         "base_unit_number": {
           "type": "string",
-          "title": "a=基本单位编码;c=g"
+          "title": "a=基本单位编码，base_unit_id和base_unit_number二选一;c=g"
         },
         "unit_id": {
           "type": "string",
           "title": "a=单位id;c=697110094189441024;d=true"
         },
-        "unit_name": {
-          "type": "string",
-          "title": "a=单位名称;c=克"
-        },
         "unit_number": {
           "type": "string",
           "title": "a=单位编码;c=g"
-        },
-        "coefficient": {
-          "type": "string",
-          "title": "a=换算率;c=1.0000000000"
-        },
-        "conversion_rate": {
-          "type": "string",
-          "title": "a=换算公式;c=xx"
         },
         "qty": {
           "type": "string",
@@ -1728,7 +1658,7 @@
         },
         "batch_no": {
           "type": "string",
-          "title": "a=批次号;c=2022506"
+          "title": "a=批次号（批次商品必填）;c=2022506"
         },
         "pro_place": {
           "type": "string",
@@ -1744,7 +1674,7 @@
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期;c=2020-01-01"
+          "title": "a=生产日期（保质期商品必填，示例：2022-01-12）;c=2020-01-01"
         },
         "valid_date": {
           "type": "string",
@@ -1752,15 +1682,15 @@
         },
         "kf_type": {
           "type": "string",
-          "title": "a=保质期类型，1：天，2：月，3：年;c=2"
+          "title": "a=保质期类型：1/天，2/月，3/年（保质期商品必填）;c=2"
         },
         "kf_period": {
           "type": "string",
-          "title": "a=保质期天数;c=200"
+          "title": "a=保质期天数（保质期商品必填）;c=200"
         },
-        "sn": {
+        "sn_list": {
           "type": "string",
-          "title": "a=序列号;c=6060"
+          "title": "a=序列号 格式：001:备注1（序列号:序列号备注,多个序列号以英文分号字符分隔）,序列号商品必填;c=001"
         },
         "sn_list_id": {
           "type": "string",
@@ -1768,23 +1698,15 @@
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位id;c=697110094189441024;d=true"
-        },
-        "aux_unit_name": {
-          "type": "string",
-          "title": "a=辅助单位名称;c=克"
+          "title": "a=辅助单位（多单位商品，需要使用辅助单位时必填）;c=697110094189441024;d=true"
         },
         "aux_unit_number": {
           "type": "string",
           "title": "a=辅助单位编码;c=001"
         },
-        "aux_coefficient": {
-          "type": "string",
-          "title": "a=辅助换算率;c=50"
-        },
         "aux_qty": {
           "type": "string",
-          "title": "a=辅助单位数量;c=1;d=true"
+          "title": "a=辅助数量（多单位商品，需要使用辅助单位时必填）;c=1;d=true"
         },
         "cess": {
           "type": "string",

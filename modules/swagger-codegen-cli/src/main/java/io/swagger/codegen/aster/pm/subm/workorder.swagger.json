@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/pm/subm_workorder": {
       "get": {
-        "summary": "委外加工单列表;委外加工单列表;1.0.6",
+        "summary": "委外加工单列表;委外加工单列表;1.0.11",
         "operationId": "WorkOrder_list",
         "responses": {
           "200": {
@@ -91,19 +91,17 @@
           },
           {
             "name": "start_time",
-            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），修改时间;c=-1.",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），创建时间;c=1660026408425.",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "end_time",
-            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），修改时间;c=-1.",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），创建时间;c=1660026408425.",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "search",
@@ -127,6 +125,34 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "begin_time",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1660026408425.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_time",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1660026408425.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "begin_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -136,7 +162,7 @@
     },
     "/openapi/v2/pm/subm_workorder_detail": {
       "get": {
-        "summary": "委外加工单详情;委外加工单详情;1.0.7",
+        "summary": "委外加工单详情;委外加工单详情;1.0.17",
         "operationId": "WorkOrder_detail",
         "responses": {
           "200": {
@@ -155,14 +181,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -291,6 +317,10 @@
         "sub_aux_prop_name": {
           "type": "string",
           "title": "a=辅助属性名称;c=辅助属性"
+        },
+        "sub_aux_prop_number": {
+          "type": "string",
+          "title": "a=辅助属性编码;c=111"
         },
         "sub_aux1_id": {
           "type": "string",
@@ -455,10 +485,6 @@
         "id": {
           "type": "string",
           "title": "a=单据ID;c=843913969650384896"
-        },
-        "trans_type": {
-          "type": "string",
-          "title": "a=业务类型;c=2"
         },
         "bill_no": {
           "type": "string",
@@ -633,6 +659,18 @@
             "$ref": "#/definitions/WorkOrderDetailRes.MaterialEntity"
           },
           "title": "a=商品分录;c=[]"
+        },
+        "trans_type_id": {
+          "type": "string",
+          "title": "a=业务类型ID;c=001001;"
+        },
+        "trans_type_name": {
+          "type": "string",
+          "title": "a=业务类型名称;c=001001;"
+        },
+        "trans_type_number": {
+          "type": "string",
+          "title": "a=业务类型编码;c=001001;"
         }
       }
     },
@@ -790,7 +828,7 @@
         },
         "barcode": {
           "type": "string",
-          "title": "a=条形码;c=20202002"
+          "title": "a=商品条码;c=20202002"
         },
         "batch_no": {
           "type": "string",
@@ -908,18 +946,15 @@
           "title": "a=源单类型id;c=2"
         },
         "src_inter_id": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
           "title": "a=源单id;c=001"
         },
         "src_seq": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
           "title": "a=源单行号;c=1"
         },
         "src_entry_id": {
-          "type": "integer",
-          "format": "int32",
+          "type": "string",
           "title": "a=源单分录id;c=1"
         },
         "cess": {
@@ -933,6 +968,14 @@
             "$ref": "#/definitions/Sub_MaterialEntity"
           },
           "title": "a=商品;c=[]"
+        },
+        "bom_id": {
+          "type": "string",
+          "title": "a=BOM ID;c=1"
+        },
+        "bom_number": {
+          "type": "string",
+          "title": "a=BOM 编码;c=1"
         }
       }
     },
@@ -1023,6 +1066,18 @@
         "remark": {
           "type": "string",
           "title": "a=备注;c=test"
+        },
+        "trans_type_id": {
+          "type": "string",
+          "title": "a=业务类型ID;c=001001;"
+        },
+        "trans_type_name": {
+          "type": "string",
+          "title": "a=业务类型名称;c=001001;"
+        },
+        "trans_type_number": {
+          "type": "string",
+          "title": "a=业务类型编码;c=001001;"
         }
       }
     }

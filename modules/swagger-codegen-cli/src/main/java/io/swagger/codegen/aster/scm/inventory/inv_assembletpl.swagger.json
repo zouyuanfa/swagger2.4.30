@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/assemble_tpl": {
       "get": {
-        "summary": "组装拆卸模板列表;组装拆卸模板列表;1.0.7",
+        "summary": "组装拆卸模板列表;组装拆卸模板列表;1.0.9",
         "operationId": "InvAssembleTpl_AssembleTplList",
         "responses": {
           "200": {
@@ -107,7 +107,7 @@
           },
           {
             "name": "search",
-            "description": "a=模糊搜索;b=6;c=xxx;d=false.",
+            "description": "过时字段，不生成对外API文档:模糊搜索.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -132,6 +132,34 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "bill_no",
+            "description": "a=单据编码;c=001;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_number",
+            "description": "a=商品编码;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_name",
+            "description": "a=商品名称;c=商品名称.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "material_model",
+            "description": "a=商品规格型号;c=001.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -141,7 +169,7 @@
     },
     "/openapi/v2/scm/assemble_tpl_detail": {
       "get": {
-        "summary": "组装拆卸模板详情;组装拆卸模板详情;1.0.7",
+        "summary": "组装拆卸模板详情;组装拆卸模板详情;1.0.9",
         "operationId": "InvAssembleTpl_AssembleTplDetail",
         "responses": {
           "200": {
@@ -160,14 +188,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -481,6 +509,10 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "material_type": {
+          "type": "string",
+          "title": "a=商品属性 S子件，M组件;c=S"
         }
       }
     },

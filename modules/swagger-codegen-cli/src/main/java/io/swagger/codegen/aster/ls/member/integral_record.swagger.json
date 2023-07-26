@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/integral_record": {
       "get": {
-        "summary": "积分流水查询;积分流水查询;1.0.6",
+        "summary": "积分流水查询;积分流水查询;1.0.8",
         "operationId": "IntegralRecord_list",
         "responses": {
           "200": {
@@ -86,7 +86,7 @@
           },
           {
             "name": "integral_type",
-            "description": "a=积分业务类型，具体值请参考后台系统，积分流水功能的业务类型;c=1;d=false.",
+            "description": "a=积分业务类型，具体值请参考后台系统，积分流水功能的积分业务类型编码;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -189,6 +189,10 @@
         "type_name": {
           "type": "string",
           "title": "a=积分业务类型名称;c=业务A;d=false"
+        },
+        "id": {
+          "type": "string",
+          "title": "a=唯一记录标识id;c=1"
         }
       }
     },

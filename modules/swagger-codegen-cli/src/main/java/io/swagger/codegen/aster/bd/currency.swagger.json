@@ -97,7 +97,7 @@
         ]
       },
       "post": {
-        "summary": "币别保存;币别新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.7",
+        "summary": "币别保存;币别新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
         "operationId": "Currency_CurrencySave",
         "responses": {
           "200": {
@@ -130,7 +130,7 @@
     },
     "/openapi/v2/bd/currency_detail": {
       "get": {
-        "summary": "币别详情;获取币别详情;1.0.6",
+        "summary": "币别详情;获取币别详情;1.0.7",
         "operationId": "Currency_CurrencyDetail",
         "responses": {
           "200": {
@@ -149,14 +149,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -330,15 +330,15 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id;b=2147483647;c=1;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=编码;b=30;c=001;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=名称;d=false"
+          "title": "a=名称;b=20;c=名称;d=true"
         },
         "enable": {
           "type": "integer",
@@ -347,7 +347,7 @@
         },
         "rate": {
           "type": "string",
-          "title": "a=税率;b=99999;c=1;d=false"
+          "title": "a=税率;b=99999;c=1;d=true"
         },
         "price_precision": {
           "type": "string",
@@ -359,7 +359,7 @@
         },
         "exc_type": {
           "type": "string",
-          "title": "a==汇率类型，1：固定汇率，2：浮动汇率;b=1;c=1;d=false"
+          "title": "a==汇率类型，1：固定汇率，2：浮动汇率;b=1;c=1;d=true"
         },
         "sign": {
           "type": "string",
@@ -371,7 +371,7 @@
         },
         "convert_mode": {
           "type": "string",
-          "title": "a=折算方式，1原币*汇率=本位币，2原币/汇率=本位币;b=1;c=1;d=false"
+          "title": "a=折算方式，1原币*汇率=本位币，2原币/汇率=本位币;b=1;c=1;d=true"
         }
       }
     },
@@ -380,7 +380,11 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=保存单据返回id;c=1;d=true"
+          "title": "a=保存返回id;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=保存返回number;c=1;d=false"
         }
       },
       "title": "保存返回单个id对象"

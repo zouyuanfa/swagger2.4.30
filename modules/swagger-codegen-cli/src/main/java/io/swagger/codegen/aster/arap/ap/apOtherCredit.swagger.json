@@ -139,7 +139,7 @@
         ]
       },
       "post": {
-        "summary": "其他支出单保存;其他支出单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.13",
+        "summary": "其他支出单保存;其他支出单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.26",
         "operationId": "ApOtherCredit_save",
         "responses": {
           "200": {
@@ -172,7 +172,7 @@
     },
     "/openapi/v2/arap/ap_other_credit_detail": {
       "get": {
-        "summary": "其他支出单详情;获取其他支出单详情;1.0.10",
+        "summary": "其他支出单详情;获取其他支出单详情;1.0.11",
         "operationId": "ApOtherCredit_detail",
         "responses": {
           "200": {
@@ -191,14 +191,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id与number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -393,11 +393,11 @@
         },
         "instant_amount": {
           "type": "string",
-          "title": "a=付款金额;b=999999999;c=100;d=false"
+          "title": "a=付款金额;b=999999999;c=100;d=true"
         },
         "instant_settle_account_id": {
           "type": "string",
-          "title": "a=付款账户id;b=2147483647;c=1;d=false"
+          "title": "a=付款账户id;b=2147483647;c=1;d=true"
         },
         "instant_settle_account_number": {
           "type": "string",
@@ -603,7 +603,11 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id，修改单据时必填;b=2147483647;c=1;d=false"
+          "title": "a=单据id，新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=SKD-20200310-000011;d=true"
         },
         "default_bill_source": {
           "type": "string",
@@ -615,7 +619,7 @@
         },
         "supplier_id": {
           "type": "string",
-          "title": "a=客户id;b=2147483647;c=1;d=false"
+          "title": "a=供应商id;b=2147483647;c=1;d=false"
         },
         "currency_id": {
           "type": "string",
@@ -646,14 +650,14 @@
           "items": {
             "$ref": "#/definitions/ApOtherCreditSaveRequest.PayEntry"
           },
-          "title": "a=应收信息分录;b=100;c=[];d=false"
+          "title": "a=应付信息分录;b=100;c=[];d=true"
         },
         "instantpayfromtoentry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditSaveRequest.InstantPayEntry"
           },
-          "title": "a=立即付款分录;b=100;c=[];d=false"
+          "title": "a=立即付款分录;b=100;c=[];d=true"
         },
         "attachments_url_list": {
           "type": "array",
@@ -669,9 +673,9 @@
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
         },
-        "operation_key": {
+        "operate_type": {
           "type": "string",
-          "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+          "title": "a=操作类型,审核audit和反审核unaudit;c=audit;d=false"
         }
       }
     },
@@ -701,15 +705,19 @@
         },
         "instant_amount": {
           "type": "string",
-          "title": "a=付款金额;b=999999999;c=100;d=false"
+          "title": "a=付款金额;b=999999999;c=100;d=true"
         },
         "instant_settle_account_id": {
           "type": "string",
-          "title": "a=付款账户id;b=2147483647;c=1;d=false"
+          "title": "a=付款账户id;b=2147483647;c=1;d=true"
         },
         "instant_trans_number": {
           "type": "string",
           "title": "a=交易号/票据号;b=30;c=001;d=false"
+        },
+        "service_fee": {
+          "type": "string",
+          "title": "a=手续费;b=999999999;c=100;d=false"
         },
         "instant_comment": {
           "type": "string",
@@ -731,17 +739,13 @@
           "type": "string",
           "title": "a=分录id(新增时不传，修改时必传);b=2147483647;c=1;d=false"
         },
-        "settle_account_id": {
-          "type": "string",
-          "title": "a=付款账户id;b=2147483647;c=1;d=false"
-        },
         "pay_type_id": {
           "type": "string",
-          "title": "a=支出类别id;b=2147483647;c=1;d=false"
+          "title": "a=支出类别id;b=2147483647;c=1;d=true"
         },
         "amount": {
           "type": "string",
-          "title": "a=付款金额（应大于0）;b=999999999;c=100;d=false"
+          "title": "a=应付金额（应大于0）;b=999999999;c=100;d=true"
         },
         "comment": {
           "type": "string",
@@ -753,7 +757,7 @@
         },
         "service_fee": {
           "type": "string",
-          "title": "a=手续费;b=999999999;c=100;d=false"
+          "title": "固定值字段，不生成对外API文档"
         },
         "custom_entity_field": {
           "type": "object",
@@ -761,6 +765,14 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+        },
+        "no_tax_amount": {
+          "type": "string",
+          "title": "a=不含税金额(修改时需要带上);b=30;c=10;d=false"
+        },
+        "tax_rate": {
+          "type": "string",
+          "title": "a=税率;b=10000;c=1;d=false"
         }
       }
     },

@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/arap/ap_summary_report": {
       "get": {
-        "summary": "应付账款汇总表;获取应付账款汇总表;1.0.6",
+        "summary": "应付账款汇总表;获取应付账款汇总表;1.0.9",
         "operationId": "Arap_apSummaryReport",
         "responses": {
           "200": {
@@ -44,14 +44,14 @@
           },
           {
             "name": "start_date",
-            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -126,50 +126,42 @@
             "description": "a=是否包括未审核;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "not_view_zero",
             "description": "a=是否不显示余额为0;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "not_view_no_happen",
             "description": "a=是否不显示无发生额;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "include_oth",
             "description": "a=是否包括其他应收;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
-          },
-          {
-            "name": "api_order_by",
-            "description": "a=排序；编码升序：number asc（默认），编码降序：number desc，名称升序：name asc，名称降序：name desc;c=1;d=false.",
-            "in": "query",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "is_foreigncur",
             "description": "a=是否启用了外币，预留字段，没有传值或者设置时默认为false;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "isshowls",
             "description": "a=是否显示零售结存单;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           }
         ],
         "tags": [
@@ -179,7 +171,7 @@
     },
     "/openapi/v2/arap/ar_summary_report": {
       "get": {
-        "summary": "应收账款汇总表;获取应收账款汇总表;1.0.6",
+        "summary": "应收账款汇总表;获取应收账款汇总表;1.0.14",
         "operationId": "Arap_arSummaryReport",
         "responses": {
           "200": {
@@ -205,14 +197,14 @@
           },
           {
             "name": "start_date",
-            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -277,7 +269,7 @@
           },
           {
             "name": "summary_type",
-            "description": "a=汇总方式：客户item、业务员emp、部门dept、客户分类group;b=10;c=item;d=true.",
+            "description": "a=汇总方式：客户item、业务员emp、部门dept、客户分类group;b=10;c=item.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -287,32 +279,32 @@
             "description": "a=是否包括未审核;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "not_view_zero",
             "description": "a=是否不显示余额为0;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "not_view_no_happen",
             "description": "a=是否不显示无发生额;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "include_oth",
             "description": "a=是否包括其他应收;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "api_order_by",
-            "description": "a=排序字段，1-金额降序 2-金额升序;b=1;c=1;d=false.",
+            "description": "影响性能，不生成对外API文档:排序.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -323,11 +315,18 @@
             "description": "a=是否启用了外币，预留字段，没有传值或者设置时默认为false;b=1;c=false;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "isshowls",
             "description": "a=是否显示零售结存单;b=1;c=false;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "not_invoiced",
+            "description": "a=是否显示已出库/退货未开票,默认为false，该字段仅旗舰版支持;c=false;d=false.",
             "in": "query",
             "required": false,
             "type": "boolean"
@@ -370,9 +369,41 @@
         ]
       }
     },
+    "/openapi/v2/arap/customer_business": {
+      "get": {
+        "summary": "客户交易数据接口;客户交易数据接口;1.0.0",
+        "operationId": "Arap_customerBusiness",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomerBusinessRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "customer_id",
+            "description": "a=客户id;c=1188427222868837376;d=ture.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Arap"
+        ]
+      }
+    },
     "/openapi/v2/arap/customer_debt": {
       "get": {
-        "summary": "客户欠款余额;查询客户的上次欠款和应收款余额;1.0.6",
+        "summary": "客户欠款余额;查询客户的上次欠款和应收款余额;1.0.9",
         "operationId": "Arap_customerDebt",
         "responses": {
           "200": {
@@ -391,7 +422,7 @@
         "parameters": [
           {
             "name": "customer_id",
-            "description": "a=客户ID;b=100;c=[];d=false.",
+            "description": "a=客户ID;b=100;c=[];d=true.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -413,9 +444,48 @@
         ]
       }
     },
+    "/openapi/v2/arap/customer_pay_number": {
+      "get": {
+        "summary": "客户交易次数;客户交易次数接口;1.0.1",
+        "operationId": "Arap_CusPayList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CusPayListRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "start_date",
+            "description": "a=开始时间，格式：2024-05-01;b=12;c=2024-01-01;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束时间，格式：2021-05-01;b=12;c=2024-05-01;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Arap"
+        ]
+      }
+    },
     "/openapi/v2/arap/reconciliation_statement": {
       "get": {
-        "summary": "供应商/客户 对账单;获取供应商/客户 对账表;1.0.7",
+        "summary": "供应商/客户 对账单;获取供应商/客户 对账表;1.0.8",
         "operationId": "Arap_reconciliationStatement",
         "responses": {
           "200": {
@@ -441,14 +511,14 @@
           },
           {
             "name": "start_date",
-            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -502,56 +572,56 @@
             "description": "a=是否包括未审核;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "not_view_zero",
             "description": "a=是否不显示余额为0;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "include_oth",
             "description": "a=是否包括其他应收;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "is_not_show_settle_bill",
             "description": "a=是否不显示已完全核销单;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "is_show_settle_src_bill",
             "description": "a=是否不显示已完全核销单;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "is_only_show_total",
             "description": "a=是否仅显示小计行;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "is_not_show_total",
             "description": "a=是否不显示小计行;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           },
           {
             "name": "is_show_ls",
             "description": "a=是否显示零售结存单;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
-            "type": "boolean"
+            "type": "string"
           }
         ],
         "tags": [
@@ -747,6 +817,10 @@
         "balance_for": {
           "type": "string",
           "title": "a=余额-应收;b=999999999;c=100;d=false"
+        },
+        "rp_scm_amount_for": {
+          "type": "string",
+          "title": "a=收销售款;b=999999999;c=100;d=false"
         }
       }
     },
@@ -763,10 +837,86 @@
         }
       }
     },
+    "CusPayListRes": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CusPayListRes.Row"
+          },
+          "title": "a=返回数据列表;c=[]"
+        }
+      }
+    },
+    "CusPayListRes.Row": {
+      "type": "object",
+      "properties": {
+        "all_amount": {
+          "type": "number",
+          "format": "double",
+          "title": "a=销售总额;b=12;c=100"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=交易次数;b=12;c=1"
+        },
+        "customer_id": {
+          "type": "string",
+          "title": "a=客户id;b=12;c=001"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;b=12;c=2023-06-02 00:00:00.0"
+        },
+        "customer_name": {
+          "type": "string",
+          "title": "a=客户名称;b=12;c=订货散客"
+        }
+      },
+      "title": "返回数据列表"
+    },
+    "CustomerBusinessRes": {
+      "type": "object",
+      "properties": {
+        "year_transaction_fees": {
+          "type": "string",
+          "title": "a=年交易金额;c=0.0;d=ture"
+        },
+        "last_month_sal_fees": {
+          "type": "string",
+          "title": "a=上月交易金额;c=0.0;d=ture"
+        },
+        "month_transaction_fees": {
+          "type": "string",
+          "title": "a=本月交易金额;c=0.0;d=ture"
+        },
+        "year_refund_fees": {
+          "type": "string",
+          "title": "a=年退款金额;c=0.0;d=ture"
+        },
+        "last_month_refund_fees": {
+          "type": "string",
+          "title": "a=上月退款金额;c=0.0;d=ture"
+        },
+        "month_refund_fees": {
+          "type": "string",
+          "title": "a=本月退款金额;c=0.0;d=ture"
+        },
+        "lately_transaction_fees": {
+          "type": "string",
+          "title": "a=最近一次交易金额;c=100.00;d=ture"
+        },
+        "lately_transaction_date": {
+          "type": "string",
+          "title": "a=最近一次交易时间;c=2021-06-28 00:00:00.0;d=ture"
+        }
+      }
+    },
     "CustomerDebtReply": {
       "type": "object",
       "properties": {
-        "items": {
+        "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Item"

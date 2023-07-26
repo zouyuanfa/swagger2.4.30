@@ -139,7 +139,7 @@
         ]
       },
       "post": {
-        "summary": "其他收入退款单保存;保存其他收入退款单。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.13",
+        "summary": "其他收入退款单保存;保存其他收入退款单。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.18",
         "operationId": "ArOtherCreditRet_save",
         "responses": {
           "200": {
@@ -172,7 +172,7 @@
     },
     "/openapi/v2/arap/ar_other_credit_ret_detail": {
       "get": {
-        "summary": "其他收入退款单详情;获取其他收入退款单详情;1.0.11",
+        "summary": "其他收入退款单详情;获取其他收入退款单详情;1.0.12",
         "operationId": "ArOtherCreditRet_detail",
         "responses": {
           "200": {
@@ -191,14 +191,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id与number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -603,7 +603,11 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id，修改单据时必填;b=2147483647;c=1;d=false"
+          "title": "a=单据id，新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=SKD-20200310-00001;d=true"
         },
         "default_bill_source": {
           "type": "string",
@@ -646,14 +650,21 @@
           "items": {
             "$ref": "#/definitions/ArOtherCreditRetSaveRequest.PayEntry"
           },
-          "title": "a=收款信息分录;b=100;c=[];d=false"
+          "title": "a=应退信息信息分录;b=100;c=[];d=false"
         },
         "instantpayfromtoentry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ArOtherCreditRetSaveRequest.InstantPayEntry"
           },
-          "title": "a=立即收款分录;b=100;c=[];d=false"
+          "title": "不规范字段，不生成对外API文档:立即收款分录"
+        },
+        "instant_pay_entry_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ArOtherCreditRetSaveRequest.InstantPayEntry"
+          },
+          "title": "a=退款信息分录;b=100;c=[];d=false"
         },
         "attachments_url_list": {
           "type": "array",
@@ -668,10 +679,6 @@
             "type": "string"
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
-        },
-        "operation_key": {
-          "type": "string",
-          "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
         }
       }
     },
@@ -701,11 +708,11 @@
         },
         "instant_amount": {
           "type": "string",
-          "title": "a=收款金额;b=999999999;c=100;d=false"
+          "title": "a=退款金额;b=999999999;c=100;d=false"
         },
         "instant_settle_account_id": {
           "type": "string",
-          "title": "a=收款账户id;b=2147483647;c=1;d=false"
+          "title": "a=退款账户id;b=2147483647;c=1;d=false"
         },
         "instant_trans_number": {
           "type": "string",
@@ -733,7 +740,7 @@
         },
         "settle_account_id": {
           "type": "string",
-          "title": "a=收款账户id;b=2147483647;c=1;d=false"
+          "title": "a=退款账户id;b=2147483647;c=1;d=true"
         },
         "pay_type_id": {
           "type": "string",
@@ -741,11 +748,11 @@
         },
         "amount": {
           "type": "string",
-          "title": "a=收款金额（应大于0）;b=999999999;c=100;d=false"
+          "title": "a=退款金额（应大于0）;b=999999999;c=100;d=true"
         },
         "comment": {
           "type": "string",
-          "title": "a=收款备注;b=100;c=备注;d=false"
+          "title": "a=退款备注;b=100;c=备注;d=false"
         },
         "trans_number": {
           "type": "string",

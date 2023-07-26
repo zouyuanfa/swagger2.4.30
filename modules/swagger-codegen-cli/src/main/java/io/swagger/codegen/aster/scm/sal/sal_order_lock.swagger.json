@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/sail_order_lock": {
       "post": {
-        "summary": "销售订单锁库;销售订单锁库;1.0.6",
+        "summary": "销售订单锁库;销售订单锁库;1.0.8",
         "operationId": "SalOrderLock_cancel",
         "responses": {
           "200": {

@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/pm/subm_prod_rtn": {
       "get": {
-        "summary": "委外产品退货单列表;获取委外产品退货单列表;1.0.2",
+        "summary": "委外产品退货单列表;获取委外产品退货单列表;1.0.7",
         "operationId": "ProdRtnOrder_prodRtnOrderList",
         "responses": {
           "200": {
@@ -69,19 +69,17 @@
           },
           {
             "name": "start_time",
-            "description": "a=创建时间-开始时间（格式：“时间戳”，-1表示不过滤）;c=1234567890123;d=false.",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），创建时间;c=1660026408425.",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "end_time",
-            "description": "a=创建时间-结束时间（格式：“时间戳”，-1表示不过滤）;c=1234567890123;d=false.",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），创建时间;c=1660026408425.",
             "in": "query",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "type": "string"
           },
           {
             "name": "search",
@@ -103,6 +101,34 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "begin_time",
+            "description": "a=开始时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1660026408425.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_time",
+            "description": "a=结束时间（格式：“时间戳”，-1表示不过滤），修改时间;c=1660026408425.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "begin_date",
+            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "expire_date",
+            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），修改日期;c=2022-02-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
           }
         ],
         "tags": [
@@ -112,7 +138,7 @@
     },
     "/openapi/v2/pm/subm_prod_rtn_detail": {
       "get": {
-        "summary": "委外产品退货单详情;获取委外产品退货单详情;1.0.2",
+        "summary": "委外产品退货单详情;获取委外产品退货单详情;1.0.4",
         "operationId": "ProdRtnOrder_prodRtnOrderDetail",
         "responses": {
           "200": {
@@ -131,7 +157,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id;b=2147483647;c=1;d=false.",
+            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "number",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -155,23 +188,6 @@
       "additionalProperties": {},
       "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
-    "Mullabel": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string",
-          "title": "a=id;b=2147483647;c=1;d=true"
-        },
-        "number": {
-          "type": "string",
-          "title": "a=商品标签编码;b=30;c=001;d=false"
-        },
-        "name": {
-          "type": "string",
-          "title": "a=名称;b=20;c=名称;d=false"
-        }
-      }
-    },
     "ProdRtnOrderDetailReply": {
       "type": "object",
       "properties": {
@@ -194,10 +210,6 @@
         "bill_no": {
           "type": "string",
           "title": "a=单据编号;b=100;c=101;d=false"
-        },
-        "bill_source": {
-          "type": "string",
-          "title": "a=单据来源;b=100;c=SCM;d=false"
         },
         "bill_status": {
           "type": "string",
@@ -630,7 +642,7 @@
         "label_list": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Mullabel"
+            "$ref": "#/definitions/Row.Mullabel"
           },
           "title": "a=单据标签;b=100;c=[];d=false"
         },
@@ -641,10 +653,6 @@
         "settlement_period": {
           "type": "string",
           "title": "a=结算期限;b=100;c=100;d=false"
-        },
-        "bill_source": {
-          "type": "string",
-          "title": "a=单据来源;b=100;c=100;d=false"
         },
         "print_count": {
           "type": "string",
@@ -665,6 +673,23 @@
         "currency_number": {
           "type": "string",
           "title": "a=币别编码;b=100;c=001;d=false"
+        }
+      }
+    },
+    "Row.Mullabel": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;b=2147483647;c=1;d=true"
+        },
+        "number": {
+          "type": "string",
+          "title": "a=商品标签编码;b=30;c=001;d=false"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=名称;b=20;c=名称;d=false"
         }
       }
     },

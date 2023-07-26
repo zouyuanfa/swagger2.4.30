@@ -1,0 +1,357 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "审批流",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "approvalFlow"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/wf/approval_consent": {
+      "post": {
+        "summary": "同意驳回接口;同意驳回接口;1.0.2",
+        "operationId": "approvalFlow_approvalConsent",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ApprovalConsentRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ApprovalConsentReq"
+            }
+          }
+        ],
+        "tags": [
+          "approvalFlow"
+        ]
+      }
+    },
+    "/openapi/v2/wf/get_approval_record": {
+      "get": {
+        "summary": "查询审批记录;查询审批记录;1.0.2",
+        "operationId": "approvalFlow_approvalRecordList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ApprovalRecordRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "business_key",
+            "description": "a=单据id;c=1930368967571124224;d=true;.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "approvalFlow"
+        ]
+      }
+    },
+    "/openapi/v2/wf/withdraw": {
+      "post": {
+        "summary": "审批流撤回;审批流申请人撤回接口;1.0.3",
+        "operationId": "approvalFlow_Withdraw",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/WithdrawRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WithdrawRequest"
+            }
+          }
+        ],
+        "tags": [
+          "approvalFlow"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "ApprovalConsentReq": {
+      "type": "object",
+      "properties": {
+        "business_key": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=单据id;c=[1930368967571124224];d=true;"
+        },
+        "op_type": {
+          "type": "string",
+          "title": "a=操作类型：Consent 同意；Reject 驳回;c=Consent;d=true;"
+        },
+        "opinion": {
+          "type": "string",
+          "title": "a=同意或驳回意见;c=这里是你的意见;d=true;"
+        },
+        "bill_type": {
+          "type": "string",
+          "title": "a=单据类型 (审核时规则校验必传);c=sal_bill_outbound;d=true;"
+        },
+        "attachments_url": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AttachmentsUrl"
+          },
+          "title": "a=附件;c=[];"
+        }
+      }
+    },
+    "ApprovalConsentRes": {
+      "type": "object",
+      "properties": {
+        "op_result": {
+          "type": "string",
+          "title": "a=操作结果：executed,代表操作已执行，因为此为异步操作，具体的操作结果需要主动查询或重新刷新单据（在单据详情中自动加载最新状态）;c=executed"
+        }
+      }
+    },
+    "ApprovalRecordRes": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Row"
+          },
+          "title": "a=数据行;c=[];d=false"
+        }
+      }
+    },
+    "AttachmentsUrl": {
+      "type": "object",
+      "properties": {
+        "panel": {
+          "type": "string",
+          "title": "a=附件类型，默认填写attachmentpanelap;c=attachmentpanelap"
+        },
+        "url": {
+          "type": "string",
+          "title": "a=服务器返回的附件地址;c=www.baidu.com"
+        },
+        "name": {
+          "type": "string",
+          "title": "a=文件名;c=www.baidu.com"
+        }
+      }
+    },
+    "Children": {
+      "type": "object",
+      "properties": {
+        "activity_id": {
+          "type": "string",
+          "title": "a=节点ID;c=Proc_sal_bill_order_audit_1_UserTask3;"
+        },
+        "activity_name": {
+          "type": "string",
+          "title": "a=节点名称;c=submit;"
+        },
+        "assignee": {
+          "type": "string",
+          "title": "a=处理人及职务信息;c=内网接口测试;"
+        },
+        "avatar": {
+          "type": "string",
+          "title": "a=处理人头像;c=www.baidu.com.png;"
+        },
+        "biz_identify_key": {
+          "type": "string",
+          "title": "a=业务标识，用于打印或者判断是属于某个节点;c=123;"
+        },
+        "coordinate": {
+          "type": "boolean",
+          "title": "a=是否协办;c=false;"
+        },
+        "current_user_id": {
+          "type": "string",
+          "title": "a=当前用户id;c=4930398;"
+        },
+        "decision_type": {
+          "type": "string",
+          "title": "a=决策项;c=\"\";"
+        },
+        "group": {
+          "type": "string",
+          "title": "a=所属分组id;c=1930369023783063552;"
+        },
+        "message": {
+          "type": "string",
+          "title": "a=审批意见;c=提交;"
+        },
+        "open_id": {
+          "type": "string",
+          "title": "a=审批人openId;c=一级审批;"
+        },
+        "result": {
+          "type": "string",
+          "title": "a=审批结果，取决策名称;c=提交;"
+        },
+        "sub_activity_name": {
+          "type": "string",
+          "title": "a=副标题;c=销售订单提交;"
+        },
+        "task_id": {
+          "type": "string",
+          "title": "a=任务id;c=1930369023783063552;"
+        },
+        "time": {
+          "type": "string",
+          "title": "a=处理时间;c=2024-04-17 09:38:40;"
+        },
+        "user_id": {
+          "type": "string",
+          "title": "a=用户id;c=4930398;"
+        },
+        "point_dy_participant": {
+          "type": "string",
+          "title": "a=当前节点审批人指定的下一级节点参与人名称（指定了下一级节点参与人时才会出现此字段）;c=一级审批;"
+        },
+        "group_decision_type": {
+          "type": "string",
+          "title": "a=分组通过决策项，和节点的决策项保持一致，当前节点的groupDecisionType=wait，表示等待处理或者审批;c=submit;"
+        },
+        "entity_number": {
+          "type": "string",
+          "title": "a=单据编码;c=sal_bill_order;"
+        },
+        "business_key": {
+          "type": "string",
+          "title": "a=单据id;c=1930368967571124224;d=true"
+        }
+      }
+    },
+    "Row": {
+      "type": "object",
+      "properties": {
+        "business_key": {
+          "type": "string",
+          "title": "a=分组标识，一个任务可以添加多个审批意见，通过group进行分组，审批节点group值为任务id，会审groupid为父任务id;c=1930369023783063552;"
+        },
+        "group_decision_type": {
+          "type": "string",
+          "title": "a=分组通过决策项，和节点的决策项保持一致，当前节点的groupDecisionType=wait，表示等待处理或者审批;c=submit;"
+        },
+        "group_type": {
+          "type": "string",
+          "title": "a=会签节点时=huiqian 其余节点为空，会签目前默认是一票否决;c=1930368967571124224;"
+        },
+        "through_rule": {
+          "type": "string",
+          "title": "a=通过规则，审批节点的通过规则默认为一票通过，会审由各个业务模式决定;c=通过规则：任一人审批;"
+        },
+        "activity_name": {
+          "type": "string",
+          "title": "a=节点名称;c=一级审批;"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Children"
+          },
+          "title": "a=每个审批人具体信息;c=[];"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "WithdrawRequest": {
+      "type": "object",
+      "properties": {
+        "business_key": {
+          "type": "string",
+          "title": "a=业务单据Id集合;b=746967221233804288;c=1;d=true"
+        },
+        "entity_number": {
+          "type": "string",
+          "title": "a=单据或基础资料类型，参照《基础资料及单据类型》;b=pur_bill_order;c=1;d=true"
+        }
+      }
+    },
+    "WithdrawRes": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "string",
+          "title": "a=操作结果：executed，代表操作已执行，因为此为异步操作，具体的操作结果需要主动查询或重新刷新单据（在单据详情中自动加载最新状态）;b=executed;c=1"
+        }
+      }
+    }
+  }
+}

@@ -17,8 +17,8 @@
   ],
   "paths": {
     "/openapi/v2/ls/cashier": {
-      "get": {
-        "summary": "收银员详情;收银员详情;1.0.6",
+      "post": {
+        "summary": "收银员详情;收银员详情;1.0.8",
         "operationId": "CashierDetail_list",
         "responses": {
           "200": {
@@ -36,18 +36,12 @@
         },
         "parameters": [
           {
-            "name": "tel_phone",
-            "description": "a=手机号;c=1333333333;d=true.",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "pwd",
-            "description": "a=密码加密项 32位大写MD5加密字符串;c=001;d=false.",
-            "in": "query",
-            "required": false,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CashierDetailReq"
+            }
           }
         ],
         "tags": [
@@ -105,6 +99,19 @@
           "items": {
             "$ref": "#/definitions/CashierDetailRes"
           }
+        }
+      }
+    },
+    "CashierDetailReq": {
+      "type": "object",
+      "properties": {
+        "tel_phone": {
+          "type": "string",
+          "title": "a=手机号;c=1333333333;d=true"
+        },
+        "pwd": {
+          "type": "string",
+          "title": "a=密码加密项 32位大写MD5加密字符串;c=001;d=true"
         }
       }
     },

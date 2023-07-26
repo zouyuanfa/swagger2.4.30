@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=单据编号模糊查询;b=6;c=20;d=true.",
+            "description": "a=单据编号模糊查询;b=6;c=20;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -62,7 +62,7 @@
         ]
       },
       "post": {
-        "summary": "工资单保存;工资单修改及新增;1.0.6",
+        "summary": "工资单保存;工资单修改及新增;1.0.8",
         "operationId": "PayRoll_billSave",
         "responses": {
           "200": {
@@ -95,7 +95,7 @@
     },
     "/openapi/v2/fi/sa_bill_detail": {
       "get": {
-        "summary": "工资单详情;获取工资单详情;1.0.6",
+        "summary": "工资单详情;获取工资单详情;1.0.10",
         "operationId": "PayRoll_billDetail",
         "responses": {
           "200": {
@@ -114,7 +114,7 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id;c=123457452;d=true.",
+            "description": "a=工资单id;c=123457452;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -182,11 +182,8 @@
     "BillDetailReply.SaItem": {
       "type": "object",
       "properties": {
-        "item_id": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SaItemsInfo"
-          },
+        "item": {
+          "$ref": "#/definitions/SaItemsInfo",
           "title": "a=工资项目信息;b=20;c=1550136270506704896;d=false"
         },
         "item_value": {
@@ -277,22 +274,22 @@
           "type": "string",
           "title": "a=分录序号;b=20;c=002;d=false"
         },
-        "employee_number": {
+        "emp_number": {
           "type": "string",
           "title": "a=职员编码;b=30;c=002;d=false"
         },
-        "dep_id": {
+        "dept_id": {
           "type": "string",
           "format": "int64",
           "title": "a=部门id;b=100;c=154843110654030643;d=false"
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机号;b=11;c=19715168801;d=false"
+          "title": "a=手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=11;c=19715168801;d=false"
         },
         "id_number": {
           "type": "string",
-          "title": "a=证件号码;b=18;c=45458412545545;d=false"
+          "title": "a=证件号码 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);b=18;c=45458412545545;d=false"
         },
         "hire_date": {
           "type": "string",
@@ -300,7 +297,7 @@
         },
         "bank_account": {
           "type": "string",
-          "title": "a=银行账号;b=18;c=43534354357863;d=false"
+          "title": "a=银行账号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
         },
         "bank_name": {
           "type": "string",
@@ -414,7 +411,7 @@
           "type": "string",
           "title": "a=职员id;b=30;c=1548431106540306432;d=true"
         },
-        "dep_id": {
+        "dept_id": {
           "type": "string",
           "title": "a=部门id;b=100;c=154843110654030643;d=false"
         },
@@ -440,7 +437,7 @@
         },
         "pay_amount": {
           "type": "string",
-          "title": "a=应发工资;b=20;c=8000;d=false"
+          "title": "a=应发工资;b=20;c=8000;d=true"
         },
         "taxa_mount": {
           "type": "string",
@@ -555,7 +552,7 @@
         },
         "id": {
           "type": "string",
-          "title": "a=id;b=30;c=2022101845;d=false"
+          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=30;c=2022101845;d=false"
         }
       }
     },

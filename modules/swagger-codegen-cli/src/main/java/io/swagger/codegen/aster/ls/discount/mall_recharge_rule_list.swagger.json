@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/mall_recharge_rule": {
       "get": {
-        "summary": "充值赠送规则;会员充值赠送规则列表查询;1.0.6",
+        "summary": "充值赠送规则;会员充值赠送规则列表查询;1.0.8",
         "operationId": "MallRechargeRuleList_list",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "member_id",
-            "description": "a=会员id;c=1;d=false.",
+            "description": "a=会员id;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"

@@ -146,7 +146,7 @@
         ]
       },
       "post": {
-        "summary": "收款单保存;收款单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.14",
+        "summary": "收款单保存;收款单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.20",
         "operationId": "ArCredit_save",
         "responses": {
           "200": {
@@ -179,7 +179,7 @@
     },
     "/openapi/v2/arap/ar_credit_detail": {
       "get": {
-        "summary": "收款单详情;获取收款单详情;1.0.10",
+        "summary": "收款单详情;获取收款单详情;1.0.13",
         "operationId": "ArCredit_detail",
         "responses": {
           "200": {
@@ -198,14 +198,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=id（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=（id与number二选一）;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（*id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -642,7 +642,11 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id，修改单据时必填;b=2147483647;c=1;d=false"
+          "title": "a=单据id，新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=SKD-20200310-00001"
         },
         "default_bill_source": {
           "type": "string",
@@ -712,9 +716,9 @@
           },
           "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
         },
-        "operation_key": {
+        "operate_type": {
           "type": "string",
-          "title": "a=操作类型，审核audit、提交submit;c=audit;d=false"
+          "title": "a=操作类型,审核audit和反审核unaudit;c=audit;d=false"
         }
       }
     },
@@ -740,7 +744,7 @@
         },
         "pay_type_id": {
           "type": "string",
-          "title": "a=收入类别id;b=2147483647;c=1;d=true"
+          "title": "a=收款方式id;b=2147483647;c=1"
         },
         "amount": {
           "type": "string",

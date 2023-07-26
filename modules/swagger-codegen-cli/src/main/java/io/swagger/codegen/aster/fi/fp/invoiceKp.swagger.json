@@ -1,0 +1,1110 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "财税云;税务管理;开票管理",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "InvoiceKp"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/fi/invoice_detail": {
+      "get": {
+        "summary": "发票详情;获取发票详情;1.0.10",
+        "operationId": "InvoiceKp_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "invoice_no",
+            "description": "a=发票号码;c=[];d=true.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "InvoiceKp"
+        ]
+      }
+    },
+    "/openapi/v2/fi/invoice_fp": {
+      "get": {
+        "summary": "发票列表;获取发票列表;1.0.9",
+        "operationId": "InvoiceKp_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "start_date",
+            "description": "a=发票起始日期(yyyy-MM-dd) ;c=2022-01-01.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=发票终止日期(yyyy-MM-dd)  ;c=2022-01-01.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "invoice_type",
+            "description": "a=发票类型(0:普通发票,1:专用发票) ;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "invoice_status",
+            "description": "a=发票状态(0:正常 1:失控 2:作废 3:红冲 4:异常);c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "invoice_no",
+            "description": "a=发票号码;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "customer",
+            "description": "a=客户名称;c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "bill_type",
+            "description": "a=单据类型(0:销项发票 1:进项发票 2:其它可抵扣发票);c=[].",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page_no",
+            "description": "a=页码;b=true;c=1.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=页面大小;b=true;c=10.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "InvoiceKp"
+        ]
+      }
+    },
+    "/openapi/v2/fp/invoice_kp": {
+      "get": {
+        "summary": "手工开票列表;手工开票列表;1.0.6",
+        "operationId": "InvoiceKp_InvoiceKpList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceKpListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "description": "a=页码;b=20;c=1;d=true;.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "a=每页条数;b=100;c=100;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start_date",
+            "description": "a=开始日期（“yyyy-MM-dd”）;b=2022-03-24;c=2022-01-01;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_date",
+            "description": "a=结束日期（“yyyy-MM-dd”）;b=2024-03-24;c=2022-01-01;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InvoiceKp"
+        ]
+      },
+      "post": {
+        "summary": "手工开票保存;手工开票保存;1.0.15",
+        "operationId": "InvoiceKp_InvoiceKpSave",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceKpReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InvoiceKpRequest"
+            }
+          }
+        ],
+        "tags": [
+          "InvoiceKp"
+        ]
+      }
+    },
+    "/openapi/v2/fp/invoice_kp_detail": {
+      "get": {
+        "summary": "手工开票详情;手工开票详情;1.0.9",
+        "operationId": "InvoiceKp_InvoiceKpDetail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceKpDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "serial_number",
+            "description": "a=流水号;b=2147483647;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InvoiceKp"
+        ]
+      }
+    },
+    "/openapi/v2/fp/invoice_kp_query": {
+      "get": {
+        "summary": "销售出库单查询发票信息;销售出库单查询发票信息;1.0.15",
+        "operationId": "InvoiceKp_InvoiceKpDetailByBillNo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InvoiceKpDetailByBillNoReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "bill_no",
+            "description": "a=销售出库单编码;b=30;c=XSFP-20240716-00001;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "InvoiceKp"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "BillInfo": {
+      "type": "object",
+      "properties": {
+        "bill_type": {
+          "type": "string",
+          "title": "a=单据类型;c=ar_precreditbill;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编码;c=DJ1000;d=false"
+        },
+        "bill_id": {
+          "type": "string",
+          "title": "a=单据ID;c=15245854444;d=false"
+        }
+      }
+    },
+    "BuyerInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "a=名称;c=张三;d=true"
+        },
+        "tax_no": {
+          "type": "string",
+          "title": "a=纳税人识别号;c=100111001;d=true"
+        },
+        "address_phone": {
+          "type": "string",
+          "title": "a=销方地址电话;c=15548579652;d=false"
+        },
+        "bank": {
+          "type": "string",
+          "title": "a=开户银行;c=天天银行;d=false"
+        },
+        "account": {
+          "type": "string",
+          "title": "a=银行账号;c=68547544125486695;d=false"
+        },
+        "mobile": {
+          "type": "string",
+          "title": "a=手机号码;c=15248596685;d=false"
+        },
+        "email": {
+          "type": "string",
+          "title": "a=电子邮箱;c=123456789@123.com;d=false"
+        }
+      }
+    },
+    "InvoiceDetailReply": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceDetailReply.Row"
+          },
+          "title": "a=数据行;c=[];d=false"
+        }
+      }
+    },
+    "InvoiceDetailReply.Row": {
+      "type": "object",
+      "properties": {
+        "invoice_date": {
+          "type": "string",
+          "title": "a=发票日期(yyyy-MM-dd)  ;c=2022-01-01;d=false"
+        },
+        "invoice_type": {
+          "type": "string",
+          "title": "a=发票类型(0:普通发票 1:专用发票) ;c=0;d=false"
+        },
+        "invoice_no": {
+          "type": "string",
+          "title": "a=发票号码;c=名称;d=false"
+        },
+        "invoice_code": {
+          "type": "string",
+          "title": "a=发票代码;c=发票代码;d=false"
+        },
+        "customer": {
+          "type": "string",
+          "title": "a=客户名称;c=XXX;d=false"
+        },
+        "tax_payer_no": {
+          "type": "string",
+          "title": "a=购方纳税人识别号;c=00506;d=false"
+        },
+        "address_phone": {
+          "type": "string",
+          "title": "a=购方地址电话;c=0755-25255;d=false"
+        },
+        "bank_account": {
+          "type": "string",
+          "title": "a=购方银行账号;c=616516;d=false"
+        },
+        "seller": {
+          "type": "string",
+          "title": "a=销方名称;c=1号;d=false"
+        },
+        "seller_tax_payer_no": {
+          "type": "string",
+          "title": "a=销方纳税人识别号;c=001;d=false"
+        },
+        "seller_address_phone": {
+          "type": "string",
+          "title": "a=销方地址电话;c=1321234123;d=false"
+        },
+        "seller_bank_account": {
+          "type": "string",
+          "title": "a=销方银行账号;c=011;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=金额;c=1.00;d=false"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=1.00;d=false"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=1.00;d=false"
+        },
+        "status": {
+          "type": "string",
+          "title": "a=发票状态(0:正常 1:失控 2:作废 3:红冲 4:异常)   ;c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=1;d=false"
+        },
+        "invoiced_status": {
+          "type": "string",
+          "title": "a=核销状态（1:未核销 2:部分核销 3:已核销）;c=1;d=false"
+        },
+        "invoiced_amount": {
+          "type": "string",
+          "title": "a=已核销金额;c=1;d=2.22"
+        },
+        "assist_check": {
+          "type": "string",
+          "title": "a=辅助核算;c=;d=false"
+        },
+        "source_type": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceDetailReply.Row.Item"
+          },
+          "title": "a=商品信息;c=[];d=false"
+        },
+        "bill_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillInfo"
+          },
+          "title": "a=源单信息;c=[];d=false"
+        }
+      },
+      "title": "科目查询返回对象"
+    },
+    "InvoiceDetailReply.Row.Item": {
+      "type": "object",
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "title": "a=商品名称;c=001;d=false"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=001;d=false"
+        },
+        "unit": {
+          "type": "string",
+          "title": "a=单位;c=001;d=false"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=5;d=false"
+        },
+        "price": {
+          "type": "string",
+          "title": "a=单价;c=25.2;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=金额;c=1.22;d=false"
+        },
+        "tax_rate": {
+          "type": "string",
+          "title": "a=税率;c=0.11;d=false"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=40.2;d=false"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=50.;d=false"
+        },
+        "entry_id": {
+          "type": "string",
+          "title": "a=商品分录id;c=001;d=false"
+        },
+        "item_number": {
+          "type": "string",
+          "title": "a=商品编码;c=001;d=false"
+        },
+        "tax_category": {
+          "type": "string",
+          "title": "a=税收分类码;c=001;d=false"
+        }
+      }
+    },
+    "InvoiceKpDetailByBillNoReply": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceKpDetailByBillNoReply.Row"
+          },
+          "title": "a=返回数据列表;c=[];"
+        }
+      }
+    },
+    "InvoiceKpDetailByBillNoReply.Row": {
+      "type": "object",
+      "properties": {
+        "invoice_number": {
+          "type": "string",
+          "title": "a=发票编码;c=发票编码;"
+        },
+        "invoice_date": {
+          "type": "string",
+          "title": "a=开票日期;c=2021-01-01;"
+        }
+      }
+    },
+    "InvoiceKpDetailReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=发票id;c=1;d=true"
+        },
+        "invoice_number": {
+          "type": "string",
+          "title": "a=发票号码;c=1;d=1"
+        },
+        "invoice_code": {
+          "type": "string",
+          "title": "a=发票代码;c=1111;d=1"
+        },
+        "invoice_type": {
+          "type": "string",
+          "title": "a=发票类型 发票类型：(1:纸质专用发票、2：纸质普通发票、3：电子普通发票、4：电子专用发票、5：数电普通发票、6：数电专用发票、7：数电纸质普通发票、8：数电纸质专用发票) ;c=1;d=false"
+        },
+        "download_url": {
+          "type": "string",
+          "title": "a=下载地址;c=2021-01-01;d=false"
+        },
+        "invoice_status": {
+          "type": "string",
+          "title": "a=发票状态(1:开票中、2:失败、3:正常、4:红冲、5:作废)   ;c=1;d=false"
+        },
+        "fail_reason": {
+          "type": "string",
+          "title": "a=失败原因（status =2 时返回） ;c=获取发票云token失败,获取不到结果或超时;d=false"
+        },
+        "special_type": {
+          "type": "string",
+          "title": "a= 开具数电发票—特殊业务时传递。（货物运输服务：2）;c=2;d=false"
+        },
+        "serial_number": {
+          "type": "string",
+          "title": "a=流水号。需要保证唯一长度小于50，未传递时由星辰生成。;c=124c56bfc1124d17_16709191;d=false"
+        },
+        "seller_info": {
+          "$ref": "#/definitions/SellerInfo",
+          "title": "a=销方信息;c=Object;d=true"
+        },
+        "buyer_info": {
+          "$ref": "#/definitions/BuyerInfo",
+          "title": "a=购方信息;c=Object;d=true"
+        },
+        "amt_info": {
+          "$ref": "#/definitions/InvoiceKpDetailReply.AmtInfo",
+          "title": "a=金额信息;c=Object;d=true"
+        },
+        "other_info": {
+          "$ref": "#/definitions/OtherInfo",
+          "title": "a=其他信息 ;c=Object;d=true"
+        },
+        "transport_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransportInfo"
+          },
+          "title": "a=货物运输服务信息（货物运输服务业务必传）;c=Object"
+        }
+      }
+    },
+    "InvoiceKpDetailReply.AmtInfo": {
+      "type": "object",
+      "properties": {
+        "all_act_non_tax_amount": {
+          "type": "string",
+          "title": "a=发票总金额 ;c=100111001;d=true"
+        },
+        "all_tax_amount": {
+          "type": "string",
+          "title": "a=发票总税额;c=100111001;d=true"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=发票价税合计;c=100111001;d=true"
+        },
+        "entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceKpDetailReply.AmtInfo.EntryInfo"
+          },
+          "title": "a=商品分录信息;c=Object;d=true"
+        }
+      }
+    },
+    "InvoiceKpDetailReply.AmtInfo.EntryInfo": {
+      "type": "object",
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "title": "a=货物或服务名称;c=名称1;d=true"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=10;d=false"
+        },
+        "tax_category_id": {
+          "type": "string",
+          "title": "a=税收分类编码;c=BM100111001;d=true"
+        },
+        "unit": {
+          "type": "string",
+          "title": "a=单位;c=次;d=true"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=10;d=true"
+        },
+        "act_non_tax_price": {
+          "type": "string",
+          "title": "a=不含税单价;c=100;d=true"
+        },
+        "act_non_tax_amount": {
+          "type": "string",
+          "title": "a=不含税金额;c=100;d=true"
+        },
+        "tax_rate": {
+          "type": "string",
+          "title": "a=税率;c=9.0;d=true"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=1.6514000000;d=true"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=20.0000000000;d=true"
+        },
+        "zero_flag": {
+          "type": "string",
+          "title": "a=是否免税（1：免税、0：不免税）;c=0;"
+        }
+      }
+    },
+    "InvoiceKpListReply": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总记录数;c=100;d=false"
+        },
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=1;d=false"
+        },
+        "current_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1;d=true"
+        },
+        "page_size": {
+          "type": "string",
+          "title": "a=页面大小;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceKpListReply.Row"
+          },
+          "title": "a=数据行;c=[];d=false"
+        }
+      }
+    },
+    "InvoiceKpListReply.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=发票id;c=1;d=true"
+        },
+        "invoice_number": {
+          "type": "string",
+          "title": "a=发票号码;c=1;d=1"
+        },
+        "invoice_code": {
+          "type": "string",
+          "title": "a=发票代码;c=1111;d=1"
+        },
+        "invoice_type": {
+          "type": "string",
+          "title": "a=发票类型 发票类型：(1:纸质专用发票、2：纸质普通发票、3：电子普通发票、4：电子专用发票、5：数电普通发票、6：数电专用发票、7：数电纸质普通发票、8：数电纸质专用发票) ;c=1;d=false"
+        },
+        "download_url": {
+          "type": "string",
+          "title": "a=下载地址;c=2021-01-01;d=false"
+        },
+        "invoice_status": {
+          "type": "string",
+          "title": "a=发票状态(1:开票中、2:失败、3:正常、4:红冲、5:作废)   ;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=关联单据编号 ;c=[];d=false"
+        },
+        "serial_number": {
+          "type": "string",
+          "title": "a=流水号;b=2147483647;c=1;d=true"
+        },
+        "bill_id": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=关联单据id;c=[];d=false"
+        }
+      },
+      "title": "科目查询返回对象"
+    },
+    "InvoiceKpReply": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "title": "a=是否成功(true/false);c=true;"
+        },
+        "errorCode": {
+          "type": "string",
+          "title": "a=错误码;c=111001;"
+        },
+        "data": {
+          "type": "string",
+          "title": "a=返回流水号;c=[];"
+        },
+        "message": {
+          "type": "string",
+          "title": "a=返回消息;c=111001;"
+        }
+      },
+      "title": "科目列表查询返回对象"
+    },
+    "InvoiceKpRequest": {
+      "type": "object",
+      "properties": {
+        "invoice_type": {
+          "type": "string",
+          "title": "a=发票类型：(1:纸质专用发票、2：纸质普通发票、3：电子普通发票、4：电子专用发票、5：数电普通发票、6：数电专用发票、7：数电纸质普通发票、8：数电纸质专用发票);b=10;c=1;d=true"
+        },
+        "special_type": {
+          "type": "string",
+          "title": "a=开具数电发票—特殊业务时传递。（货物运输服务：2）;c=2"
+        },
+        "seller_info": {
+          "$ref": "#/definitions/SellerInfo",
+          "title": "a=销方信息;c=Object;d=true"
+        },
+        "buyer_info": {
+          "$ref": "#/definitions/BuyerInfo",
+          "title": "a=购方信息;c=Object;d=true"
+        },
+        "amt_info": {
+          "$ref": "#/definitions/InvoiceKpRequest.AmtInfo",
+          "title": "a=金额信息;c=Object;d=true"
+        },
+        "other_info": {
+          "$ref": "#/definitions/OtherInfo",
+          "title": "a=其他信息 ;c=Object;d=true"
+        },
+        "transport_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransportInfo"
+          },
+          "title": "a=货物运输服务信息（货物运输服务业务必传）;c=Object"
+        },
+        "serial_number": {
+          "type": "string",
+          "title": "a=流水号;c=1234564545"
+        }
+      }
+    },
+    "InvoiceKpRequest.AmtInfo": {
+      "type": "object",
+      "properties": {
+        "all_act_non_tax_amount": {
+          "type": "string",
+          "title": "a=发票总金额 ;c=100111001;d=true"
+        },
+        "all_tax_amount": {
+          "type": "string",
+          "title": "a=发票总税额;c=100111001;d=true"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=发票价税合计;c=100111001;d=true"
+        },
+        "entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceKpRequest.AmtInfo.EntryInfo"
+          },
+          "title": "a=商品分录信息;c=Object;d=true"
+        }
+      }
+    },
+    "InvoiceKpRequest.AmtInfo.EntryInfo": {
+      "type": "object",
+      "properties": {
+        "item_name": {
+          "type": "string",
+          "title": "a=货物或服务名称;c=名称1;d=true"
+        },
+        "model": {
+          "type": "string",
+          "title": "a=规格型号;c=10;d=false"
+        },
+        "tax_category_id": {
+          "type": "string",
+          "title": "a=税收分类编码;c=BM100111001;d=true"
+        },
+        "unit": {
+          "type": "string",
+          "title": "a=单位;c=次;d=true"
+        },
+        "qty": {
+          "type": "string",
+          "title": "a=数量;c=10;d=true"
+        },
+        "act_non_tax_price": {
+          "type": "string",
+          "title": "a=不含税单价;c=100;d=true"
+        },
+        "act_non_tax_amount": {
+          "type": "string",
+          "title": "a=不含税金额;c=100;d=true"
+        },
+        "tax_rate": {
+          "type": "string",
+          "title": "a=税率;c=9.0;d=true"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=1.6514000000;d=true"
+        },
+        "all_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=20.0000000000;d=true"
+        },
+        "zero_flag": {
+          "type": "string",
+          "title": "a=是否免税（1：免税、0：不免税）;c=0;"
+        }
+      }
+    },
+    "InvoiceListReply": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总记录数;c=100;d=false"
+        },
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=总页数;c=1;d=false"
+        },
+        "current_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=当前页;c=1;d=true"
+        },
+        "page_size": {
+          "type": "string",
+          "title": "a=页面大小;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceListReply.Row"
+          },
+          "title": "a=数据行;c=[];d=false"
+        }
+      },
+      "title": "科目列表查询返回对象"
+    },
+    "InvoiceListReply.Row": {
+      "type": "object",
+      "properties": {
+        "invoice_date": {
+          "type": "string",
+          "title": "a=发票日期(yyyy-MM-dd)  ;c=2022-01-01;d=false"
+        },
+        "invoice_type": {
+          "type": "string",
+          "title": "a=发票类型(0:普通发票 1:专用发票) ;c=0;d=false"
+        },
+        "invoice_category": {
+          "type": "string",
+          "title": "a=发票类别(1:纸质发票 2:电子发票);c=1;d=false"
+        },
+        "invoice_no": {
+          "type": "string",
+          "title": "a=发票号码;c=名称;d=false"
+        },
+        "customer": {
+          "type": "string",
+          "title": "a=客户名称;c=XXX;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=金额;c=1.00;d=false"
+        },
+        "tax_amount": {
+          "type": "string",
+          "title": "a=税额;c=1.00;d=false"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=价税合计;c=1.00;d=false"
+        },
+        "status": {
+          "type": "string",
+          "title": "a=发票状态(0:正常 1:失控 2:作废 3:红冲 4:异常)   ;c=1;d=false"
+        },
+        "voucher_no": {
+          "type": "string",
+          "title": "a=凭证字号;c=字;d=false"
+        },
+        "invoiced_status": {
+          "type": "string",
+          "title": "a=核销状态（1:未核销 2:部分核销 3:已核销）;c=1;d=false"
+        },
+        "invoiced_amount": {
+          "type": "string",
+          "title": "a=已核销金额;c=1;d=2.22"
+        },
+        "assist_check": {
+          "type": "string",
+          "title": "a=辅助核算;c=;d=false"
+        },
+        "source_type": {
+          "type": "string",
+          "title": "a=发票来源(0:手工录入 1:引入 2:税采通 3:凭证附件 4:进销存 5:小程序 6:手工开票(电子) 7:手工开票 8:进销存(电子) 9:金蝶发票助手 10:外部单据 11:外部单据(电子));c=1;d=false"
+        },
+        "bill_info": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BillInfo"
+          },
+          "title": "a=源单信息;c=[];d=false"
+        }
+      },
+      "title": "科目查询返回对象"
+    },
+    "OtherInfo": {
+      "type": "object",
+      "properties": {
+        "payee": {
+          "type": "string",
+          "title": "a=收款人;c=payee;"
+        },
+        "checker": {
+          "type": "string",
+          "title": "a=复核人;c=checker;"
+        },
+        "operator": {
+          "type": "string",
+          "title": "a=开票人;c=admin;"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=备注;c=remark;"
+        }
+      }
+    },
+    "SellerInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "a=名称;c=张三;d=true"
+        },
+        "tax_no": {
+          "type": "string",
+          "title": "a=纳税人识别号;c=100111001;d=true"
+        },
+        "address_phone": {
+          "type": "string",
+          "title": "a=销方地址电话;c=15548579652;d=true"
+        },
+        "bank": {
+          "type": "string",
+          "title": "a=开户银行;c=天天银行;d=true"
+        },
+        "account": {
+          "type": "string",
+          "title": "a=银行账号;c=68547544125486695;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    },
+    "TransportInfo": {
+      "type": "object",
+      "properties": {
+        "transport_type": {
+          "type": "string",
+          "title": "a=运输工具种类(1：铁路运输、2：水路运输、3：公路运输、4：航空运输、5：管道运输 、6：其它运输工具) ;c=1;d=true"
+        },
+        "license_plate": {
+          "type": "string",
+          "title": "a=运输牌号;c=X125G4;d=true"
+        },
+        "start_place": {
+          "type": "string",
+          "title": "a=起运地;c=001;d=true"
+        },
+        "end_place": {
+          "type": "string",
+          "title": "a=目的地;c=001;d=true"
+        },
+        "transport_goods": {
+          "type": "string",
+          "title": "a=运输货物名称;c=无;d=true"
+        }
+      }
+    }
+  }
+}

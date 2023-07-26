@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/coupon_center": {
       "get": {
-        "summary": "领劵中心查询;领劵中心查询;1.0.7",
+        "summary": "领劵中心查询;领劵中心查询;1.0.9",
         "operationId": "CouponCenter_list",
         "responses": {
           "200": {
@@ -44,7 +44,7 @@
           },
           {
             "name": "page",
-            "description": "a=当前页，从1开始;c=001;d=true.",
+            "description": "a=当前页，从1开始;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -52,7 +52,7 @@
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数;c=001;d=true.",
+            "description": "a=每页显示条数;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -146,8 +146,8 @@
           "title": "a=失效时间;c=022-08-05;"
         },
         "value": {
-          "type": "integer",
-          "format": "int32",
+          "type": "number",
+          "format": "double",
           "title": "a=券金额;c=100;"
         },
         "limit_value": {

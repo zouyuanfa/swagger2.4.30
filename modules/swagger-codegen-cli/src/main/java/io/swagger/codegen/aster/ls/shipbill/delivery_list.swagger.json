@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;门店管理;",
+    "title": "零售云;门店管理;发货单;",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/delivery": {
       "get": {
-        "summary": "发货单列表;发货单列表;1.0.6",
+        "summary": "发货单列表;发货单列表;1.0.9",
         "operationId": "Delivery_list",
         "responses": {
           "200": {
@@ -89,6 +89,105 @@
           "Delivery"
         ]
       }
+    },
+    "/openapi/v2/ls/delivery_receive": {
+      "post": {
+        "summary": "发货单收货;发货单收货;1.0.1",
+        "operationId": "Delivery_receive",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DelReceiveResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DelReceiveReq"
+            }
+          }
+        ],
+        "tags": [
+          "Delivery"
+        ]
+      }
+    },
+    "/openapi/v2/ls/delivery_receive_cancel": {
+      "post": {
+        "summary": "发货单取消收货;发货单取消收货;1.0.1",
+        "operationId": "Delivery_cancelReceive",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/CancelReceiveResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CancelReceiveReq"
+            }
+          }
+        ],
+        "tags": [
+          "Delivery"
+        ]
+      }
+    },
+    "/openapi/v2/ls/delivery_receive_detail": {
+      "post": {
+        "summary": "发货单详情;发货单详情;1.0.2",
+        "operationId": "Delivery_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DelRecDetailResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DelRecDetailReq"
+            }
+          }
+        ],
+        "tags": [
+          "Delivery"
+        ]
+      }
     }
   },
   "definitions": {
@@ -102,6 +201,197 @@
       },
       "additionalProperties": {},
       "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "CancelReceiveReq": {
+      "type": "object",
+      "properties": {
+        "operateType": {
+          "type": "string",
+          "title": "a=操作类型:detail,list,receive,cancelReceive;c=receive;d=true"
+        },
+        "data": {
+          "$ref": "#/definitions/CancelReceiveReq.Data",
+          "title": "a=操作类型对应的参数;c=object;d=true"
+        }
+      }
+    },
+    "CancelReceiveReq.Data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=查发货单详情时，发货单ID;c=23231;d=true"
+        },
+        "receive_bill_id": {
+          "type": "string",
+          "title": "a=收货单ID;c=1;d=true"
+        }
+      }
+    },
+    "CancelReceiveResp": {
+      "type": "object"
+    },
+    "DelRecDetailReq": {
+      "type": "object",
+      "properties": {
+        "operateType": {
+          "type": "string",
+          "title": "a=操作类型:detail,list,receive,cancelReceive;c=receive;d=true"
+        },
+        "data": {
+          "$ref": "#/definitions/DelRecDetailReq.Data",
+          "title": "a=操作类型对应的参数;c=object;d=true"
+        }
+      }
+    },
+    "DelRecDetailReq.Data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=查发货单详情时，发货单ID;c=23231;d=true"
+        }
+      }
+    },
+    "DelRecDetailResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=发货单ID;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=单据编号;c=001;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=单据日期;c=2022-05-01;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=创建时间;c=2022-05-03;d=false"
+        },
+        "out_bound_type": {
+          "type": "string",
+          "title": "a=出库类型：1=调拨出库，2=销售出库;c=1;d=false"
+        },
+        "source_no": {
+          "type": "string",
+          "title": "a=源单编号;c=1;d=false"
+        },
+        "delivery_center_id": {
+          "type": "string",
+          "title": "a=配送中心ID;c=1;d=false"
+        },
+        "delivery_center_name": {
+          "type": "string",
+          "title": "a=配送中心名称;c=ZZ;d=false"
+        },
+        "store_id": {
+          "type": "string",
+          "title": "a=门店id;c=1;d=false"
+        },
+        "store_name": {
+          "type": "string",
+          "title": "a=门店名;c=门店A;d=false"
+        },
+        "customer_id": {
+          "type": "string",
+          "title": "a=客户ID;c=20211;d=false"
+        },
+        "customer_name": {
+          "type": "string",
+          "title": "a=客户名称;c=001;d=false"
+        },
+        "settle_customer_id": {
+          "type": "string",
+          "title": "a=结算客户ID;c=001;d=false"
+        },
+        "settle_customer_name": {
+          "type": "string",
+          "title": "a=结算客户名称;c=1;d=false"
+        },
+        "delivery_time": {
+          "type": "string",
+          "title": "a=计划发货时间;c=2020-12-12;d=false"
+        },
+        "receiver_id": {
+          "type": "string",
+          "title": "a=收货人;c=001;d=false"
+        },
+        "receiverName": {
+          "type": "string",
+          "title": "a=收货人姓名;c=SS;d=false"
+        },
+        "receiver_mobile": {
+          "type": "string",
+          "title": "a=收货人电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13322336644;d=false"
+        },
+        "receive_status": {
+          "type": "string",
+          "title": "a=收货状态。1=待收货，2=已收货;c=1;d=false"
+        },
+        "totalDistributeQty": {
+          "type": "string",
+          "title": "a=总配货数量;c=1;d=false"
+        },
+        "total_delivery_qty": {
+          "type": "string",
+          "title": "a=总发货数量;c=0011d=false"
+        },
+        "total_receive_qty": {
+          "type": "string",
+          "title": "a=总收货数量;c=1;d=false"
+        },
+        "receive_bill_no": {
+          "type": "string",
+          "title": "a=收货单号;c=50;d=false"
+        },
+        "receive_bill_id": {
+          "type": "string",
+          "title": "a=收货ID;c=50;d=false"
+        },
+        "materialEntries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/materialEntry"
+          },
+          "title": "a=商品列表，详情请见分录参数;c=[];d=false"
+        }
+      }
+    },
+    "DelReceiveReq": {
+      "type": "object",
+      "properties": {
+        "operateType": {
+          "type": "string",
+          "title": "a=操作类型:detail,list,receive,cancelReceive;c=receive;d=true"
+        },
+        "data": {
+          "$ref": "#/definitions/DelReceiveReq.Data",
+          "title": "a=操作类型对应的参数;c=object;d=true"
+        }
+      }
+    },
+    "DelReceiveReq.Data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=查发货单详情时，发货单ID;c=23231;d=true"
+        },
+        "entry": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entry"
+          },
+          "title": "a=商品列表;c=[];d=true"
+        }
+      }
+    },
+    "DelReceiveResp": {
+      "type": "object"
     },
     "DeliveryListRes": {
       "type": "object",
@@ -137,6 +427,19 @@
             "$ref": "#/definitions/Row"
           },
           "title": "a=数据列表;c=[];d=false"
+        }
+      }
+    },
+    "Entry": {
+      "type": "object",
+      "properties": {
+        "entry_id": {
+          "type": "string",
+          "title": "a=分录id;c=1;d=false"
+        },
+        "receive_qty": {
+          "type": "string",
+          "title": "a=收货数量;c=50;d=false"
         }
       }
     },
@@ -316,11 +619,11 @@
         },
         "delivery_address": {
           "type": "string",
-          "title": "a=发货详细地址;c=发货地址A;d=false"
+          "title": "a=发货详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=发货地址A;d=false"
         },
         "receiver_mobile": {
           "type": "string",
-          "title": "a=收货人电话;c=13322336644;d=false"
+          "title": "a=收货人电话 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13322336644;d=false"
         },
         "receiver_address_id": {
           "type": "string",
@@ -328,7 +631,7 @@
         },
         "receiver_address": {
           "type": "string",
-          "title": "a=收货详细地址;c=收货地址A;d=false"
+          "title": "a=收货详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=收货地址A;d=false"
         },
         "receiver_longitude": {
           "type": "string",
@@ -406,6 +709,103 @@
           "items": {
             "$ref": "#/definitions/Any"
           }
+        }
+      }
+    },
+    "materialEntry": {
+      "type": "object",
+      "properties": {
+        "entry_id": {
+          "type": "string",
+          "title": "a=分录id;c=1;d=false"
+        },
+        "material_id": {
+          "type": "string",
+          "title": "a=商品id;c=1;d=false"
+        },
+        "material_name": {
+          "type": "string",
+          "title": "a=商品名称;c=商品A;d=false"
+        },
+        "material_number": {
+          "type": "string",
+          "title": "a=商品编码;c=001;d=false"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=单位id;c=1;d=false"
+        },
+        "unit_name": {
+          "type": "string",
+          "title": "a=单位;c=单位id;d=false"
+        },
+        "base_unit_id": {
+          "type": "string",
+          "title": "a=基本单位ID;c=001;d=false"
+        },
+        "base_unit_name": {
+          "type": "string",
+          "title": "a=基本单位名;c=50;d=false"
+        },
+        "delivery_stock_name": {
+          "type": "string",
+          "title": "a=发货仓库名;c=50;d=false"
+        },
+        "delivery_stock_id": {
+          "type": "string",
+          "title": "a=发货仓库ID;c=50;d=false"
+        },
+        "batch_no": {
+          "type": "string",
+          "title": "a=批次;c=20502;d=false"
+        },
+        "batch_pur_price": {
+          "type": "string",
+          "title": "a=批次采购价;c=50;d=false"
+        },
+        "delivery_supplier_id": {
+          "type": "string",
+          "title": "a=供应商ID;c=11;d=false"
+        },
+        "delivery_supplier_name": {
+          "type": "string",
+          "title": "a=供应商名;c=QQ;d=false"
+        },
+        "kf_period": {
+          "type": "string",
+          "title": "a=保质期;c=180;d=false"
+        },
+        "kf_type": {
+          "type": "string",
+          "title": "a=保质期单位;c=1;d=false"
+        },
+        "distribute_qty": {
+          "type": "string",
+          "title": "a=配货数量;c=21;d=false"
+        },
+        "base_qty": {
+          "type": "string",
+          "title": "a=基本单位数量;c=20;d=false"
+        },
+        "delivery_qty": {
+          "type": "string",
+          "title": "a=发货数量;c=50;d=false"
+        },
+        "retail_price": {
+          "type": "string",
+          "title": "a=零售价;c=50;d=false"
+        },
+        "retail_amount": {
+          "type": "string",
+          "title": "a=零售金额;c=50;d=false"
+        },
+        "receive_qty": {
+          "type": "string",
+          "title": "a=收货数量;c=50;d=false"
+        },
+        "entry_remark": {
+          "type": "string",
+          "title": "a=分录备注;c=50;d=false"
         }
       }
     }

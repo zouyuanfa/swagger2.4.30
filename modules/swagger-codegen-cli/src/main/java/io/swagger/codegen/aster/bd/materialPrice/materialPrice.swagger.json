@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/bd/material_price": {
       "get": {
-        "summary": "商品价格策略;获取商品价格策略;1.0.7",
+        "summary": "商品价格策略;获取商品价格策略;1.0.9",
         "operationId": "MaterialPrice_materialPrice",
         "responses": {
           "200": {
@@ -69,7 +69,7 @@
           },
           {
             "name": "aux_prop_id",
-            "description": "a=商品辅助属性ID;b=100;c=[];d=true.",
+            "description": "a=商品辅助属性id（辅助商品必填）;b=100;c=[];d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -166,12 +166,16 @@
         "dis_count": {
           "type": "number",
           "format": "double",
-          "title": "a=期间;b=2147483647;c=1;d=false"
+          "title": "a=折扣;b=2147483647;c=1;d=false"
         },
         "dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=期间;b=2147483647;c=1;d=false"
+          "title": "a=折扣额;b=2147483647;c=1;d=false"
+        },
+        "scheme_id": {
+          "type": "string",
+          "title": "a=价格方案id;b=11223;c=1;d=false"
         }
       }
     },
