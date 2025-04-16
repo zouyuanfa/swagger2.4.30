@@ -5,5 +5,11 @@
   "invokerPackage": "com.kingdee.service",
   "modelPackage": "com.kingdee.service.data.entity",
   "apiPackage": "com.kingdee.service.data.api",
+  "serializableModel": true,
+  "withComments": true,
+  "additionalProperties": {
+    "generateModelDocumentation": true,
+    "generateApiDocumentation": true
+  },
   "artifactId": "kingdee-xw-openapi"
 }

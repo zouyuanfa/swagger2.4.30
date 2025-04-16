@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "进销存云;销售单据;销售订单",
+    "title": "\u8fdb\u9500\u5b58\u4e91;\u9500\u552e\u5355\u636e;\u9500\u552e\u8ba2\u5355",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/sail_order_lock": {
       "post": {
-        "summary": "销售订单锁库;销售订单锁库;1.0.8",
+        "summary": "\u9500\u552e\u8ba2\u5355\u9501\u5e93;\u9500\u552e\u8ba2\u5355\u9501\u5e93;1.0.8",
         "operationId": "SalOrderLock_cancel",
         "responses": {
           "200": {
@@ -60,7 +60,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "EmptyReply": {
       "type": "object"
@@ -70,18 +70,18 @@
       "properties": {
         "bill_id": {
           "type": "string",
-          "title": "a=单据ID;c=1076774724224175104;d=true"
+          "title": "a=\u5355\u636eID;c=1076774724224175104;d=true"
         },
         "is_auto": {
           "type": "boolean",
-          "title": "a=是否自动锁库，功能同页面的自动锁库（自动查找库存进行锁库）;c=false;d=true"
+          "title": "a=\u662f\u5426\u81ea\u52a8\u9501\u5e93\uff0c\u529f\u80fd\u540c\u9875\u9762\u7684\u81ea\u52a8\u9501\u5e93\uff08\u81ea\u52a8\u67e5\u627e\u5e93\u5b58\u8fdb\u884c\u9501\u5e93\uff09;c=false;d=true"
         },
         "material_entity": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/SailOrderLockReq.MaterialEntity"
           },
-          "title": "a=指定商品行锁库 *当isAuto为false时必填;c=false"
+          "title": "a=\u6307\u5b9a\u5546\u54c1\u884c\u9501\u5e93 *\u5f53isAuto\u4e3afalse\u65f6\u5fc5\u586b;c=false"
         }
       }
     },
@@ -90,24 +90,24 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=销售订单的商品行id;c=1033326147292655619;d=true"
+          "title": "a=\u9500\u552e\u8ba2\u5355\u7684\u5546\u54c1\u884cid;c=1033326147292655619;d=true"
         },
         "stock_id": {
           "type": "string",
-          "title": "a=仓库;c=1031118668320247808;d=true"
+          "title": "a=\u4ed3\u5e93;c=1031118668320247808;d=true"
         },
         "sp_id": {
           "type": "string",
-          "title": "a=仓位 （没有时传0）;c=0;d=true"
+          "title": "a=\u4ed3\u4f4d \uff08\u6ca1\u6709\u65f6\u4f200\uff09;c=0;d=true"
         },
         "lock_qty": {
           "type": "integer",
           "format": "int32",
-          "title": "a=锁库数量;c=50;d=true"
+          "title": "a=\u9501\u5e93\u6570\u91cf;c=50;d=true"
         },
         "batch_no": {
           "type": "string",
-          "title": "a=批次 （没有时传空字符）;c="
+          "title": "a=\u6279\u6b21 \uff08\u6ca1\u6709\u65f6\u4f20\u7a7a\u5b57\u7b26\uff09;c="
         }
       }
     },

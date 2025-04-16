@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;出纳",
+    "title": "\u8d22\u7a0e\u4e91;\u51fa\u7eb3",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/ca_debit_and_credit_trend": {
       "get": {
-        "summary": "出纳资金收支趋势;出纳资金收支趋势接口;1.0.4",
+        "summary": "\u51fa\u7eb3\u8d44\u91d1\u6536\u652f\u8d8b\u52bf;\u51fa\u7eb3\u8d44\u91d1\u6536\u652f\u8d8b\u52bf\u63a5\u53e3;1.0.4",
         "operationId": "DebitCreditTrend_caDebitCreditTrend",
         "responses": {
           "200": {
@@ -37,14 +37,14 @@
         "parameters": [
           {
             "name": "income_type",
-            "description": "a=收支类型， \"1\"-收入趋势，\"2\"-支出趋势;b=2;c=1;d=true.",
+            "description": "a=\u6536\u652f\u7c7b\u578b\uff0c \"1\"-\u6536\u5165\u8d8b\u52bf\uff0c\"2\"-\u652f\u51fa\u8d8b\u52bf;b=2;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "trend_type",
-            "description": "a=趋势类型，\"1\"-最近一周，\"2\"-最近30天，\"3\"-最近一年;b=2;c=1;d=true.",
+            "description": "a=\u8d8b\u52bf\u7c7b\u578b\uff0c\"1\"-\u6700\u8fd1\u4e00\u5468\uff0c\"2\"-\u6700\u8fd130\u5929\uff0c\"3\"-\u6700\u8fd1\u4e00\u5e74;b=2;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -66,7 +66,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "CaDebitCreditTrendListReply": {
       "type": "object",
@@ -76,24 +76,24 @@
           "items": {
             "$ref": "#/definitions/Row"
           },
-          "title": "a=返回数据列表;c=[]"
+          "title": "a=\u8fd4\u56de\u6570\u636e\u5217\u8868;c=[]"
         }
       },
-      "title": "出纳资金余额查询返回对象"
+      "title": "\u51fa\u7eb3\u8d44\u91d1\u4f59\u989d\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "Row": {
       "type": "object",
       "properties": {
         "date": {
           "type": "string",
-          "title": "a=日期（“yyyy-MM-dd”）;b=10;c=2022-01-01"
+          "title": "a=\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01"
         },
         "amount": {
           "type": "string",
-          "title": "a=金额;b=999999999;c=100"
+          "title": "a=\u91d1\u989d;b=999999999;c=100"
         }
       },
-      "title": "返回数据列表"
+      "title": "\u8fd4\u56de\u6570\u636e\u5217\u8868"
     },
     "Status": {
       "type": "object",

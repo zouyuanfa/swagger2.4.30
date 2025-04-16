@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;凭证;",
+    "title": "\u8d22\u7a0e\u4e91;\u51ed\u8bc1;",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/voucher_reverse": {
       "post": {
-        "summary": "凭证冲销;冲销凭证;1.0.6",
+        "summary": "\u51ed\u8bc1\u51b2\u9500;\u51b2\u9500\u51ed\u8bc1;1.0.6",
         "operationId": "VoucherReverse_reverse",
         "responses": {
           "200": {
@@ -60,7 +60,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "IdsRequest": {
       "type": "object",
@@ -70,14 +70,14 @@
           "items": {
             "type": "string"
           },
-          "title": "a=id数组;c=[\"1\"];d=true"
+          "title": "a=id\u6570\u7ec4;c=[\"1\"];d=true"
         },
         "errors": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "a=失败信息数组;c=[\"失败\"];d=true"
+          "title": "a=\u5931\u8d25\u4fe1\u606f\u6570\u7ec4;c=[\"\u5931\u8d25\"];d=true"
         }
       }
     },
@@ -107,7 +107,7 @@
           "items": {
             "$ref": "#/definitions/VoucherReverseReply.Item"
           },
-          "title": "a=凭证冲销返回列表;b=100;c=[];d=true"
+          "title": "a=\u51ed\u8bc1\u51b2\u9500\u8fd4\u56de\u5217\u8868;b=100;c=[];d=true"
         }
       }
     },
@@ -116,15 +116,15 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=凭证ID;b=2147483647;c=1;d=false"
+          "title": "a=\u51ed\u8bc1ID;b=2147483647;c=1;d=false"
         },
         "message": {
           "type": "string",
-          "title": "a=信息提示;b=100;c=无;d=false"
+          "title": "a=\u4fe1\u606f\u63d0\u793a;b=100;c=\u65e0;d=false"
         },
         "reverse_voucher_id": {
           "type": "string",
-          "title": "a=新生成的冲销凭证ID;b=2147483647;c=1;d=false"
+          "title": "a=\u65b0\u751f\u6210\u7684\u51b2\u9500\u51ed\u8bc1ID;b=2147483647;c=1;d=false"
         }
       }
     }

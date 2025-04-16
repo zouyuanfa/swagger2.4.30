@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;税务管理;外部单据开票",
+    "title": "\u8d22\u7a0e\u4e91;\u7a0e\u52a1\u7ba1\u7406;\u5916\u90e8\u5355\u636e\u5f00\u7968",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/invoice_ext": {
       "get": {
-        "summary": "外部单据开票列表;外部单据开票列表;1.0.11",
+        "summary": "\u5916\u90e8\u5355\u636e\u5f00\u7968\u5217\u8868;\u5916\u90e8\u5355\u636e\u5f00\u7968\u5217\u8868;1.0.12",
         "operationId": "list_list",
         "responses": {
           "200": {
@@ -37,21 +37,21 @@
         "parameters": [
           {
             "name": "start_date",
-            "description": "a=单据起始日期(yyyy-MM-dd);c=2022-01-01.",
+            "description": "a=\u5355\u636e\u8d77\u59cb\u65e5\u671f(yyyy-MM-dd);c=2022-01-01.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=单据终止日期(yyyy-MM-dd);c=2022-01-01.",
+            "description": "a=\u5355\u636e\u7ec8\u6b62\u65e5\u671f(yyyy-MM-dd);c=2022-01-01.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "bill_Ids",
-            "description": "a=单据id列表;c=[].",
+            "description": "a=\u5355\u636eid\u5217\u8868;c=[].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -62,7 +62,7 @@
           },
           {
             "name": "bill_Nos",
-            "description": "a=单据编号列表;c=[].",
+            "description": "a=\u5355\u636e\u7f16\u53f7\u5217\u8868;c=[].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -73,21 +73,21 @@
           },
           {
             "name": "modify_start_date",
-            "description": "a=单据修改起始日期;c=2023-12-12.",
+            "description": "a=\u5355\u636e\u4fee\u6539\u8d77\u59cb\u65e5\u671f;c=2023-12-12.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_end_date",
-            "description": "a=单据修改结束日期;c=2023-12-12.",
+            "description": "a=\u5355\u636e\u4fee\u6539\u7ed3\u675f\u65e5\u671f;c=2023-12-12.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_no",
-            "description": "a=页码;b=1;c=1;d=true.",
+            "description": "a=\u9875\u7801;b=1;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -95,7 +95,7 @@
           },
           {
             "name": "page_size",
-            "description": "a=页面大小;b=11;c=10;d=true.",
+            "description": "a=\u9875\u9762\u5927\u5c0f;b=11;c=10;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -103,14 +103,14 @@
           },
           {
             "name": "invoice_status",
-            "description": "a=单据开票状态[1:未开票,2:部分开票+已开票];b=12;c=1;d=true.",
+            "description": "a=\u5355\u636e\u5f00\u7968\u72b6\u6001[1:\u672a\u5f00\u7968,2:\u90e8\u5206\u5f00\u7968+\u5df2\u5f00\u7968];b=12;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "billType",
-            "description": "a=订单类型;b=11;c=1.",
+            "description": "a=\u8ba2\u5355\u7c7b\u578b;b=11;c=1.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -121,7 +121,7 @@
         ]
       },
       "post": {
-        "summary": "外部单据开票保存;外部单据开票保存;1.0.11",
+        "summary": "\u5916\u90e8\u5355\u636e\u5f00\u7968\u4fdd\u5b58;\u5916\u90e8\u5355\u636e\u5f00\u7968\u4fdd\u5b58;1.0.11",
         "operationId": "list_save",
         "responses": {
           "200": {
@@ -163,118 +163,118 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "Bill": {
       "type": "object",
       "properties": {
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期 (yyyy-mm-dd);c=2001-11-11;d=true"
+          "title": "a=\u5355\u636e\u65e5\u671f (yyyy-mm-dd);c=2001-11-11;d=true"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编号;c=210;d=true"
+          "title": "a=\u5355\u636e\u7f16\u53f7;c=210;d=true"
         },
         "customer": {
           "type": "string",
-          "title": "a=客户名称;c=名称;d=true"
+          "title": "a=\u5ba2\u6237\u540d\u79f0;c=\u540d\u79f0;d=true"
         },
         "customer_number": {
           "type": "string",
-          "title": "a=客户编码;c=XXX;d=false"
+          "title": "a=\u5ba2\u6237\u7f16\u7801;c=XXX;d=false"
         },
         "invoice_name": {
           "type": "string",
-          "title": "a=开票名称;c=eq;d=false"
+          "title": "a=\u5f00\u7968\u540d\u79f0;c=eq;d=false"
         },
         "tax_payer_no": {
           "type": "string",
-          "title": "a=纳税人识别号;c=1;d=false"
+          "title": "a=\u7eb3\u7a0e\u4eba\u8bc6\u522b\u53f7;c=1;d=false"
         },
         "address_phone": {
           "type": "string",
-          "title": "a=地址电话;c=17785289845;d=false"
+          "title": "a=\u5730\u5740\u7535\u8bdd;c=17785289845;d=false"
         },
         "bank_account": {
           "type": "string",
-          "title": "a=开户行及账号(开户行和账号用‘-’分隔：开户行-账号);c=1312430;d=false"
+          "title": "a=\u5f00\u6237\u884c\u53ca\u8d26\u53f7(\u5f00\u6237\u884c\u548c\u8d26\u53f7\u7528\u2018-\u2019\u5206\u9694\uff1a\u5f00\u6237\u884c-\u8d26\u53f7);c=1312430;d=false"
         },
         "email": {
           "type": "string",
-          "title": "a=邮箱;c=5487455@kingdee.com;d=false"
+          "title": "a=\u90ae\u7bb1;c=5487455@kingdee.com;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=23431;d=false"
+          "title": "a=\u5907\u6ce8;c=23431;d=false"
         },
         "business_type": {
           "type": "string",
-          "title": "a=业务类型（0:批发,1:零售）;c=1;d=true"
+          "title": "a=\u4e1a\u52a1\u7c7b\u578b\uff080:\u6279\u53d1,1:\u96f6\u552e\uff09;c=1;d=true"
         },
         "invoice_type": {
           "type": "string",
-          "title": "a=发票类型（1:纸质专票,2:纸质普票,3:电子普票,4:电子专票）（零售必填）;c=1;d=false"
+          "title": "a=\u53d1\u7968\u7c7b\u578b\uff081:\u7eb8\u8d28\u4e13\u7968,2:\u7eb8\u8d28\u666e\u7968,3:\u7535\u5b50\u666e\u7968,4:\u7535\u5b50\u4e13\u7968\uff09\uff08\u96f6\u552e\u5fc5\u586b\uff09;c=1;d=false"
         },
         "default_bill_source": {
           "type": "string",
-          "title": "固定值字段，不生成对外API文档"
+          "title": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
         },
         "bill_type": {
           "type": "string",
-          "title": "a=单据类型（开发商自定义字符串类型）;c=1;d=true"
+          "title": "a=\u5355\u636e\u7c7b\u578b\uff08\u5f00\u53d1\u5546\u81ea\u5b9a\u4e49\u5b57\u7b26\u4e32\u7c7b\u578b\uff09;c=1;d=true"
         },
         "bill_type_id": {
           "type": "string",
-          "title": "a=单据编码（退货单为0，其余为1）;c=1;d=true"
+          "title": "a=\u5355\u636e\u7f16\u7801\uff08\u9000\u8d27\u5355\u4e3a0\uff0c\u5176\u4f59\u4e3a1\uff09;c=1;d=true"
         },
         "invoice_status": {
           "type": "string",
-          "title": "a=开票状态[1:未开票,2:部分开票+已开票];c=1;d=false"
+          "title": "a=\u5f00\u7968\u72b6\u6001[1:\u672a\u5f00\u7968,2:\u90e8\u5206\u5f00\u7968+\u5df2\u5f00\u7968];c=1;d=false"
         },
         "invoice_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票数量;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u6570\u91cf;c=1;d=false"
         },
         "invoice_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票金额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u91d1\u989d;c=1;d=false"
         },
         "total_amount": {
           "type": "string",
-          "title": "a=金额合计;c=1;d=false"
+          "title": "a=\u91d1\u989d\u5408\u8ba1;c=1;d=false"
         },
         "total_tax_amount": {
           "type": "string",
-          "title": "a=税额合计;c=1;d=false"
+          "title": "a=\u7a0e\u989d\u5408\u8ba1;c=1;d=false"
         },
         "total_tax": {
           "type": "string",
-          "title": "a=价税合计;c=1;d=false"
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1;c=1;d=false"
         },
         "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Bill.Item"
           },
-          "title": "a=商品信息;b=100;c=[];d=true"
+          "title": "a=\u5546\u54c1\u4fe1\u606f;b=100;c=[];d=true"
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机号码;c=17566889945;d=false"
+          "title": "a=\u624b\u673a\u53f7\u7801;c=17566889945;d=false"
         },
         "order_bill_no": {
           "type": "string",
-          "title": "a=电商订单号;c=666666;d=false"
+          "title": "a=\u7535\u5546\u8ba2\u5355\u53f7;c=666666;d=false"
         },
         "invoices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Bill.Invoice"
           },
-          "title": "a=发票信息;b=100;c=[]"
+          "title": "a=\u53d1\u7968\u4fe1\u606f;b=100;c=[]"
         }
       }
     },
@@ -283,23 +283,23 @@
       "properties": {
         "invoice_number": {
           "type": "string",
-          "title": "a=发票号码;c=1;d=false"
+          "title": "a=\u53d1\u7968\u53f7\u7801;c=1;d=false"
         },
         "invoice_code": {
           "type": "string",
-          "title": "a=发票代码;c=1111;d=false"
+          "title": "a=\u53d1\u7968\u4ee3\u7801;c=1111;d=false"
         },
         "invoice_type": {
           "type": "string",
-          "title": "a=发票类型;c=1;d=false"
+          "title": "a=\u53d1\u7968\u7c7b\u578b;c=1;d=false"
         },
         "invoice_date": {
           "type": "string",
-          "title": "a=开票日期;c=2021-01-01;d=false"
+          "title": "a=\u5f00\u7968\u65e5\u671f;c=2021-01-01;d=false"
         },
         "invoice_status": {
           "type": "string",
-          "title": "a=开票状态[1:未开票,2:部分开票+已开票];c=1;d=false"
+          "title": "a=\u5f00\u7968\u72b6\u6001[1:\u672a\u5f00\u7968,2:\u90e8\u5206\u5f00\u7968+\u5df2\u5f00\u7968];c=1;d=false"
         }
       }
     },
@@ -308,123 +308,123 @@
       "properties": {
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=111;d=true"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=111;d=true"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=1111;d=true"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=1111;d=true"
         },
         "tax_category_number": {
           "type": "string",
-          "title": "a=税收分类编码;c=1;d=false"
+          "title": "a=\u7a0e\u6536\u5206\u7c7b\u7f16\u7801;c=1;d=false"
         },
         "model": {
           "type": "string",
-          "title": "a=规格型号;c=1;d=false"
+          "title": "a=\u89c4\u683c\u578b\u53f7;c=1;d=false"
         },
         "unit": {
           "type": "string",
-          "title": "a=单位;c=111;d=false"
+          "title": "a=\u5355\u4f4d;c=111;d=false"
         },
         "tax_price": {
           "type": "number",
           "format": "double",
-          "title": "a=含税单价;c=1111;d=true"
+          "title": "a=\u542b\u7a0e\u5355\u4ef7;c=1111;d=true"
         },
         "price": {
           "type": "string",
-          "title": "a=单价;c=1;d=false"
+          "title": "a=\u5355\u4ef7;c=1;d=false"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=数量;c=1;d=true"
+          "title": "a=\u6570\u91cf;c=1;d=true"
         },
         "amount": {
           "type": "number",
           "format": "double",
-          "title": "a=金额;c=1;d=false"
+          "title": "a=\u91d1\u989d;c=1;d=false"
         },
         "tax_rate": {
           "type": "string",
-          "title": "a=税率;c=1;d=false"
+          "title": "a=\u7a0e\u7387;c=1;d=false"
         },
         "act_non_tax_price": {
           "type": "number",
           "format": "double",
-          "title": "a=实际不含税单价;c=1111;d=false"
+          "title": "a=\u5b9e\u9645\u4e0d\u542b\u7a0e\u5355\u4ef7;c=1111;d=false"
         },
         "tax_amount": {
           "type": "string",
-          "title": "a=税额;c=1;d=false"
+          "title": "a=\u7a0e\u989d;c=1;d=false"
         },
         "non_tax_dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=含税折扣额;c=21;d=false"
+          "title": "a=\u542b\u7a0e\u6298\u6263\u989d;c=21;d=false"
         },
         "invoice_dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票折扣额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u6298\u6263\u989d;c=1;d=false"
         },
         "entry_invoice_status": {
           "type": "string",
-          "title": "a=商品行开票状态;c=1"
+          "title": "a=\u5546\u54c1\u884c\u5f00\u7968\u72b6\u6001;c=1"
         },
         "invoice_bill_distribution": {
           "type": "string",
-          "title": "a=已开整单折扣分配额;c=1111"
+          "title": "a=\u5df2\u5f00\u6574\u5355\u6298\u6263\u5206\u914d\u989d;c=1111"
         },
         "bill_distribution": {
           "type": "number",
           "format": "double",
-          "title": "a=整单折扣分配额;c=1;d=false"
+          "title": "a=\u6574\u5355\u6298\u6263\u5206\u914d\u989d;c=1;d=false"
         },
         "invoice_act_non_tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票实际不含税金额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u5b9e\u9645\u4e0d\u542b\u7a0e\u91d1\u989d;c=1;d=false"
         },
         "act_non_tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=实际不含税金额;c=1;d=false"
+          "title": "a=\u5b9e\u9645\u4e0d\u542b\u7a0e\u91d1\u989d;c=1;d=false"
         },
         "invoice_tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票税额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u7a0e\u989d;c=1;d=false"
         },
         "entry_invoice_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票金额;c=21;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u91d1\u989d;c=21;d=false"
         },
         "entry_invoice_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票数量;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u6570\u91cf;c=1;d=false"
         },
         "entry_wait_invoice_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=待开票金额;c=11"
+          "title": "a=\u5f85\u5f00\u7968\u91d1\u989d;c=11"
         },
         "entry_wait_invoice_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=已开整单折扣分配额;c=1111"
+          "title": "a=\u5df2\u5f00\u6574\u5355\u6298\u6263\u5206\u914d\u989d;c=1111"
         },
         "all_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=价税合计;c=11;d=true"
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1;c=11;d=true"
         },
         "dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=折扣额(默认为0，含税折扣额);c=1;d=false"
+          "title": "a=\u6298\u6263\u989d(\u9ed8\u8ba4\u4e3a0\uff0c\u542b\u7a0e\u6298\u6263\u989d);c=1;d=false"
         }
       }
     },
@@ -434,28 +434,28 @@
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总记录数;c=100;d=false"
+          "title": "a=\u603b\u8bb0\u5f55\u6570;c=100;d=false"
         },
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=1;d=false"
+          "title": "a=\u603b\u9875\u6570;c=1;d=false"
         },
         "current_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=true"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=true"
         },
         "page_size": {
           "type": "string",
-          "title": "a=页面大小;c=1;d=false"
+          "title": "a=\u9875\u9762\u5927\u5c0f;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExtDocInvRep.Row"
           },
-          "title": "a=数据行;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;c=[];d=false"
         }
       }
     },
@@ -464,111 +464,111 @@
       "properties": {
         "bill_id": {
           "type": "string",
-          "title": "a=单据Id;c=412;d=false"
+          "title": "a=\u5355\u636eId;c=412;d=false"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编号;c=210;d=false"
+          "title": "a=\u5355\u636e\u7f16\u53f7;c=210;d=false"
         },
         "invoice_name": {
           "type": "string",
-          "title": "a=开票名称;c=eq;d=false"
+          "title": "a=\u5f00\u7968\u540d\u79f0;c=eq;d=false"
         },
         "customer": {
           "type": "string",
-          "title": "a=客户名称;c=名称;d=false"
+          "title": "a=\u5ba2\u6237\u540d\u79f0;c=\u540d\u79f0;d=false"
         },
         "customer_number": {
           "type": "string",
-          "title": "a=客户编码;c=XXX;d=false"
+          "title": "a=\u5ba2\u6237\u7f16\u7801;c=XXX;d=false"
         },
         "tax_payer_no": {
           "type": "string",
-          "title": "a=纳税人识别号;c=1;d=false"
+          "title": "a=\u7eb3\u7a0e\u4eba\u8bc6\u522b\u53f7;c=1;d=false"
         },
         "address_phone": {
           "type": "string",
-          "title": "a=地址电话;c=17785289845;d=false"
+          "title": "a=\u5730\u5740\u7535\u8bdd [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=17785289845;d=false"
         },
         "bank_account": {
           "type": "string",
-          "title": "a=开户行账号;c=1312430;d=false"
+          "title": "a=\u5f00\u6237\u884c\u8d26\u53f7 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=1312430;d=false"
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机;c=17785289845;d=false"
+          "title": "a=\u624b\u673a [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=17785289845;d=false"
         },
         "email": {
           "type": "string",
-          "title": "a=邮箱;c=5487455@kingdee.com;d=false"
+          "title": "a=\u90ae\u7bb1 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=5487455@kingdee.com;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=23431;d=false"
+          "title": "a=\u5907\u6ce8;c=23431;d=false"
         },
         "business_type": {
           "type": "string",
-          "title": "a=业务类型（0:批发,1:零售）;c=1;d=false"
+          "title": "a=\u4e1a\u52a1\u7c7b\u578b\uff080:\u6279\u53d1,1:\u96f6\u552e\uff09;c=1;d=false"
         },
         "invoice_type": {
           "type": "string",
-          "title": "a=发票类型（1:纸质专票,2:纸质普票,3:电子普票,4:电子专票）（零售必填）;c=1;d=false"
+          "title": "a=\u53d1\u7968\u7c7b\u578b\uff081:\u7eb8\u8d28\u4e13\u7968,2:\u7eb8\u8d28\u666e\u7968,3:\u7535\u5b50\u666e\u7968,4:\u7535\u5b50\u4e13\u7968\uff09\uff08\u96f6\u552e\u5fc5\u586b\uff09;c=1;d=false"
         },
         "default_bill_source": {
           "type": "string",
-          "title": "固定值字段，不生成对外API文档"
+          "title": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
         },
         "bill_type": {
           "type": "string",
-          "title": "a=单据类型（开发商自定义字符串类型）;c=1;d=false"
+          "title": "a=\u5355\u636e\u7c7b\u578b\uff08\u5f00\u53d1\u5546\u81ea\u5b9a\u4e49\u5b57\u7b26\u4e32\u7c7b\u578b\uff09;c=1;d=false"
         },
         "bill_type_id": {
           "type": "string",
-          "title": "a=单据编码（退货单为0，其余为1）;c=1;d=false"
+          "title": "a=\u5355\u636e\u7f16\u7801\uff08\u9000\u8d27\u5355\u4e3a0\uff0c\u5176\u4f59\u4e3a1\uff09;c=1;d=false"
         },
         "invoice_status": {
           "type": "string",
-          "title": "a=单据开票状态[1:未开票,2:部分开票+已开票];c=1;d=false"
+          "title": "a=\u5355\u636e\u5f00\u7968\u72b6\u6001[1:\u672a\u5f00\u7968,2:\u90e8\u5206\u5f00\u7968+\u5df2\u5f00\u7968];c=1;d=false"
         },
         "invoice_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票数量;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u6570\u91cf;c=1;d=false"
         },
         "invoice_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票金额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u91d1\u989d;c=1;d=false"
         },
         "total_amount": {
           "type": "string",
-          "title": "a=金额合计;c=1;d=false"
+          "title": "a=\u91d1\u989d\u5408\u8ba1;c=1;d=false"
         },
         "total_tax_amount": {
           "type": "string",
-          "title": "a=税额合计;c=1;d=false"
+          "title": "a=\u7a0e\u989d\u5408\u8ba1;c=1;d=false"
         },
         "total_tax": {
           "type": "string",
-          "title": "a=价税合计;c=1;d=false"
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1;c=1;d=false"
         },
         "invoices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Row.Invoice"
           },
-          "title": "a=发票信息;b=100;c=[]"
+          "title": "a=\u53d1\u7968\u4fe1\u606f;b=100;c=[]"
         },
         "items": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ExtDocInvRep.Row.Item"
           },
-          "title": "a=商品信息;b=100;c=[]"
+          "title": "a=\u5546\u54c1\u4fe1\u606f;b=100;c=[]"
         },
         "order_bill_no": {
           "type": "string",
-          "title": "a=电商订单号;c=666666"
+          "title": "a=\u7535\u5546\u8ba2\u5355\u53f7;c=666666"
         }
       }
     },
@@ -577,134 +577,134 @@
       "properties": {
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=111;d=false"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=111;d=false"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=1111;d=false"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=1111;d=false"
         },
         "tax_category_number": {
           "type": "string",
-          "title": "a=税收分类编码;c=1;d=false"
+          "title": "a=\u7a0e\u6536\u5206\u7c7b\u7f16\u7801;c=1;d=false"
         },
         "tax_category_name": {
           "type": "string",
-          "title": "a=税收分类编码名称;c=2021-01-01;d=false"
+          "title": "a=\u7a0e\u6536\u5206\u7c7b\u7f16\u7801\u540d\u79f0;c=2021-01-01;d=false"
         },
         "model": {
           "type": "string",
-          "title": "a=规格型号;c=1;d=false"
+          "title": "a=\u89c4\u683c\u578b\u53f7;c=1;d=false"
         },
         "unit": {
           "type": "string",
-          "title": "a=单位;c=111;d=false"
+          "title": "a=\u5355\u4f4d;c=111;d=false"
         },
         "tax_price": {
           "type": "number",
           "format": "double",
-          "title": "a=含税单价;c=1111;d=false"
+          "title": "a=\u542b\u7a0e\u5355\u4ef7;c=1111;d=false"
         },
         "price": {
           "type": "string",
-          "title": "a=单价;c=1;d=false"
+          "title": "a=\u5355\u4ef7;c=1;d=false"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=数量;c=1;d=false"
+          "title": "a=\u6570\u91cf;c=1;d=false"
         },
         "amount": {
           "type": "number",
           "format": "double",
-          "title": "a=金额;c=1;d=false"
+          "title": "a=\u91d1\u989d;c=1;d=false"
         },
         "tax_rate": {
           "type": "string",
-          "title": "a=税率;c=1;d=false"
+          "title": "a=\u7a0e\u7387;c=1;d=false"
         },
         "act_non_tax_price": {
           "type": "number",
           "format": "double",
-          "title": "a=实际不含税单价;c=1111;d=false"
+          "title": "a=\u5b9e\u9645\u4e0d\u542b\u7a0e\u5355\u4ef7;c=1111;d=false"
         },
         "tax_amount": {
           "type": "string",
-          "title": "a=税额;c=1;d=false"
+          "title": "a=\u7a0e\u989d;c=1;d=false"
         },
         "non_tax_dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=含税折扣额;c=21;d=false"
+          "title": "a=\u542b\u7a0e\u6298\u6263\u989d;c=21;d=false"
         },
         "invoice_dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票折扣额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u6298\u6263\u989d;c=1;d=false"
         },
         "entry_invoice_status": {
           "type": "string",
-          "title": "a=商品行开票状态;c=1"
+          "title": "a=\u5546\u54c1\u884c\u5f00\u7968\u72b6\u6001;c=1"
         },
         "invoice_bill_distribution": {
           "type": "string",
-          "title": "a=已开整单折扣分配额;c=1111"
+          "title": "a=\u5df2\u5f00\u6574\u5355\u6298\u6263\u5206\u914d\u989d;c=1111"
         },
         "bill_distribution": {
           "type": "number",
           "format": "double",
-          "title": "a=整单折扣分配额;c=1;d=false"
+          "title": "a=\u6574\u5355\u6298\u6263\u5206\u914d\u989d;c=1;d=false"
         },
         "invoice_act_non_tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票实际不含税金额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u5b9e\u9645\u4e0d\u542b\u7a0e\u91d1\u989d;c=1;d=false"
         },
         "act_non_tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=实际不含税金额;c=1;d=false"
+          "title": "a=\u5b9e\u9645\u4e0d\u542b\u7a0e\u91d1\u989d;c=1;d=false"
         },
         "invoice_tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票税额;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u7a0e\u989d;c=1;d=false"
         },
         "entry_invoice_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票金额;c=21;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u91d1\u989d;c=21;d=false"
         },
         "entry_invoice_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=已开票数量;c=1;d=false"
+          "title": "a=\u5df2\u5f00\u7968\u6570\u91cf;c=1;d=false"
         },
         "entry_wait_invoice_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=待开票金额;c=11"
+          "title": "a=\u5f85\u5f00\u7968\u91d1\u989d;c=11"
         },
         "entry_wait_invoice_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=已开整单折扣分配额;c=1111"
+          "title": "a=\u5df2\u5f00\u6574\u5355\u6298\u6263\u5206\u914d\u989d;c=1111"
         },
         "all_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=价税合计;c=11;d=false"
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1;c=11;d=false"
         },
         "dis_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=折扣额;c=1;d=false"
+          "title": "a=\u6298\u6263\u989d;c=1;d=false"
         },
         "itemInvoices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ItemInvoice"
           },
-          "title": "a=发票信息;c=1;d=false"
+          "title": "a=\u53d1\u7968\u4fe1\u606f;c=1;d=false"
         }
       }
     },
@@ -716,7 +716,7 @@
           "items": {
             "$ref": "#/definitions/Bill"
           },
-          "title": "a=第三方单据列表;c=[];d=true"
+          "title": "a=\u7b2c\u4e09\u65b9\u5355\u636e\u5217\u8868;c=[];d=true"
         }
       }
     },
@@ -725,31 +725,31 @@
       "properties": {
         "invoice_number": {
           "type": "string",
-          "title": "a=发票号码;c=1;d=1"
+          "title": "a=\u53d1\u7968\u53f7\u7801;c=1;d=1"
         },
         "invoice_code": {
           "type": "string",
-          "title": "a=发票代码;c=1111;d=1"
+          "title": "a=\u53d1\u7968\u4ee3\u7801;c=1111;d=1"
         },
         "price": {
           "type": "number",
           "format": "double",
-          "title": "a=单价;c=1;d=false"
+          "title": "a=\u5355\u4ef7;c=1;d=false"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=数量;c=1;d=false"
+          "title": "a=\u6570\u91cf;c=1;d=false"
         },
         "amount": {
           "type": "number",
           "format": "double",
-          "title": "a=金额;c=1;d=false"
+          "title": "a=\u91d1\u989d;c=1;d=false"
         },
         "tax_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=税额;c=1;d=false"
+          "title": "a=\u7a0e\u989d;c=1;d=false"
         }
       }
     },
@@ -758,23 +758,23 @@
       "properties": {
         "invoice_number": {
           "type": "string",
-          "title": "a=发票号码;c=1;d=1"
+          "title": "a=\u53d1\u7968\u53f7\u7801;c=1;d=1"
         },
         "invoice_code": {
           "type": "string",
-          "title": "a=发票代码;c=1111;d=1"
+          "title": "a=\u53d1\u7968\u4ee3\u7801;c=1111;d=1"
         },
         "invoice_type": {
           "type": "string",
-          "title": "a=发票类型;c=1;d=false"
+          "title": "a=\u53d1\u7968\u7c7b\u578b;c=1;d=false"
         },
         "invoice_date": {
           "type": "string",
-          "title": "a=开票日期;c=2021-01-01;d=false"
+          "title": "a=\u5f00\u7968\u65e5\u671f;c=2021-01-01;d=false"
         },
         "invoice_status": {
           "type": "string",
-          "title": "a=单据开票状态[1:未开票,2:部分开票+已开票];c=1;d=false"
+          "title": "a=\u5355\u636e\u5f00\u7968\u72b6\u6001[1:\u672a\u5f00\u7968,2:\u90e8\u5206\u5f00\u7968+\u5df2\u5f00\u7968];c=1;d=false"
         }
       }
     },
@@ -786,7 +786,7 @@
           "items": {
             "$ref": "#/definitions/SaveBillNoResp.Row"
           },
-          "title": "a=返回数据列表;c=[]"
+          "title": "a=\u8fd4\u56de\u6570\u636e\u5217\u8868;c=[]"
         }
       }
     },
@@ -795,11 +795,11 @@
       "properties": {
         "bill_no": {
           "type": "string",
-          "title": "a=单据编号;b=30;c=001"
+          "title": "a=\u5355\u636e\u7f16\u53f7;b=30;c=001"
         },
         "message": {
           "type": "string",
-          "title": "a=消息;b=30;c=保存失败"
+          "title": "a=\u6d88\u606f;b=30;c=\u4fdd\u5b58\u5931\u8d25"
         }
       }
     },

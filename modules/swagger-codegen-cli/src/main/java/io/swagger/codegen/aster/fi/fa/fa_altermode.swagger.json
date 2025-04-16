@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;资产资料;变动方式",
+    "title": "\u8d22\u7a0e\u4e91;\u8d44\u4ea7\u8d44\u6599;\u53d8\u52a8\u65b9\u5f0f",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_altermode": {
       "get": {
-        "summary": "变动方式列表;获取变动方式列表;1.0.8",
+        "summary": "\u53d8\u52a8\u65b9\u5f0f\u5217\u8868;\u83b7\u53d6\u53d8\u52a8\u65b9\u5f0f\u5217\u8868;1.0.8",
         "operationId": "AlterMode_list",
         "responses": {
           "200": {
@@ -37,21 +37,21 @@
         "parameters": [
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认100;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba4100;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search",
-            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22\uff0c\u652f\u6301\u5355\u636e\u7f16\u53f7\u3001\u5907\u6ce8;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -64,7 +64,7 @@
     },
     "/openapi/v2/fi/fa_altermode_save": {
       "post": {
-        "summary": "变动方式保存;获取变动方式保存;1.0.11",
+        "summary": "\u53d8\u52a8\u65b9\u5f0f\u4fdd\u5b58;\u83b7\u53d6\u53d8\u52a8\u65b9\u5f0f\u4fdd\u5b58;1.0.11",
         "operationId": "AlterMode_FaSave",
         "responses": {
           "200": {
@@ -103,36 +103,36 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/AltermodeListReply.Row"
           },
-          "title": "a=数据行;b=999999;c=[]"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[]"
         }
       },
-      "title": "科目列表查询返回对象"
+      "title": "\u79d1\u76ee\u5217\u8868\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "AltermodeListReply.Row": {
       "type": "object",
@@ -143,53 +143,53 @@
         },
         "name": {
           "type": "string",
-          "title": "a=编码;b=30;c=001"
+          "title": "a=\u7f16\u7801;b=30;c=001"
         },
         "number": {
           "type": "string",
-          "title": "a=名字;b=30;c=001"
+          "title": "a=\u540d\u5b57;b=30;c=001"
         },
         "note": {
           "type": "string",
-          "title": "a=备注 ;c=备注"
+          "title": "a=\u5907\u6ce8 ;c=\u5907\u6ce8"
         },
         "group_id": {
           "type": "string",
-          "title": "a=资产类别id;b=2147483647;c=1"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522bid;b=2147483647;c=1"
         },
         "group_number": {
           "type": "string",
-          "title": "a=资产类别编码;b=30;c=001"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522b\u7f16\u7801;b=30;c=001"
         },
         "group_name": {
           "type": "string",
-          "title": "a=资产类别名称;b=30;c=名称"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522b\u540d\u79f0;b=30;c=\u540d\u79f0"
         }
       },
-      "title": "科目查询返回对象"
+      "title": "\u79d1\u76ee\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "AltermodeSaveRequest": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id（修改时必填，新增保存返回id）;c=1; d=false"
+          "title": "a=id\uff08\u4fee\u6539\u65f6\u5fc5\u586b\uff0c\u65b0\u589e\u4fdd\u5b58\u8fd4\u56deid\uff09;c=1; d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=变动方式名称;b=30;c=001;d=true"
+          "title": "a=\u53d8\u52a8\u65b9\u5f0f\u540d\u79f0;b=30;c=001;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=变动方式编码;b=30;c=001;d=true"
+          "title": "a=\u53d8\u52a8\u65b9\u5f0f\u7f16\u7801;b=30;c=001;d=true"
         },
         "note": {
           "type": "string",
-          "title": "a=备注 ;c=备注001 ;d=false"
+          "title": "a=\u5907\u6ce8 ;c=\u5907\u6ce8001 ;d=false"
         },
         "group_id": {
           "type": "string",
-          "title": "a=变动方式类别id;b=2147483647;c=1;d=true"
+          "title": "a=\u53d8\u52a8\u65b9\u5f0f\u7c7b\u522bid;b=2147483647;c=1;d=true"
         }
       }
     },
@@ -202,7 +202,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "SaveReply": {
       "type": "object",
@@ -212,17 +212,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

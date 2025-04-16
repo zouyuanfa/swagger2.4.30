@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;会员资料",
+    "title": "\u96f6\u552e\u4e91;\u4f1a\u5458\u8d44\u6599",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/mb_level": {
       "get": {
-        "summary": "会员级别列表;会员级别列表;1.0.6",
+        "summary": "\u4f1a\u5458\u7ea7\u522b\u5217\u8868;\u4f1a\u5458\u7ea7\u522b\u5217\u8868;1.0.6",
         "operationId": "MemberLevel_list",
         "responses": {
           "200": {
@@ -37,56 +37,56 @@
         "parameters": [
           {
             "name": "page",
-            "description": "a=当前页，从1开始;c=001;d=true.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u4ece1\u5f00\u59cb;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数;c=001;d=true.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_modified",
-            "description": "a=开始修改时间;c=001;d=false.",
+            "description": "a=\u5f00\u59cb\u4fee\u6539\u65f6\u95f4;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_modified",
-            "description": "a=结束修改时间;c=2022-01-01;d=false.",
+            "description": "a=\u7ed3\u675f\u4fee\u6539\u65f6\u95f4;c=2022-01-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "enable",
-            "description": "a=状态，0-禁用，1-可用;c=1;d=false.",
+            "description": "a=\u72b6\u6001\uff0c0-\u7981\u7528\uff0c1-\u53ef\u7528;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码;c=234234324;d=false.",
+            "description": "a=\u7f16\u7801;c=234234324;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "name",
-            "description": "a=名称;c=名称;d=false.",
+            "description": "a=\u540d\u79f0;c=\u540d\u79f0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "id",
-            "description": "a=会员ID;c=001;d=false.",
+            "description": "a=\u4f1a\u5458ID;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -108,7 +108,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "MemberLevelRes": {
       "type": "object",
@@ -116,34 +116,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=10;d=false"
+          "title": "a=\u603b\u9875\u6570;c=10;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;c=1;d=false"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;c=100;d=false"
+          "title": "a=\u603b\u6761\u6570;c=100;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/MemberLevelRes.Row"
           },
-          "title": "a=数据列表;c=[];d=false"
+          "title": "a=\u6570\u636e\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -152,43 +152,43 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=会员级别id;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u7ea7\u522bid;c=1;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-08-11 14:00:50.0;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-08-11 14:00:50.0;d=false"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=修改时间;c=2020-08-11 14:00:50.0;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;c=2020-08-11 14:00:50.0;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=状态;c=1;d=false"
+          "title": "a=\u72b6\u6001;c=1;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=级别编码;c=HYJB002;d=false"
+          "title": "a=\u7ea7\u522b\u7f16\u7801;c=HYJB002;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=级别名称;c=aaaa;d=false"
+          "title": "a=\u7ea7\u522b\u540d\u79f0;c=aaaa;d=false"
         },
         "index": {
           "type": "string",
-          "title": "a=级别顺序;c=1;d=false"
+          "title": "a=\u7ea7\u522b\u987a\u5e8f;c=1;d=false"
         },
         "in_system": {
           "type": "string",
-          "title": "a=系统内置;c=false;d=false"
+          "title": "a=\u7cfb\u7edf\u5185\u7f6e;c=false;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=aaaaaaaaaaa;d=false"
+          "title": "a=\u5907\u6ce8;c=aaaaaaaaaaa;d=false"
         },
         "enjoy": {
           "type": "string",
-          "title": "a=享受会员价;c=true;d=false"
+          "title": "a=\u4eab\u53d7\u4f1a\u5458\u4ef7;c=true;d=false"
         }
       }
     },

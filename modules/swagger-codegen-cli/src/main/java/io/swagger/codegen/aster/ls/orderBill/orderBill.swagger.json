@@ -1,0 +1,277 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "\u96f6\u552e\u4e91;\u95e8\u5e97\u7ba1\u7406;\u8981\u8d27\u5355;",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "OrderBill"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ls/order_bill": {
+      "post": {
+        "summary": "\u8981\u8d27\u5355\u4fdd\u5b58;\u8981\u8d27\u5355\u4fdd\u5b58;1.0.4",
+        "operationId": "OrderBill_saveOrderBill",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SaveReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderBillSaveReq"
+            }
+          }
+        ],
+        "tags": [
+          "OrderBill"
+        ]
+      }
+    },
+    "/openapi/v2/ls/order_bill/audit": {
+      "post": {
+        "summary": "\u5ba1\u6838\u8981\u8d27\u5355;\u5ba1\u6838\u8981\u8d27\u5355;1.0.4",
+        "operationId": "OrderBill_auditOrderBill",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/EmptyReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderBillAuditReq"
+            }
+          }
+        ],
+        "tags": [
+          "OrderBill"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "EmptyReply": {
+      "type": "object"
+    },
+    "MaterialEntity": {
+      "type": "object",
+      "properties": {
+        "material_id": {
+          "type": "string",
+          "title": "a=\u5546\u54c1id;c=741945988993837056;d=true"
+        },
+        "unit_id": {
+          "type": "string",
+          "title": "a=\u5355\u4f4did;c=741945988993837056;d=true"
+        },
+        "qty": {
+          "type": "number",
+          "format": "double",
+          "title": "a=\u8981\u8d27\u6570\u91cf;c=1;d=true"
+        },
+        "aux_unit_id": {
+          "type": "string",
+          "title": "a=\u8f85\u52a9\u5355\u4f4did;c=741945988993837056;d=false"
+        },
+        "barcode": {
+          "type": "string",
+          "title": "a=\u5546\u54c1\u6761\u7801;c=741945988993837056;d=false"
+        },
+        "sku_id": {
+          "type": "string",
+          "title": "a=\u8f85\u52a9\u5c5e\u6027id\uff0c\u6709\u8f85\u52a9\u5c5e\u6027\u7684\u5546\u54c1\u5fc5\u4f20;c=741945988993837056;d=false"
+        },
+        "is_diff": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=\u8c03\u62e8\u7c7b\u578b\u30021=\u5f02\u4ef7\u30022=\u540c\u4ef7\u3002\u9ed8\u8ba4\u5f02\u4ef7\u8c03\u62e8;c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=\u5206\u5f55\u5907\u6ce8;c=xxx;d=false"
+        }
+      }
+    },
+    "OrderBillAuditReq": {
+      "type": "object",
+      "properties": {
+        "operateType": {
+          "type": "string",
+          "title": "\u5ba1\u6838\u8981\u8d27\u5355\uff0c\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
+        },
+        "data": {
+          "$ref": "#/definitions/OrderBillAuditReq.Data",
+          "title": "a=\u8981\u8d27\u5355\u5ba1\u6838\u6570\u636e;c=object;d=true"
+        }
+      }
+    },
+    "OrderBillAuditReq.Data": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=\u8981\u8d27\u5355id;b=100;c=[];d=false"
+        },
+        "auditor_id": {
+          "type": "string",
+          "title": "a=\u5ba1\u6838\u804c\u5458id\uff0c\u804c\u5458id\u4e3a\u57fa\u7840\u8d44\u6599\u7684\u804c\u5458id;c=697102424829079552;d=true"
+        }
+      }
+    },
+    "OrderBillSaveReq": {
+      "type": "object",
+      "properties": {
+        "operateType": {
+          "type": "string",
+          "title": "\u65b0\u589e\u8981\u8d27\u5355\uff0c\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
+        },
+        "data": {
+          "$ref": "#/definitions/OrderBillSaveReq.Data",
+          "title": "a=\u8981\u8d27\u5355\u6570\u636e;c=object;d=true"
+        }
+      }
+    },
+    "OrderBillSaveReq.Data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=\u5355\u636eID\uff0c\u65b0\u589e\u4e0d\u586b\uff0c\u66f4\u65b0\u65f6\u5fc5\u586b\uff08id\u4e3a\u7a7a\u65f6\u4ee3\u8868\u65b0\u589e\u5355\u636e\uff09;c=1"
+        },
+        "store_id": {
+          "type": "string",
+          "title": "a=\u8981\u8d27\u95e8\u5e97ID\uff0c\u8981\u8d27\u95e8\u5e97\u5fc5\u987b\u5728\u914d\u9001\u4e2d\u5fc3\u4e0b\uff0c\u914d\u9001\u4e2d\u5fc3\u5fc5\u987b\u542f\u7528;c=697102424829079552;d=true"
+        },
+        "delivery_id": {
+          "type": "string",
+          "title": "a=\u914d\u9001\u4e2d\u5fc3ID;c=697102424829079552;d=true"
+        },
+        "receive_phone": {
+          "type": "string",
+          "title": "a=\u6536\u8d27\u7535\u8bdd;c=18888888888;d=true"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=\u521b\u5efa\u804c\u5458ID\uff0c\u57fa\u7840\u8d44\u6599\u4e2d\u7684\u804c\u5458id;c=697102424829079552;d=true"
+        },
+        "receiver_id": {
+          "type": "string",
+          "title": "a=\u6536\u8d27\u804c\u5458ID\uff0c\u57fa\u7840\u8d44\u6599\u4e2d\u7684\u804c\u5458id;c=697102424829079552;d=true"
+        },
+        "order_emp_d": {
+          "type": "string",
+          "title": "a=\u8981\u8d27\u804c\u5458ID\uff0c\u57fa\u7840\u8d44\u6599\u4e2d\u7684\u804c\u5458id;c=697102424829079552;d=true"
+        },
+        "material_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MaterialEntity"
+          },
+          "title": "a=\u8981\u8d27\u5206\u5f55;c=[];d=true"
+        },
+        "receive_addr": {
+          "type": "string",
+          "title": "a=\u6536\u8d27\u5730\u5740;c=\u67d0\u5730;d=false"
+        },
+        "order_reason": {
+          "type": "string",
+          "title": "a=\u8981\u8d27\u539f\u56e0;c=\u67d0\u539f\u56e0;d=false"
+        },
+        "plan_date": {
+          "type": "string",
+          "title": "a=\u8ba1\u5212\u5230\u8d27\u65e5\u671f;c=2025-02-10 12:00:00;d=false"
+        },
+        "modifier_id": {
+          "type": "string",
+          "title": "a=\u4fee\u6539\u804c\u5458ID;c=697102424829079552;d=false"
+        }
+      }
+    },
+    "SaveReply": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
+        },
+        "id_number_map": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
+        }
+      },
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

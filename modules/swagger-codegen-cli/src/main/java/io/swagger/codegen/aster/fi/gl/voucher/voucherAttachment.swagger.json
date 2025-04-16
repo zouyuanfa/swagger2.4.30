@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;凭证;凭证附件",
+    "title": "\u8d22\u7a0e\u4e91;\u51ed\u8bc1;\u51ed\u8bc1\u9644\u4ef6",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/voucher_attachment": {
       "get": {
-        "summary": "凭证附件列表;获取凭证附件列表;1.0.8",
+        "summary": "\u51ed\u8bc1\u9644\u4ef6\u5217\u8868;\u83b7\u53d6\u51ed\u8bc1\u9644\u4ef6\u5217\u8868;1.0.8",
         "operationId": "VoucherAttachment_list",
         "responses": {
           "200": {
@@ -37,28 +37,28 @@
         "parameters": [
           {
             "name": "period",
-            "description": "a=期间;b=6;c=202206;d=true.",
+            "description": "a=\u671f\u95f4;b=6;c=202206;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "voucher_status",
-            "description": "a=凭证状态（0:全部，1:未生成凭证，2:已生成凭证，默认0）;b=1;c=0;d=false.",
+            "description": "a=\u51ed\u8bc1\u72b6\u6001\uff080:\u5168\u90e8\uff0c1:\u672a\u751f\u6210\u51ed\u8bc1\uff0c2:\u5df2\u751f\u6210\u51ed\u8bc1\uff0c\u9ed8\u8ba40\uff09;b=1;c=0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "invoice_type",
-            "description": "a=发票类型  （all:全部，special:增值税专用发票，ordinary:增值税普通发票，others:其他，5:普通纸质卷票，7:通用机打发票，8:的士票，9:火车票，10:飞机票，12:机动车发票，13:二手车发票，14:定额发票，15:通行费发票，16:客运汽车发票，17:过路过桥发票，19:购置税发票，20:轮船发票，others:其他，默认all;b=10;c=20;d=false.",
+            "description": "a=\u53d1\u7968\u7c7b\u578b  \uff08all:\u5168\u90e8\uff0cspecial:\u589e\u503c\u7a0e\u4e13\u7528\u53d1\u7968\uff0cordinary:\u589e\u503c\u7a0e\u666e\u901a\u53d1\u7968\uff0cothers:\u5176\u4ed6\uff0c5:\u666e\u901a\u7eb8\u8d28\u5377\u7968\uff0c7:\u901a\u7528\u673a\u6253\u53d1\u7968\uff0c8:\u7684\u58eb\u7968\uff0c9:\u706b\u8f66\u7968\uff0c10:\u98de\u673a\u7968\uff0c12:\u673a\u52a8\u8f66\u53d1\u7968\uff0c13:\u4e8c\u624b\u8f66\u53d1\u7968\uff0c14:\u5b9a\u989d\u53d1\u7968\uff0c15:\u901a\u884c\u8d39\u53d1\u7968\uff0c16:\u5ba2\u8fd0\u6c7d\u8f66\u53d1\u7968\uff0c17:\u8fc7\u8def\u8fc7\u6865\u53d1\u7968\uff0c19:\u8d2d\u7f6e\u7a0e\u53d1\u7968\uff0c20:\u8f6e\u8239\u53d1\u7968\uff0cothers:\u5176\u4ed6\uff0c\u9ed8\u8ba4all;b=10;c=20;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search",
-            "description": "a=可输入凭证字号、金额进行搜索;b=30;c=1;d=false.",
+            "description": "a=\u53ef\u8f93\u5165\u51ed\u8bc1\u5b57\u53f7\u3001\u91d1\u989d\u8fdb\u884c\u641c\u7d22;b=30;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -80,7 +80,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "Status": {
       "type": "object",
@@ -116,43 +116,43 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=凭证附件ID;b=2147483647;c=1;d=false"
+          "title": "a=\u51ed\u8bc1\u9644\u4ef6ID;b=2147483647;c=1;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=凭证附件名称;b=30;c=名称;d=false"
+          "title": "a=\u51ed\u8bc1\u9644\u4ef6\u540d\u79f0;b=30;c=\u540d\u79f0;d=false"
         },
         "file_type": {
           "type": "string",
-          "title": "a=附件类型;b=20;c=application/docx;d=false"
+          "title": "a=\u9644\u4ef6\u7c7b\u578b;b=20;c=application/docx;d=false"
         },
         "voucher_no": {
           "type": "string",
-          "title": "a=凭证字号;b=10;c=记;d=false"
+          "title": "a=\u51ed\u8bc1\u5b57\u53f7;b=10;c=\u8bb0;d=false"
         },
         "voucher_period": {
           "type": "string",
-          "title": "a=凭证期间;b=6;c=202206;d=false"
+          "title": "a=\u51ed\u8bc1\u671f\u95f4;b=6;c=202206;d=false"
         },
         "voucher_id": {
           "type": "string",
-          "title": "a=凭证id;b=2147483647;c=1;d=false"
+          "title": "a=\u51ed\u8bc1id;b=2147483647;c=1;d=false"
         },
         "voucher_amount": {
           "type": "string",
-          "title": "a=凭证金额;b=999999999;c=100;d=false"
+          "title": "a=\u51ed\u8bc1\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "adjust_id": {
           "type": "string",
-          "title": "a=凭证附件整理ID;b=2147483647;c=1;d=false"
+          "title": "a=\u51ed\u8bc1\u9644\u4ef6\u6574\u7406ID;b=2147483647;c=1;d=false"
         },
         "file_path": {
           "type": "string",
-          "title": "a=文件路径;b=1000;c=http://jdy/fileserver;d=false"
+          "title": "a=\u6587\u4ef6\u8def\u5f84;b=1000;c=http://jdy/fileserver;d=false"
         },
         "file_path_thumb_nail": {
           "type": "string",
-          "title": "a=缩略图路径;b=1000;c=http://jdy/fileserver;d=false"
+          "title": "a=\u7f29\u7565\u56fe\u8def\u5f84;b=1000;c=http://jdy/fileserver;d=false"
         }
       }
     }

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "基础资料;业务资料;部门",
+    "title": "\u57fa\u7840\u8d44\u6599;\u4e1a\u52a1\u8d44\u6599;\u90e8\u95e8",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/bd/department": {
       "get": {
-        "summary": "部门列表;获取部门列表;1.0.7",
+        "summary": "\u90e8\u95e8\u5217\u8868;\u83b7\u53d6\u90e8\u95e8\u5217\u8868;1.0.7",
         "operationId": "Department_departmentList",
         "responses": {
           "200": {
@@ -37,49 +37,49 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索-名称;b=2147483647;c=苹果;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22-\u540d\u79f0;b=2147483647;c=\u82f9\u679c;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_start_time",
-            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_end_time",
-            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_start_time",
-            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_end_time",
-            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -97,7 +97,7 @@
           },
           {
             "name": "parent_id",
-            "description": "a=上级部门;b=100;c=[];d=false.",
+            "description": "a=\u4e0a\u7ea7\u90e8\u95e8;b=100;c=[];d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -112,7 +112,7 @@
         ]
       },
       "post": {
-        "summary": "部门保存;部门新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.9",
+        "summary": "\u90e8\u95e8\u4fdd\u5b58;\u90e8\u95e8\u65b0\u589e\u53ca\u4fee\u6539\u3002\u5ba1\u6838\u3001\u5220\u9664\u7b49\u8be6\u89c1[\u901a\u7528\u64cd\u4f5c\u63a5\u53e3](https://open.jdy.com/#/files/api/detail?index=2&categrayId=3cc8ee9a663e11eda5c84b5d383a2b93&id=9e804b8c712511eda0b39f724d124b07);1.0.9",
         "operationId": "Department_departmentSave",
         "responses": {
           "200": {
@@ -145,7 +145,7 @@
     },
     "/openapi/v2/bd/department_detail": {
       "get": {
-        "summary": "部门详情;获取部门详情;1.0.7",
+        "summary": "\u90e8\u95e8\u8be6\u60c5;\u83b7\u53d6\u90e8\u95e8\u8be6\u60c5;1.0.7",
         "operationId": "Department_departmentDetail",
         "responses": {
           "200": {
@@ -164,14 +164,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=\uff08id\u548cnumber\u4e8c\u9009\u4e00\uff09;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=\u7f16\u7801\uff08id\u4e0enumber\u4e8c\u9009\u4e00\uff09;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -193,7 +193,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "DepartmentDetailRes": {
       "type": "object",
@@ -204,43 +204,43 @@
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=名称;d=false"
+          "title": "a=\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=可用状态，1 可用，0 不可用;b=1;c=1;d=false"
+          "title": "a=\u53ef\u7528\u72b6\u6001\uff0c1 \u53ef\u7528\uff0c0 \u4e0d\u53ef\u7528;b=1;c=1;d=false"
         },
         "level": {
           "type": "string",
-          "title": "a=级次;b=99999;c=0：顶级;d=false"
+          "title": "a=\u7ea7\u6b21;b=99999;c=0\uff1a\u9876\u7ea7;d=false"
         },
         "long_number": {
           "type": "string",
-          "title": "a=长编码;b=100;c=001;d=false"
+          "title": "a=\u957f\u7f16\u7801;b=100;c=001;d=false"
         },
         "full_name": {
           "type": "string",
-          "title": "a=长名称;b=100;c=精斗云_动物园_长颈鹿园;d=false"
+          "title": "a=\u957f\u540d\u79f0;b=100;c=\u7cbe\u6597\u4e91_\u52a8\u7269\u56ed_\u957f\u9888\u9e7f\u56ed;d=false"
         },
         "f_comment": {
           "type": "string",
-          "title": "a=备注;b=1000;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;b=1000;c=\u5907\u6ce8;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=上级id;b=2147483647;c=1;d=false"
+          "title": "a=\u4e0a\u7ea7id;b=2147483647;c=1;d=false"
         },
         "parent_name": {
           "type": "string",
-          "title": "a=上级名称;b=20;c=上级名称;d=false"
+          "title": "a=\u4e0a\u7ea7\u540d\u79f0;b=20;c=\u4e0a\u7ea7\u540d\u79f0;d=false"
         },
         "parent_number": {
           "type": "string",
-          "title": "a=上级编码;b=30;c=001;d=false"
+          "title": "a=\u4e0a\u7ea7\u7f16\u7801;b=30;c=001;d=false"
         }
       }
     },
@@ -250,38 +250,38 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "currentPage": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=100;c=1;d=true"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=100;c=1;d=true"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/DepartmentListRes.Row"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         }
       }
     },
@@ -294,43 +294,43 @@
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=名称;d=false"
+          "title": "a=\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         },
         "long_number": {
           "type": "string",
-          "title": "a=长编码;b=100;c=001;d=false"
+          "title": "a=\u957f\u7f16\u7801;b=100;c=001;d=false"
         },
         "full_name": {
           "type": "string",
-          "title": "a=长名称;b=100;c=精斗云_动物园_长颈鹿园;d=false"
+          "title": "a=\u957f\u540d\u79f0;b=100;c=\u7cbe\u6597\u4e91_\u52a8\u7269\u56ed_\u957f\u9888\u9e7f\u56ed;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=可用状态，1 可用，0 不可用;b=1;c=1;d=false"
+          "title": "a=\u53ef\u7528\u72b6\u6001\uff0c1 \u53ef\u7528\uff0c0 \u4e0d\u53ef\u7528;b=1;c=1;d=false"
         },
         "level": {
           "type": "string",
-          "title": "a=级次;b=99999;c=0：顶级;d=false"
+          "title": "a=\u7ea7\u6b21;b=99999;c=0\uff1a\u9876\u7ea7;d=false"
         },
         "is_leaf": {
           "type": "boolean",
-          "title": "a=是否子级;b=1;c=1;d=false"
+          "title": "a=\u662f\u5426\u5b50\u7ea7;b=1;c=1;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=上级id;b=2147483647;c=1;d=false"
+          "title": "a=\u4e0a\u7ea7id;b=2147483647;c=1;d=false"
         },
         "parent_name": {
           "type": "string",
-          "title": "a=上级名称;b=20;c=上级名称;d=false"
+          "title": "a=\u4e0a\u7ea7\u540d\u79f0;b=20;c=\u4e0a\u7ea7\u540d\u79f0;d=false"
         },
         "parent_number": {
           "type": "string",
-          "title": "a=上级编码;b=30;c=001;d=false"
+          "title": "a=\u4e0a\u7ea7\u7f16\u7801;b=30;c=001;d=false"
         }
       }
     },
@@ -339,31 +339,31 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
+          "title": "a=\u65b0\u589e\u4e0d\u586b\uff0c\u66f4\u65b0\u65f6\u5fc5\u586b\uff08id\u4e3a\u7a7a\u65f6\u4ee3\u8868\u65b0\u589e\u5355\u636e\uff09;b=2147483647;c=1;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=true"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=名称;d=true"
+          "title": "a=\u540d\u79f0;b=20;c=\u540d\u79f0;d=true"
         },
         "parent_org_id": {
           "type": "string",
-          "title": "a=上级部门id;b=2147483647;c=1;d=true"
+          "title": "a=\u4e0a\u7ea7\u90e8\u95e8id;b=2147483647;c=1;d=true"
         },
         "parent_org_number": {
           "type": "string",
-          "title": "a=上级部门编码;b=30;c=001;d=false"
+          "title": "a=\u4e0a\u7ea7\u90e8\u95e8\u7f16\u7801;b=30;c=001;d=false"
         },
         "f_comment": {
           "type": "string",
-          "title": "a=描述;b=100;c=描述;d=false"
+          "title": "a=\u63cf\u8ff0;b=100;c=\u63cf\u8ff0;d=false"
         },
         "ignore_warn": {
           "type": "boolean",
-          "title": "a=是否忽略告警信息(如：单价为0)保存，true:忽略，默认false;c=false"
+          "title": "a=\u662f\u5426\u5ffd\u7565\u544a\u8b66\u4fe1\u606f(\u5982\uff1a\u5355\u4ef7\u4e3a0)\u4fdd\u5b58\uff0ctrue:\u5ffd\u7565\uff0c\u9ed8\u8ba4false;c=false"
         }
       }
     },
@@ -375,17 +375,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

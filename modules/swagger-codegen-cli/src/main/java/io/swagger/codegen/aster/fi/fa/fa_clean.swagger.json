@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;资产;资产清理",
+    "title": "\u8d22\u7a0e\u4e91;\u8d44\u4ea7;\u8d44\u4ea7\u6e05\u7406",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_clean": {
       "get": {
-        "summary": "资产清理列表;资产清理单列表;1.0.4",
+        "summary": "\u8d44\u4ea7\u6e05\u7406\u5217\u8868;\u8d44\u4ea7\u6e05\u7406\u5355\u5217\u8868;1.0.4",
         "operationId": "FaClean_list",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "page_size",
-            "description": "a=页大小;c=10.",
+            "description": "a=\u9875\u5927\u5c0f;c=10.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -45,7 +45,7 @@
           },
           {
             "name": "page",
-            "description": "a=当前页;c=1.",
+            "description": "a=\u5f53\u524d\u9875;c=1.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -53,14 +53,14 @@
           },
           {
             "name": "start_bill_date",
-            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "description": "a=\u5f00\u59cb\u65e5\u671f\uff08\u683c\u5f0f\uff1a\u201cyyyy-MM-dd\u201d\uff0c\u4e3a\u7a7a\u8868\u793a\u4e0d\u8fc7\u6ee4\uff09\uff0c\u5355\u636e\u65e5\u671f;c=2022-05-02.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_bill_date",
-            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤），单据日期;c=2022-05-02.",
+            "description": "a=\u7ed3\u675f\u65e5\u671f\uff08\u683c\u5f0f\uff1a\u201cyyyy-MM-dd\u201d\uff0c\u4e3a\u7a7a\u8868\u793a\u4e0d\u8fc7\u6ee4\uff09\uff0c\u5355\u636e\u65e5\u671f;c=2022-05-02.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -73,7 +73,7 @@
     },
     "/openapi/v2/fi/fa_clean_detail": {
       "get": {
-        "summary": "资产清理详情;资产清理单详情;1.0.4",
+        "summary": "\u8d44\u4ea7\u6e05\u7406\u8be6\u60c5;\u8d44\u4ea7\u6e05\u7406\u5355\u8be6\u60c5;1.0.4",
         "operationId": "FaClean_detail",
         "responses": {
           "200": {
@@ -92,7 +92,7 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=单据ID;c=1;d=true.",
+            "description": "a=\u5355\u636eID;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -105,7 +105,7 @@
     },
     "/openapi/v2/fi/fa_clean_save": {
       "post": {
-        "summary": "资产清理保存;资产清理单保存;1.0.5",
+        "summary": "\u8d44\u4ea7\u6e05\u7406\u4fdd\u5b58;\u8d44\u4ea7\u6e05\u7406\u5355\u4fdd\u5b58;1.0.5",
         "operationId": "FaClean_save",
         "responses": {
           "200": {
@@ -147,77 +147,77 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "CleanDetailReply": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=清理单ID;c=100001"
+          "title": "a=\u6e05\u7406\u5355ID;c=100001"
         },
         "period": {
           "type": "string",
-          "title": "a=期间;c=1"
+          "title": "a=\u671f\u95f4;c=1"
         },
         "creator_id": {
           "type": "string",
-          "title": "a=制单人id;c=12345001"
+          "title": "a=\u5236\u5355\u4ebaid;c=12345001"
         },
         "creator_number": {
           "type": "string",
-          "title": "a=制单人编码;c=ZDR0001"
+          "title": "a=\u5236\u5355\u4eba\u7f16\u7801;c=ZDR0001"
         },
         "creator_name": {
           "type": "string",
-          "title": "a= 制单人名称;c=z"
+          "title": "a= \u5236\u5355\u4eba\u540d\u79f0;c=z"
         },
         "clean_type_id": {
           "type": "string",
-          "title": "a=清理方式id;c=0001"
+          "title": "a=\u6e05\u7406\u65b9\u5f0fid;c=0001"
         },
         "clean_type_number": {
           "type": "string",
-          "title": "a=清理方式编码;c=QLFS0001"
+          "title": "a=\u6e05\u7406\u65b9\u5f0f\u7f16\u7801;c=QLFS0001"
         },
         "clean_type_name": {
           "type": "string",
-          "title": "a=清理方式名称;c=清理1"
+          "title": "a=\u6e05\u7406\u65b9\u5f0f\u540d\u79f0;c=\u6e05\u74061"
         },
         "clean_amount": {
           "type": "string",
-          "title": "a=清理费用;c=50"
+          "title": "a=\u6e05\u7406\u8d39\u7528;c=50"
         },
         "salvage_amount": {
           "type": "string",
-          "title": "a=残值收入;c=20"
+          "title": "a=\u6b8b\u503c\u6536\u5165;c=20"
         },
         "clean_reason": {
           "type": "string",
-          "title": "a=清理原因;c=2020-03-10"
+          "title": "a=\u6e05\u7406\u539f\u56e0;c=2020-03-10"
         },
         "voucher_id": {
           "type": "string",
-          "title": "a=凭证id，id值=0标识没有生成凭证，生成凭证不能修改和删除;c=0001"
+          "title": "a=\u51ed\u8bc1id\uff0cid\u503c=0\u6807\u8bc6\u6ca1\u6709\u751f\u6210\u51ed\u8bc1\uff0c\u751f\u6210\u51ed\u8bc1\u4e0d\u80fd\u4fee\u6539\u548c\u5220\u9664;c=0001"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-03-10 16:36:24"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-03-10 16:36:24"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;c=DBCK-20200310-00001"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=DBCK-20200310-00001"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;c=2020-03-10;d=true"
+          "title": "a=\u5355\u636e\u65e5\u671f;c=2020-03-10;d=true"
         },
         "entry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CleanDetailReply.Entry"
           },
-          "title": "a=分录列表;b=100;c=[];d=false"
+          "title": "a=\u5206\u5f55\u5217\u8868;b=100;c=[];d=false"
         }
       }
     },
@@ -226,80 +226,80 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=分录id;c=1"
+          "title": "a=\u5206\u5f55id;c=1"
         },
         "seq": {
           "type": "integer",
           "format": "int32",
-          "title": "a=序号;c=1"
+          "title": "a=\u5e8f\u53f7;c=1"
         },
         "card_id": {
           "type": "string",
-          "title": "a=资产ID;c=1;d=true"
+          "title": "a=\u8d44\u4ea7ID;c=1;d=true"
         },
         "card_number": {
           "type": "string",
-          "title": "a=资产编码;c=1;d=true"
+          "title": "a=\u8d44\u4ea7\u7f16\u7801;c=1;d=true"
         },
         "card_name": {
           "type": "string",
-          "title": "a=资产名称;c=1;d=true"
+          "title": "a=\u8d44\u4ea7\u540d\u79f0;c=1;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=资产名称（同cardid_name）;b=30;c=资产名称001"
+          "title": "a=\u8d44\u4ea7\u540d\u79f0\uff08\u540ccardid_name\uff09;b=30;c=\u8d44\u4ea7\u540d\u79f0001"
         },
         "model": {
           "type": "string",
-          "title": "a=规格型号;b=30;c=规格型号001"
+          "title": "a=\u89c4\u683c\u578b\u53f7;b=30;c=\u89c4\u683c\u578b\u53f7001"
         },
         "group_name": {
           "type": "string",
-          "title": "a=资产类别名称;b=20;c=名称;d=false"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522b\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         },
         "group_id": {
           "type": "string",
-          "title": "a=资产类别id;b=2147483647;c=1;d=false"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522bid;b=2147483647;c=1;d=false"
         },
         "group_number": {
           "type": "string",
-          "title": "a=资产类别编码;b=30;c=001;d=false"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522b\u7f16\u7801;b=30;c=001;d=false"
         },
         "original_value": {
           "type": "string",
-          "title": "a=原值本位币合计金额 ;c=1"
+          "title": "a=\u539f\u503c\u672c\u4f4d\u5e01\u5408\u8ba1\u91d1\u989d ;c=1"
         },
         "qty": {
           "type": "string",
-          "title": "a=数量;c=50"
+          "title": "a=\u6570\u91cf;c=50"
         },
         "acc_um_depr": {
           "type": "string",
-          "title": "a=累计折旧 ;c=1"
+          "title": "a=\u7d2f\u8ba1\u6298\u65e7 ;c=1"
         },
         "net_value": {
           "type": "string",
-          "title": "a=净值 ;c=1"
+          "title": "a=\u51c0\u503c ;c=1"
         },
         "dec_pre_value": {
           "type": "string",
-          "title": "a=减值准备 ;c=1"
+          "title": "a=\u51cf\u503c\u51c6\u5907 ;c=1"
         },
         "clean_qty": {
           "type": "string",
-          "title": "a=清理数量;c=1;d=true"
+          "title": "a=\u6e05\u7406\u6570\u91cf;c=1;d=true"
         },
         "clean_original_value": {
           "type": "string",
-          "title": "a=清理原值;c=1;d=true"
+          "title": "a=\u6e05\u7406\u539f\u503c;c=1;d=true"
         },
         "clean_acc_um_depr": {
           "type": "string",
-          "title": "a=清理累计折旧;c=1;d=true"
+          "title": "a=\u6e05\u7406\u7d2f\u8ba1\u6298\u65e7;c=1;d=true"
         },
         "clean_dec_pre_value": {
           "type": "string",
-          "title": "a=清理减值准备;c=1;d=true"
+          "title": "a=\u6e05\u7406\u51cf\u503c\u51c6\u5907;c=1;d=true"
         }
       }
     },
@@ -309,37 +309,37 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;b=999999;c=1"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CleanListReply.Row"
           },
-          "title": "a=数据行;b=999999;c=[]"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[]"
         }
       },
-      "title": "科目列表查询返回对象"
+      "title": "\u79d1\u76ee\u5217\u8868\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "CleanListReply.Row": {
       "type": "object",
@@ -350,88 +350,88 @@
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;c=001"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=001"
         },
         "creator_id": {
           "type": "string",
-          "title": "a=制单人id;c=12345001"
+          "title": "a=\u5236\u5355\u4ebaid;c=12345001"
         },
         "creator_number": {
           "type": "string",
-          "title": "a=制单人编码;c=ZDR0001"
+          "title": "a=\u5236\u5355\u4eba\u7f16\u7801;c=ZDR0001"
         },
         "creator_name": {
           "type": "string",
-          "title": "a= 制单人名称;c=z"
+          "title": "a= \u5236\u5355\u4eba\u540d\u79f0;c=z"
         },
         "clean_type_id": {
           "type": "string",
-          "title": "a=清理方式id;c=0001"
+          "title": "a=\u6e05\u7406\u65b9\u5f0fid;c=0001"
         },
         "clean_type_number": {
           "type": "string",
-          "title": "a=清理方式编码;c=QLFS0001"
+          "title": "a=\u6e05\u7406\u65b9\u5f0f\u7f16\u7801;c=QLFS0001"
         },
         "clean_type_name": {
           "type": "string",
-          "title": "a=清理方式名称;c=清理1"
+          "title": "a=\u6e05\u7406\u65b9\u5f0f\u540d\u79f0;c=\u6e05\u74061"
         },
         "clean_amount": {
           "type": "string",
-          "title": "a=清理费用;c=50"
+          "title": "a=\u6e05\u7406\u8d39\u7528;c=50"
         },
         "salvage_amount": {
           "type": "string",
-          "title": "a=残值收入;c=20"
+          "title": "a=\u6b8b\u503c\u6536\u5165;c=20"
         },
         "clean_reason": {
           "type": "string",
-          "title": "a=清理原因;c=2020-03-10"
+          "title": "a=\u6e05\u7406\u539f\u56e0;c=2020-03-10"
         },
         "voucher_id": {
           "type": "string",
-          "title": "a=凭证id，id值=0标识没有生成凭证，生成凭证不能修改和删除;c=0001"
+          "title": "a=\u51ed\u8bc1id\uff0cid\u503c=0\u6807\u8bc6\u6ca1\u6709\u751f\u6210\u51ed\u8bc1\uff0c\u751f\u6210\u51ed\u8bc1\u4e0d\u80fd\u4fee\u6539\u548c\u5220\u9664;c=0001"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;c=2019-12-11;d=true"
+          "title": "a=\u5355\u636e\u65e5\u671f;c=2019-12-11;d=true"
         }
       },
-      "title": "科目查询返回对象"
+      "title": "\u79d1\u76ee\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "CleanSaveRequest": {
       "type": "object",
       "properties": {
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;c=DBCK-20200310-00001"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=DBCK-20200310-00001"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;c=2020-03-10;d=true"
+          "title": "a=\u5355\u636e\u65e5\u671f;c=2020-03-10;d=true"
         },
         "clean_type_id": {
           "type": "string",
-          "title": "a=清理方式id;c=0001;d=true"
+          "title": "a=\u6e05\u7406\u65b9\u5f0fid;c=0001;d=true"
         },
         "clean_amount": {
           "type": "string",
-          "title": "a=清理费用;c=50"
+          "title": "a=\u6e05\u7406\u8d39\u7528;c=50"
         },
         "salvage_amount": {
           "type": "string",
-          "title": "a=残值收入;c=20"
+          "title": "a=\u6b8b\u503c\u6536\u5165;c=20"
         },
         "clean_reason": {
           "type": "string",
-          "title": "a=清理原因;c=2020-03-10"
+          "title": "a=\u6e05\u7406\u539f\u56e0;c=2020-03-10"
         },
         "entry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/CleanSaveRequest.Entry"
           },
-          "title": "a=分录列表;b=100;c=[];d=true"
+          "title": "a=\u5206\u5f55\u5217\u8868;b=100;c=[];d=true"
         }
       }
     },
@@ -440,11 +440,11 @@
       "properties": {
         "card_id": {
           "type": "string",
-          "title": "a=资产ID;c=1;d=true"
+          "title": "a=\u8d44\u4ea7ID;c=1;d=true"
         },
         "clean_qty": {
           "type": "string",
-          "title": "a=清理数量;c=1;d=true"
+          "title": "a=\u6e05\u7406\u6570\u91cf;c=1;d=true"
         }
       }
     },
@@ -456,17 +456,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

@@ -1,0 +1,7 @@
+{
+  "library": "urllib3",
+  "packageName": "kingdee_xcsdk",
+  "projectName": "kingdee-xw-openapi",
+  "packageVersion": "1.0.0",
+  "hideGenerationTimestamp": true
+}

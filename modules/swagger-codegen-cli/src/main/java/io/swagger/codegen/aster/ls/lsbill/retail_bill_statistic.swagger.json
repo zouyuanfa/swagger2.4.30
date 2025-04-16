@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;门店管理;零售单",
+    "title": "\u96f6\u552e\u4e91;\u95e8\u5e97\u7ba1\u7406;\u96f6\u552e\u5355",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/retail_bill_statistic": {
       "get": {
-        "summary": "零售单汇总查询;零售单汇总查询;1.0.11",
+        "summary": "\u96f6\u552e\u5355\u6c47\u603b\u67e5\u8be2;\u96f6\u552e\u5355\u6c47\u603b\u67e5\u8be2;1.0.11",
         "operationId": "Rbs_list",
         "responses": {
           "200": {
@@ -37,21 +37,21 @@
         "parameters": [
           {
             "name": "start_time",
-            "description": "a=开始时间 ;c=2022-01-01 ;d=true.",
+            "description": "a=\u5f00\u59cb\u65f6\u95f4 ;c=2022-01-01 ;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_time",
-            "description": "a=结束时间 ;c=2023-01-01 ;d=true.",
+            "description": "a=\u7ed3\u675f\u65f6\u95f4 ;c=2023-01-01 ;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "biz_types",
-            "description": "a=默认查询63,64。业务类型 60.充值61.退充62.销售63.退货64.充次65.退充次66.还款67.到期; c=[] ; d=false.",
+            "description": "a=\u9ed8\u8ba4\u67e5\u8be263,64\u3002\u4e1a\u52a1\u7c7b\u578b 60.\u5145\u503c61.\u9000\u514562.\u9500\u552e63.\u9000\u8d2764.\u5145\u6b2165.\u9000\u5145\u6b2166.\u8fd8\u6b3e67.\u5230\u671f; c=[] ; d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -62,7 +62,7 @@
           },
           {
             "name": "store_ids",
-            "description": "a=门店id; c=[] ; d=false.",
+            "description": "a=\u95e8\u5e97id; c=[] ; d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -88,31 +88,31 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "RbsRes": {
       "type": "object",
       "properties": {
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "bal_amount_total": {
           "type": "number",
           "format": "double",
-          "title": "a=价税合计，所有门店汇总;c=100;d=false"
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1\uff0c\u6240\u6709\u95e8\u5e97\u6c47\u603b;c=100;d=false"
         },
         "amount_total": {
           "type": "number",
           "format": "double",
-          "title": "a=价税合计，所有门店汇总;c=100;d=false"
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1\uff0c\u6240\u6709\u95e8\u5e97\u6c47\u603b;c=100;d=false"
         },
         "store_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/StoreList"
           },
-          "title": "a=门店列表; c=[]"
+          "title": "a=\u95e8\u5e97\u5217\u8868; c=[]"
         }
       }
     },
@@ -139,21 +139,21 @@
       "properties": {
         "store_id": {
           "type": "string",
-          "title": "a=门店ID;c=1;d=true"
+          "title": "a=\u95e8\u5e97ID;c=1;d=true"
         },
         "store_name": {
           "type": "string",
-          "title": "a=门店名;c=门店A;d=false"
+          "title": "a=\u95e8\u5e97\u540d;c=\u95e8\u5e97A;d=false"
         },
         "bal_amount": {
           "type": "number",
           "format": "double",
-          "title": "a=充值金额;c=001;d=true"
+          "title": "a=\u5145\u503c\u91d1\u989d;c=001;d=true"
         },
         "amount": {
           "type": "number",
           "format": "double",
-          "title": "a=折后金额;c=20"
+          "title": "a=\u6298\u540e\u91d1\u989d;c=20"
         }
       }
     }

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "审批流",
+    "title": "\u5ba1\u6279\u6d41",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/wf/approval_consent": {
       "post": {
-        "summary": "同意驳回接口;同意驳回接口;1.0.2",
+        "summary": "\u540c\u610f\u9a73\u56de\u63a5\u53e3;\u540c\u610f\u9a73\u56de\u63a5\u53e3;1.0.2",
         "operationId": "approvalFlow_approvalConsent",
         "responses": {
           "200": {
@@ -51,7 +51,7 @@
     },
     "/openapi/v2/wf/get_approval_record": {
       "get": {
-        "summary": "查询审批记录;查询审批记录;1.0.2",
+        "summary": "\u67e5\u8be2\u5ba1\u6279\u8bb0\u5f55;\u67e5\u8be2\u5ba1\u6279\u8bb0\u5f55;1.0.2",
         "operationId": "approvalFlow_approvalRecordList",
         "responses": {
           "200": {
@@ -70,7 +70,7 @@
         "parameters": [
           {
             "name": "business_key",
-            "description": "a=单据id;c=1930368967571124224;d=true;.",
+            "description": "a=\u5355\u636eid;c=1930368967571124224;d=true;.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -83,7 +83,7 @@
     },
     "/openapi/v2/wf/withdraw": {
       "post": {
-        "summary": "审批流撤回;审批流申请人撤回接口;1.0.3",
+        "summary": "\u5ba1\u6279\u6d41\u64a4\u56de;\u5ba1\u6279\u6d41\u7533\u8bf7\u4eba\u64a4\u56de\u63a5\u53e3;1.0.3",
         "operationId": "approvalFlow_Withdraw",
         "responses": {
           "200": {
@@ -125,7 +125,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "ApprovalConsentReq": {
       "type": "object",
@@ -135,26 +135,26 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id;c=[1930368967571124224];d=true;"
+          "title": "a=\u5355\u636eid;c=[1930368967571124224];d=true;"
         },
         "op_type": {
           "type": "string",
-          "title": "a=操作类型：Consent 同意；Reject 驳回;c=Consent;d=true;"
+          "title": "a=\u64cd\u4f5c\u7c7b\u578b\uff1aConsent \u540c\u610f\uff1bReject \u9a73\u56de;c=Consent;d=true;"
         },
         "opinion": {
           "type": "string",
-          "title": "a=同意或驳回意见;c=这里是你的意见;d=true;"
+          "title": "a=\u540c\u610f\u6216\u9a73\u56de\u610f\u89c1;c=\u8fd9\u91cc\u662f\u4f60\u7684\u610f\u89c1;d=true;"
         },
         "bill_type": {
           "type": "string",
-          "title": "a=单据类型 (审核时规则校验必传);c=sal_bill_outbound;d=true;"
+          "title": "a=\u5355\u636e\u7c7b\u578b (\u5ba1\u6838\u65f6\u89c4\u5219\u6821\u9a8c\u5fc5\u4f20);c=sal_bill_outbound;d=true;"
         },
         "attachments_url": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/AttachmentsUrl"
           },
-          "title": "a=附件;c=[];"
+          "title": "a=\u9644\u4ef6;c=[];"
         }
       }
     },
@@ -163,7 +163,7 @@
       "properties": {
         "op_result": {
           "type": "string",
-          "title": "a=操作结果：executed,代表操作已执行，因为此为异步操作，具体的操作结果需要主动查询或重新刷新单据（在单据详情中自动加载最新状态）;c=executed"
+          "title": "a=\u64cd\u4f5c\u7ed3\u679c\uff1aexecuted,\u4ee3\u8868\u64cd\u4f5c\u5df2\u6267\u884c\uff0c\u56e0\u4e3a\u6b64\u4e3a\u5f02\u6b65\u64cd\u4f5c\uff0c\u5177\u4f53\u7684\u64cd\u4f5c\u7ed3\u679c\u9700\u8981\u4e3b\u52a8\u67e5\u8be2\u6216\u91cd\u65b0\u5237\u65b0\u5355\u636e\uff08\u5728\u5355\u636e\u8be6\u60c5\u4e2d\u81ea\u52a8\u52a0\u8f7d\u6700\u65b0\u72b6\u6001\uff09;c=executed"
         }
       }
     },
@@ -175,7 +175,7 @@
           "items": {
             "$ref": "#/definitions/Row"
           },
-          "title": "a=数据行;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;c=[];d=false"
         }
       }
     },
@@ -184,15 +184,15 @@
       "properties": {
         "panel": {
           "type": "string",
-          "title": "a=附件类型，默认填写attachmentpanelap;c=attachmentpanelap"
+          "title": "a=\u9644\u4ef6\u7c7b\u578b\uff0c\u9ed8\u8ba4\u586b\u5199attachmentpanelap;c=attachmentpanelap"
         },
         "url": {
           "type": "string",
-          "title": "a=服务器返回的附件地址;c=www.baidu.com"
+          "title": "a=\u670d\u52a1\u5668\u8fd4\u56de\u7684\u9644\u4ef6\u5730\u5740;c=www.baidu.com"
         },
         "name": {
           "type": "string",
-          "title": "a=文件名;c=www.baidu.com"
+          "title": "a=\u6587\u4ef6\u540d;c=www.baidu.com"
         }
       }
     },
@@ -201,83 +201,83 @@
       "properties": {
         "activity_id": {
           "type": "string",
-          "title": "a=节点ID;c=Proc_sal_bill_order_audit_1_UserTask3;"
+          "title": "a=\u8282\u70b9ID;c=Proc_sal_bill_order_audit_1_UserTask3;"
         },
         "activity_name": {
           "type": "string",
-          "title": "a=节点名称;c=submit;"
+          "title": "a=\u8282\u70b9\u540d\u79f0;c=submit;"
         },
         "assignee": {
           "type": "string",
-          "title": "a=处理人及职务信息;c=内网接口测试;"
+          "title": "a=\u5904\u7406\u4eba\u53ca\u804c\u52a1\u4fe1\u606f;c=\u5185\u7f51\u63a5\u53e3\u6d4b\u8bd5;"
         },
         "avatar": {
           "type": "string",
-          "title": "a=处理人头像;c=www.baidu.com.png;"
+          "title": "a=\u5904\u7406\u4eba\u5934\u50cf;c=www.baidu.com.png;"
         },
         "biz_identify_key": {
           "type": "string",
-          "title": "a=业务标识，用于打印或者判断是属于某个节点;c=123;"
+          "title": "a=\u4e1a\u52a1\u6807\u8bc6\uff0c\u7528\u4e8e\u6253\u5370\u6216\u8005\u5224\u65ad\u662f\u5c5e\u4e8e\u67d0\u4e2a\u8282\u70b9;c=123;"
         },
         "coordinate": {
           "type": "boolean",
-          "title": "a=是否协办;c=false;"
+          "title": "a=\u662f\u5426\u534f\u529e;c=false;"
         },
         "current_user_id": {
           "type": "string",
-          "title": "a=当前用户id;c=4930398;"
+          "title": "a=\u5f53\u524d\u7528\u6237id;c=4930398;"
         },
         "decision_type": {
           "type": "string",
-          "title": "a=决策项;c=\"\";"
+          "title": "a=\u51b3\u7b56\u9879;c=\"\";"
         },
         "group": {
           "type": "string",
-          "title": "a=所属分组id;c=1930369023783063552;"
+          "title": "a=\u6240\u5c5e\u5206\u7ec4id;c=1930369023783063552;"
         },
         "message": {
           "type": "string",
-          "title": "a=审批意见;c=提交;"
+          "title": "a=\u5ba1\u6279\u610f\u89c1;c=\u63d0\u4ea4;"
         },
         "open_id": {
           "type": "string",
-          "title": "a=审批人openId;c=一级审批;"
+          "title": "a=\u5ba1\u6279\u4ebaopenId;c=\u4e00\u7ea7\u5ba1\u6279;"
         },
         "result": {
           "type": "string",
-          "title": "a=审批结果，取决策名称;c=提交;"
+          "title": "a=\u5ba1\u6279\u7ed3\u679c\uff0c\u53d6\u51b3\u7b56\u540d\u79f0;c=\u63d0\u4ea4;"
         },
         "sub_activity_name": {
           "type": "string",
-          "title": "a=副标题;c=销售订单提交;"
+          "title": "a=\u526f\u6807\u9898;c=\u9500\u552e\u8ba2\u5355\u63d0\u4ea4;"
         },
         "task_id": {
           "type": "string",
-          "title": "a=任务id;c=1930369023783063552;"
+          "title": "a=\u4efb\u52a1id;c=1930369023783063552;"
         },
         "time": {
           "type": "string",
-          "title": "a=处理时间;c=2024-04-17 09:38:40;"
+          "title": "a=\u5904\u7406\u65f6\u95f4;c=2024-04-17 09:38:40;"
         },
         "user_id": {
           "type": "string",
-          "title": "a=用户id;c=4930398;"
+          "title": "a=\u7528\u6237id;c=4930398;"
         },
         "point_dy_participant": {
           "type": "string",
-          "title": "a=当前节点审批人指定的下一级节点参与人名称（指定了下一级节点参与人时才会出现此字段）;c=一级审批;"
+          "title": "a=\u5f53\u524d\u8282\u70b9\u5ba1\u6279\u4eba\u6307\u5b9a\u7684\u4e0b\u4e00\u7ea7\u8282\u70b9\u53c2\u4e0e\u4eba\u540d\u79f0\uff08\u6307\u5b9a\u4e86\u4e0b\u4e00\u7ea7\u8282\u70b9\u53c2\u4e0e\u4eba\u65f6\u624d\u4f1a\u51fa\u73b0\u6b64\u5b57\u6bb5\uff09;c=\u4e00\u7ea7\u5ba1\u6279;"
         },
         "group_decision_type": {
           "type": "string",
-          "title": "a=分组通过决策项，和节点的决策项保持一致，当前节点的groupDecisionType=wait，表示等待处理或者审批;c=submit;"
+          "title": "a=\u5206\u7ec4\u901a\u8fc7\u51b3\u7b56\u9879\uff0c\u548c\u8282\u70b9\u7684\u51b3\u7b56\u9879\u4fdd\u6301\u4e00\u81f4\uff0c\u5f53\u524d\u8282\u70b9\u7684groupDecisionType=wait\uff0c\u8868\u793a\u7b49\u5f85\u5904\u7406\u6216\u8005\u5ba1\u6279;c=submit;"
         },
         "entity_number": {
           "type": "string",
-          "title": "a=单据编码;c=sal_bill_order;"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=sal_bill_order;"
         },
         "business_key": {
           "type": "string",
-          "title": "a=单据id;c=1930368967571124224;d=true"
+          "title": "a=\u5355\u636eid;c=1930368967571124224;d=true"
         }
       }
     },
@@ -286,30 +286,30 @@
       "properties": {
         "business_key": {
           "type": "string",
-          "title": "a=分组标识，一个任务可以添加多个审批意见，通过group进行分组，审批节点group值为任务id，会审groupid为父任务id;c=1930369023783063552;"
+          "title": "a=\u5206\u7ec4\u6807\u8bc6\uff0c\u4e00\u4e2a\u4efb\u52a1\u53ef\u4ee5\u6dfb\u52a0\u591a\u4e2a\u5ba1\u6279\u610f\u89c1\uff0c\u901a\u8fc7group\u8fdb\u884c\u5206\u7ec4\uff0c\u5ba1\u6279\u8282\u70b9group\u503c\u4e3a\u4efb\u52a1id\uff0c\u4f1a\u5ba1groupid\u4e3a\u7236\u4efb\u52a1id;c=1930369023783063552;"
         },
         "group_decision_type": {
           "type": "string",
-          "title": "a=分组通过决策项，和节点的决策项保持一致，当前节点的groupDecisionType=wait，表示等待处理或者审批;c=submit;"
+          "title": "a=\u5206\u7ec4\u901a\u8fc7\u51b3\u7b56\u9879\uff0c\u548c\u8282\u70b9\u7684\u51b3\u7b56\u9879\u4fdd\u6301\u4e00\u81f4\uff0c\u5f53\u524d\u8282\u70b9\u7684groupDecisionType=wait\uff0c\u8868\u793a\u7b49\u5f85\u5904\u7406\u6216\u8005\u5ba1\u6279;c=submit;"
         },
         "group_type": {
           "type": "string",
-          "title": "a=会签节点时=huiqian 其余节点为空，会签目前默认是一票否决;c=1930368967571124224;"
+          "title": "a=\u4f1a\u7b7e\u8282\u70b9\u65f6=huiqian \u5176\u4f59\u8282\u70b9\u4e3a\u7a7a\uff0c\u4f1a\u7b7e\u76ee\u524d\u9ed8\u8ba4\u662f\u4e00\u7968\u5426\u51b3;c=1930368967571124224;"
         },
         "through_rule": {
           "type": "string",
-          "title": "a=通过规则，审批节点的通过规则默认为一票通过，会审由各个业务模式决定;c=通过规则：任一人审批;"
+          "title": "a=\u901a\u8fc7\u89c4\u5219\uff0c\u5ba1\u6279\u8282\u70b9\u7684\u901a\u8fc7\u89c4\u5219\u9ed8\u8ba4\u4e3a\u4e00\u7968\u901a\u8fc7\uff0c\u4f1a\u5ba1\u7531\u5404\u4e2a\u4e1a\u52a1\u6a21\u5f0f\u51b3\u5b9a;c=\u901a\u8fc7\u89c4\u5219\uff1a\u4efb\u4e00\u4eba\u5ba1\u6279;"
         },
         "activity_name": {
           "type": "string",
-          "title": "a=节点名称;c=一级审批;"
+          "title": "a=\u8282\u70b9\u540d\u79f0;c=\u4e00\u7ea7\u5ba1\u6279;"
         },
         "children": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Children"
           },
-          "title": "a=每个审批人具体信息;c=[];"
+          "title": "a=\u6bcf\u4e2a\u5ba1\u6279\u4eba\u5177\u4f53\u4fe1\u606f;c=[];"
         }
       }
     },
@@ -336,11 +336,11 @@
       "properties": {
         "business_key": {
           "type": "string",
-          "title": "a=业务单据Id集合;b=746967221233804288;c=1;d=true"
+          "title": "a=\u4e1a\u52a1\u5355\u636eId\u96c6\u5408;b=746967221233804288;c=1;d=true"
         },
         "entity_number": {
           "type": "string",
-          "title": "a=单据或基础资料类型，参照《基础资料及单据类型》;b=pur_bill_order;c=1;d=true"
+          "title": "a=\u5355\u636e\u6216\u57fa\u7840\u8d44\u6599\u7c7b\u578b\uff0c\u53c2\u7167\u300a\u57fa\u7840\u8d44\u6599\u53ca\u5355\u636e\u7c7b\u578b\u300b;b=pur_bill_order;c=1;d=true"
         }
       }
     },
@@ -349,7 +349,7 @@
       "properties": {
         "result": {
           "type": "string",
-          "title": "a=操作结果：executed，代表操作已执行，因为此为异步操作，具体的操作结果需要主动查询或重新刷新单据（在单据详情中自动加载最新状态）;b=executed;c=1"
+          "title": "a=\u64cd\u4f5c\u7ed3\u679c\uff1aexecuted\uff0c\u4ee3\u8868\u64cd\u4f5c\u5df2\u6267\u884c\uff0c\u56e0\u4e3a\u6b64\u4e3a\u5f02\u6b65\u64cd\u4f5c\uff0c\u5177\u4f53\u7684\u64cd\u4f5c\u7ed3\u679c\u9700\u8981\u4e3b\u52a8\u67e5\u8be2\u6216\u91cd\u65b0\u5237\u65b0\u5355\u636e\uff08\u5728\u5355\u636e\u8be6\u60c5\u4e2d\u81ea\u52a8\u52a0\u8f7d\u6700\u65b0\u72b6\u6001\uff09;b=executed;c=1"
         }
       }
     }

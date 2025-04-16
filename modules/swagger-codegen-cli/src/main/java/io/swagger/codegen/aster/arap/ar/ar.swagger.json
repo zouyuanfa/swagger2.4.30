@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "进销存云;往来报表",
+    "title": "\u8fdb\u9500\u5b58\u4e91;\u5f80\u6765\u62a5\u8868",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/arap/ar_order_statement_report": {
       "get": {
-        "summary": "应收账款明细表;获取应收账款明细表;1.0.10",
+        "summary": "\u5e94\u6536\u8d26\u6b3e\u660e\u7ec6\u8868;\u83b7\u53d6\u5e94\u6536\u8d26\u6b3e\u660e\u7ec6\u8868;1.0.10",
         "operationId": "Ar_arOrderStatementReport",
         "responses": {
           "200": {
@@ -37,35 +37,35 @@
         "parameters": [
           {
             "name": "start_date",
-            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
+            "description": "a=\u5f00\u59cb\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
+            "description": "a=\u7ed3\u675f\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "customer_id",
-            "description": "a=客户id;b=2147483647;c=1;d=true.",
+            "description": "a=\u5ba2\u6237id;b=2147483647;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -78,7 +78,7 @@
     },
     "/openapi/v2/arap/ar_report": {
       "get": {
-        "summary": "客户应收统计表;获取客户应收统计表;1.0.11",
+        "summary": "\u5ba2\u6237\u5e94\u6536\u7edf\u8ba1\u8868;\u83b7\u53d6\u5ba2\u6237\u5e94\u6536\u7edf\u8ba1\u8868;1.0.11",
         "operationId": "Ar_arReport",
         "responses": {
           "200": {
@@ -97,42 +97,42 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索，支持供应商名称，联系人，联系方式;b=30;c=001;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22\uff0c\u652f\u6301\u4f9b\u5e94\u5546\u540d\u79f0\uff0c\u8054\u7cfb\u4eba\uff0c\u8054\u7cfb\u65b9\u5f0f;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_date",
-            "description": "a=开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
+            "description": "a=\u5f00\u59cb\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=true.",
+            "description": "a=\u7ed3\u675f\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "customer_ids",
-            "description": "a=客户id;b=100;c=[];d=false.",
+            "description": "a=\u5ba2\u6237id;b=100;c=[];d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -143,7 +143,7 @@
           },
           {
             "name": "customer_group_ids",
-            "description": "a=客户类别id;b=100;c=[];d=false.",
+            "description": "a=\u5ba2\u6237\u7c7b\u522bid;b=100;c=[];d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -154,7 +154,7 @@
           },
           {
             "name": "emp_ids",
-            "description": "a=业务员id;b=100;c=[];d=false.",
+            "description": "a=\u4e1a\u52a1\u5458id;b=100;c=[];d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -165,7 +165,7 @@
           },
           {
             "name": "dept_ids",
-            "description": "a=部门id;b=100;c=[];d=false.",
+            "description": "a=\u90e8\u95e8id;b=100;c=[];d=false.",
             "in": "query",
             "required": false,
             "type": "array",
@@ -176,35 +176,35 @@
           },
           {
             "name": "summary_type",
-            "description": "a=汇总方式：客户item、业务员emp、部门dept、客户分类group;b=10;c=item;d=false.",
+            "description": "a=\u6c47\u603b\u65b9\u5f0f\uff1a\u5ba2\u6237item\u3001\u4e1a\u52a1\u5458emp\u3001\u90e8\u95e8dept\u3001\u5ba2\u6237\u5206\u7c7bgroup;b=10;c=item;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "include_uncheck",
-            "description": "a=是否包括未审核;b=1;c=true;d=false.",
+            "description": "a=\u662f\u5426\u5305\u62ec\u672a\u5ba1\u6838;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "not_view_zero",
-            "description": "a=是否不显示余额为0;b=1;c=true;d=false.",
+            "description": "a=\u662f\u5426\u4e0d\u663e\u793a\u4f59\u989d\u4e3a0;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "not_view_no_happen",
-            "description": "a=是否不显示无发生额;b=1;c=true;d=false.",
+            "description": "a=\u662f\u5426\u4e0d\u663e\u793a\u65e0\u53d1\u751f\u989d;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "include_oth",
-            "description": "a=是否包括其他应收;b=1;c=true;d=false.",
+            "description": "a=\u662f\u5426\u5305\u62ec\u5176\u4ed6\u5e94\u6536;b=1;c=true;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -226,7 +226,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "ArOrderStatementReportReply": {
       "type": "object",
@@ -234,49 +234,49 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ArOrderStatementReportReply.Row"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         },
         "total_amount": {
           "type": "string",
-          "title": "a=当期余额;b=999999999;c=100;d=false"
+          "title": "a=\u5f53\u671f\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "total_amount_for": {
           "type": "string",
-          "title": "a=应付合计;b=999999999;c=100;d=false"
+          "title": "a=\u5e94\u4ed8\u5408\u8ba1;b=999999999;c=100;d=false"
         },
         "total_rp_amount_for": {
           "type": "string",
-          "title": "a=已付合计;b=999999999;c=100;d=false"
+          "title": "a=\u5df2\u4ed8\u5408\u8ba1;b=999999999;c=100;d=false"
         },
         "pre_total_amount": {
           "type": "string",
-          "title": "a=上期余额;b=999999999;c=100;d=false"
+          "title": "a=\u4e0a\u671f\u4f59\u989d;b=999999999;c=100;d=false"
         }
       }
     },
@@ -285,79 +285,79 @@
       "properties": {
         "customer_name": {
           "type": "string",
-          "title": "a=客户名称;b=20;c=张三;d=false"
+          "title": "a=\u5ba2\u6237\u540d\u79f0;b=20;c=\u5f20\u4e09;d=false"
         },
         "pre_amount_for": {
           "type": "string",
-          "title": "a=预收金额;b=999999999;c=100;d=false"
+          "title": "a=\u9884\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "scm_amount_for": {
           "type": "string",
-          "title": "a=销售应收金额;b=999999999;c=100;d=false"
+          "title": "a=\u9500\u552e\u5e94\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "oth_amount_for": {
           "type": "string",
-          "title": "a=其他应收金额;b=999999999;c=100;d=false"
+          "title": "a=\u5176\u4ed6\u5e94\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "amount_for": {
           "type": "string",
-          "title": "a=应收金额;b=999999999;c=100;d=false"
+          "title": "a=\u5e94\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "rp_scm_amount_for": {
           "type": "string",
-          "title": "a=收销售款;b=999999999;c=100;d=false"
+          "title": "a=\u6536\u9500\u552e\u6b3e;b=999999999;c=100;d=false"
         },
         "rp_oth_amount_for": {
           "type": "string",
-          "title": "a=收其他应收款;b=999999999;c=100;d=false"
+          "title": "a=\u6536\u5176\u4ed6\u5e94\u6536\u6b3e;b=999999999;c=100;d=false"
         },
         "rp_amount_for": {
           "type": "string",
-          "title": "a=收款合计;b=999999999;c=100;d=false"
+          "title": "a=\u6536\u6b3e\u5408\u8ba1;b=999999999;c=100;d=false"
         },
         "pre_balance_for": {
           "type": "string",
-          "title": "a=预收款余额;b=999999999;c=100;d=false"
+          "title": "a=\u9884\u6536\u6b3e\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "scm_balance_for": {
           "type": "string",
-          "title": "a=销售应收余额;b=999999999;c=100;d=false"
+          "title": "a=\u9500\u552e\u5e94\u6536\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "oth_balance_for": {
           "type": "string",
-          "title": "a=其他应收余额;b=999999999;c=100;d=false"
+          "title": "a=\u5176\u4ed6\u5e94\u6536\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "balance_for": {
           "type": "string",
-          "title": "a=余额;b=999999999;c=100;d=false"
+          "title": "a=\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;b=10;c=2020-12-03;d=false"
+          "title": "a=\u5355\u636e\u65e5\u671f;b=10;c=2020-12-03;d=false"
         },
         "bill_type": {
           "type": "string",
-          "title": "a=单据类型编码：ar_creditbill – 付款；ar_precreditbill – 预付款；ar_precreditretbill – 退款；sal_bill_outbound – 收货；sal_bill_inbound – 退货；ar_othercreditbill – 欠款；ar_othercreditretbill – 应退；ar_othercreditbill\u0026amp;pay – 付款；ar_othercreditretbill\u0026amp;pay – 退款；arap_verifybill – 代付；sal_bill_outbound\u0026amp;ar_creditbill – 付款；sal_bill_inbound\u0026amp;ar_creditbill – 退款;b=999999999;c=100;d=false"
+          "title": "a=\u5355\u636e\u7c7b\u578b\u7f16\u7801\uff1aar_creditbill \u2013 \u4ed8\u6b3e\uff1bar_precreditbill \u2013 \u9884\u4ed8\u6b3e\uff1bar_precreditretbill \u2013 \u9000\u6b3e\uff1bsal_bill_outbound \u2013 \u6536\u8d27\uff1bsal_bill_inbound \u2013 \u9000\u8d27\uff1bar_othercreditbill \u2013 \u6b20\u6b3e\uff1bar_othercreditretbill \u2013 \u5e94\u9000\uff1bar_othercreditbill&amp;pay \u2013 \u4ed8\u6b3e\uff1bar_othercreditretbill&amp;pay \u2013 \u9000\u6b3e\uff1barap_verifybill \u2013 \u4ee3\u4ed8\uff1bsal_bill_outbound&amp;ar_creditbill \u2013 \u4ed8\u6b3e\uff1bsal_bill_inbound&amp;ar_creditbill \u2013 \u9000\u6b3e;b=999999999;c=100;d=false"
         },
         "bill_type_name": {
           "type": "string",
-          "title": "a=单据类型名称;b=20;c=100;d=false"
+          "title": "a=\u5355\u636e\u7c7b\u578b\u540d\u79f0;b=20;c=100;d=false"
         },
         "id": {
           "type": "string",
-          "title": "a=单据id;b=2147483647;c=1;d=false"
+          "title": "a=\u5355\u636eid;b=2147483647;c=1;d=false"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;b=30;c=001;d=false"
+          "title": "a=\u5355\u636e\u7f16\u7801;b=30;c=001;d=false"
         },
         "amount": {
           "type": "string",
-          "title": "a=单据金额;b=999999999;c=100;d=false"
+          "title": "a=\u5355\u636e\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "type_name": {
           "type": "string",
-          "title": "a=款项类型;b=20;c=预付款;d=false"
+          "title": "a=\u6b3e\u9879\u7c7b\u578b;b=20;c=\u9884\u4ed8\u6b3e;d=false"
         }
       }
     },
@@ -367,33 +367,33 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ArReportReply.Row"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         }
       }
     },
@@ -402,55 +402,55 @@
       "properties": {
         "customer_id": {
           "type": "string",
-          "title": "a=客户id;b=2147483647;c=1;d=false"
+          "title": "a=\u5ba2\u6237id;b=2147483647;c=1;d=false"
         },
         "customer_name": {
           "type": "string",
-          "title": "a=客户名称;b=20;c=张三;d=false"
+          "title": "a=\u5ba2\u6237\u540d\u79f0;b=20;c=\u5f20\u4e09;d=false"
         },
         "pre_amount_for": {
           "type": "string",
-          "title": "a=预收金额;b=999999999;c=100;d=false"
+          "title": "a=\u9884\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "scm_amount_for": {
           "type": "string",
-          "title": "a=销售应收金额;b=999999999;c=100;d=false"
+          "title": "a=\u9500\u552e\u5e94\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "oth_amount_for": {
           "type": "string",
-          "title": "a=其他应收金额;b=999999999;c=100;d=false"
+          "title": "a=\u5176\u4ed6\u5e94\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "amount_for": {
           "type": "string",
-          "title": "a=应收金额;b=999999999;c=100;d=false"
+          "title": "a=\u5e94\u6536\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "rp_scm_amount_for": {
           "type": "string",
-          "title": "a=收销售款;b=999999999;c=100;d=false"
+          "title": "a=\u6536\u9500\u552e\u6b3e;b=999999999;c=100;d=false"
         },
         "rp_oth_amount_for": {
           "type": "string",
-          "title": "a=收其他应收款;b=999999999;c=100;d=false"
+          "title": "a=\u6536\u5176\u4ed6\u5e94\u6536\u6b3e;b=999999999;c=100;d=false"
         },
         "rp_amount_for": {
           "type": "string",
-          "title": "a=收款合计;b=999999999;c=100;d=false"
+          "title": "a=\u6536\u6b3e\u5408\u8ba1;b=999999999;c=100;d=false"
         },
         "pre_balance_for": {
           "type": "string",
-          "title": "a=预收款余额;b=999999999;c=100;d=false"
+          "title": "a=\u9884\u6536\u6b3e\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "scm_balance_for": {
           "type": "string",
-          "title": "a=销售应收余额;b=999999999;c=100;d=false"
+          "title": "a=\u9500\u552e\u5e94\u6536\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "oth_balance_for": {
           "type": "string",
-          "title": "a=其他应收余额;b=999999999;c=100;d=false"
+          "title": "a=\u5176\u4ed6\u5e94\u6536\u4f59\u989d;b=999999999;c=100;d=false"
         },
         "balance_for": {
           "type": "string",
-          "title": "a=余额;b=999999999;c=100;d=false"
+          "title": "a=\u4f59\u989d;b=999999999;c=100;d=false"
         }
       }
     },

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;会员资料",
+    "title": "\u96f6\u552e\u4e91;\u4f1a\u5458\u8d44\u6599",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/member": {
       "get": {
-        "summary": "会员列表;会员列表;1.0.10",
+        "summary": "\u4f1a\u5458\u5217\u8868;\u4f1a\u5458\u5217\u8868;1.0.10",
         "operationId": "Member_list",
         "responses": {
           "200": {
@@ -37,70 +37,70 @@
         "parameters": [
           {
             "name": "page",
-            "description": "a=当前页，从1开始;c=001;d=true.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u4ece1\u5f00\u59cb;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数;c=001;d=true.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_modified",
-            "description": "a=开始修改时间;c=2022-01-01;d=false.",
+            "description": "a=\u5f00\u59cb\u4fee\u6539\u65f6\u95f4;c=2022-01-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_modified",
-            "description": "a=结束修改时间;c=2022-01-01;d=false.",
+            "description": "a=\u7ed3\u675f\u4fee\u6539\u65f6\u95f4;c=2022-01-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "enable",
-            "description": "a=状态，0-禁用，1-可用;c=1;d=false.",
+            "description": "a=\u72b6\u6001\uff0c0-\u7981\u7528\uff0c1-\u53ef\u7528;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码;c=1;d=false.",
+            "description": "a=\u7f16\u7801;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "name",
-            "description": "a=名称;c=名称;d=false.",
+            "description": "a=\u540d\u79f0;c=\u540d\u79f0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "id",
-            "description": "a=会员ID;c=001;d=false.",
+            "description": "a=\u4f1a\u5458ID;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "level_id",
-            "description": "a=会员级别ID;c=1;d=false.",
+            "description": "a=\u4f1a\u5458\u7ea7\u522bID;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "shop_id",
-            "description": "a=开卡门店ID;c=1011;d=false.",
+            "description": "a=\u5f00\u5361\u95e8\u5e97ID;c=1011;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -111,7 +111,7 @@
         ]
       },
       "post": {
-        "summary": "会员保存;会员保存;1.0.7",
+        "summary": "\u4f1a\u5458\u4fdd\u5b58;\u4f1a\u5458\u4fdd\u5b58;1.0.7",
         "operationId": "Member_save",
         "responses": {
           "200": {
@@ -144,7 +144,7 @@
     },
     "/openapi/v2/ls/member_detail": {
       "get": {
-        "summary": "会员详情;会员详情;1.0.9",
+        "summary": "\u4f1a\u5458\u8be6\u60c5;\u4f1a\u5458\u8be6\u60c5;1.0.9",
         "operationId": "Member_detail",
         "responses": {
           "200": {
@@ -163,14 +163,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=会员id,传入mobile时，id非必填;c=1;d=true.",
+            "description": "a=\u4f1a\u5458id,\u4f20\u5165mobile\u65f6\uff0cid\u975e\u5fc5\u586b;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "mobile",
-            "description": "a=手机号;c=1333333333;d=false.",
+            "description": "a=\u624b\u673a\u53f7;c=1333333333;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -192,42 +192,42 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "MemberDetailRes": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=会员id;c=1;d=false"
+          "title": "a=\u4f1a\u5458id;c=1;d=false"
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13333333333;d=false"
+          "title": "a=\u624b\u673a\u53f7 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=13333333333;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=会员名称;c=会员A;d=false"
+          "title": "a=\u4f1a\u5458\u540d\u79f0;c=\u4f1a\u5458A;d=false"
         },
         "card_no": {
           "type": "string",
-          "title": "a=会员卡号;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u53f7;c=1;d=false"
         },
         "card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1;d=false"
         },
         "level_name": {
           "type": "string",
-          "title": "a=会员级别;c=金卡;d=false"
+          "title": "a=\u4f1a\u5458\u7ea7\u522b;c=\u91d1\u5361;d=false"
         },
         "usable": {
           "type": "string",
-          "title": "a=可用积分;c=300;d=false"
+          "title": "a=\u53ef\u7528\u79ef\u5206;c=300;d=false"
         },
         "available": {
           "type": "string",
-          "title": "a=可用充值余额;c=300;d=false"
+          "title": "a=\u53ef\u7528\u5145\u503c\u4f59\u989d;c=300;d=false"
         }
       }
     },
@@ -237,34 +237,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=10;d=false"
+          "title": "a=\u603b\u9875\u6570;c=10;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;c=1;d=false"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;c=100;d=false"
+          "title": "a=\u603b\u6761\u6570;c=100;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/MemberListRes.Row"
           },
-          "title": "a=数据列表;c=[];d=false"
+          "title": "a=\u6570\u636e\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -273,163 +273,163 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=会员id;c=1;d=false"
+          "title": "a=\u4f1a\u5458id;c=1;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-08-11 09:42:59.0;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-08-11 09:42:59.0;d=false"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=修改时间;c=2020-08-11 09:42:59.0;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;c=2020-08-11 09:42:59.0;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=状态;c=1;d=false"
+          "title": "a=\u72b6\u6001;c=1;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=会员名称;c=会员A;d=false"
+          "title": "a=\u4f1a\u5458\u540d\u79f0;c=\u4f1a\u5458A;d=false"
         },
         "mobile": {
           "type": "string",
-          "title": "a=手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13399887744;d=false"
+          "title": "a=\u624b\u673a\u53f7 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=13399887744;d=false"
         },
         "mb_url": {
           "type": "string",
-          "title": "a=头像;d=false"
+          "title": "a=\u5934\u50cf;d=false"
         },
         "source": {
           "type": "string",
-          "title": "a=会员来源;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u6765\u6e90;c=1;d=false"
         },
         "join_way": {
           "type": "string",
-          "title": "a=入会方式;c=1;d=false"
+          "title": "a=\u5165\u4f1a\u65b9\u5f0f;c=1;d=false"
         },
         "birthday": {
           "type": "string",
-          "title": "a=生日 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=2022-08-01;d=false"
+          "title": "a=\u751f\u65e5 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=2022-08-01;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=这里是备注;d=false"
+          "title": "a=\u5907\u6ce8;c=\u8fd9\u91cc\u662f\u5907\u6ce8;d=false"
         },
         "address": {
           "type": "string",
-          "title": "a=行政区划;d=false"
+          "title": "a=\u884c\u653f\u533a\u5212;d=false"
         },
         "detail_address": {
           "type": "string",
-          "title": "a=详细地址 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
+          "title": "a=\u8be6\u7ec6\u5730\u5740 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);d=false"
         },
         "is_delete": {
           "type": "string",
-          "title": "a=是否删除;c=false;d=false"
+          "title": "a=\u662f\u5426\u5220\u9664;c=false;d=false"
         },
         "sex_group": {
           "type": "string",
-          "title": "a=性别，1 男，0 女 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
+          "title": "a=\u6027\u522b\uff0c1 \u7537\uff0c0 \u5973 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);d=false"
         },
         "customer_id": {
           "type": "string",
-          "title": "a=关联客户id;c=1;d=false"
+          "title": "a=\u5173\u8054\u5ba2\u6237id;c=1;d=false"
         },
         "customer_number": {
           "type": "string",
-          "title": "a=关联客户编码;c=KH00001;d=false"
+          "title": "a=\u5173\u8054\u5ba2\u6237\u7f16\u7801;c=KH00001;d=false"
         },
         "customer_name": {
           "type": "string",
-          "title": "a=关联客户名称;c=客户A;d=false"
+          "title": "a=\u5173\u8054\u5ba2\u6237\u540d\u79f0;c=\u5ba2\u6237A;d=false"
         },
         "mb_card_id_card_no": {
           "type": "string",
-          "title": "a=引荐人会员卡卡号;c=001;d=false"
+          "title": "a=\u5f15\u8350\u4eba\u4f1a\u5458\u5361\u5361\u53f7;c=001;d=false"
         },
         "mb_card_id": {
           "type": "string",
-          "title": "a=引荐人会员卡id;c=1;d=false"
+          "title": "a=\u5f15\u8350\u4eba\u4f1a\u5458\u5361id;c=1;d=false"
         },
         "shop_id": {
           "type": "string",
-          "title": "a=开卡门店id;c=1;d=false"
+          "title": "a=\u5f00\u5361\u95e8\u5e97id;c=1;d=false"
         },
         "shop_number": {
           "type": "string",
-          "title": "a=开卡门店编码;c=门店A;d=false"
+          "title": "a=\u5f00\u5361\u95e8\u5e97\u7f16\u7801;c=\u95e8\u5e97A;d=false"
         },
         "shop_name": {
           "type": "string",
-          "title": "a=开卡门店名称;c=门店A;d=false"
+          "title": "a=\u5f00\u5361\u95e8\u5e97\u540d\u79f0;c=\u95e8\u5e97A;d=false"
         },
         "level_id": {
           "type": "string",
-          "title": "a=会员卡级别id;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7ea7\u522bid;c=1;d=false"
         },
         "level_number": {
           "type": "string",
-          "title": "a=会员卡级别编码;c=levelnumber;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7ea7\u522b\u7f16\u7801;c=levelnumber;d=false"
         },
         "level_name": {
           "type": "string",
-          "title": "a=会员卡级别名称;c=金卡;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7ea7\u522b\u540d\u79f0;c=\u91d1\u5361;d=false"
         },
         "referreremp_id": {
           "type": "string",
-          "title": "a=营业员id;c=1;d=false"
+          "title": "a=\u8425\u4e1a\u5458id;c=1;d=false"
         },
         "referreremp_enable": {
           "type": "string",
-          "title": "a=营业员状态;c=1;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u72b6\u6001;c=1;d=false"
         },
         "referreremp_number": {
           "type": "string",
-          "title": "a=营业员编码;c=001;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u7f16\u7801;c=001;d=false"
         },
         "referreremp_name": {
           "type": "string",
-          "title": "a=营业员名称;c=营业员A;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u540d\u79f0;c=\u8425\u4e1a\u5458A;d=false"
         },
         "referreremp_mobile": {
           "type": "string",
-          "title": "a=营业员手机号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=13333333333;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u624b\u673a\u53f7 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=13333333333;d=false"
         },
         "referreremp_email": {
           "type": "string",
-          "title": "a=营业员邮箱 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);d=false"
+          "title": "a=\u8425\u4e1a\u5458\u90ae\u7bb1 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);d=false"
         },
         "referreremp_gender": {
           "type": "string",
-          "title": "a=营业员性别;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u6027\u522b;d=false"
         },
         "referreremp_idnumber": {
           "type": "string",
-          "title": "a=营业员身份证 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=XXX;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u8eab\u4efd\u8bc1 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=XXX;d=false"
         },
         "referreremp_birthday": {
           "type": "string",
-          "title": "a=营业员生日 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=2022-08-01;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u751f\u65e5 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=2022-08-01;d=false"
         },
         "referreremp_hiredate": {
           "type": "string",
-          "title": "a=营业员入职日期;c=2022-08-01;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u5165\u804c\u65e5\u671f;c=2022-08-01;d=false"
         },
         "referreremp_wechat": {
           "type": "string",
-          "title": "a=营业员微信号 [敏感数据解密](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070\u0026noside=true);c=xxx;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u5fae\u4fe1\u53f7 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=xxx;d=false"
         },
         "referreremp_departmen_id": {
           "type": "string",
-          "title": "a=营业员部门id;c=1;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u90e8\u95e8id;c=1;d=false"
         },
         "referreremp_departmen_number": {
           "type": "string",
-          "title": "a=营业员部门编码;c=001;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u90e8\u95e8\u7f16\u7801;c=001;d=false"
         },
         "referreremp_departmen_name": {
           "type": "string",
-          "title": "a=营业员部门名称;c=部门A;d=false"
+          "title": "a=\u8425\u4e1a\u5458\u90e8\u95e8\u540d\u79f0;c=\u90e8\u95e8A;d=false"
         }
       }
     },
@@ -438,94 +438,94 @@
       "properties": {
         "mobile": {
           "type": "string",
-          "title": "a=手机号;c=13333333333;d=true"
+          "title": "a=\u624b\u673a\u53f7;c=13333333333;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=姓名;c=会员A;d=true"
+          "title": "a=\u59d3\u540d;c=\u4f1a\u5458A;d=true"
         },
         "label": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "a=标签;d=false"
+          "title": "a=\u6807\u7b7e;d=false"
         },
         "customer": {
           "type": "string",
-          "title": "a=关联客户;c=001;d=false"
+          "title": "a=\u5173\u8054\u5ba2\u6237;c=001;d=false"
         },
         "source": {
           "type": "string",
-          "title": "a=会员来源 1-门店 2-微信 3-电商 4-微商城 5-自建商城;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u6765\u6e90 1-\u95e8\u5e97 2-\u5fae\u4fe1 3-\u7535\u5546 4-\u5fae\u5546\u57ce 5-\u81ea\u5efa\u5546\u57ce;c=1;d=false"
         },
         "join_way": {
           "type": "string",
-          "title": "a=入会方式 1-营业员发展 2-会员推荐;c=1;d=false"
+          "title": "a=\u5165\u4f1a\u65b9\u5f0f 1-\u8425\u4e1a\u5458\u53d1\u5c55 2-\u4f1a\u5458\u63a8\u8350;c=1;d=false"
         },
         "referrere_mp": {
           "type": "string",
-          "title": "a=入会业务员;c=1;d=false"
+          "title": "a=\u5165\u4f1a\u4e1a\u52a1\u5458;c=1;d=false"
         },
         "mbcard_id": {
           "type": "string",
-          "title": "a=入会推荐人会员卡;c=1;d=false"
+          "title": "a=\u5165\u4f1a\u63a8\u8350\u4eba\u4f1a\u5458\u5361;c=1;d=false"
         },
         "sex_group": {
           "type": "string",
-          "title": "a=性别 1-男 2-女;c=1;d=false"
+          "title": "a=\u6027\u522b 1-\u7537 2-\u5973;c=1;d=false"
         },
         "birthday": {
           "type": "string",
-          "title": "a=生日;c=2022-08-01;d=false"
+          "title": "a=\u751f\u65e5;c=2022-08-01;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;c=\u5907\u6ce8;d=false"
         },
         "address": {
           "type": "string",
-          "title": "a=行政区域;c=410;d=false"
+          "title": "a=\u884c\u653f\u533a\u57df;c=410;d=false"
         },
         "detail_address": {
           "type": "string",
-          "title": "a=详细地址;c=XXX;d=false"
+          "title": "a=\u8be6\u7ec6\u5730\u5740;c=XXX;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=状态 1-有效 0-失效;c=1;d=false"
+          "title": "a=\u72b6\u6001 1-\u6709\u6548 0-\u5931\u6548;c=1;d=false"
         },
         "is_delete": {
           "type": "string",
-          "title": "a=是否删除 0-未删除 1-已删除;c=0;d=false"
+          "title": "a=\u662f\u5426\u5220\u9664 0-\u672a\u5220\u9664 1-\u5df2\u5220\u9664;c=0;d=false"
         },
         "level": {
           "type": "string",
-          "title": "a=会员级别，1-普通会员;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u7ea7\u522b\uff0c1-\u666e\u901a\u4f1a\u5458;c=1;d=false"
         },
         "shop": {
           "type": "string",
-          "title": "a=开卡门店;c=850693217107061760;d=false"
+          "title": "a=\u5f00\u5361\u95e8\u5e97;c=850693217107061760;d=false"
         },
         "custom_no": {
           "type": "string",
-          "title": "a=自定义卡号;c=1;d=false"
+          "title": "a=\u81ea\u5b9a\u4e49\u5361\u53f7;c=1;d=false"
         },
         "period": {
           "type": "string",
-          "title": "a=有效期管理 1-长期有效 2-限期有效;c=1;d=false"
+          "title": "a=\u6709\u6548\u671f\u7ba1\u7406 1-\u957f\u671f\u6709\u6548 2-\u9650\u671f\u6709\u6548;c=1;d=false"
         },
         "start_date": {
           "type": "string",
-          "title": "a=有效开始日期;c=2022-01-01;d=false"
+          "title": "a=\u6709\u6548\u5f00\u59cb\u65e5\u671f;c=2022-01-01;d=false"
         },
         "end_date": {
           "type": "string",
-          "title": "a=有效结束日期;c=2022-01-01;d=false"
+          "title": "a=\u6709\u6548\u7ed3\u675f\u65e5\u671f;c=2022-01-01;d=false"
         },
         "sale_shop": {
           "type": "string",
-          "title": "a=消费门店;c=1;d=false"
+          "title": "a=\u6d88\u8d39\u95e8\u5e97;c=1;d=false"
         }
       }
     },
@@ -538,23 +538,23 @@
         },
         "enable": {
           "type": "string",
-          "title": "a=是否启用;c=1;"
+          "title": "a=\u662f\u5426\u542f\u7528;c=1;"
         },
         "db_modify_time": {
           "type": "string",
-          "title": "a=修改时间;c=2022-11-01 11:01:34;"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;c=2022-11-01 11:01:34;"
         },
         "name": {
           "type": "string",
-          "title": "a=会员名称;c=腾讯;d=false"
+          "title": "a=\u4f1a\u5458\u540d\u79f0;c=\u817e\u8baf;d=false"
         },
         "mobile": {
           "type": "string",
-          "title": "a=会员手机号;c=13200663322;d=false"
+          "title": "a=\u4f1a\u5458\u624b\u673a\u53f7;c=13200663322;d=false"
         },
         "custom_no": {
           "type": "string",
-          "title": "a=客户编码;c=1;d=false"
+          "title": "a=\u5ba2\u6237\u7f16\u7801;c=1;d=false"
         }
       }
     },

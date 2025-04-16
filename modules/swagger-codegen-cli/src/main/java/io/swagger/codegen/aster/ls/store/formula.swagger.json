@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;零售资料;配方管理",
+    "title": "\u96f6\u552e\u4e91;\u96f6\u552e\u8d44\u6599;\u914d\u65b9\u7ba1\u7406",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/formula": {
       "get": {
-        "summary": "配方列表;配方列表;1.0.1",
+        "summary": "\u914d\u65b9\u5217\u8868;\u914d\u65b9\u5217\u8868;1.0.1",
         "operationId": "Formula_list",
         "responses": {
           "200": {
@@ -37,14 +37,14 @@
         "parameters": [
           {
             "name": "operate_type",
-            "description": "固定值字段，不生成对外API文档:配方操作:列表.",
+            "description": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863:\u914d\u65b9\u64cd\u4f5c:\u5217\u8868.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "data.page",
-            "description": "a=当前页，从1开始;c=001;d=true.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u4ece1\u5f00\u59cb;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -52,7 +52,7 @@
           },
           {
             "name": "data.page_size",
-            "description": "a=每页显示条数;c=001;d=true.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -60,35 +60,35 @@
           },
           {
             "name": "data.create_start_time",
-            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "data.create_end_time",
-            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "data.modify_start_time",
-            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "data.modify_end_time",
-            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "data.name",
-            "description": "a=门店名称;c=门店名称;d=false.",
+            "description": "a=\u95e8\u5e97\u540d\u79f0;c=\u95e8\u5e97\u540d\u79f0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -99,7 +99,7 @@
         ]
       },
       "post": {
-        "summary": "配方保存;配方新增及修改;1.0.1",
+        "summary": "\u914d\u65b9\u4fdd\u5b58;\u914d\u65b9\u65b0\u589e\u53ca\u4fee\u6539;1.0.1",
         "operationId": "Formula_save",
         "responses": {
           "200": {
@@ -141,7 +141,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "FormulaListReqData": {
       "type": "object",
@@ -149,32 +149,32 @@
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页，从1开始;c=001;d=true"
+          "title": "a=\u5f53\u524d\u9875\uff0c\u4ece1\u5f00\u59cb;c=001;d=true"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页显示条数;c=001;d=true"
+          "title": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570;c=001;d=true"
         },
         "create_start_time": {
           "type": "string",
-          "title": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false"
         },
         "create_end_time": {
           "type": "string",
-          "title": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false"
         },
         "modify_start_time": {
           "type": "string",
-          "title": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false"
         },
         "modify_end_time": {
           "type": "string",
-          "title": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=门店名称;c=门店名称;d=false"
+          "title": "a=\u95e8\u5e97\u540d\u79f0;c=\u95e8\u5e97\u540d\u79f0;d=false"
         }
       }
     },
@@ -184,34 +184,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=10;d=false"
+          "title": "a=\u603b\u9875\u6570;c=10;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;c=1;d=false"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;c=100;d=false"
+          "title": "a=\u603b\u6761\u6570;c=100;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FormulaListRes.Row"
           },
-          "title": "a=数据列表;c=[];d=false"
+          "title": "a=\u6570\u636e\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -220,69 +220,69 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=门店id;c=001;d=false"
+          "title": "a=\u95e8\u5e97id;c=001;d=false"
         },
         "status": {
           "type": "string",
-          "title": "a=状态；\"1\"=启用，\"2\"=禁用;c=1;d=false"
+          "title": "a=\u72b6\u6001\uff1b\"1\"=\u542f\u7528\uff0c\"2\"=\u7981\u7528;c=1;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-08-03 19:18:58.0;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-08-03 19:18:58.0;d=false"
         },
         "suit_store_type": {
           "type": "string",
-          "title": "a=全部门店=1;全部门店+排除=2；指点门店=3;c=1;d=false"
+          "title": "a=\u5168\u90e8\u95e8\u5e97=1;\u5168\u90e8\u95e8\u5e97+\u6392\u9664=2\uff1b\u6307\u70b9\u95e8\u5e97=3;c=1;d=false"
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品id;c=697140092908614656;d=true"
+          "title": "a=\u5546\u54c1id;c=697140092908614656;d=true"
         },
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=sp00001"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=sp00001"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=sp00001"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=主商品单位ID;b=2147483647;c=1"
+          "title": "a=\u4e3b\u5546\u54c1\u5355\u4f4dID;b=2147483647;c=1"
         },
         "unit_name": {
           "type": "string",
-          "title": "a=主商品单位名称;c=sp00001"
+          "title": "a=\u4e3b\u5546\u54c1\u5355\u4f4d\u540d\u79f0;c=sp00001"
         },
         "sku_id": {
           "type": "string",
-          "title": "a=主商品辅助属性ID;b=2147483647;c=1"
+          "title": "a=\u4e3b\u5546\u54c1\u8f85\u52a9\u5c5e\u6027ID;b=2147483647;c=1"
         },
         "sku_name": {
           "type": "string",
-          "title": "a=主商品辅助属性名称;c=sp00001"
+          "title": "a=\u4e3b\u5546\u54c1\u8f85\u52a9\u5c5e\u6027\u540d\u79f0;c=sp00001"
         },
         "name": {
           "type": "string",
-          "title": "a=配方名称;c=sp00001"
+          "title": "a=\u914d\u65b9\u540d\u79f0;c=sp00001"
         },
         "number": {
           "type": "string",
-          "title": "a=配方编号;c=sp00001"
+          "title": "a=\u914d\u65b9\u7f16\u53f7;c=sp00001"
         },
         "material_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Row.MaterialRow"
           },
-          "title": "a=原料商品列表;c=[];d=false"
+          "title": "a=\u539f\u6599\u5546\u54c1\u5217\u8868;c=[];d=false"
         },
         "store_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Row.StoreRow"
           },
-          "title": "a=门店信息列表;c=[];d=false"
+          "title": "a=\u95e8\u5e97\u4fe1\u606f\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -291,45 +291,45 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=配方id,新增不填，更新时必填（id为空时代表新增）;c=001;d=false"
+          "title": "a=\u914d\u65b9id,\u65b0\u589e\u4e0d\u586b\uff0c\u66f4\u65b0\u65f6\u5fc5\u586b\uff08id\u4e3a\u7a7a\u65f6\u4ee3\u8868\u65b0\u589e\uff09;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=配方名;c=1;d=true"
+          "title": "a=\u914d\u65b9\u540d;c=1;d=true"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;c=\u5907\u6ce8;d=false"
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品id;c=697140092908614656;d=true"
+          "title": "a=\u5546\u54c1id;c=697140092908614656;d=true"
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=主商品辅助属性id，如果商品启用辅助属性管理，则必填;c=697140092908614656;d=false"
+          "title": "a=\u4e3b\u5546\u54c1\u8f85\u52a9\u5c5e\u6027id\uff0c\u5982\u679c\u5546\u54c1\u542f\u7528\u8f85\u52a9\u5c5e\u6027\u7ba1\u7406\uff0c\u5219\u5fc5\u586b;c=697140092908614656;d=false"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=主商品单位id;c=697140092908614656;d=true"
+          "title": "a=\u4e3b\u5546\u54c1\u5355\u4f4did;c=697140092908614656;d=true"
         },
         "suit_store_type": {
           "type": "string",
-          "title": "a=全部门店=1;全部门店+排除=2；指点门店=3;c=1;d=false"
+          "title": "a=\u5168\u90e8\u95e8\u5e97=1;\u5168\u90e8\u95e8\u5e97+\u6392\u9664=2\uff1b\u6307\u70b9\u95e8\u5e97=3;c=1;d=false"
         },
         "material_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FormulaSavaReqData.MaterialRow"
           },
-          "title": "a=原料商品列表;c=[];d=true"
+          "title": "a=\u539f\u6599\u5546\u54c1\u5217\u8868;c=[];d=true"
         },
         "store_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FormulaSavaReqData.StoreRow"
           },
-          "title": "a=门店信息列表;c=[];d=false"
+          "title": "a=\u95e8\u5e97\u4fe1\u606f\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -338,31 +338,31 @@
       "properties": {
         "material_id": {
           "type": "string",
-          "title": "a=原料商品ID;c=697140092908614656;d=true"
+          "title": "a=\u539f\u6599\u5546\u54c1ID;c=697140092908614656;d=true"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=主商品单位ID;b=2147483647;c=1;d=true"
+          "title": "a=\u4e3b\u5546\u54c1\u5355\u4f4dID;b=2147483647;c=1;d=true"
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=主商品辅助属性id，如果商品启用辅助属性管理，则必填;c=697140092908614656;d=false"
+          "title": "a=\u4e3b\u5546\u54c1\u8f85\u52a9\u5c5e\u6027id\uff0c\u5982\u679c\u5546\u54c1\u542f\u7528\u8f85\u52a9\u5c5e\u6027\u7ba1\u7406\uff0c\u5219\u5fc5\u586b;c=697140092908614656;d=false"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=原料商品消耗量;c=1;d=true"
+          "title": "a=\u539f\u6599\u5546\u54c1\u6d88\u8017\u91cf;c=1;d=true"
         },
         "allow_replace": {
           "type": "boolean",
-          "title": "a=原料商品是否可以替换.默认=false;d=false"
+          "title": "a=\u539f\u6599\u5546\u54c1\u662f\u5426\u53ef\u4ee5\u66ff\u6362.\u9ed8\u8ba4=false;d=false"
         },
         "other_material_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/FormulaSavaReqData.MaterialRow.OtherMaterialRow"
           },
-          "title": "a=替换商品列表;c=[];d=false"
+          "title": "a=\u66ff\u6362\u5546\u54c1\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -371,20 +371,20 @@
       "properties": {
         "material_id": {
           "type": "string",
-          "title": "a=原料替换商品ID;c=697140092908614656;d=true"
+          "title": "a=\u539f\u6599\u66ff\u6362\u5546\u54c1ID;c=697140092908614656;d=true"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=原料替换商品单位ID;b=2147483647;c=1;d=true"
+          "title": "a=\u539f\u6599\u66ff\u6362\u5546\u54c1\u5355\u4f4dID;b=2147483647;c=1;d=true"
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=原料替换商品辅助属性id，如果商品启用辅助属性管理，则必填;c=697140092908614656;d=false"
+          "title": "a=\u539f\u6599\u66ff\u6362\u5546\u54c1\u8f85\u52a9\u5c5e\u6027id\uff0c\u5982\u679c\u5546\u54c1\u542f\u7528\u8f85\u52a9\u5c5e\u6027\u7ba1\u7406\uff0c\u5219\u5fc5\u586b;c=697140092908614656;d=false"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=原料替换商品消耗量;c=1;d=true"
+          "title": "a=\u539f\u6599\u66ff\u6362\u5546\u54c1\u6d88\u8017\u91cf;c=1;d=true"
         }
       }
     },
@@ -393,11 +393,11 @@
       "properties": {
         "type": {
           "type": "string",
-          "title": "a=类型:1=门店；2=标签;c=1;d=false"
+          "title": "a=\u7c7b\u578b:1=\u95e8\u5e97\uff1b2=\u6807\u7b7e;c=1;d=false"
         },
         "type_id": {
           "type": "string",
-          "title": "a=门店ID;c=1;d=false"
+          "title": "a=\u95e8\u5e97ID;c=1;d=false"
         }
       }
     },
@@ -406,11 +406,11 @@
       "properties": {
         "operate_type": {
           "type": "string",
-          "title": "固定值字段，不生成对外API文档:配方操作:保存"
+          "title": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863:\u914d\u65b9\u64cd\u4f5c:\u4fdd\u5b58"
         },
         "data": {
           "$ref": "#/definitions/FormulaSavaReqData",
-          "title": "a=保存入参;c=object;d=true"
+          "title": "a=\u4fdd\u5b58\u5165\u53c2;c=object;d=true"
         }
       }
     },
@@ -419,43 +419,43 @@
       "properties": {
         "material_id": {
           "type": "string",
-          "title": "a=原料商品ID;c=697140092908614656;d=true"
+          "title": "a=\u539f\u6599\u5546\u54c1ID;c=697140092908614656;d=true"
         },
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=sp00001"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=sp00001"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=sp00001"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=商品单位ID;b=2147483647;c=1"
+          "title": "a=\u5546\u54c1\u5355\u4f4dID;b=2147483647;c=1"
         },
         "unit_name": {
           "type": "string",
-          "title": "a=商品单位名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u5355\u4f4d\u540d\u79f0;c=sp00001"
         },
         "sku_id": {
           "type": "string",
-          "title": "a=商品辅助属性ID;b=2147483647;c=1"
+          "title": "a=\u5546\u54c1\u8f85\u52a9\u5c5e\u6027ID;b=2147483647;c=1"
         },
         "sku_name": {
           "type": "string",
-          "title": "a=商品辅助属性名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u8f85\u52a9\u5c5e\u6027\u540d\u79f0;c=sp00001"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=原料商品消耗量;c=1;d=false"
+          "title": "a=\u539f\u6599\u5546\u54c1\u6d88\u8017\u91cf;c=1;d=false"
         },
         "other_material_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/Row.MaterialRow.OtherMaterialRow"
           },
-          "title": "a=替换商品列表;c=[];d=false"
+          "title": "a=\u66ff\u6362\u5546\u54c1\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -464,36 +464,36 @@
       "properties": {
         "material_id": {
           "type": "string",
-          "title": "a=原料商品ID;c=697140092908614656;d=true"
+          "title": "a=\u539f\u6599\u5546\u54c1ID;c=697140092908614656;d=true"
         },
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=sp00001"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=sp00001"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=sp00001"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=商品单位ID;b=2147483647;c=1"
+          "title": "a=\u5546\u54c1\u5355\u4f4dID;b=2147483647;c=1"
         },
         "unit_name": {
           "type": "string",
-          "title": "a=商品单位名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u5355\u4f4d\u540d\u79f0;c=sp00001"
         },
         "sku_id": {
           "type": "string",
-          "title": "a=商品辅助属性ID;b=2147483647;c=1"
+          "title": "a=\u5546\u54c1\u8f85\u52a9\u5c5e\u6027ID;b=2147483647;c=1"
         },
         "sku_name": {
           "type": "string",
-          "title": "a=商品辅助属性名称;c=sp00001"
+          "title": "a=\u5546\u54c1\u8f85\u52a9\u5c5e\u6027\u540d\u79f0;c=sp00001"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=原料商品消耗量;c=1;d=false"
+          "title": "a=\u539f\u6599\u5546\u54c1\u6d88\u8017\u91cf;c=1;d=false"
         }
       }
     },
@@ -502,19 +502,19 @@
       "properties": {
         "type": {
           "type": "string",
-          "title": "a=类型；1=门店；2=标签;c=1;d=false"
+          "title": "a=\u7c7b\u578b\uff1b1=\u95e8\u5e97\uff1b2=\u6807\u7b7e;c=1;d=false"
         },
         "type_id": {
           "type": "string",
-          "title": "a=门店ID;c=1;d=false"
+          "title": "a=\u95e8\u5e97ID;c=1;d=false"
         },
         "type_name": {
           "type": "string",
-          "title": "a=门店名;c=1;d=false"
+          "title": "a=\u95e8\u5e97\u540d;c=1;d=false"
         },
         "is_drop_out": {
           "type": "boolean",
-          "title": "a=是否排除;c=false"
+          "title": "a=\u662f\u5426\u6392\u9664;c=false"
         }
       }
     },
@@ -526,17 +526,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

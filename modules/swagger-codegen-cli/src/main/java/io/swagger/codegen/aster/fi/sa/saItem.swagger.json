@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;工资;工资项目",
+    "title": "\u8d22\u7a0e\u4e91;\u5de5\u8d44;\u5de5\u8d44\u9879\u76ee",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/sa_item": {
       "get": {
-        "summary": "工资项目列表;获取工资项目列表;1.0.3",
+        "summary": "\u5de5\u8d44\u9879\u76ee\u5217\u8868;\u83b7\u53d6\u5de5\u8d44\u9879\u76ee\u5217\u8868;1.0.3",
         "operationId": "salaryItems_salaryItemsList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊查询条件;b=20;c=名称;d=false.",
+            "description": "a=\u6a21\u7cca\u67e5\u8be2\u6761\u4ef6;b=20;c=\u540d\u79f0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -48,7 +48,7 @@
         ]
       },
       "post": {
-        "summary": "工资项目保存;工资项目修改及增加;1.0.2",
+        "summary": "\u5de5\u8d44\u9879\u76ee\u4fdd\u5b58;\u5de5\u8d44\u9879\u76ee\u4fee\u6539\u53ca\u589e\u52a0;1.0.2",
         "operationId": "salaryItems_salaryItemsSave",
         "responses": {
           "200": {
@@ -90,22 +90,22 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "DataRow": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=数据行id;b=2147483647;c=1;d=true"
+          "title": "a=\u6570\u636e\u884cid;b=2147483647;c=1;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=30;c=名称;d=false"
+          "title": "a=\u540d\u79f0;b=30;c=\u540d\u79f0;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=工资单编号;b=30;c=002;d=false"
+          "title": "a=\u5de5\u8d44\u5355\u7f16\u53f7;b=30;c=002;d=false"
         }
       }
     },
@@ -114,34 +114,34 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=工资项目id（修改时必传）;b=100;c=001;d=false"
+          "title": "a=\u5de5\u8d44\u9879\u76eeid\uff08\u4fee\u6539\u65f6\u5fc5\u4f20\uff09;b=100;c=001;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=工资项目编码;b=1000;c=002;d=true"
+          "title": "a=\u5de5\u8d44\u9879\u76ee\u7f16\u7801;b=1000;c=002;d=true"
         },
         "name": {
           "type": "string",
-          "title": "a=工资项目名称;b=100;c=ApiItem18;d=true"
+          "title": "a=\u5de5\u8d44\u9879\u76ee\u540d\u79f0;b=100;c=ApiItem18;d=true"
         },
         "data_type": {
           "type": "integer",
           "format": "int32",
-          "title": "a=数据类型（1数值 2文本 4日期）;b=100000;c=1;d=true"
+          "title": "a=\u6570\u636e\u7c7b\u578b\uff081\u6570\u503c 2\u6587\u672c 4\u65e5\u671f\uff09;b=100000;c=1;d=true"
         },
         "precision": {
           "type": "integer",
           "format": "int32",
-          "title": "a=小数位数（不传取本位币精度）;b=100000;c=2;d=false"
+          "title": "a=\u5c0f\u6570\u4f4d\u6570\uff08\u4e0d\u4f20\u53d6\u672c\u4f4d\u5e01\u7cbe\u5ea6\uff09;b=100000;c=2;d=false"
         },
         "data_source": {
           "type": "integer",
           "format": "int32",
-          "title": "固定值字段，不生成对外API文档"
+          "title": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;b=100;c=apiItemTest;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=apiItemTest;d=false"
         }
       }
     },
@@ -151,36 +151,36 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/DataRow"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         }
       },
-      "title": "工资项目列表返回对象"
+      "title": "\u5de5\u8d44\u9879\u76ee\u5217\u8868\u8fd4\u56de\u5bf9\u8c61"
     },
     "SalaryItemsSaveRequest": {
       "type": "object",
@@ -190,10 +190,10 @@
           "items": {
             "$ref": "#/definitions/Items"
           },
-          "title": "a=工资项目;b=100000;c=[];d=true"
+          "title": "a=\u5de5\u8d44\u9879\u76ee;b=100000;c=[];d=true"
         }
       },
-      "title": "工资项目保存请求对象"
+      "title": "\u5de5\u8d44\u9879\u76ee\u4fdd\u5b58\u8bf7\u6c42\u5bf9\u8c61"
     },
     "SaveReply": {
       "type": "object",
@@ -203,17 +203,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

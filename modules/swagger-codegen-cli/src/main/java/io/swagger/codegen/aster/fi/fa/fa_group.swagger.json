@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "财税云;资产资料;资产类别",
+    "title": "\u8d22\u7a0e\u4e91;\u8d44\u4ea7\u8d44\u6599;\u8d44\u4ea7\u7c7b\u522b",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/fi/fa_group": {
       "get": {
-        "summary": "资产类别列表;获取资产类别列表;1.0.14",
+        "summary": "\u8d44\u4ea7\u7c7b\u522b\u5217\u8868;\u83b7\u53d6\u8d44\u4ea7\u7c7b\u522b\u5217\u8868;1.0.14",
         "operationId": "FaGroup_list",
         "responses": {
           "200": {
@@ -37,21 +37,21 @@
         "parameters": [
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search",
-            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22\uff0c\u652f\u6301\u5355\u636e\u7f16\u53f7\u3001\u5907\u6ce8;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -64,7 +64,7 @@
     },
     "/openapi/v2/fi/fa_group_save": {
       "post": {
-        "summary": "资产类别保存;资产类别保存;1.0.16",
+        "summary": "\u8d44\u4ea7\u7c7b\u522b\u4fdd\u5b58;\u8d44\u4ea7\u7c7b\u522b\u4fdd\u5b58;1.0.16",
         "operationId": "FaGroup_save",
         "responses": {
           "200": {
@@ -106,7 +106,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "GroupListReply": {
       "type": "object",
@@ -114,36 +114,36 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/GroupListReply.Row"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         }
       },
-      "title": "科目列表查询返回对象"
+      "title": "\u79d1\u76ee\u5217\u8868\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "GroupListReply.Row": {
       "type": "object",
@@ -154,117 +154,117 @@
         },
         "name": {
           "type": "string",
-          "title": "a=名字;b=30;c=001;d=false"
+          "title": "a=\u540d\u5b57;b=30;c=001;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=false"
         },
         "note": {
           "type": "string",
-          "title": "a=备注 ;c=备注 ;d=false"
+          "title": "a=\u5907\u6ce8 ;c=\u5907\u6ce8 ;d=false"
         },
         "level": {
           "type": "string",
-          "title": "a=级次（1-n） ;c=1 ;d=false"
+          "title": "a=\u7ea7\u6b21\uff081-n\uff09 ;c=1 ;d=false"
         },
         "is_leaf": {
           "type": "boolean",
-          "title": "a=是否明细（是-true， 否-false） ;c=false ;d=false"
+          "title": "a=\u662f\u5426\u660e\u7ec6\uff08\u662f-true\uff0c \u5426-false\uff09 ;c=false ;d=false"
         },
         "parent_name": {
           "type": "string",
-          "title": "a=上级类别名称（没有上级不返回）c=类别一"
+          "title": "a=\u4e0a\u7ea7\u7c7b\u522b\u540d\u79f0\uff08\u6ca1\u6709\u4e0a\u7ea7\u4e0d\u8fd4\u56de\uff09c=\u7c7b\u522b\u4e00"
         },
         "parent_number": {
           "type": "string",
-          "title": "a=属性组编码;b=30;c=001;d=false"
+          "title": "a=\u5c5e\u6027\u7ec4\u7f16\u7801;b=30;c=001;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=属性组id;b=2147483647;c=1;d=false"
+          "title": "a=\u5c5e\u6027\u7ec4id;b=2147483647;c=1;d=false"
         },
         "number_rule": {
           "type": "string",
-          "title": "a=卡片编码前缀 ;b=2147483647;c=1;d=false"
+          "title": "a=\u5361\u7247\u7f16\u7801\u524d\u7f00 ;b=2147483647;c=1;d=false"
         },
         "years": {
           "type": "string",
-          "title": "a=预计使用年限;c=1;d=false"
+          "title": "a=\u9884\u8ba1\u4f7f\u7528\u5e74\u9650;c=1;d=false"
         },
         "periods": {
           "type": "string",
-          "title": "a=预计使用期间数;c=1;d=false"
+          "title": "a=\u9884\u8ba1\u4f7f\u7528\u671f\u95f4\u6570;c=1;d=false"
         },
         "residue_rate": {
           "type": "string",
-          "title": "a=净残值率（%）;b=1;c=100;d=false"
+          "title": "a=\u51c0\u6b8b\u503c\u7387\uff08%\uff09;b=1;c=100;d=false"
         },
         "depr_policy": {
           "type": "string",
-          "title": "a=折旧政策（1-新增当期计提，2-清理当期计提）;c=1;d=false"
+          "title": "a=\u6298\u65e7\u653f\u7b56\uff081-\u65b0\u589e\u5f53\u671f\u8ba1\u63d0\uff0c2-\u6e05\u7406\u5f53\u671f\u8ba1\u63d0\uff09;c=1;d=false"
         },
         "depr_method_id": {
           "type": "string",
-          "title": "a=折旧方法ID ;c=1;d=false"
+          "title": "a=\u6298\u65e7\u65b9\u6cd5ID ;c=1;d=false"
         },
         "depr_method_number": {
           "type": "string",
-          "title": "a=折旧方法编码 ;c=1;d=false"
+          "title": "a=\u6298\u65e7\u65b9\u6cd5\u7f16\u7801 ;c=1;d=false"
         },
         "depr_method_name": {
           "type": "string",
-          "title": "a=折旧方法名称 ;c=1;d=false"
+          "title": "a=\u6298\u65e7\u65b9\u6cd5\u540d\u79f0 ;c=1;d=false"
         }
       },
-      "title": "科目查询返回对象"
+      "title": "\u79d1\u76ee\u67e5\u8be2\u8fd4\u56de\u5bf9\u8c61"
     },
     "GroupSaveRequest": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=id（修改时必填，新增保存返回id）;c=1; d=false"
+          "title": "a=id\uff08\u4fee\u6539\u65f6\u5fc5\u586b\uff0c\u65b0\u589e\u4fdd\u5b58\u8fd4\u56deid\uff09;c=1; d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=资产类别名称;b=30;c=001;d=true"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522b\u540d\u79f0;b=30;c=001;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=资产类别编码;b=30;c=001;d=true"
+          "title": "a=\u8d44\u4ea7\u7c7b\u522b\u7f16\u7801;b=30;c=001;d=true"
         },
         "note": {
           "type": "string",
-          "title": "a=备注 ;c= ;d=false"
+          "title": "a=\u5907\u6ce8 ;c= ;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=上级类别ID;b=2147483647;c=1;d=false"
+          "title": "a=\u4e0a\u7ea7\u7c7b\u522bID;b=2147483647;c=1;d=false"
         },
         "depr_method_id": {
           "type": "string",
-          "title": "a=折旧方法ID ;c=1;d=false"
+          "title": "a=\u6298\u65e7\u65b9\u6cd5ID ;c=1;d=false"
         },
         "number_rule": {
           "type": "string",
-          "title": "a=卡片编码前缀 ;b=2147483647;c=2147483647;d=false"
+          "title": "a=\u5361\u7247\u7f16\u7801\u524d\u7f00 ;b=2147483647;c=2147483647;d=false"
         },
         "years": {
           "type": "string",
-          "title": "a=预计使用年限;c=1;d=false"
+          "title": "a=\u9884\u8ba1\u4f7f\u7528\u5e74\u9650;c=1;d=false"
         },
         "periods": {
           "type": "string",
-          "title": "a=预计使用年限;c=1;d=false"
+          "title": "a=\u9884\u8ba1\u4f7f\u7528\u5e74\u9650;c=1;d=false"
         },
         "residue_rate": {
           "type": "string",
-          "title": "a=净残值率（%）;b=1;c=100;d=false"
+          "title": "a=\u51c0\u6b8b\u503c\u7387\uff08%\uff09;b=1;c=100;d=false"
         },
         "depr_policy": {
           "type": "string",
-          "title": "a=折旧政策（1-新增当期计提，2-清理当期计提）;c=1;d=false"
+          "title": "a=\u6298\u65e7\u653f\u7b56\uff081-\u65b0\u589e\u5f53\u671f\u8ba1\u63d0\uff0c2-\u6e05\u7406\u5f53\u671f\u8ba1\u63d0\uff09;c=1;d=false"
         }
       }
     },
@@ -276,17 +276,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

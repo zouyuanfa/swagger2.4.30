@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;门店管理;",
+    "title": "\u96f6\u552e\u4e91;\u95e8\u5e97\u7ba1\u7406;",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/coupons_write_off": {
       "get": {
-        "summary": "优惠卷核销;优惠卷核销列表;1.0.3",
+        "summary": "\u4f18\u60e0\u5377\u6838\u9500;\u4f18\u60e0\u5377\u6838\u9500\u5217\u8868;1.0.4",
         "operationId": "CouponsWriteOff_list",
         "responses": {
           "200": {
@@ -37,91 +37,91 @@
         "parameters": [
           {
             "name": "member_id",
-            "description": "a=会员ID，整数字符串;c=1333333333;d=false.",
+            "description": "a=\u4f1a\u5458ID\uff0c\u6574\u6570\u5b57\u7b26\u4e32;c=1333333333;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "store_id",
-            "description": "a=门店ID;c=1333333333;d=true.",
+            "description": "a=\u95e8\u5e97ID;c=1333333333;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "member_card_id",
-            "description": "a=会员卡ID;c=1333333333;d=false.",
+            "description": "a=\u4f1a\u5458\u5361ID;c=1333333333;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "coupons_no",
-            "description": "a=优惠券编号;c=001;d=false.",
+            "description": "a=\u4f18\u60e0\u5238\u7f16\u53f7;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "schema_no",
-            "description": "a=优惠券方案编号;c=001;d=false.",
+            "description": "a=\u4f18\u60e0\u5238\u65b9\u6848\u7f16\u53f7;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "schema_type",
-            "description": "a=优惠券方案类型;c=1;d=false.",
+            "description": "a=\u4f18\u60e0\u5238\u65b9\u6848\u7c7b\u578b;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_start_time",
-            "description": "a=单据开始日期，格式yyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
+            "description": "a=\u5355\u636e\u5f00\u59cb\u65e5\u671f\uff0c\u683c\u5f0fyyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_end_time",
-            "description": "a=单据结束日期，格式yyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
+            "description": "a=\u5355\u636e\u7ed3\u675f\u65e5\u671f\uff0c\u683c\u5f0fyyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_start_time",
-            "description": "a=更新开始时间，格式yyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
+            "description": "a=\u66f4\u65b0\u5f00\u59cb\u65f6\u95f4\uff0c\u683c\u5f0fyyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_end_time",
-            "description": "a=更新结束时间，格式yyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
+            "description": "a=\u66f4\u65b0\u7ed3\u675f\u65f6\u95f4\uff0c\u683c\u5f0fyyyy-MM-dd HH:mm:ss;c=2024-01-01 12:22:31;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "bill_no",
-            "description": "a=核销零售单号;c=001;d=false.",
+            "description": "a=\u6838\u9500\u96f6\u552e\u5355\u53f7;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=查询的页数,不填默认为1;c=1;d=false.",
+            "description": "a=\u67e5\u8be2\u7684\u9875\u6570,\u4e0d\u586b\u9ed8\u8ba4\u4e3a1;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页数据条数，不填默认为100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u6570\u636e\u6761\u6570\uff0c\u4e0d\u586b\u9ed8\u8ba4\u4e3a100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -143,7 +143,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "CouponsWriteOffListRes": {
       "type": "object",
@@ -153,32 +153,32 @@
           "items": {
             "$ref": "#/definitions/CouponsWriteOffListRes.Row"
           },
-          "title": "a=返回数据列表;c=[]"
+          "title": "a=\u8fd4\u56de\u6570\u636e\u5217\u8868;c=[]"
         },
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=3"
+          "title": "a=\u603b\u9875\u6570;c=3"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页大小;c=10"
+          "title": "a=\u5f53\u524d\u9875\u5927\u5c0f;c=10"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总计条目;c=30"
+          "title": "a=\u603b\u8ba1\u6761\u76ee;c=30"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=页大小;c=10"
+          "title": "a=\u9875\u5927\u5c0f;c=10"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1"
+          "title": "a=\u5f53\u524d\u9875;c=1"
         }
       }
     },
@@ -187,91 +187,91 @@
       "properties": {
         "schema_no": {
           "type": "string",
-          "title": "a=优惠券方案编码;c=001;d=false"
+          "title": "a=\u4f18\u60e0\u5238\u65b9\u6848\u7f16\u7801;c=001;d=false"
         },
         "schema_type": {
           "type": "string",
-          "title": "a=优惠券类型，1代金券2折扣券3抵扣券4多次核销代金券5多次核销折扣券;c=1;d=true"
+          "title": "a=\u4f18\u60e0\u5238\u7c7b\u578b\uff0c1\u4ee3\u91d1\u52382\u6298\u6263\u52383\u62b5\u6263\u52384\u591a\u6b21\u6838\u9500\u4ee3\u91d1\u52385\u591a\u6b21\u6838\u9500\u6298\u6263\u5238;c=1;d=true"
         },
         "member_id": {
           "type": "string",
-          "title": "a=会员ID;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458ID;c=1333333333;d=false"
         },
         "member_name": {
           "type": "string",
-          "title": "a=会员名称;c=会员001;d=false"
+          "title": "a=\u4f1a\u5458\u540d\u79f0;c=\u4f1a\u5458001;d=false"
         },
         "member_mobile": {
           "type": "string",
-          "title": "a=会员手机号;c=13222113311;d=false"
+          "title": "a=\u4f1a\u5458\u624b\u673a\u53f7 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=13222113311;d=false"
         },
         "member_card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1;d=false"
         },
         "member_card_no": {
           "type": "string",
-          "title": "a=会员卡号;c=001;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u53f7;c=001;d=false"
         },
         "store_id": {
           "type": "string",
-          "title": "a=门店ID;c=1333333333;d=false"
+          "title": "a=\u95e8\u5e97ID;c=1333333333;d=false"
         },
         "store_name": {
           "type": "string",
-          "title": "a=门店名称;c=001门店;d=false"
+          "title": "a=\u95e8\u5e97\u540d\u79f0;c=001\u95e8\u5e97;d=false"
         },
         "store_no": {
           "type": "string",
-          "title": "a=门店编号;c=001;d=false"
+          "title": "a=\u95e8\u5e97\u7f16\u53f7;c=001;d=false"
         },
         "cashier_id": {
           "type": "string",
-          "title": "a=收银员ID;c=1333222;d=false"
+          "title": "a=\u6536\u94f6\u5458ID;c=1333222;d=false"
         },
         "cashier_name": {
           "type": "string",
-          "title": "a=收银员名称;c=收银员01;d=false"
+          "title": "a=\u6536\u94f6\u5458\u540d\u79f0;c=\u6536\u94f6\u545801;d=false"
         },
         "coupons_no": {
           "type": "string",
-          "title": "a=优惠劵方案;c=001;d=false"
+          "title": "a=\u4f18\u60e0\u52b5\u65b9\u6848;c=001;d=false"
         },
         "write_off_amt": {
           "type": "string",
-          "title": "a=核销金额;c=1;d=false"
+          "title": "a=\u6838\u9500\u91d1\u989d;c=1;d=false"
         },
         "write_off_stat": {
           "type": "string",
-          "title": "a=核销状态1预核销中2已核销3已取消;d=false"
+          "title": "a=\u6838\u9500\u72b6\u60011\u9884\u6838\u9500\u4e2d2\u5df2\u6838\u95003\u5df2\u53d6\u6d88;d=false"
         },
         "write_off_time": {
           "type": "string",
-          "title": "a=核销时间;c=2023-11-18 16:06:44;d=false"
+          "title": "a=\u6838\u9500\u65f6\u95f4;c=2023-11-18 16:06:44;d=false"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编号;c=M0033202311180001;d=false"
+          "title": "a=\u5355\u636e\u7f16\u53f7;c=M0033202311180001;d=false"
         },
         "record_bill_id": {
           "type": "string",
-          "title": "a=领用记录ID;c=1820256048657727488;d=false"
+          "title": "a=\u9886\u7528\u8bb0\u5f55ID;c=1820256048657727488;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=预核销时间;c=2023-12-13 14:25:23;d=false"
+          "title": "a=\u9884\u6838\u9500\u65f6\u95f4;c=2023-12-13 14:25:23;d=false"
         },
         "record_usable_amt": {
           "type": "string",
-          "title": "a=领用记录可用金额;c=1;d=false"
+          "title": "a=\u9886\u7528\u8bb0\u5f55\u53ef\u7528\u91d1\u989d;c=1;d=false"
         },
         "record_write_off_amt": {
           "type": "string",
-          "title": "a=领用记录核销金额;c=100;d=false"
+          "title": "a=\u9886\u7528\u8bb0\u5f55\u6838\u9500\u91d1\u989d;c=100;d=false"
         },
         "coupons_id": {
           "type": "string",
-          "title": "a=优惠券ID;c=100;d=false"
+          "title": "a=\u4f18\u60e0\u5238ID;c=100;d=false"
         }
       }
     },

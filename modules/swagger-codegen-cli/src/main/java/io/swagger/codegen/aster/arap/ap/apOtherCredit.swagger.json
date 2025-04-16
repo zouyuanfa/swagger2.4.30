@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "进销存云;应付单据;其他支出单",
+    "title": "\u8fdb\u9500\u5b58\u4e91;\u5e94\u4ed8\u5355\u636e;\u5176\u4ed6\u652f\u51fa\u5355",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/arap/ap_other_credit": {
       "get": {
-        "summary": "其他支出单列表;获取其他支出单列表;1.0.11",
+        "summary": "\u5176\u4ed6\u652f\u51fa\u5355\u5217\u8868;\u83b7\u53d6\u5176\u4ed6\u652f\u51fa\u5355\u5217\u8868;1.0.11",
         "operationId": "ApOtherCredit_list",
         "responses": {
           "200": {
@@ -37,98 +37,98 @@
         "parameters": [
           {
             "name": "search",
-            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22\uff0c\u652f\u6301\u5355\u636e\u7f16\u53f7\u3001\u5907\u6ce8;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_start_time",
-            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_end_time",
-            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_start_time",
-            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_end_time",
-            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_bill_date",
-            "description": "a=单据日期-开始日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=\u5355\u636e\u65e5\u671f-\u5f00\u59cb\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_bill_date",
-            "description": "a=单据日期-结束日期（“yyyy-MM-dd”）;b=10;c=2022-01-01;d=false.",
+            "description": "a=\u5355\u636e\u65e5\u671f-\u7ed3\u675f\u65e5\u671f\uff08\u201cyyyy-MM-dd\u201d\uff09;b=10;c=2022-01-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "bill_status",
-            "description": "a=单据状态（所有：“”，已审核：“C”，未审核：“A”）;b=1;c=C;d=false.",
+            "description": "a=\u5355\u636e\u72b6\u6001\uff08\u6240\u6709\uff1a\u201c\u201d\uff0c\u5df2\u5ba1\u6838\uff1a\u201cC\u201d\uff0c\u672a\u5ba1\u6838\uff1a\u201cA\u201d\uff09;b=1;c=C;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "supplier_group_id",
-            "description": "a=供应商分类id， 单选;b=2147483647;c=1;d=false.",
+            "description": "a=\u4f9b\u5e94\u5546\u5206\u7c7bid\uff0c \u5355\u9009;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "supplier_id",
-            "description": "a=供应商id;b=2147483647;c=1;d=false.",
+            "description": "a=\u4f9b\u5e94\u5546id;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "emp_id",
-            "description": "a=业务员id;b=2147483647;c=1;d=false.",
+            "description": "a=\u4e1a\u52a1\u5458id;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "dept_id",
-            "description": "a=部门id;b=2147483647;c=1;d=false.",
+            "description": "a=\u90e8\u95e8id;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -139,7 +139,7 @@
         ]
       },
       "post": {
-        "summary": "其他支出单保存;其他支出单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.26",
+        "summary": "\u5176\u4ed6\u652f\u51fa\u5355\u4fdd\u5b58;\u5176\u4ed6\u652f\u51fa\u5355\u65b0\u589e\u53ca\u4fee\u6539\u3002\u5ba1\u6838\u3001\u5220\u9664\u7b49\u8be6\u89c1[\u901a\u7528\u64cd\u4f5c\u63a5\u53e3](https://open.jdy.com/#/files/api/detail?index=2&categrayId=3cc8ee9a663e11eda5c84b5d383a2b93&id=9e804b8c712511eda0b39f724d124b07);1.0.26",
         "operationId": "ApOtherCredit_save",
         "responses": {
           "200": {
@@ -172,7 +172,7 @@
     },
     "/openapi/v2/arap/ap_other_credit_detail": {
       "get": {
-        "summary": "其他支出单详情;获取其他支出单详情;1.0.11",
+        "summary": "\u5176\u4ed6\u652f\u51fa\u5355\u8be6\u60c5;\u83b7\u53d6\u5176\u4ed6\u652f\u51fa\u5355\u8be6\u60c5;1.0.11",
         "operationId": "ApOtherCredit_detail",
         "responses": {
           "200": {
@@ -191,14 +191,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=（id与number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=\uff08id\u4e0enumber\u4e8c\u9009\u4e00\uff09;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=\u7f16\u7801\uff08id\u4e0enumber\u4e8c\u9009\u4e00\uff09;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -220,142 +220,142 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "ApOtherCreditDetailReply": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id;b=2147483647;c=1;d=false"
+          "title": "a=\u5355\u636eid;b=2147483647;c=1;d=false"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;b=10;c=2022-01-01;d=false"
+          "title": "a=\u5355\u636e\u65e5\u671f;b=10;c=2022-01-01;d=false"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;b=30;c=001;d=false"
+          "title": "a=\u5355\u636e\u7f16\u7801;b=30;c=001;d=false"
         },
         "bill_status": {
           "type": "string",
-          "title": "a=单据状态，已审核：“C”，未审核：“A”;b=1;c=A;d=false"
+          "title": "a=\u5355\u636e\u72b6\u6001\uff0c\u5df2\u5ba1\u6838\uff1a\u201cC\u201d\uff0c\u672a\u5ba1\u6838\uff1a\u201cA\u201d;b=1;c=A;d=false"
         },
         "supplier_id": {
           "type": "string",
-          "title": "a=供应商id;b=2147483647;c=1;d=false"
+          "title": "a=\u4f9b\u5e94\u5546id;b=2147483647;c=1;d=false"
         },
         "supplier_number": {
           "type": "string",
-          "title": "a=供应商编码;b=30;c=001;d=false"
+          "title": "a=\u4f9b\u5e94\u5546\u7f16\u7801;b=30;c=001;d=false"
         },
         "supplier_name": {
           "type": "string",
-          "title": "a=供应商名称;b=20;c=张三;d=false"
+          "title": "a=\u4f9b\u5e94\u5546\u540d\u79f0;b=20;c=\u5f20\u4e09;d=false"
         },
         "emp_id": {
           "type": "string",
-          "title": "a=业务员id;b=2147483647;c=1;d=false"
+          "title": "a=\u4e1a\u52a1\u5458id;b=2147483647;c=1;d=false"
         },
         "emp_number": {
           "type": "string",
-          "title": "a=业务员编码;b=30;c=001;d=false"
+          "title": "a=\u4e1a\u52a1\u5458\u7f16\u7801;b=30;c=001;d=false"
         },
         "emp_name": {
           "type": "string",
-          "title": "a=业务员名称;b=20;c=李四;d=false"
+          "title": "a=\u4e1a\u52a1\u5458\u540d\u79f0;b=20;c=\u674e\u56db;d=false"
         },
         "dept_id": {
           "type": "string",
-          "title": "a=部门id;b=2147483647;c=1;d=false"
+          "title": "a=\u90e8\u95e8id;b=2147483647;c=1;d=false"
         },
         "dept_number": {
           "type": "string",
-          "title": "a=部门编码;b=30;c=001;d=false"
+          "title": "a=\u90e8\u95e8\u7f16\u7801;b=30;c=001;d=false"
         },
         "dept_name": {
           "type": "string",
-          "title": "a=部门名称;b=20;c=开发部;d=false"
+          "title": "a=\u90e8\u95e8\u540d\u79f0;b=20;c=\u5f00\u53d1\u90e8;d=false"
         },
         "currency_id": {
           "type": "string",
-          "title": "a=币别 id;b=2147483647;c=1;d=false"
+          "title": "a=\u5e01\u522b id;b=2147483647;c=1;d=false"
         },
         "currency_name": {
           "type": "string",
-          "title": "a=币别名称;b=20;c=港币;d=false"
+          "title": "a=\u5e01\u522b\u540d\u79f0;b=20;c=\u6e2f\u5e01;d=false"
         },
         "currency_number": {
           "type": "string",
-          "title": "a=币别编码;b=30;c=001;d=false"
+          "title": "a=\u5e01\u522b\u7f16\u7801;b=30;c=001;d=false"
         },
         "currency_for_id": {
           "type": "string",
-          "title": "a=本位币币别id;b=2147483647;c=001;d=false"
+          "title": "a=\u672c\u4f4d\u5e01\u5e01\u522bid;b=2147483647;c=001;d=false"
         },
         "currency_for_name": {
           "type": "string",
-          "title": "a=本位币币别名称;b=20;c=人民币;d=false"
+          "title": "a=\u672c\u4f4d\u5e01\u5e01\u522b\u540d\u79f0;b=20;c=\u4eba\u6c11\u5e01;d=false"
         },
         "currency_for_number": {
           "type": "string",
-          "title": "a=本位币币别编码;b=30;c=001;d=false"
+          "title": "a=\u672c\u4f4d\u5e01\u5e01\u522b\u7f16\u7801;b=30;c=001;d=false"
         },
         "total_amount": {
           "type": "string",
-          "title": "a=本单合计金额;b=999999999;c=100;d=false"
+          "title": "a=\u672c\u5355\u5408\u8ba1\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "total_amount_for": {
           "type": "string",
-          "title": "a=本单合计金额（本位币）;b=999999999;c=100;d=false"
+          "title": "a=\u672c\u5355\u5408\u8ba1\u91d1\u989d\uff08\u672c\u4f4d\u5e01\uff09;b=999999999;c=100;d=false"
         },
         "total_discount_amount": {
           "type": "string",
-          "title": "a=优惠金额;b=999999999;c=100;d=false"
+          "title": "a=\u4f18\u60e0\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "total_discount_amount_for": {
           "type": "string",
-          "title": "a=优惠金额（本位币）;b=999999999;c=100;d=false"
+          "title": "a=\u4f18\u60e0\u91d1\u989d\uff08\u672c\u4f4d\u5e01\uff09;b=999999999;c=100;d=false"
         },
         "current_total_instant_amount": {
           "type": "string",
-          "title": "a=本次付款总金额;b=999999999;c=100;d=false"
+          "title": "a=\u672c\u6b21\u4ed8\u6b3e\u603b\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "current_total_instant_amount_for": {
           "type": "string",
-          "title": "a=本次付款总金额（本位币）;b=999999999;c=100;d=false"
+          "title": "a=\u672c\u6b21\u4ed8\u6b3e\u603b\u91d1\u989d\uff08\u672c\u4f4d\u5e01\uff09;b=999999999;c=100;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;b=100;c=无;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=\u65e0;d=false"
         },
         "pay_entry_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditDetailReply.PayEntry"
           },
-          "title": "a=付款信息分录;b=100;c=[];d=false"
+          "title": "a=\u4ed8\u6b3e\u4fe1\u606f\u5206\u5f55;b=100;c=[];d=false"
         },
         "instantpayfromtoentry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditDetailReply.InstantPayEntry"
           },
-          "title": "a=立即付款分录;b=100;c=[];d=false"
+          "title": "a=\u7acb\u5373\u4ed8\u6b3e\u5206\u5f55;b=100;c=[];d=false"
         },
         "attachments_url_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditDetailReply.AttachmentsUrl"
           },
-          "title": "a=附件地址;b=100;c=[];d=false"
+          "title": "a=\u9644\u4ef6\u5730\u5740;b=100;c=[];d=false"
         },
         "custom_field": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+          "title": "a=\u81ea\u5b9a\u4e49\u5b57\u6bb5[\u4f7f\u7528\u6307\u5357](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53&noside=true);c={};d=false"
         }
       }
     },
@@ -364,7 +364,7 @@
       "properties": {
         "url": {
           "type": "string",
-          "title": "a=附件地址;b=1000;c=http;d=false"
+          "title": "a=\u9644\u4ef6\u5730\u5740;b=1000;c=http;d=false"
         }
       }
     },
@@ -373,54 +373,54 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=分录id(新增时不传，修改时必传);b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55id(\u65b0\u589e\u65f6\u4e0d\u4f20\uff0c\u4fee\u6539\u65f6\u5fc5\u4f20);b=2147483647;c=1;d=false"
         },
         "seq": {
           "type": "string",
-          "title": "a=分录序号;b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;b=2147483647;c=1;d=false"
         },
         "instant_pay_type_id": {
           "type": "string",
-          "title": "a=支出类别id;b=2147483647;c=1;d=false"
+          "title": "a=\u652f\u51fa\u7c7b\u522bid;b=2147483647;c=1;d=false"
         },
         "instant_pay_type_number": {
           "type": "string",
-          "title": "a=付款方式编码;b=2147483647;c=1;d=false"
+          "title": "a=\u4ed8\u6b3e\u65b9\u5f0f\u7f16\u7801;b=2147483647;c=1;d=false"
         },
         "instant_pay_type_name": {
           "type": "string",
-          "title": "a=付款方式名称;b=2147483647;c=1;d=false"
+          "title": "a=\u4ed8\u6b3e\u65b9\u5f0f\u540d\u79f0;b=2147483647;c=1;d=false"
         },
         "instant_amount": {
           "type": "string",
-          "title": "a=付款金额;b=999999999;c=100;d=true"
+          "title": "a=\u4ed8\u6b3e\u91d1\u989d;b=999999999;c=100;d=true"
         },
         "instant_settle_account_id": {
           "type": "string",
-          "title": "a=付款账户id;b=2147483647;c=1;d=true"
+          "title": "a=\u4ed8\u6b3e\u8d26\u6237id;b=2147483647;c=1;d=true"
         },
         "instant_settle_account_number": {
           "type": "string",
-          "title": "a=付款账户编码;b=2147483647;c=1;d=false"
+          "title": "a=\u4ed8\u6b3e\u8d26\u6237\u7f16\u7801;b=2147483647;c=1;d=false"
         },
         "instant_settle_account_name": {
           "type": "string",
-          "title": "a=付款账户名称;b=2147483647;c=1;d=false"
+          "title": "a=\u4ed8\u6b3e\u8d26\u6237\u540d\u79f0;b=2147483647;c=1;d=false"
         },
         "instant_trans_number": {
           "type": "string",
-          "title": "a=交易号/票据号;b=30;c=001;d=false"
+          "title": "a=\u4ea4\u6613\u53f7/\u7968\u636e\u53f7;b=30;c=001;d=false"
         },
         "instant_comment": {
           "type": "string",
-          "title": "a=备注;b=100;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=\u5907\u6ce8;d=false"
         },
         "custom_entity_field": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+          "title": "a=\u81ea\u5b9a\u4e49\u5b57\u6bb5[\u4f7f\u7528\u6307\u5357](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53&noside=true);c={};d=false"
         }
       }
     },
@@ -429,39 +429,39 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=分录id;b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55id;b=2147483647;c=1;d=false"
         },
         "seq": {
           "type": "string",
-          "title": "a=分录序号;b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;b=2147483647;c=1;d=false"
         },
         "pay_type_id": {
           "type": "string",
-          "title": "a=支出类别id;b=2147483647;c=1;d=false"
+          "title": "a=\u652f\u51fa\u7c7b\u522bid;b=2147483647;c=1;d=false"
         },
         "pay_type_name": {
           "type": "string",
-          "title": "a=付款方式名称;b=20;c=现金;d=false"
+          "title": "a=\u4ed8\u6b3e\u65b9\u5f0f\u540d\u79f0;b=20;c=\u73b0\u91d1;d=false"
         },
         "pay_type_number": {
           "type": "string",
-          "title": "a=付款方式编码;b=30;c=001;d=false"
+          "title": "a=\u4ed8\u6b3e\u65b9\u5f0f\u7f16\u7801;b=30;c=001;d=false"
         },
         "amount": {
           "type": "string",
-          "title": "a=付款金额;b=999999999;c=100;d=false"
+          "title": "a=\u4ed8\u6b3e\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "amount_for": {
           "type": "string",
-          "title": "a=付款金额本位币;b=999999999;c=100;d=false"
+          "title": "a=\u4ed8\u6b3e\u91d1\u989d\u672c\u4f4d\u5e01;b=999999999;c=100;d=false"
         },
         "trans_number": {
           "type": "string",
-          "title": "a=交易号、票据号;b=30;c=001;d=false"
+          "title": "a=\u4ea4\u6613\u53f7\u3001\u7968\u636e\u53f7;b=30;c=001;d=false"
         },
         "comment": {
           "type": "string",
-          "title": "a=备注;b=100;c=无;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=\u65e0;d=false"
         }
       }
     },
@@ -471,33 +471,33 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditListReply.Row"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         }
       }
     },
@@ -506,95 +506,95 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id;b=2147483647;c=1;d=false"
+          "title": "a=\u5355\u636eid;b=2147483647;c=1;d=false"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;b=10;c=2022-01-01;d=false"
+          "title": "a=\u5355\u636e\u65e5\u671f;b=10;c=2022-01-01;d=false"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;b=30;c=001;d=false"
+          "title": "a=\u5355\u636e\u7f16\u7801;b=30;c=001;d=false"
         },
         "bill_status": {
           "type": "string",
-          "title": "a=单据状态，已审核：“C”，未审核：“A”;b=1;c=A;d=false"
+          "title": "a=\u5355\u636e\u72b6\u6001\uff0c\u5df2\u5ba1\u6838\uff1a\u201cC\u201d\uff0c\u672a\u5ba1\u6838\uff1a\u201cA\u201d;b=1;c=A;d=false"
         },
         "supplier_id": {
           "type": "string",
-          "title": "a=供应商id;b=2147483647;c=1;d=false"
+          "title": "a=\u4f9b\u5e94\u5546id;b=2147483647;c=1;d=false"
         },
         "supplier_number": {
           "type": "string",
-          "title": "a=供应商编码;b=30;c=001;d=false"
+          "title": "a=\u4f9b\u5e94\u5546\u7f16\u7801;b=30;c=001;d=false"
         },
         "emp_id": {
           "type": "string",
-          "title": "a=业务员id;b=2147483647;c=1;d=false"
+          "title": "a=\u4e1a\u52a1\u5458id;b=2147483647;c=1;d=false"
         },
         "emp_number": {
           "type": "string",
-          "title": "a=业务员编码;b=30;c=001;d=false"
+          "title": "a=\u4e1a\u52a1\u5458\u7f16\u7801;b=30;c=001;d=false"
         },
         "emp_name": {
           "type": "string",
-          "title": "a=业务员名称;b=20;c=李四;d=false"
+          "title": "a=\u4e1a\u52a1\u5458\u540d\u79f0;b=20;c=\u674e\u56db;d=false"
         },
         "dept_id": {
           "type": "string",
-          "title": "a=部门id;b=2147483647;c=1;d=false"
+          "title": "a=\u90e8\u95e8id;b=2147483647;c=1;d=false"
         },
         "dept_number": {
           "type": "string",
-          "title": "a=部门编码;b=30;c=001;d=false"
+          "title": "a=\u90e8\u95e8\u7f16\u7801;b=30;c=001;d=false"
         },
         "dept_name": {
           "type": "string",
-          "title": "a=部门名称;b=20;c=开发部;d=false"
+          "title": "a=\u90e8\u95e8\u540d\u79f0;b=20;c=\u5f00\u53d1\u90e8;d=false"
         },
         "currency_id": {
           "type": "string",
-          "title": "a=币别id;b=2147483647;c=1;d=false"
+          "title": "a=\u5e01\u522bid;b=2147483647;c=1;d=false"
         },
         "currency_number": {
           "type": "string",
-          "title": "a=币别编码;b=30;c=001;d=false"
+          "title": "a=\u5e01\u522b\u7f16\u7801;b=30;c=001;d=false"
         },
         "currency_name": {
           "type": "string",
-          "title": "a=币别名称;b=20;c=开发部;d=false"
+          "title": "a=\u5e01\u522b\u540d\u79f0;b=20;c=\u5f00\u53d1\u90e8;d=false"
         },
         "exchange_rate": {
           "type": "string",
-          "title": "a=汇率;b=99999;c=1;d=false"
+          "title": "a=\u6c47\u7387;b=99999;c=1;d=false"
         },
         "total_amount": {
           "type": "string",
-          "title": "a=本单合计金额;b=999999999;c=100;d=false"
+          "title": "a=\u672c\u5355\u5408\u8ba1\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "total_amount_for": {
           "type": "string",
-          "title": "a=本单合计金额（本位币）;b=999999999;c=100;d=false"
+          "title": "a=\u672c\u5355\u5408\u8ba1\u91d1\u989d\uff08\u672c\u4f4d\u5e01\uff09;b=999999999;c=100;d=false"
         },
         "total_discount_amount": {
           "type": "string",
-          "title": "a=优惠金额;b=999999999;c=100;d=false"
+          "title": "a=\u4f18\u60e0\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "total_discount_amount_for": {
           "type": "string",
-          "title": "a=优惠金额（本位币）;b=999999999;c=100;d=false"
+          "title": "a=\u4f18\u60e0\u91d1\u989d\uff08\u672c\u4f4d\u5e01\uff09;b=999999999;c=100;d=false"
         },
         "total_settle_amount": {
           "type": "string",
-          "title": "a=已核销总金额;b=999999999;c=100;d=false"
+          "title": "a=\u5df2\u6838\u9500\u603b\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "total_settle_amount_for": {
           "type": "string",
-          "title": "a=已核销总金额（本位币）;b=999999999;c=100;d=false"
+          "title": "a=\u5df2\u6838\u9500\u603b\u91d1\u989d\uff08\u672c\u4f4d\u5e01\uff09;b=999999999;c=100;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;b=100;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=\u5907\u6ce8;d=false"
         }
       }
     },
@@ -603,79 +603,79 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据id，新增不填，更新时必填（id为空时代表新增单据）;b=2147483647;c=1;d=false"
+          "title": "a=\u5355\u636eid\uff0c\u65b0\u589e\u4e0d\u586b\uff0c\u66f4\u65b0\u65f6\u5fc5\u586b\uff08id\u4e3a\u7a7a\u65f6\u4ee3\u8868\u65b0\u589e\u5355\u636e\uff09;b=2147483647;c=1;d=false"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;c=SKD-20200310-000011;d=true"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=SKD-20200310-000011;d=true"
         },
         "default_bill_source": {
           "type": "string",
-          "title": "固定值字段，不生成对外API文档"
+          "title": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;b=10;c=2022-01-01;d=true"
+          "title": "a=\u5355\u636e\u65e5\u671f;b=10;c=2022-01-01;d=true"
         },
         "supplier_id": {
           "type": "string",
-          "title": "a=供应商id;b=2147483647;c=1;d=false"
+          "title": "a=\u4f9b\u5e94\u5546id;b=2147483647;c=1;d=false"
         },
         "currency_id": {
           "type": "string",
-          "title": "a=币别id，不填时默认单据币别使用系统本位币;b=2147483647;c=1;d=false"
+          "title": "a=\u5e01\u522bid\uff0c\u4e0d\u586b\u65f6\u9ed8\u8ba4\u5355\u636e\u5e01\u522b\u4f7f\u7528\u7cfb\u7edf\u672c\u4f4d\u5e01;b=2147483647;c=1;d=false"
         },
         "exchange_rate": {
           "type": "string",
-          "title": "a=汇率，应大于零，币别为本币时，汇率取1,汇率小于零时，修正为1;b=99999;c=1;d=false"
+          "title": "a=\u6c47\u7387\uff0c\u5e94\u5927\u4e8e\u96f6\uff0c\u5e01\u522b\u4e3a\u672c\u5e01\u65f6\uff0c\u6c47\u7387\u53d61,\u6c47\u7387\u5c0f\u4e8e\u96f6\u65f6\uff0c\u4fee\u6b63\u4e3a1;b=99999;c=1;d=false"
         },
         "emp_id": {
           "type": "string",
-          "title": "a=业务员id;b=2147483647;c=1;d=false"
+          "title": "a=\u4e1a\u52a1\u5458id;b=2147483647;c=1;d=false"
         },
         "dept_id": {
           "type": "string",
-          "title": "a=部门id;b=2147483647;c=1;d=false"
+          "title": "a=\u90e8\u95e8id;b=2147483647;c=1;d=false"
         },
         "total_discount_amount": {
           "type": "string",
-          "title": "a=优惠金额;b=999999999;c=100;d=false"
+          "title": "a=\u4f18\u60e0\u91d1\u989d;b=999999999;c=100;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;b=100;c=无;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=\u65e0;d=false"
         },
         "pay_entry_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditSaveRequest.PayEntry"
           },
-          "title": "a=应付信息分录;b=100;c=[];d=true"
+          "title": "a=\u5e94\u4ed8\u4fe1\u606f\u5206\u5f55;b=100;c=[];d=true"
         },
         "instantpayfromtoentry": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditSaveRequest.InstantPayEntry"
           },
-          "title": "a=立即付款分录;b=100;c=[];d=true"
+          "title": "a=\u7acb\u5373\u4ed8\u6b3e\u5206\u5f55;b=100;c=[];d=true"
         },
         "attachments_url_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ApOtherCreditSaveRequest.AttachmentsUrl"
           },
-          "title": "a=附件地址;b=100;c=[];d=false"
+          "title": "a=\u9644\u4ef6\u5730\u5740;b=100;c=[];d=false"
         },
         "custom_field": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+          "title": "a=\u81ea\u5b9a\u4e49\u5b57\u6bb5[\u4f7f\u7528\u6307\u5357](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53&noside=true);c={};d=false"
         },
         "operate_type": {
           "type": "string",
-          "title": "a=操作类型,审核audit和反审核unaudit;c=audit;d=false"
+          "title": "a=\u64cd\u4f5c\u7c7b\u578b,\u5ba1\u6838audit\u548c\u53cd\u5ba1\u6838unaudit;c=audit;d=false"
         }
       }
     },
@@ -684,7 +684,7 @@
       "properties": {
         "url": {
           "type": "string",
-          "title": "a=附件地址;b=1000;c=http;d=false"
+          "title": "a=\u9644\u4ef6\u5730\u5740;b=1000;c=http;d=false"
         }
       }
     },
@@ -693,42 +693,42 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=分录id(新增时不传，修改时必传);b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55id(\u65b0\u589e\u65f6\u4e0d\u4f20\uff0c\u4fee\u6539\u65f6\u5fc5\u4f20);b=2147483647;c=1;d=false"
         },
         "seq": {
           "type": "string",
-          "title": "a=分录序号;b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;b=2147483647;c=1;d=false"
         },
         "instant_pay_type_id": {
           "type": "string",
-          "title": "a=支出类别id;b=2147483647;c=1;d=false"
+          "title": "a=\u652f\u51fa\u7c7b\u522bid;b=2147483647;c=1;d=false"
         },
         "instant_amount": {
           "type": "string",
-          "title": "a=付款金额;b=999999999;c=100;d=true"
+          "title": "a=\u4ed8\u6b3e\u91d1\u989d;b=999999999;c=100;d=true"
         },
         "instant_settle_account_id": {
           "type": "string",
-          "title": "a=付款账户id;b=2147483647;c=1;d=true"
+          "title": "a=\u4ed8\u6b3e\u8d26\u6237id;b=2147483647;c=1;d=true"
         },
         "instant_trans_number": {
           "type": "string",
-          "title": "a=交易号/票据号;b=30;c=001;d=false"
+          "title": "a=\u4ea4\u6613\u53f7/\u7968\u636e\u53f7;b=30;c=001;d=false"
         },
         "service_fee": {
           "type": "string",
-          "title": "a=手续费;b=999999999;c=100;d=false"
+          "title": "a=\u624b\u7eed\u8d39;b=999999999;c=100;d=false"
         },
         "instant_comment": {
           "type": "string",
-          "title": "a=备注;b=100;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;b=100;c=\u5907\u6ce8;d=false"
         },
         "custom_entity_field": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+          "title": "a=\u81ea\u5b9a\u4e49\u5b57\u6bb5[\u4f7f\u7528\u6307\u5357](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53&noside=true);c={};d=false"
         }
       }
     },
@@ -737,42 +737,42 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=分录id(新增时不传，修改时必传);b=2147483647;c=1;d=false"
+          "title": "a=\u5206\u5f55id(\u65b0\u589e\u65f6\u4e0d\u4f20\uff0c\u4fee\u6539\u65f6\u5fc5\u4f20);b=2147483647;c=1;d=false"
         },
         "pay_type_id": {
           "type": "string",
-          "title": "a=支出类别id;b=2147483647;c=1;d=true"
+          "title": "a=\u652f\u51fa\u7c7b\u522bid;b=2147483647;c=1;d=true"
         },
         "amount": {
           "type": "string",
-          "title": "a=应付金额（应大于0）;b=999999999;c=100;d=true"
+          "title": "a=\u5e94\u4ed8\u91d1\u989d\uff08\u5e94\u5927\u4e8e0\uff09;b=999999999;c=100;d=true"
         },
         "comment": {
           "type": "string",
-          "title": "a=付款备注;b=100;c=备注;d=false"
+          "title": "a=\u4ed8\u6b3e\u5907\u6ce8;b=100;c=\u5907\u6ce8;d=false"
         },
         "trans_number": {
           "type": "string",
-          "title": "a=交易号/票据号;b=30;c=001;d=false"
+          "title": "a=\u4ea4\u6613\u53f7/\u7968\u636e\u53f7;b=30;c=001;d=false"
         },
         "service_fee": {
           "type": "string",
-          "title": "固定值字段，不生成对外API文档"
+          "title": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863"
         },
         "custom_entity_field": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=自定义字段[使用指南](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53\u0026noside=true);c={};d=false"
+          "title": "a=\u81ea\u5b9a\u4e49\u5b57\u6bb5[\u4f7f\u7528\u6307\u5357](https://open.jdy.com/#/files/api/detail?id=76567ff2a06311edaa4b3d71bf0fce53&noside=true);c={};d=false"
         },
         "no_tax_amount": {
           "type": "string",
-          "title": "a=不含税金额(修改时需要带上);b=30;c=10;d=false"
+          "title": "a=\u4e0d\u542b\u7a0e\u91d1\u989d(\u4fee\u6539\u65f6\u9700\u8981\u5e26\u4e0a);b=30;c=10;d=false"
         },
         "tax_rate": {
           "type": "string",
-          "title": "a=税率;b=10000;c=1;d=false"
+          "title": "a=\u7a0e\u7387;b=10000;c=1;d=false"
         }
       }
     },
@@ -784,17 +784,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

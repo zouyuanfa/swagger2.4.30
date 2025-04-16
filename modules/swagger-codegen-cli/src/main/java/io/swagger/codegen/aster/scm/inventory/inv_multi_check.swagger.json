@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "进销存云;仓存单据;分量盘点单",
+    "title": "\u8fdb\u9500\u5b58\u4e91;\u4ed3\u5b58\u5355\u636e;\u5206\u91cf\u76d8\u70b9\u5355",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/scm/inv_multi_check": {
       "get": {
-        "summary": "分量盘点单列表;分量盘点单列表;1.0.3",
+        "summary": "\u5206\u91cf\u76d8\u70b9\u5355\u5217\u8868;\u5206\u91cf\u76d8\u70b9\u5355\u5217\u8868;1.0.3",
         "operationId": "InventoryMultiCheck_invMultiCheckBillList",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "stock_id",
-            "description": "a=仓库ID;c=[].",
+            "description": "a=\u4ed3\u5e93ID;c=[].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -48,56 +48,56 @@
           },
           {
             "name": "bill_status",
-            "description": "a=单据状态（所有：“”，未审核：“Z”，已审核：“C”）;b=1;c=C;d=false.",
+            "description": "a=\u5355\u636e\u72b6\u6001\uff08\u6240\u6709\uff1a\u201c\u201d\uff0c\u672a\u5ba1\u6838\uff1a\u201cZ\u201d\uff0c\u5df2\u5ba1\u6838\uff1a\u201cC\u201d\uff09;b=1;c=C;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "check_status",
-            "description": "a=单据状态（所有：“”，未盘点：“D”，盘点中：“E”，未汇总：“F”，已汇总：“G”）;c=D.",
+            "description": "a=\u5355\u636e\u72b6\u6001\uff08\u6240\u6709\uff1a\u201c\u201d\uff0c\u672a\u76d8\u70b9\uff1a\u201cD\u201d\uff0c\u76d8\u70b9\u4e2d\uff1a\u201cE\u201d\uff0c\u672a\u6c47\u603b\uff1a\u201cF\u201d\uff0c\u5df2\u6c47\u603b\uff1a\u201cG\u201d\uff09;c=D.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "check_model",
-            "description": "a=盘点模式(默认:单人盘点:“1”,多人盘点:“2”);c=1.",
+            "description": "a=\u76d8\u70b9\u6a21\u5f0f(\u9ed8\u8ba4:\u5355\u4eba\u76d8\u70b9:\u201c1\u201d,\u591a\u4eba\u76d8\u70b9:\u201c2\u201d);c=1.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "check_task_id",
-            "description": "a=盘点任务;c=0;d=true.",
+            "description": "a=\u76d8\u70b9\u4efb\u52a1;c=0;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_date",
-            "description": "a=开始日期（格式：“yyyy-MM-dd”，为空表示不过滤）;c=2022-05-02.",
+            "description": "a=\u5f00\u59cb\u65e5\u671f\uff08\u683c\u5f0f\uff1a\u201cyyyy-MM-dd\u201d\uff0c\u4e3a\u7a7a\u8868\u793a\u4e0d\u8fc7\u6ee4\uff09;c=2022-05-02.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期（格式：“yyyy-MM-dd”，为空表示不过滤）;c=2022-05-02.",
+            "description": "a=\u7ed3\u675f\u65e5\u671f\uff08\u683c\u5f0f\uff1a\u201cyyyy-MM-dd\u201d\uff0c\u4e3a\u7a7a\u8868\u793a\u4e0d\u8fc7\u6ee4\uff09;c=2022-05-02.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "default_select_fields",
-            "description": "固定值字段，不生成对外API文档.",
+            "description": "\u56fa\u5b9a\u503c\u5b57\u6bb5\uff0c\u4e0d\u751f\u6210\u5bf9\u5916API\u6587\u6863.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "emp_id",
-            "description": "a=盘点人ID;c=[].",
+            "description": "a=\u76d8\u70b9\u4ebaID;c=[].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -108,7 +108,7 @@
           },
           {
             "name": "creator_id",
-            "description": "a=制单人ID;c=[].",
+            "description": "a=\u5236\u5355\u4ebaID;c=[].",
             "in": "query",
             "required": false,
             "type": "array",
@@ -119,21 +119,21 @@
           },
           {
             "name": "search",
-            "description": "a=模糊搜索，支持单据编号、备注;b=30;c=001;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22\uff0c\u652f\u6301\u5355\u636e\u7f16\u53f7\u3001\u5907\u6ce8;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -144,7 +144,7 @@
         ]
       },
       "post": {
-        "summary": "分量盘点单保存;分量盘点单新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.3",
+        "summary": "\u5206\u91cf\u76d8\u70b9\u5355\u4fdd\u5b58;\u5206\u91cf\u76d8\u70b9\u5355\u65b0\u589e\u53ca\u4fee\u6539\u3002\u5ba1\u6838\u3001\u5220\u9664\u7b49\u8be6\u89c1[\u901a\u7528\u64cd\u4f5c\u63a5\u53e3](https://open.jdy.com/#/files/api/detail?index=2&categrayId=3cc8ee9a663e11eda5c84b5d383a2b93&id=9e804b8c712511eda0b39f724d124b07);1.0.3",
         "operationId": "InventoryMultiCheck_invMultiCheckBillSave",
         "responses": {
           "200": {
@@ -177,7 +177,7 @@
     },
     "/openapi/v2/scm/inv_multi_check_detail": {
       "get": {
-        "summary": "分量盘点单详情;分量盘点单详情;1.0.3",
+        "summary": "\u5206\u91cf\u76d8\u70b9\u5355\u8be6\u60c5;\u5206\u91cf\u76d8\u70b9\u5355\u8be6\u60c5;1.0.3",
         "operationId": "InventoryMultiCheck_invMultiCheckBillDetail",
         "responses": {
           "200": {
@@ -218,7 +218,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "InvCheckMultiBillListRes": {
       "type": "object",
@@ -226,34 +226,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=3"
+          "title": "a=\u603b\u9875\u6570;c=3"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页大小;c=10"
+          "title": "a=\u5f53\u524d\u9875\u5927\u5c0f;c=10"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总计条目;c=30"
+          "title": "a=\u603b\u8ba1\u6761\u76ee;c=30"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=页大小;c=10"
+          "title": "a=\u9875\u5927\u5c0f;c=10"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1"
+          "title": "a=\u5f53\u524d\u9875;c=1"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/InvCheckMultiBillListRes.Row"
           },
-          "title": "a=返回数据列表;c=[]"
+          "title": "a=\u8fd4\u56de\u6570\u636e\u5217\u8868;c=[]"
         }
       }
     },
@@ -262,55 +262,55 @@
       "properties": {
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-03-10 16:36:24"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-03-10 16:36:24"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期，yyyy-MM-dd;c=2020-03-10"
+          "title": "a=\u5355\u636e\u65e5\u671f\uff0cyyyy-MM-dd;c=2020-03-10"
         },
         "id": {
           "type": "string",
-          "title": "a=单据ID;c=844140965240254464"
+          "title": "a=\u5355\u636eID;c=844140965240254464"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;c=QTRK-20200310-00001"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=QTRK-20200310-00001"
         },
         "bill_status": {
           "type": "string",
-          "title": "a=单据状态，已审核：“C”，未审核：“Z”;c=C"
+          "title": "a=\u5355\u636e\u72b6\u6001\uff0c\u5df2\u5ba1\u6838\uff1a\u201cC\u201d\uff0c\u672a\u5ba1\u6838\uff1a\u201cZ\u201d;c=C"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=xx"
+          "title": "a=\u5907\u6ce8;c=xx"
         },
         "stock_id": {
           "type": "string",
-          "title": "a=仓库id;c=998349917053284352"
+          "title": "a=\u4ed3\u5e93id;c=998349917053284352"
         },
         "stock_name": {
           "type": "string",
-          "title": "a=仓库名称;c=DK1"
+          "title": "a=\u4ed3\u5e93\u540d\u79f0;c=DK1"
         },
         "stock_number": {
           "type": "string",
-          "title": "a=仓库编码;c=CK00001"
+          "title": "a=\u4ed3\u5e93\u7f16\u7801;c=CK00001"
         },
         "check_date": {
           "type": "string",
-          "title": "a=盘点日期，指定日期盘点时才有;c=2020-10-14"
+          "title": "a=\u76d8\u70b9\u65e5\u671f\uff0c\u6307\u5b9a\u65e5\u671f\u76d8\u70b9\u65f6\u624d\u6709;c=2020-10-14"
         },
         "check_model": {
           "type": "string",
-          "title": "a=盘点类型（单人盘点：“1”，多人盘点：“2”）;c=1"
+          "title": "a=\u76d8\u70b9\u7c7b\u578b\uff08\u5355\u4eba\u76d8\u70b9\uff1a\u201c1\u201d\uff0c\u591a\u4eba\u76d8\u70b9\uff1a\u201c2\u201d\uff09;c=1"
         },
         "check_scope": {
           "type": "string",
-          "title": "a=盘点范围（全盘：“1”，抽盘：“2”）;c=1"
+          "title": "a=\u76d8\u70b9\u8303\u56f4\uff08\u5168\u76d8\uff1a\u201c1\u201d\uff0c\u62bd\u76d8\uff1a\u201c2\u201d\uff09;c=1"
         },
         "material_source": {
           "type": "string",
-          "title": "a=商品来源（在盘点仓库中有交易记录的商品：“1”，商品基础资料：“2”）;c=1"
+          "title": "a=\u5546\u54c1\u6765\u6e90\uff08\u5728\u76d8\u70b9\u4ed3\u5e93\u4e2d\u6709\u4ea4\u6613\u8bb0\u5f55\u7684\u5546\u54c1\uff1a\u201c1\u201d\uff0c\u5546\u54c1\u57fa\u7840\u8d44\u6599\uff1a\u201c2\u201d\uff09;c=1"
         }
       }
     },
@@ -319,90 +319,90 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=单据ID;c=843961420348406785"
+          "title": "a=\u5355\u636eID;c=843961420348406785"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码;c=PDD-20200310-00001"
+          "title": "a=\u5355\u636e\u7f16\u7801;c=PDD-20200310-00001"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;c=2020-03-10"
+          "title": "a=\u5355\u636e\u65e5\u671f;c=2020-03-10"
         },
         "bill_status": {
           "type": "string",
-          "title": "a=单据状态，Z：未审核，C：已审核;c=Z"
+          "title": "a=\u5355\u636e\u72b6\u6001\uff0cZ\uff1a\u672a\u5ba1\u6838\uff0cC\uff1a\u5df2\u5ba1\u6838;c=Z"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-03-10 10:40:23"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-03-10 10:40:23"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=修改时间;c=2020-03-10 10:40:23"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;c=2020-03-10 10:40:23"
         },
         "emp_id": {
           "type": "string",
-          "title": "a=盘点人id;c=1"
+          "title": "a=\u76d8\u70b9\u4ebaid;c=1"
         },
         "emp_name": {
           "type": "string",
-          "title": "a=盘点人名称;c=盘点人A"
+          "title": "a=\u76d8\u70b9\u4eba\u540d\u79f0;c=\u76d8\u70b9\u4ebaA"
         },
         "emp_number": {
           "type": "string",
-          "title": "a=盘点人编码;c=001"
+          "title": "a=\u76d8\u70b9\u4eba\u7f16\u7801;c=001"
         },
         "creator_id": {
           "type": "string",
-          "title": "a=创建人id;c=2"
+          "title": "a=\u521b\u5efa\u4ebaid;c=2"
         },
         "creator_name": {
           "type": "string",
-          "title": "a=创建人名称;c=创建人B"
+          "title": "a=\u521b\u5efa\u4eba\u540d\u79f0;c=\u521b\u5efa\u4ebaB"
         },
         "creator_number": {
           "type": "string",
-          "title": "a=创建人编码;c=002"
+          "title": "a=\u521b\u5efa\u4eba\u7f16\u7801;c=002"
         },
         "modifier_id": {
           "type": "string",
-          "title": "a=修改人id;c=3"
+          "title": "a=\u4fee\u6539\u4ebaid;c=3"
         },
         "modifier_name": {
           "type": "string",
-          "title": "a=修改人名称;c=修改人C"
+          "title": "a=\u4fee\u6539\u4eba\u540d\u79f0;c=\u4fee\u6539\u4ebaC"
         },
         "modifier_number": {
           "type": "string",
-          "title": "a=修改人编码;c=003"
+          "title": "a=\u4fee\u6539\u4eba\u7f16\u7801;c=003"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=xxxx"
+          "title": "a=\u5907\u6ce8;c=xxxx"
         },
         "stock_id": {
           "type": "string",
-          "title": "a=仓库id;c=1"
+          "title": "a=\u4ed3\u5e93id;c=1"
         },
         "stock_name": {
           "type": "string",
-          "title": "a=仓库名称;c=仓库A"
+          "title": "a=\u4ed3\u5e93\u540d\u79f0;c=\u4ed3\u5e93A"
         },
         "stock_number": {
           "type": "string",
-          "title": "a=仓库编码;c=001"
+          "title": "a=\u4ed3\u5e93\u7f16\u7801;c=001"
         },
         "stock_is_allow_freight": {
           "type": "boolean",
-          "title": "a=仓库启用仓位管理;c=false"
+          "title": "a=\u4ed3\u5e93\u542f\u7528\u4ed3\u4f4d\u7ba1\u7406;c=false"
         },
         "material_entity": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/InvMultiCheckBillDetailRes.MaterialEntity"
           },
-          "title": "a=商品分录;c=[]"
+          "title": "a=\u5546\u54c1\u5206\u5f55;c=[]"
         }
       }
     },
@@ -412,226 +412,226 @@
         "seq": {
           "type": "integer",
           "format": "int32",
-          "title": "a=分录序号;c=1"
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;c=1"
         },
         "id": {
           "type": "string",
-          "title": "a=分录ID;c=843961420348406785"
+          "title": "a=\u5206\u5f55ID;c=843961420348406785"
         },
         "picture": {
           "type": "string",
-          "title": "a=图片url;c=333"
+          "title": "a=\u56fe\u7247url;c=333"
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品id;c=778308996250477568"
+          "title": "a=\u5546\u54c1id;c=778308996250477568"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=商品A"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=\u5546\u54c1A"
         },
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=SP00004"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=SP00004"
         },
         "material_is_multi_unit": {
           "type": "boolean",
-          "title": "a=商品是否多单位;c=false"
+          "title": "a=\u5546\u54c1\u662f\u5426\u591a\u5355\u4f4d;c=false"
         },
         "material_is_serial": {
           "type": "boolean",
-          "title": "a=商品是否序列号;c=false"
+          "title": "a=\u5546\u54c1\u662f\u5426\u5e8f\u5217\u53f7;c=false"
         },
         "material_is_asst_attr": {
           "type": "boolean",
-          "title": "a=商品是否启用辅助属性;c=false"
+          "title": "a=\u5546\u54c1\u662f\u5426\u542f\u7528\u8f85\u52a9\u5c5e\u6027;c=false"
         },
         "material_is_kf_period": {
           "type": "boolean",
-          "title": "a=商品是否开启保质期;c=false"
+          "title": "a=\u5546\u54c1\u662f\u5426\u5f00\u542f\u4fdd\u8d28\u671f;c=false"
         },
         "material_is_batch": {
           "type": "boolean",
-          "title": "a=商品是否开启批次;c=false"
+          "title": "a=\u5546\u54c1\u662f\u5426\u5f00\u542f\u6279\u6b21;c=false"
         },
         "sp_id": {
           "type": "string",
-          "title": "a=仓位id;c=1"
+          "title": "a=\u4ed3\u4f4did;c=1"
         },
         "sp_name": {
           "type": "string",
-          "title": "a=仓位名称;c=仓位A"
+          "title": "a=\u4ed3\u4f4d\u540d\u79f0;c=\u4ed3\u4f4dA"
         },
         "sp_number": {
           "type": "string",
-          "title": "a=仓位编码;c=001"
+          "title": "a=\u4ed3\u4f4d\u7f16\u7801;c=001"
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性id;c=1"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027id;c=1"
         },
         "aux_prop_name": {
           "type": "string",
-          "title": "a=辅助属性名称;c=辅助属性001"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027\u540d\u79f0;c=\u8f85\u52a9\u5c5e\u6027001"
         },
         "aux_prop_number": {
           "type": "string",
-          "title": "a=辅助属性编码;c=001"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027\u7f16\u7801;c=001"
         },
         "aux_id1": {
           "type": "string",
-          "title": "a=辅助属性1id;c=1"
+          "title": "a=\u8f85\u52a9\u5c5e\u60271id;c=1"
         },
         "aux_name1": {
           "type": "string",
-          "title": "a=辅助属性1名称;c=辅助属性1"
+          "title": "a=\u8f85\u52a9\u5c5e\u60271\u540d\u79f0;c=\u8f85\u52a9\u5c5e\u60271"
         },
         "aux_number1": {
           "type": "string",
-          "title": "a=辅助属性1编码;c=001"
+          "title": "a=\u8f85\u52a9\u5c5e\u60271\u7f16\u7801;c=001"
         },
         "aux_id2": {
           "type": "string",
-          "title": "a=辅助属性2id;c=2"
+          "title": "a=\u8f85\u52a9\u5c5e\u60272id;c=2"
         },
         "aux_name2": {
           "type": "string",
-          "title": "a=辅助属性2名称;c=辅助属性2"
+          "title": "a=\u8f85\u52a9\u5c5e\u60272\u540d\u79f0;c=\u8f85\u52a9\u5c5e\u60272"
         },
         "aux_number2": {
           "type": "string",
-          "title": "a=辅助属性2编码;c=002"
+          "title": "a=\u8f85\u52a9\u5c5e\u60272\u7f16\u7801;c=002"
         },
         "aux_id3": {
           "type": "string",
-          "title": "a=辅助属性3id;c=3"
+          "title": "a=\u8f85\u52a9\u5c5e\u60273id;c=3"
         },
         "aux_name3": {
           "type": "string",
-          "title": "a=辅助属性3名称;c=辅助属性3"
+          "title": "a=\u8f85\u52a9\u5c5e\u60273\u540d\u79f0;c=\u8f85\u52a9\u5c5e\u60273"
         },
         "aux_number3": {
           "type": "string",
-          "title": "a=辅助属性3编码;c=003"
+          "title": "a=\u8f85\u52a9\u5c5e\u60273\u7f16\u7801;c=003"
         },
         "barcode": {
           "type": "string",
-          "title": "a=条形码;c=2020222"
+          "title": "a=\u6761\u5f62\u7801;c=2020222"
         },
         "batch_no": {
           "type": "string",
-          "title": "a=批次号;c=20220202"
+          "title": "a=\u6279\u6b21\u53f7;c=20220202"
         },
         "pro_place": {
           "type": "string",
-          "title": "a=产地;c=深圳"
+          "title": "a=\u4ea7\u5730;c=\u6df1\u5733"
         },
         "pro_reg_no": {
           "type": "string",
-          "title": "a=注册证号;c=xxxx222"
+          "title": "a=\u6ce8\u518c\u8bc1\u53f7;c=xxxx222"
         },
         "pro_license": {
           "type": "string",
-          "title": "a=生产许可证号;c=xxx11"
+          "title": "a=\u751f\u4ea7\u8bb8\u53ef\u8bc1\u53f7;c=xxx11"
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期;c=2022-08-08"
+          "title": "a=\u751f\u4ea7\u65e5\u671f;c=2022-08-08"
         },
         "valid_date": {
           "type": "string",
-          "title": "a=有效日期;c=2099-08-08"
+          "title": "a=\u6709\u6548\u65e5\u671f;c=2099-08-08"
         },
         "kf_type": {
           "type": "string",
-          "title": "a=保质期类型，1：天，2：月，3：年;c=1"
+          "title": "a=\u4fdd\u8d28\u671f\u7c7b\u578b\uff0c1\uff1a\u5929\uff0c2\uff1a\u6708\uff0c3\uff1a\u5e74;c=1"
         },
         "kf_period": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期天数;c=180"
+          "title": "a=\u4fdd\u8d28\u671f\u5929\u6570;c=180"
         },
         "conversion_rate": {
           "type": "string",
-          "title": "a=换算公式;c=xx"
+          "title": "a=\u6362\u7b97\u516c\u5f0f;c=xx"
         },
         "base_unit_id": {
           "type": "string",
-          "title": "a=基本单位id;c=752823522438466560"
+          "title": "a=\u57fa\u672c\u5355\u4f4did;c=752823522438466560"
         },
         "base_unit_name": {
           "type": "string",
-          "title": "a=基本单位名称;c=克"
+          "title": "a=\u57fa\u672c\u5355\u4f4d\u540d\u79f0;c=\u514b"
         },
         "base_unit_number": {
           "type": "string",
-          "title": "a=基本单位编码;c=g"
+          "title": "a=\u57fa\u672c\u5355\u4f4d\u7f16\u7801;c=g"
         },
         "inv_base_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=基本账存数量;c=50"
+          "title": "a=\u57fa\u672c\u8d26\u5b58\u6570\u91cf;c=50"
         },
         "base_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=基本盘点数量;c=50"
+          "title": "a=\u57fa\u672c\u76d8\u70b9\u6570\u91cf;c=50"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=单位id;c=1"
+          "title": "a=\u5355\u4f4did;c=1"
         },
         "unit_name": {
           "type": "string",
-          "title": "a=单位名称;c=克"
+          "title": "a=\u5355\u4f4d\u540d\u79f0;c=\u514b"
         },
         "unit_number": {
           "type": "string",
-          "title": "a=单位编码;c=001"
+          "title": "a=\u5355\u4f4d\u7f16\u7801;c=001"
         },
         "inv_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=账存数量;c=20"
+          "title": "a=\u8d26\u5b58\u6570\u91cf;c=20"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=盘点数量;c=50"
+          "title": "a=\u76d8\u70b9\u6570\u91cf;c=50"
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位id;c=1"
+          "title": "a=\u8f85\u52a9\u5355\u4f4did;c=1"
         },
         "aux_unit_name": {
           "type": "string",
-          "title": "a=辅助单位名称;c=克"
+          "title": "a=\u8f85\u52a9\u5355\u4f4d\u540d\u79f0;c=\u514b"
         },
         "aux_unit_number": {
           "type": "string",
-          "title": "a=辅助单位编码;c=001"
+          "title": "a=\u8f85\u52a9\u5355\u4f4d\u7f16\u7801;c=001"
         },
         "aux_inv_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助账存数量;c=50"
+          "title": "a=\u8f85\u52a9\u8d26\u5b58\u6570\u91cf;c=50"
         },
         "aux_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助盘点数量;c=50"
+          "title": "a=\u8f85\u52a9\u76d8\u70b9\u6570\u91cf;c=50"
         },
         "comment": {
           "type": "string",
-          "title": "a=行备注;c=xxxx"
+          "title": "a=\u884c\u5907\u6ce8;c=xxxx"
         },
         "sn_list": {
           "type": "string",
-          "title": "a=序列号 （以分号分隔，备注可以不填；如：sn_list:0001;c=0002）;c=0001"
+          "title": "a=\u5e8f\u5217\u53f7 \uff08\u4ee5\u5206\u53f7\u5206\u9694\uff0c\u5907\u6ce8\u53ef\u4ee5\u4e0d\u586b\uff1b\u5982\uff1asn_list:0001;c=0002\uff09;c=0001"
         },
         "inv_sn_list": {
           "type": "string",
-          "title": "a=账存序列号 （以分号分隔，备注可以不填；如：inv_sn_list:0001;c=0002）;c=0001"
+          "title": "a=\u8d26\u5b58\u5e8f\u5217\u53f7 \uff08\u4ee5\u5206\u53f7\u5206\u9694\uff0c\u5907\u6ce8\u53ef\u4ee5\u4e0d\u586b\uff1b\u5982\uff1ainv_sn_list:0001;c=0002\uff09;c=0001"
         }
       }
     },
@@ -640,34 +640,34 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=新增不填，更新时必填（id为空时代表新增单据）;c=1"
+          "title": "a=\u65b0\u589e\u4e0d\u586b\uff0c\u66f4\u65b0\u65f6\u5fc5\u586b\uff08id\u4e3a\u7a7a\u65f6\u4ee3\u8868\u65b0\u589e\u5355\u636e\uff09;c=1"
         },
         "bill_no": {
           "type": "string",
-          "title": "a=单据编码，修改单据时必填，新增不传该字段;c=001"
+          "title": "a=\u5355\u636e\u7f16\u7801\uff0c\u4fee\u6539\u5355\u636e\u65f6\u5fc5\u586b\uff0c\u65b0\u589e\u4e0d\u4f20\u8be5\u5b57\u6bb5;c=001"
         },
         "bill_date": {
           "type": "string",
-          "title": "a=单据日期;c=2020-08-06;d=true"
+          "title": "a=\u5355\u636e\u65e5\u671f;c=2020-08-06;d=true"
         },
         "check_task_id": {
           "type": "string",
-          "title": "a=盘点任务;c=0;d=true"
+          "title": "a=\u76d8\u70b9\u4efb\u52a1;c=0;d=true"
         },
         "emp_id": {
           "type": "string",
-          "title": "a=盘点人;c=1"
+          "title": "a=\u76d8\u70b9\u4eba;c=1"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=xxxx"
+          "title": "a=\u5907\u6ce8;c=xxxx"
         },
         "material_entity": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/InvMultiCheckBillSaveReq.MaterialEntity"
           },
-          "title": "a=商品分录;c=[];d=true"
+          "title": "a=\u5546\u54c1\u5206\u5f55;c=[];d=true"
         }
       }
     },
@@ -676,127 +676,127 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=分录id，新增不传该字段，修改必传;c=1;d=true"
+          "title": "a=\u5206\u5f55id\uff0c\u65b0\u589e\u4e0d\u4f20\u8be5\u5b57\u6bb5\uff0c\u4fee\u6539\u5fc5\u4f20;c=1;d=true"
         },
         "seq": {
           "type": "integer",
           "format": "int32",
-          "title": "a=分录序号;c=1"
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;c=1"
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品;c=950031544737603584;d=true"
+          "title": "a=\u5546\u54c1;c=950031544737603584;d=true"
         },
         "sp_id": {
           "type": "string",
-          "title": "a=仓位;c=1"
+          "title": "a=\u4ed3\u4f4d;c=1"
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性(辅助属性商品必填);c=1"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027(\u8f85\u52a9\u5c5e\u6027\u5546\u54c1\u5fc5\u586b);c=1"
         },
         "aux_id1": {
           "type": "string",
-          "title": "a=辅助属性1;c=1"
+          "title": "a=\u8f85\u52a9\u5c5e\u60271;c=1"
         },
         "aux_id2": {
           "type": "string",
-          "title": "a=辅助属性2;c=2"
+          "title": "a=\u8f85\u52a9\u5c5e\u60272;c=2"
         },
         "aux_id3": {
           "type": "string",
-          "title": "a=辅助属性3;c=3"
+          "title": "a=\u8f85\u52a9\u5c5e\u60273;c=3"
         },
         "batch_no": {
           "type": "string",
-          "title": "a=批次号（批次商品必填）;c=122121"
+          "title": "a=\u6279\u6b21\u53f7\uff08\u6279\u6b21\u5546\u54c1\u5fc5\u586b\uff09;c=122121"
         },
         "pro_reg_no": {
           "type": "string",
-          "title": "a=注册证号;c=21213"
+          "title": "a=\u6ce8\u518c\u8bc1\u53f7;c=21213"
         },
         "pro_place": {
           "type": "string",
-          "title": "a=产地;c=深圳"
+          "title": "a=\u4ea7\u5730;c=\u6df1\u5733"
         },
         "pro_license": {
           "type": "string",
-          "title": "a=生产许可证号;c=1231232"
+          "title": "a=\u751f\u4ea7\u8bb8\u53ef\u8bc1\u53f7;c=1231232"
         },
         "barcode": {
           "type": "string",
-          "title": "a=条形码;c=1232132"
+          "title": "a=\u6761\u5f62\u7801;c=1232132"
         },
         "kf_date": {
           "type": "string",
-          "title": "a=生产日期（保质期商品必填，示例：2022-01-12）;c=2022-08-08"
+          "title": "a=\u751f\u4ea7\u65e5\u671f\uff08\u4fdd\u8d28\u671f\u5546\u54c1\u5fc5\u586b\uff0c\u793a\u4f8b\uff1a2022-01-12\uff09;c=2022-08-08"
         },
         "valid_date": {
           "type": "string",
-          "title": "a=有效日期;c=2022-08-08"
+          "title": "a=\u6709\u6548\u65e5\u671f;c=2022-08-08"
         },
         "kf_type": {
           "type": "string",
-          "title": "a=保质期类型：1/天，2/月，3/年（保质期商品必填）;c=3"
+          "title": "a=\u4fdd\u8d28\u671f\u7c7b\u578b\uff1a1/\u5929\uff0c2/\u6708\uff0c3/\u5e74\uff08\u4fdd\u8d28\u671f\u5546\u54c1\u5fc5\u586b\uff09;c=3"
         },
         "kf_period": {
           "type": "integer",
           "format": "int32",
-          "title": "a=保质期天数（保质期商品必填）;c=180"
+          "title": "a=\u4fdd\u8d28\u671f\u5929\u6570\uff08\u4fdd\u8d28\u671f\u5546\u54c1\u5fc5\u586b\uff09;c=180"
         },
         "sn_list": {
           "type": "string",
-          "title": "a=盘点序列号（序列号:备注，多个序列号用英文分号隔开）;c=1;2"
+          "title": "a=\u76d8\u70b9\u5e8f\u5217\u53f7\uff08\u5e8f\u5217\u53f7:\u5907\u6ce8\uff0c\u591a\u4e2a\u5e8f\u5217\u53f7\u7528\u82f1\u6587\u5206\u53f7\u9694\u5f00\uff09;c=1;2"
         },
         "inv_sn_list": {
           "type": "string",
-          "title": "a=账存序列号;c=1"
+          "title": "a=\u8d26\u5b58\u5e8f\u5217\u53f7;c=1"
         },
         "base_unit_id": {
           "type": "string",
-          "title": "a=基本单位;c=1"
+          "title": "a=\u57fa\u672c\u5355\u4f4d;c=1"
         },
         "inv_base_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=基本账存数量;c=0;d=false"
+          "title": "a=\u57fa\u672c\u8d26\u5b58\u6570\u91cf;c=0;d=false"
         },
         "base_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=基本盘点数量;c=0;d=false"
+          "title": "a=\u57fa\u672c\u76d8\u70b9\u6570\u91cf;c=0;d=false"
         },
         "unit_id": {
           "type": "string",
-          "title": "a=单位;c=0;d=true"
+          "title": "a=\u5355\u4f4d;c=0;d=true"
         },
         "inv_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=账存数量;c=0;d=false"
+          "title": "a=\u8d26\u5b58\u6570\u91cf;c=0;d=false"
         },
         "qty": {
           "type": "number",
           "format": "double",
-          "title": "a=盘点数量;c=1;d=false"
+          "title": "a=\u76d8\u70b9\u6570\u91cf;c=1;d=false"
         },
         "aux_unit_id": {
           "type": "string",
-          "title": "a=辅助单位（多单位商品，需要使用辅助单位时必填）;c=1"
+          "title": "a=\u8f85\u52a9\u5355\u4f4d\uff08\u591a\u5355\u4f4d\u5546\u54c1\uff0c\u9700\u8981\u4f7f\u7528\u8f85\u52a9\u5355\u4f4d\u65f6\u5fc5\u586b\uff09;c=1"
         },
         "aux_inv_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助账存数量;c=10"
+          "title": "a=\u8f85\u52a9\u8d26\u5b58\u6570\u91cf;c=10"
         },
         "aux_qty": {
           "type": "number",
           "format": "double",
-          "title": "a=辅助数量（多单位商品，需要使用辅助单位时必填）;c=10"
+          "title": "a=\u8f85\u52a9\u6570\u91cf\uff08\u591a\u5355\u4f4d\u5546\u54c1\uff0c\u9700\u8981\u4f7f\u7528\u8f85\u52a9\u5355\u4f4d\u65f6\u5fc5\u586b\uff09;c=10"
         },
         "comment": {
           "type": "string",
-          "title": "a=行备注;c=xxx"
+          "title": "a=\u884c\u5907\u6ce8;c=xxx"
         }
       }
     },
@@ -808,17 +808,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

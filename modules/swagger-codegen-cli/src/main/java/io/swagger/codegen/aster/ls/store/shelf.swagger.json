@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;门店管理;",
+    "title": "\u96f6\u552e\u4e91;\u95e8\u5e97\u7ba1\u7406;",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/shelf": {
       "get": {
-        "summary": "商品上下架列表;商品上下架列表;1.0.8",
+        "summary": "\u5546\u54c1\u4e0a\u4e0b\u67b6\u5217\u8868;\u5546\u54c1\u4e0a\u4e0b\u67b6\u5217\u8868;1.0.8",
         "operationId": "Shelf_list",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "page",
-            "description": "a=当前页，从1开始;c=1;d=true.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u4ece1\u5f00\u59cb;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -45,7 +45,7 @@
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数;c=10;d=true.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570;c=10;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -53,28 +53,28 @@
           },
           {
             "name": "start_modified",
-            "description": "a=开始修改时间;c=2010-08-01;d=false.",
+            "description": "a=\u5f00\u59cb\u4fee\u6539\u65f6\u95f4;c=2010-08-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_modified",
-            "description": "a=结束修改时间;c=2010-08-01;d=false.",
+            "description": "a=\u7ed3\u675f\u4fee\u6539\u65f6\u95f4;c=2010-08-01;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "store_id",
-            "description": "a=门店id;c=001;d=true.",
+            "description": "a=\u95e8\u5e97id;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "status",
-            "description": "a=上下架状态,上架-1，下架-2，未上架（初始）-0;c=1;d=false.",
+            "description": "a=\u4e0a\u4e0b\u67b6\u72b6\u6001,\u4e0a\u67b6-1\uff0c\u4e0b\u67b6-2\uff0c\u672a\u4e0a\u67b6\uff08\u521d\u59cb\uff09-0;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -82,21 +82,21 @@
           },
           {
             "name": "number",
-            "description": "a=商品编码;c=SP00001;d=false.",
+            "description": "a=\u5546\u54c1\u7f16\u7801;c=SP00001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "name",
-            "description": "a=商品名称;c=商品A;d=false.",
+            "description": "a=\u5546\u54c1\u540d\u79f0;c=\u5546\u54c1A;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "id",
-            "description": "a=记录ID;c=1313131313155466;d=false.",
+            "description": "a=\u8bb0\u5f55ID;c=1313131313155466;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -118,7 +118,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "ShelfListRes": {
       "type": "object",
@@ -126,34 +126,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=10;d=false"
+          "title": "a=\u603b\u9875\u6570;c=10;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;c=1;d=false"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;c=100;d=false"
+          "title": "a=\u603b\u6761\u6570;c=100;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ShelfProto.Row"
           },
-          "title": "a=数据列表;c=[];d=false"
+          "title": "a=\u6570\u636e\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -162,119 +162,119 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=上下架id;c=950787738599218176;d=true"
+          "title": "a=\u4e0a\u4e0b\u67b6id;c=950787738599218176;d=true"
         },
         "status": {
           "type": "string",
-          "title": "a=状态;c=0;d=false"
+          "title": "a=\u72b6\u6001;c=0;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-08-04 20:05:31.0;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-08-04 20:05:31.0;d=false"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=修改时间;c=2020-08-04 20:05:31.0;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;c=2020-08-04 20:05:31.0;d=false"
         },
         "store_id": {
           "type": "string",
-          "title": "a=门店id;c=950711993587746816;d=false"
+          "title": "a=\u95e8\u5e97id;c=950711993587746816;d=false"
         },
         "store_number": {
           "type": "string",
-          "title": "a=门店编码;c=lsbillstore01;d=false"
+          "title": "a=\u95e8\u5e97\u7f16\u7801;c=lsbillstore01;d=false"
         },
         "store_name": {
           "type": "string",
-          "title": "a=门店名称;c=零售测试门店;d=false"
+          "title": "a=\u95e8\u5e97\u540d\u79f0;c=\u96f6\u552e\u6d4b\u8bd5\u95e8\u5e97;d=false"
         },
         "aux_prop_id": {
           "type": "string",
-          "title": "a=辅助属性id;c=0;d=false"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027id;c=0;d=false"
         },
         "aux_prop_number": {
           "type": "string",
-          "title": "a=辅助属性编码;c=null;d=false"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027\u7f16\u7801;c=null;d=false"
         },
         "aux_prop_name": {
           "type": "string",
-          "title": "a=辅助属性名称;c=null;d=false"
+          "title": "a=\u8f85\u52a9\u5c5e\u6027\u540d\u79f0;c=null;d=false"
         },
         "material_id": {
           "type": "string",
-          "title": "a=商品id;c=950767625577751552;d=false"
+          "title": "a=\u5546\u54c1id;c=950767625577751552;d=false"
         },
         "material_number": {
           "type": "string",
-          "title": "a=商品编码;c=SP00015;d=false"
+          "title": "a=\u5546\u54c1\u7f16\u7801;c=SP00015;d=false"
         },
         "material_name": {
           "type": "string",
-          "title": "a=商品名称;c=套装商品;d=false"
+          "title": "a=\u5546\u54c1\u540d\u79f0;c=\u5957\u88c5\u5546\u54c1;d=false"
         },
         "material_barcode": {
           "type": "string",
-          "title": "a=商品条码;d=false"
+          "title": "a=\u5546\u54c1\u6761\u7801;d=false"
         },
         "material_model": {
           "type": "string",
-          "title": "a=商品规格型号;c=\"001\";d=false"
+          "title": "a=\u5546\u54c1\u89c4\u683c\u578b\u53f7;c=\"001\";d=false"
         },
         "material_enable": {
           "type": "string",
-          "title": "a=商品状态;c=1;d=false"
+          "title": "a=\u5546\u54c1\u72b6\u6001;c=1;d=false"
         },
         "material_url": {
           "type": "string",
-          "title": "a=商品主图;d=false"
+          "title": "a=\u5546\u54c1\u4e3b\u56fe;d=false"
         },
         "material_min_inventory_qty": {
           "type": "string",
-          "title": "a=最低库存数量;c=100;d=false"
+          "title": "a=\u6700\u4f4e\u5e93\u5b58\u6570\u91cf;c=100;d=false"
         },
         "material_max_inventory_qty": {
           "type": "string",
-          "title": "a=最高库存数量;c=100;d=false"
+          "title": "a=\u6700\u9ad8\u5e93\u5b58\u6570\u91cf;c=100;d=false"
         },
         "material_sec_inventory_qty": {
           "type": "string",
-          "title": "a=安全库存数量;c=100;d=false"
+          "title": "a=\u5b89\u5168\u5e93\u5b58\u6570\u91cf;c=100;d=false"
         },
         "material_parent_id": {
           "type": "string",
-          "title": "a=商品类别id;c=0;d=false"
+          "title": "a=\u5546\u54c1\u7c7b\u522bid;c=0;d=false"
         },
         "material_parent_number": {
           "type": "string",
-          "title": "a=商品类别编码;d=false"
+          "title": "a=\u5546\u54c1\u7c7b\u522b\u7f16\u7801;d=false"
         },
         "material_parent_name": {
           "type": "string",
-          "title": "a=商品类别名称;d=false"
+          "title": "a=\u5546\u54c1\u7c7b\u522b\u540d\u79f0;d=false"
         },
         "material_brand_id": {
           "type": "string",
-          "title": "a=商品品牌id;c=0;d=false"
+          "title": "a=\u5546\u54c1\u54c1\u724cid;c=0;d=false"
         },
         "material_brand_name": {
           "type": "string",
-          "title": "a=商品品牌名称;d=false"
+          "title": "a=\u5546\u54c1\u54c1\u724c\u540d\u79f0;d=false"
         },
         "material_brand_number": {
           "type": "string",
-          "title": "a=商品品牌编码;d=false"
+          "title": "a=\u5546\u54c1\u54c1\u724c\u7f16\u7801;d=false"
         },
         "material_base_unit_id": {
           "type": "string",
-          "title": "a=计量单位id;c=950594655458698240;d=false"
+          "title": "a=\u8ba1\u91cf\u5355\u4f4did;c=950594655458698240;d=false"
         },
         "material_base_unit_number": {
           "type": "string",
-          "title": "a=计量单位编码;c=g;d=false"
+          "title": "a=\u8ba1\u91cf\u5355\u4f4d\u7f16\u7801;c=g;d=false"
         },
         "material_base_unit_name": {
           "type": "string",
-          "title": "a=计量单位名称;c=克;d=false"
+          "title": "a=\u8ba1\u91cf\u5355\u4f4d\u540d\u79f0;c=\u514b;d=false"
         }
       }
     },

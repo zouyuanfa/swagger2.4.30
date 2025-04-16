@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "基础资料;商品资料;商品标签",
+    "title": "\u57fa\u7840\u8d44\u6599;\u5546\u54c1\u8d44\u6599;\u5546\u54c1\u6807\u7b7e",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/bd/label": {
       "get": {
-        "summary": "标签列表;获取标签列表;1.0.6",
+        "summary": "\u6807\u7b7e\u5217\u8868;\u83b7\u53d6\u6807\u7b7e\u5217\u8868;1.0.6",
         "operationId": "Label_LabelList",
         "responses": {
           "200": {
@@ -37,77 +37,77 @@
         "parameters": [
           {
             "name": "base_data_use_id",
-            "description": "a=标签适用资料id;b=2147483647;c=1;d=true.",
+            "description": "a=\u6807\u7b7e\u9002\u7528\u8d44\u6599id;b=2147483647;c=1;d=true.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "parent_id",
-            "description": "a=标签分类id;b=2147483647;c=1;d=false.",
+            "description": "a=\u6807\u7b7e\u5206\u7c7bid;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "un_page",
-            "description": "a=是否分页，1：不分页返回100条数据；默认分页，每页10;b=1;c=1;d=false.",
+            "description": "a=\u662f\u5426\u5206\u9875\uff0c1\uff1a\u4e0d\u5206\u9875\u8fd4\u56de100\u6761\u6570\u636e\uff1b\u9ed8\u8ba4\u5206\u9875\uff0c\u6bcf\u987510;b=1;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "enable",
-            "description": "a=可用状态，1：可用，0：禁用;b=1;c=1;d=false.",
+            "description": "a=\u53ef\u7528\u72b6\u6001\uff0c1\uff1a\u53ef\u7528\uff0c0\uff1a\u7981\u7528;b=1;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search",
-            "description": "a=模糊搜索-名称;b=20;c=名称;d=false.",
+            "description": "a=\u6a21\u7cca\u641c\u7d22-\u540d\u79f0;b=20;c=\u540d\u79f0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_start_time",
-            "description": "a=创建时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "create_end_time",
-            "description": "a=创建时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u521b\u5efa\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_start_time",
-            "description": "a=修改时间-开始时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u5f00\u59cb\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "modify_end_time",
-            "description": "a=修改时间-结束时间的时间戳(毫秒);b=13;c=1234567890123;d=false.",
+            "description": "a=\u4fee\u6539\u65f6\u95f4-\u7ed3\u675f\u65f6\u95f4\u7684\u65f6\u95f4\u6233(\u6beb\u79d2);b=13;c=1234567890123;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=当前页，默认1;b=1000;c=1;d=false.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数默认10;b=100;c=100;d=false.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -118,7 +118,7 @@
         ]
       },
       "post": {
-        "summary": "标签保存;标签新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.8",
+        "summary": "\u6807\u7b7e\u4fdd\u5b58;\u6807\u7b7e\u65b0\u589e\u53ca\u4fee\u6539\u3002\u5ba1\u6838\u3001\u5220\u9664\u7b49\u8be6\u89c1[\u901a\u7528\u64cd\u4f5c\u63a5\u53e3](https://open.jdy.com/#/files/api/detail?index=2&categrayId=3cc8ee9a663e11eda5c84b5d383a2b93&id=9e804b8c712511eda0b39f724d124b07);1.0.8",
         "operationId": "Label_LabelSave",
         "responses": {
           "200": {
@@ -151,7 +151,7 @@
     },
     "/openapi/v2/bd/label_detail": {
       "get": {
-        "summary": "标签详情;获取标签详情;1.0.7",
+        "summary": "\u6807\u7b7e\u8be6\u60c5;\u83b7\u53d6\u6807\u7b7e\u8be6\u60c5;1.0.7",
         "operationId": "Label_LabelDetail",
         "responses": {
           "200": {
@@ -170,14 +170,14 @@
         "parameters": [
           {
             "name": "id",
-            "description": "a=（id和number二选一）;b=2147483647;c=1;d=false.",
+            "description": "a=\uff08id\u548cnumber\u4e8c\u9009\u4e00\uff09;b=2147483647;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "number",
-            "description": "a=编码（id与number二选一）;b=30;c=001;d=false.",
+            "description": "a=\u7f16\u7801\uff08id\u4e0enumber\u4e8c\u9009\u4e00\uff09;b=30;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -199,7 +199,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "LabelDetailRes": {
       "type": "object",
@@ -210,63 +210,63 @@
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=001;d=false"
+          "title": "a=\u540d\u79f0;b=20;c=001;d=false"
         },
         "parent_number": {
           "type": "string",
-          "title": "a=标签分类编码;b=30;c=001;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7b\u7f16\u7801;b=30;c=001;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=标签分类id;b=2147483647;c=1;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7bid;b=2147483647;c=1;d=false"
         },
         "parent_name": {
           "type": "string",
-          "title": "a=标签分类名称;b=20;c=名称;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7b\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         },
         "is_prepared": {
           "type": "boolean",
-          "title": "a=是否系统预置;b=1;c=true;d=false"
+          "title": "a=\u662f\u5426\u7cfb\u7edf\u9884\u7f6e;b=1;c=true;d=false"
         },
         "base_data_use_id": {
           "type": "string",
-          "title": "a=标签适用资料id;b=2147483647;c=1;d=false"
+          "title": "a=\u6807\u7b7e\u9002\u7528\u8d44\u6599id;b=2147483647;c=1;d=false"
         },
         "base_data_use_number": {
           "type": "string",
-          "title": "a=标签适用资料编码;b=30;c=001;d=false"
+          "title": "a=\u6807\u7b7e\u9002\u7528\u8d44\u6599\u7f16\u7801;b=30;c=001;d=false"
         },
         "base_data_use_name": {
           "type": "string",
-          "title": "a=标签适用资料名称;b=20;c=名称;d=false"
+          "title": "a=\u6807\u7b7e\u9002\u7528\u8d44\u6599\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         },
         "creator_id": {
           "type": "string",
-          "title": "a=创建人id;b=2147483647;c=1;d=false"
+          "title": "a=\u521b\u5efa\u4ebaid;b=2147483647;c=1;d=false"
         },
         "creator_name": {
           "type": "string",
-          "title": "a=创建人名称;b=20;c=名称;d=false"
+          "title": "a=\u521b\u5efa\u4eba\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;b=19;c=2020-02-10 13:43:52;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;b=19;c=2020-02-10 13:43:52;d=false"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=修改时间;b=19;c=2020-02-10 13:43:52;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;b=19;c=2020-02-10 13:43:52;d=false"
         },
         "modifier_id": {
           "type": "string",
-          "title": "a=修改人id;b=2147483647;c=1;d=false"
+          "title": "a=\u4fee\u6539\u4ebaid;b=2147483647;c=1;d=false"
         },
         "modifier_name": {
           "type": "string",
-          "title": "a=修改人名称;b=30;c=名称;d=false"
+          "title": "a=\u4fee\u6539\u4eba\u540d\u79f0;b=30;c=\u540d\u79f0;d=false"
         }
       }
     },
@@ -276,38 +276,38 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;b=1000;c=100;d=false"
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
         },
         "current_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;b=100;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
         },
         "currentPage": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=100;c=1;d=true"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=100;c=1;d=true"
         },
         "count": {
           "type": "string",
-          "title": "a=总条数;b=999999;c=1;d=false"
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;b=100;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页码;b=1000;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/LabelListRes.Row"
           },
-          "title": "a=数据行;b=999999;c=[];d=false"
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
         }
       }
     },
@@ -320,27 +320,27 @@
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=001;d=false"
+          "title": "a=\u540d\u79f0;b=20;c=001;d=false"
         },
         "group_id": {
           "type": "string",
-          "title": "a=类别id;b=2147483647;c=1;d=false"
+          "title": "a=\u7c7b\u522bid;b=2147483647;c=1;d=false"
         },
         "parent_number": {
           "type": "string",
-          "title": "a=标签分类编码;b=30;c=001;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7b\u7f16\u7801;b=30;c=001;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=标签分类id;b=2147483647;c=1;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7bid;b=2147483647;c=1;d=false"
         },
         "parent_name": {
           "type": "string",
-          "title": "a=标签分类名称;b=20;c=名称;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7b\u540d\u79f0;b=20;c=\u540d\u79f0;d=false"
         }
       }
     },
@@ -353,19 +353,19 @@
         },
         "number": {
           "type": "string",
-          "title": "a=编码;b=30;c=001;d=false"
+          "title": "a=\u7f16\u7801;b=30;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=名称;b=20;c=001;d=false"
+          "title": "a=\u540d\u79f0;b=20;c=001;d=false"
         },
         "parent_id": {
           "type": "string",
-          "title": "a=标签分类id;b=2147483647;c=1;d=false"
+          "title": "a=\u6807\u7b7e\u5206\u7c7bid;b=2147483647;c=1;d=false"
         },
         "base_data_use_id": {
           "type": "string",
-          "title": "a=标签适用资料id;b=2147483647;c=1;d=true"
+          "title": "a=\u6807\u7b7e\u9002\u7528\u8d44\u6599id;b=2147483647;c=1;d=true"
         }
       }
     },
@@ -377,17 +377,17 @@
           "items": {
             "type": "string"
           },
-          "title": "a=单据id数组对象;c=[\"1\"];d=true"
+          "title": "a=\u5355\u636eid\u6570\u7ec4\u5bf9\u8c61;c=[\"1\"];d=true"
         },
         "id_number_map": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "title": "a=id与编码map;c={};d=true"
+          "title": "a=id\u4e0e\u7f16\u7801map;c={};d=true"
         }
       },
-      "title": "保存返回id数组对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56deid\u6570\u7ec4\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",

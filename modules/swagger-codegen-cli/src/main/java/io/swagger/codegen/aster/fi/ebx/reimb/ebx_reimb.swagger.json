@@ -1,0 +1,597 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "\u8d22\u7a0e\u4e91;\u8d39\u7528\u62a5\u9500;\u62a5\u9500\u7ba1\u7406",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "EbxReimb"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/openapi/v2/ebx/reimb": {
+      "get": {
+        "summary": "\u62a5\u9500\u5355\u5217\u8868;\u62a5\u9500\u5355\u5217\u8868;1.0.6",
+        "operationId": "EbxReimb_list",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReimbListReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "search",
+            "description": "a=\u6a21\u7cca\u641c\u7d22(reason\u3001remark\u3001billno\u3001emp);b=100;c=\u82f9\u679c;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u9ed8\u8ba41;b=1000;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_size",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570\u9ed8\u8ba410;b=100;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "biz_type",
+            "description": "a=\u65e5\u5e38\u62a5\u9500\uff1a3\u3001\u5dee\u65c5\u62a5\u9500\uff1a4;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "wf_status",
+            "description": "a=\u5355\u636e\u72b6\u6001\uff08\u5f85\u63d0\u4ea4\uff1a1\u3001\u5ba1\u6279\u4e2d\uff1a2\u3001\u5f85\u652f\u4ed8\uff1a3\u3001\u5df2\u9a73\u56de\uff1a7\u3001\u5df2\u5931\u6548\uff1a8\u3001\u63d0\u4ea4\u4e2d\uff1a10\u3001\u5df2\u652f\u4ed8\uff1a34\uff09;c=[\"7\",\"8\"];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "company_id",
+            "description": "a=\u627f\u62c5\u516c\u53f8id;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "dept_id",
+            "description": "a=\u627f\u62c5\u90e8\u95e8id;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "item_id",
+            "description": "a=\u627f\u62c5\u9879\u76eeid;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "emp_id",
+            "description": "a=\u7533\u8bf7\u4ebaid;c=[];d=false.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "min_total_amount",
+            "description": "a=\u5355\u636e\u91d1\u989d\uff08\u9700\u8981\u540c\u65f6\u4f20max_total_amount\uff09;c=10;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "max_total_amount",
+            "description": "a=\u5355\u636e\u91d1\u989d\uff08\u9700\u8981\u540c\u65f6\u4f20min_total_amount\uff09;c=100;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_bill_date",
+            "description": "a=\u5f00\u59cb\u65e5\u671f\uff08\u683c\u5f0f\uff1a\u201cyyyy-MM-dd\u201d\uff0c\u4e3a\u7a7a\u8868\u793a\u4e0d\u8fc7\u6ee4\uff09\uff0c\u5355\u636e\u65e5\u671f;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "end_bill_date",
+            "description": "a=\u7ed3\u675f\u65e5\u671f\uff08\u683c\u5f0f\uff1a\u201cyyyy-MM-dd\u201d\uff0c\u4e3a\u7a7a\u8868\u793a\u4e0d\u8fc7\u6ee4\uff09\uff0c\u5355\u636e\u65e5\u671f;c=2022-05-02.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "EbxReimb"
+        ]
+      }
+    },
+    "/openapi/v2/ebx/reimb_detail": {
+      "get": {
+        "summary": "\u62a5\u9500\u5355\u8be6\u60c5;\u62a5\u9500\u5355\u8be6\u60c5;1.0.7",
+        "operationId": "EbxReimb_detail",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReimbDetailReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "a=id;b=2147483647;c=1;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "EbxReimb"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Any": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "ReimbDetailReply": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=id;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=\u5355\u636e\u7f16\u53f7;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=\u5355\u636e\u65e5\u671f;d=false"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=\u5355\u636e\u72b6\u6001\uff08\u5f85\u63d0\u4ea4\uff1a1\u3001\u5ba1\u6279\u4e2d\uff1a2\u3001\u5f85\u652f\u4ed8\uff1a3\u3001\u5df2\u9a73\u56de\uff1a7\u3001\u5df2\u5931\u6548\uff1a8\u3001\u63d0\u4ea4\u4e2d\uff1a10\u3001\u5df2\u652f\u4ed8\uff1a34\uff09;c=\"1\";d=false"
+        },
+        "status": {
+          "type": "string",
+          "title": "a=\u5355\u636e\u5ba1\u6838\u72b6\u6001  \u9ed8\u8ba4\"A\" \u5355\u636e\u72b6\u6001  \"A\":\"\u521b\u5efa\",\"B\":\"\u5ba1\u6838\u4e2d\",\"C\":\"\u5df2\u5ba1\u6838\",\"D\":\"\u91cd\u65b0\u5ba1\u6838\";d=false"
+        },
+        "emp_id": {
+          "type": "string",
+          "title": "a=\u7533\u8bf7\u4ebaid;d=false"
+        },
+        "emp_name": {
+          "type": "string",
+          "title": "a=\u7533\u8bf7\u4eba\u540d\u79f0;d=false"
+        },
+        "emp_number": {
+          "type": "string",
+          "title": "a=\u7533\u8bf7\u4eba\u7f16\u7801;d=false"
+        },
+        "biz_type": {
+          "type": "string",
+          "title": "a=\u65e5\u5e38\u62a5\u9500\uff1a3\u3001\u5dee\u65c5\u62a5\u9500\uff1a4;d=false"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=\u7533\u8bf7\u4ed8\u6b3e\u91d1\u989d;d=false"
+        },
+        "reason": {
+          "type": "string",
+          "title": "a=\u4e8b\u7531;c=\"\u539f\u56e0\";d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=\u5907\u6ce8;d=false"
+        },
+        "company_id": {
+          "type": "string",
+          "title": "a=\u627f\u62c5\u516c\u53f8id;d=false"
+        },
+        "company_name": {
+          "type": "string",
+          "title": "a=\u627f\u62c5\u516c\u53f8;d=false"
+        },
+        "item_id": {
+          "type": "string",
+          "title": "a=\u9879\u76eeid;d=false"
+        },
+        "item_name": {
+          "type": "string",
+          "title": "a=\u9879\u76ee\u540d\u79f0;d=false"
+        },
+        "dept_id": {
+          "type": "string",
+          "title": "a=\u627f\u62c5\u90e8\u95e8id;d=false"
+        },
+        "dept_name": {
+          "type": "string",
+          "title": "a=\u627f\u62c5\u90e8\u95e8\u540d\u79f0;d=false"
+        },
+        "creator_id": {
+          "type": "string",
+          "title": "a=\u521b\u5efa\u4ebaid;d=false"
+        },
+        "creator_name": {
+          "type": "string",
+          "title": "a=\u521b\u5efa\u4eba\u4e2d\u6587\u540d;d=false"
+        },
+        "currency_id": {
+          "type": "string",
+          "title": "a=\u5e01\u522bid;d=false"
+        },
+        "modifier_id": {
+          "type": "string",
+          "title": "a=\u4fee\u6539\u4ebaid;d=false"
+        },
+        "modifier_name": {
+          "type": "string",
+          "title": "a=\u4fee\u6539\u4eba\u540d\u79f0;d=false"
+        },
+        "auditor_name": {
+          "type": "string",
+          "title": "a=\u5ba1\u6838\u4eba\u540d\u79f0;d=false"
+        },
+        "audit_date": {
+          "type": "string",
+          "title": "a=\u5ba1\u6838\u65f6\u95f4;d=false"
+        },
+        "modify_time": {
+          "type": "string",
+          "title": "a=\u4fee\u6539\u65f6\u95f4;d=false"
+        },
+        "create_time": {
+          "type": "string",
+          "title": "a=\u521b\u5efa\u65f6\u95f4;d=false"
+        },
+        "paid_amount": {
+          "type": "string",
+          "title": "a=\u5df2\u652f\u4ed8\u91d1\u989d;d=false"
+        },
+        "loan_amount": {
+          "type": "string",
+          "title": "a=\u62b5\u6263\u91d1\u989d;d=false"
+        },
+        "pay_amount": {
+          "type": "string",
+          "title": "a=\u652f\u4ed8\u91d1\u989d;d=false"
+        },
+        "consume_detail_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReimbDetailReply.ConsumeDetailEntity"
+          },
+          "title": "a=\u8d39\u7528\u660e\u7ec6;c=[];d=false"
+        },
+        "apply_info_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReimbDetailReply.ApplyInfoEntity"
+          },
+          "title": "a=\u6536\u6b3e\u4fe1\u606f;c=[];d=false"
+        },
+        "loan_bill_entity": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReimbDetailReply.LoanBillEntity"
+          },
+          "title": "a=\u62b5\u6263\u4fe1\u606f;c=[];d=false"
+        },
+        "attachments_url": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReimbDetailReply.AttachmentUrl"
+          },
+          "title": "a=\u9644\u4ef6\u7ed3\u6784;c=[];d=false"
+        }
+      }
+    },
+    "ReimbDetailReply.ApplyInfoEntity": {
+      "type": "object",
+      "properties": {
+        "entry_id": {
+          "type": "string",
+          "title": "a=\u5206\u5f55ID;c=\"123456\";d=false"
+        },
+        "entry_seq": {
+          "type": "string",
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;c=\"001\";d=false"
+        },
+        "account_number": {
+          "type": "string",
+          "title": "a=\u8d26\u6237\u7f16\u7801;c=\"12333\";d=false"
+        },
+        "account_id": {
+          "type": "string",
+          "title": "a=\u8d26\u6237ID;c=\"12333\";d=false"
+        },
+        "account_name": {
+          "type": "string",
+          "title": "a=\u8d26\u6237\u540d\u79f0;c=\"Main Account\";d=false"
+        },
+        "info_amount": {
+          "type": "string",
+          "title": "a=\u6536\u6b3e\u91d1\u989d;c=\"1000\";d=false"
+        },
+        "account": {
+          "type": "string",
+          "title": "a=\u8d26\u53f7;c=\"ZH666\";d=false"
+        },
+        "account_bank_category_name": {
+          "type": "string",
+          "title": "a=\u94f6\u884c\u540d\u79f0;c=\"\u62db\u5546\u94f6\u884c\";d=false"
+        },
+        "deposit_bank_name": {
+          "type": "string",
+          "title": "a=\u5f00\u6237\u94f6\u884c\u540d\u79f0;c=\"\u5f00\u6237\u94f6\u884c\";d=false"
+        }
+      }
+    },
+    "ReimbDetailReply.AttachmentUrl": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "a=\u9644\u4ef6\u5730\u5740;c=\"http://example.com/attachment1.jpg\";d=false"
+        }
+      }
+    },
+    "ReimbDetailReply.ConsumeDetailEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=\u5206\u5f55ID;d=false"
+        },
+        "seq": {
+          "type": "string",
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;d=false"
+        },
+        "tax": {
+          "type": "string",
+          "title": "a=\u53ef\u62b5\u6263\u7a0e\u989d;d=false"
+        },
+        "consume_id": {
+          "type": "string",
+          "title": "a=\u8d39\u7528\u660e\u7ec6id;c=1001;d=false"
+        },
+        "cost_share_id": {
+          "type": "string",
+          "title": "a=\u5206\u644aid;c=3001;d=false"
+        },
+        "amount": {
+          "type": "string",
+          "title": "a=\u62a5\u9500\u91d1\u989d;c=100;d=false"
+        },
+        "invoice_size": {
+          "type": "string",
+          "title": "a=\u53d1\u7968\u6570;c=100;d=false"
+        },
+        "attach_size": {
+          "type": "string",
+          "title": "a=\u9644\u4ef6\u6570;c=100;d=false"
+        },
+        "consume_consume_type_name": {
+          "type": "string",
+          "title": "a=\u8d39\u7528\u7c7b\u578b\u540d\u79f0;c=100;d=false"
+        },
+        "consume_remark": {
+          "type": "string",
+          "title": "a=\u4e8b\u7531;c=100;d=false"
+        },
+        "consume_consume_type_path": {
+          "type": "string",
+          "title": "a=\u8d39\u7528\u7c7b\u578b\u56fe\u7247;c=\"\";d=false"
+        },
+        "consume_inv_amount": {
+          "type": "string",
+          "title": "a=\u4ef7\u7a0e\u5408\u8ba1;c=\"100\";d=false"
+        },
+        "consume_tax_exclude": {
+          "type": "string",
+          "title": "a=\u4e0d\u542b\u7a0e\u91d1\u989d;c=\"100\";d=false"
+        },
+        "consume_inv_tax": {
+          "type": "string",
+          "title": "a=\u7a0e\u989d;c=\"100\";d=false"
+        }
+      }
+    },
+    "ReimbDetailReply.LoanBillEntity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=\u5206\u5f55ID;c=\"123456\";d=false"
+        },
+        "seq": {
+          "type": "string",
+          "title": "a=\u5206\u5f55\u5e8f\u53f7;c=\"001\";d=false"
+        },
+        "source_id": {
+          "type": "string",
+          "title": "a=\u6e90\u5355ID;c=\"SOURCE001\";d=false"
+        },
+        "offset_amount": {
+          "type": "string",
+          "title": "a=\u62b5\u6263\u91d1\u989d;c=\"500\";d=false"
+        },
+        "loan_bill_date": {
+          "type": "string",
+          "title": "a=\u6e90\u5355\u65e5\u671f;c=\"2023-01-01\";d=false"
+        },
+        "loan_bill_no": {
+          "type": "string",
+          "title": "a=\u6e90\u5355\u7f16\u53f7;c=\"BILL001\";d=false"
+        },
+        "loan_bill_remark": {
+          "type": "string",
+          "title": "a=\u6e90\u5355\u4e8b\u7531;c=\"\u51fa\u5dee\u501f\u6b3e\";d=false"
+        },
+        "src_biz_type": {
+          "type": "string",
+          "title": "a=\u6e90\u5355\u4e1a\u52a1\u7c7b\u578b \"1\" \u4e2a\u4eba\u501f\u6b3e \"2\" \u5907\u7528\u91d1\u7533\u8bf7;c=\"1\";d=false"
+        }
+      }
+    },
+    "ReimbListReply": {
+      "type": "object",
+      "properties": {
+        "total_page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=\u603b\u9875\u6570;b=1000;c=100;d=false"
+        },
+        "current_page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;b=100;c=1;d=false"
+        },
+        "count": {
+          "type": "string",
+          "title": "a=\u603b\u6761\u6570;b=999999;c=1;d=false"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=\u6bcf\u9875\u6761\u6570;b=100;c=100;d=false"
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=\u5f53\u524d\u9875\u7801;b=1000;c=1;d=false"
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ReimbListReply.Row"
+          },
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "ReimbListReply.Row": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "a=\u5355\u636eid;b=2147483647;c=1;d=false"
+        },
+        "bill_no": {
+          "type": "string",
+          "title": "a=\u5355\u636e\u7f16\u7801;b=30;c=001;d=false"
+        },
+        "bill_date": {
+          "type": "string",
+          "title": "a=\u7533\u8bf7\u65e5\u671f;b=10;c=2022-01-01;d=false"
+        },
+        "bill_status": {
+          "type": "string",
+          "title": "a=\u5355\u636e\u72b6\u6001\uff08\u5f85\u63d0\u4ea4\uff1a1\u3001\u5ba1\u6279\u4e2d\uff1a2\u3001\u5f85\u652f\u4ed8\uff1a3\u3001\u5df2\u9a73\u56de\uff1a7\u3001\u5df2\u5931\u6548\uff1a8\u3001\u63d0\u4ea4\u4e2d\uff1a10\u3001\u5df2\u652f\u4ed8\uff1a34\uff09;b=100;c=\"7\";d=false"
+        },
+        "total_amount": {
+          "type": "string",
+          "title": "a=\u62a5\u9500\u91d1\u989d;c=1;d=false"
+        },
+        "remark": {
+          "type": "string",
+          "title": "a=\u5907\u6ce8;b=100;c=\u5907\u6ce8;d=false"
+        },
+        "reason": {
+          "type": "string",
+          "title": "a=\u4e8b\u7531;c=\"\u4e8b\u7531a\";d=false"
+        },
+        "biz_type": {
+          "type": "string",
+          "title": "a=\u65e5\u5e38\u62a5\u9500\uff1a3\u3001\u5dee\u65c5\u62a5\u9500\uff1a4;b=1;c=1;d=false"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Any"
+          }
+        }
+      }
+    }
+  }
+}

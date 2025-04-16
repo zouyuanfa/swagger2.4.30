@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;门店管理;",
+    "title": "\u96f6\u552e\u4e91;\u95e8\u5e97\u7ba1\u7406;",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/store": {
       "get": {
-        "summary": "门店列表;门店列表;1.0.6",
+        "summary": "\u95e8\u5e97\u5217\u8868;\u95e8\u5e97\u5217\u8868;1.0.7",
         "operationId": "LsStore_list",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "page",
-            "description": "a=当前页，从1开始;c=001;d=true.",
+            "description": "a=\u5f53\u524d\u9875\uff0c\u4ece1\u5f00\u59cb;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -45,7 +45,7 @@
           },
           {
             "name": "page_size",
-            "description": "a=每页显示条数;c=001;d=true.",
+            "description": "a=\u6bcf\u9875\u663e\u793a\u6761\u6570;c=001;d=true.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -53,21 +53,21 @@
           },
           {
             "name": "start_modified",
-            "description": "a=开始修改时间;c=001;d=false.",
+            "description": "a=\u5f00\u59cb\u4fee\u6539\u65f6\u95f4;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_modified",
-            "description": "a=结束修改时间;c=001;d=false.",
+            "description": "a=\u7ed3\u675f\u4fee\u6539\u65f6\u95f4;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "enable",
-            "description": "a=状态，0-禁用，1-可用;c=001;d=false.",
+            "description": "a=\u72b6\u6001\uff0c0-\u7981\u7528\uff0c1-\u53ef\u7528;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -75,21 +75,21 @@
           },
           {
             "name": "number",
-            "description": "a=门店编码;c=234234324;d=false.",
+            "description": "a=\u95e8\u5e97\u7f16\u7801;c=234234324;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "name",
-            "description": "a=门店名称;c=门店名称;d=false.",
+            "description": "a=\u95e8\u5e97\u540d\u79f0;c=\u95e8\u5e97\u540d\u79f0;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "id",
-            "description": "a=门店ID;c=001;d=false.",
+            "description": "a=\u95e8\u5e97ID;c=001;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -100,7 +100,7 @@
         ]
       },
       "post": {
-        "summary": "门店保存;门店新增及修改。审核、删除等详见[通用操作接口](https://open.jdy.com/#/files/api/detail?index=2\u0026categrayId=3cc8ee9a663e11eda5c84b5d383a2b93\u0026id=9e804b8c712511eda0b39f724d124b07);1.0.5",
+        "summary": "\u95e8\u5e97\u4fdd\u5b58;\u95e8\u5e97\u65b0\u589e\u53ca\u4fee\u6539\u3002\u5ba1\u6838\u3001\u5220\u9664\u7b49\u8be6\u89c1[\u901a\u7528\u64cd\u4f5c\u63a5\u53e3](https://open.jdy.com/#/files/api/detail?index=2&categrayId=3cc8ee9a663e11eda5c84b5d383a2b93&id=9e804b8c712511eda0b39f724d124b07);1.0.2",
         "operationId": "LsStore_save",
         "responses": {
           "200": {
@@ -130,6 +130,46 @@
           "LsStore"
         ]
       }
+    },
+    "/openapi/v2/ls/store/delivery": {
+      "get": {
+        "summary": "\u6839\u636e\u95e8\u5e97\u83b7\u53d6\u914d\u9001\u4e2d\u5fc3;\u6839\u636e\u95e8\u5e97\u83b7\u53d6\u914d\u9001\u4e2d\u5fc3;1.0.3",
+        "operationId": "LsStore_deliveryId",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DeliveryIdRes"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "store_id",
+            "description": "a=\u95e8\u5e97ID;c=001;d=true.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "enable",
+            "description": "a=\u914d\u9001\u4e2d\u5fc3\u72b6\u6001\uff0c1-\u542f\u7528\u7684\u914d\u9001\u4e2d\u5fc3\uff0c\u4e0d\u4f20\u9ed8\u8ba4\u67e5\u8be2\u6240\u6709\u7684\u914d\u9001\u4e2d\u5fc3;c=1;d=false.",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "LsStore"
+        ]
+      }
     }
   },
   "definitions": {
@@ -142,21 +182,51 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "DeliveryIdRes": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeliveryIdRes.Row"
+          },
+          "title": "a=\u6570\u636e\u884c;b=999999;c=[];d=false"
+        }
+      }
+    },
+    "DeliveryIdRes.Row": {
+      "type": "object",
+      "properties": {
+        "delivery_id": {
+          "type": "string",
+          "title": "a=\u914d\u9001\u4e2d\u5fc3ID;c=697102424829079552;d=true"
+        },
+        "delivery_name": {
+          "type": "string",
+          "title": "a=\u914d\u9001\u4e2d\u5fc3\u540d\u5b57;c=xxx;d=false"
+        },
+        "enable": {
+          "type": "integer",
+          "format": "int32",
+          "title": "a=\u914d\u9001\u4e2d\u5fc3\u72b6\u6001\uff0c0-\u672a\u542f\u7528\u7684\u914d\u9001\u4e2d\u5fc3\uff0c1-\u542f\u7528\u7684\u914d\u9001\u4e2d\u5fc3;c=0;d=false"
+        }
+      }
     },
     "SingleSaveReply": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=保存返回id;c=1;d=true"
+          "title": "a=\u4fdd\u5b58\u8fd4\u56deid;c=1;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=保存返回number;c=1;d=false"
+          "title": "a=\u4fdd\u5b58\u8fd4\u56denumber;c=1;d=false"
         }
       },
-      "title": "保存返回单个id对象"
+      "title": "\u4fdd\u5b58\u8fd4\u56de\u5355\u4e2aid\u5bf9\u8c61"
     },
     "Status": {
       "type": "object",
@@ -182,34 +252,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=10;d=false"
+          "title": "a=\u603b\u9875\u6570;c=10;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;c=1;d=false"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;c=100;d=false"
+          "title": "a=\u603b\u6761\u6570;c=100;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/StoreListRes.Row"
           },
-          "title": "a=数据列表;c=[];d=false"
+          "title": "a=\u6570\u636e\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -218,95 +288,95 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=门店id;c=001;d=false"
+          "title": "a=\u95e8\u5e97id;c=001;d=false"
         },
         "number": {
           "type": "string",
-          "title": "a=门店编码;c=001;d=false"
+          "title": "a=\u95e8\u5e97\u7f16\u7801;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=门店名称;c=普通门店;d=false"
+          "title": "a=\u95e8\u5e97\u540d\u79f0;c=\u666e\u901a\u95e8\u5e97;d=false"
         },
         "sale_type": {
           "type": "string",
-          "title": "a=经营方式;c=1;d=false"
+          "title": "a=\u7ecf\u8425\u65b9\u5f0f;c=1;d=false"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;c=\u5907\u6ce8;d=false"
         },
         "contact": {
           "type": "string",
-          "title": "a=联系人;c=一号联系人d=false"
+          "title": "a=\u8054\u7cfb\u4eba;c=\u4e00\u53f7\u8054\u7cfb\u4ebad=false"
         },
         "telephone": {
           "type": "string",
-          "title": "a=手机号码;c=13333333333;d=false"
+          "title": "a=\u624b\u673a\u53f7\u7801 [\u654f\u611f\u6570\u636e\u89e3\u5bc6](https://open.jdy.com/#/files/api/detail?id=d7046d818dc111ee860d0fedad361070&noside=true);c=13333333333;d=false"
         },
         "region": {
           "type": "string",
-          "title": "a=行政区划;d=false"
+          "title": "a=\u884c\u653f\u533a\u5212;d=false"
         },
         "address": {
           "type": "string",
-          "title": "a=详细地址;c=xxx;d=false"
+          "title": "a=\u8be6\u7ec6\u5730\u5740;c=xxx;d=false"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=修改时间;c=2020-08-03 19:18:58.0;d=false"
+          "title": "a=\u4fee\u6539\u65f6\u95f4;c=2020-08-03 19:18:58.0;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2020-08-03 19:18:58.0;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2020-08-03 19:18:58.0;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=状态，0-禁用，1-可用;c=1;d=false"
+          "title": "a=\u72b6\u6001\uff0c0-\u7981\u7528\uff0c1-\u53ef\u7528;c=1;d=false"
         },
         "group_id": {
           "type": "string",
-          "title": "a=门店组别id;c=950020066244559872;d=false"
+          "title": "a=\u95e8\u5e97\u7ec4\u522bid;c=950020066244559872;d=false"
         },
         "group_number": {
           "type": "string",
-          "title": "a=门店组别编码;c=001;d=false"
+          "title": "a=\u95e8\u5e97\u7ec4\u522b\u7f16\u7801;c=001;d=false"
         },
         "group_name": {
           "type": "string",
-          "title": "a=门店组别名称;c=001;d=false"
+          "title": "a=\u95e8\u5e97\u7ec4\u522b\u540d\u79f0;c=001;d=false"
         },
         "location_id": {
           "type": "string",
-          "title": "a=对应仓库id;c=950031698668560384;d=false"
+          "title": "a=\u5bf9\u5e94\u4ed3\u5e93id;c=950031698668560384;d=false"
         },
         "location_number": {
           "type": "string",
-          "title": "a=仓库编码;c=CK00022;d=false"
+          "title": "a=\u4ed3\u5e93\u7f16\u7801;c=CK00022;d=false"
         },
         "location_name": {
           "type": "string",
-          "title": "a=仓库名称;c=负库存;d=false"
+          "title": "a=\u4ed3\u5e93\u540d\u79f0;c=\u8d1f\u5e93\u5b58;d=false"
         },
         "sale_dept_id": {
           "type": "string",
-          "title": "a=部门id;c=0;d=false"
+          "title": "a=\u90e8\u95e8id;c=0;d=false"
         },
         "sale_dept_number": {
           "type": "string",
-          "title": "a=部门编码;c=33544;d=false"
+          "title": "a=\u90e8\u95e8\u7f16\u7801;c=33544;d=false"
         },
         "sale_dept_name": {
           "type": "string",
-          "title": "a=部门名称;c=部门;d=false"
+          "title": "a=\u90e8\u95e8\u540d\u79f0;c=\u90e8\u95e8;d=false"
         },
         "lng": {
           "type": "string",
-          "title": "a=经度;c=001;d=false"
+          "title": "a=\u7ecf\u5ea6;c=001;d=false"
         },
         "lat": {
           "type": "string",
-          "title": "a=纬度;c=001;d=false"
+          "title": "a=\u7eac\u5ea6;c=001;d=false"
         }
       }
     },
@@ -315,74 +385,74 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "a=门店id;c=001;d=false"
+          "title": "a=\u95e8\u5e97id;c=001;d=false"
         },
         "name": {
           "type": "string",
-          "title": "a=门店名;c=1;d=true"
+          "title": "a=\u95e8\u5e97\u540d;c=1;d=true"
         },
         "number": {
           "type": "string",
-          "title": "a=门店编号，为空系统自动生成编号，根据门店的编码规则;c=编号;d=false"
+          "title": "a=\u95e8\u5e97\u7f16\u53f7\uff0c\u4e3a\u7a7a\u7cfb\u7edf\u81ea\u52a8\u751f\u6210\u7f16\u53f7\uff0c\u6839\u636e\u95e8\u5e97\u7684\u7f16\u7801\u89c4\u5219;c=\u7f16\u53f7;d=false"
         },
         "enable": {
           "type": "string",
-          "title": "a=状态，默认1启用;c=1;d=false"
+          "title": "a=\u72b6\u6001\uff0c\u9ed8\u8ba41\u542f\u7528;c=1;d=false"
         },
         "sale_type": {
           "type": "string",
-          "title": "a=经营方式，1-自营，2-加盟，3-联营;c=1;d=true"
+          "title": "a=\u7ecf\u8425\u65b9\u5f0f\uff0c1-\u81ea\u8425\uff0c2-\u52a0\u76df\uff0c3-\u8054\u8425;c=1;d=true"
         },
         "group_id": {
           "type": "string",
-          "title": "a=门店分组ID;c=697140092908614656;d=true"
+          "title": "a=\u95e8\u5e97\u5206\u7ec4ID;c=697140092908614656;d=true"
         },
         "dept_id": {
           "type": "string",
-          "title": "a=门店所属部门ID;c=697140092908614656;d=true"
+          "title": "a=\u95e8\u5e97\u6240\u5c5e\u90e8\u95e8ID;c=697140092908614656;d=true"
         },
         "mulLabel_id_list": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "a=门店标签id列表;c=[];d=false"
+          "title": "a=\u95e8\u5e97\u6807\u7b7eid\u5217\u8868;c=[];d=false"
         },
         "location_id": {
           "type": "string",
-          "title": "a=对应仓库id;c=950031698668560384;d=true"
+          "title": "a=\u5bf9\u5e94\u4ed3\u5e93id;c=950031698668560384;d=true"
         },
         "lng": {
           "type": "string",
-          "title": "a=经度;c=001;d=true"
+          "title": "a=\u7ecf\u5ea6;c=001;d=true"
         },
         "lat": {
           "type": "string",
-          "title": "a=纬度;c=001;d=true"
+          "title": "a=\u7eac\u5ea6;c=001;d=true"
         },
         "remark": {
           "type": "string",
-          "title": "a=备注;c=备注;d=false"
+          "title": "a=\u5907\u6ce8;c=\u5907\u6ce8;d=false"
         },
         "contact": {
           "type": "string",
-          "title": "a=联系人;c=一号联系人d=true"
+          "title": "a=\u8054\u7cfb\u4eba;c=\u4e00\u53f7\u8054\u7cfb\u4ebad=true"
         },
         "telephone": {
           "type": "string",
-          "title": "a=手机号码;c=13333333333;d=true"
+          "title": "a=\u624b\u673a\u53f7\u7801;c=13333333333;d=true"
         },
         "region_id": {
           "type": "string",
-          "title": "a=行政区划id;d=false"
+          "title": "a=\u884c\u653f\u533a\u5212id;d=false"
         },
         "address": {
           "type": "string",
-          "title": "a=详细地址;c=xxx;d=true"
+          "title": "a=\u8be6\u7ec6\u5730\u5740;c=xxx;d=true"
         },
         "customer_id": {
           "type": "string",
-          "title": "a=关联客户ID，门店类型为加盟时必填;c=1;d=false"
+          "title": "a=\u5173\u8054\u5ba2\u6237ID\uff0c\u95e8\u5e97\u7c7b\u578b\u4e3a\u52a0\u76df\u65f6\u5fc5\u586b;c=1;d=false"
         }
       }
     }

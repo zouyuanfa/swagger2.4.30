@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;门店管理;",
+    "title": "\u96f6\u552e\u4e91;\u95e8\u5e97\u7ba1\u7406;",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/mall_pre_write_off_cancel": {
       "post": {
-        "summary": "反预核销;反预核销;1.0.6",
+        "summary": "\u53cd\u9884\u6838\u9500;\u53cd\u9884\u6838\u9500;1.0.6",
         "operationId": "MallPreWriteOffCancel_save",
         "responses": {
           "200": {
@@ -60,22 +60,22 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "MallPreWriteOffCancelReq": {
       "type": "object",
       "properties": {
         "src_bill_id": {
           "type": "string",
-          "title": "a=商城单据内码（外部对接系统唯一标识），每次预核销，该参数必须不同，否则会当成已经处理，直接返回;c=001;d=true"
+          "title": "a=\u5546\u57ce\u5355\u636e\u5185\u7801\uff08\u5916\u90e8\u5bf9\u63a5\u7cfb\u7edf\u552f\u4e00\u6807\u8bc6\uff09\uff0c\u6bcf\u6b21\u9884\u6838\u9500\uff0c\u8be5\u53c2\u6570\u5fc5\u987b\u4e0d\u540c\uff0c\u5426\u5219\u4f1a\u5f53\u6210\u5df2\u7ecf\u5904\u7406\uff0c\u76f4\u63a5\u8fd4\u56de;c=001;d=true"
         },
         "member_id": {
           "type": "string",
-          "title": "a=会员ID;c=1333333333;d=true"
+          "title": "a=\u4f1a\u5458ID;c=1333333333;d=true"
         },
         "member_deals": {
           "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals",
-          "title": "a=预核销业务类型;c=object;d=false"
+          "title": "a=\u9884\u6838\u9500\u4e1a\u52a1\u7c7b\u578b;c=object;d=false"
         }
       }
     },
@@ -84,23 +84,23 @@
       "properties": {
         "recharge_consume": {
           "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.RechargeConsume",
-          "title": "a=会员消费;c=object;d=false"
+          "title": "a=\u4f1a\u5458\u6d88\u8d39;c=object;d=false"
         },
         "integral_now": {
           "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.IntegralNow",
-          "title": "a=优惠券预核销;c=object;d=false"
+          "title": "a=\u4f18\u60e0\u5238\u9884\u6838\u9500;c=object;d=false"
         },
         "write_off_coupons": {
           "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons",
-          "title": "a=优惠券预核销;c=object;d=false"
+          "title": "a=\u4f18\u60e0\u5238\u9884\u6838\u9500;c=object;d=false"
         },
         "recharge_return": {
           "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.RechargeReturn",
-          "title": "a=充值退款;c=object;d=false"
+          "title": "a=\u5145\u503c\u9000\u6b3e;c=object;d=false"
         },
         "consume_return": {
           "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.ConsumeReturn",
-          "title": "a=退货退款;c=object;d=false"
+          "title": "a=\u9000\u8d27\u9000\u6b3e;c=object;d=false"
         }
       }
     },
@@ -109,19 +109,19 @@
       "properties": {
         "member_card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1333333333;d=false"
         },
         "member_card_no": {
           "type": "string",
-          "title": "a=会员卡编号;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7f16\u53f7;c=1333333333;d=false"
         },
         "return_amt": {
           "type": "string",
-          "title": "a=退充值预核销金额;c=1333333333;d=false"
+          "title": "a=\u9000\u5145\u503c\u9884\u6838\u9500\u91d1\u989d;c=1333333333;d=false"
         },
         "src_bill_id": {
           "type": "string",
-          "title": "a=原单ID;c=1333333333;d=false"
+          "title": "a=\u539f\u5355ID;c=1333333333;d=false"
         }
       }
     },
@@ -130,33 +130,33 @@
       "properties": {
         "member_card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1333333333;d=false"
         },
         "member_card_no": {
           "type": "string",
-          "title": "a=会员卡编号;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7f16\u53f7;c=1333333333;d=false"
         },
         "integral": {
           "type": "string",
-          "title": "a=核销积分;c=300;d=false"
+          "title": "a=\u6838\u9500\u79ef\u5206;c=300;d=false"
         }
       },
-      "title": "预核销积分"
+      "title": "\u9884\u6838\u9500\u79ef\u5206"
     },
     "MallPreWriteOffCancelReq.MemberDeals.RechargeConsume": {
       "type": "object",
       "properties": {
         "member_card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1333333333;d=false"
         },
         "member_card_no": {
           "type": "string",
-          "title": "a=会员卡编号;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7f16\u53f7;c=1333333333;d=false"
         },
         "amt": {
           "type": "string",
-          "title": "a=会员消费预核销金额;c=30;d=false"
+          "title": "a=\u4f1a\u5458\u6d88\u8d39\u9884\u6838\u9500\u91d1\u989d;c=30;d=false"
         }
       }
     },
@@ -165,36 +165,36 @@
       "properties": {
         "member_card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1333333333;d=false"
         },
         "amt": {
           "type": "string",
-          "title": "a=退充值预核销金额;c=300;d=false"
+          "title": "a=\u9000\u5145\u503c\u9884\u6838\u9500\u91d1\u989d;c=300;d=false"
         },
         "src_bill_id": {
           "type": "string",
-          "title": "a=原充值单ID;c=1333333333;d=false"
+          "title": "a=\u539f\u5145\u503c\u5355ID;c=1333333333;d=false"
         }
       },
-      "title": "充值退款"
+      "title": "\u5145\u503c\u9000\u6b3e"
     },
     "MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons": {
       "type": "object",
       "properties": {
         "member_card_id": {
           "type": "string",
-          "title": "a=会员卡ID;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361ID;c=1333333333;d=false"
         },
         "member_card_no": {
           "type": "string",
-          "title": "a=会员卡编号;c=1333333333;d=false"
+          "title": "a=\u4f1a\u5458\u5361\u7f16\u53f7;c=1333333333;d=false"
         },
         "coupon_list": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/MallPreWriteOffCancelReq.MemberDeals.WriteOffCoupons.Coupon"
           },
-          "title": "a=优惠券 数组;c=[];d=false"
+          "title": "a=\u4f18\u60e0\u5238 \u6570\u7ec4;c=[];d=false"
         }
       }
     },
@@ -203,18 +203,18 @@
       "properties": {
         "coupons_id": {
           "type": "string",
-          "title": "a=优惠券ID 可选;c=1333333333;d=false"
+          "title": "a=\u4f18\u60e0\u5238ID \u53ef\u9009;c=1333333333;d=false"
         },
         "coupons_no": {
           "type": "string",
-          "title": "a=优惠券编号 可选;c=1333333333;d=false"
+          "title": "a=\u4f18\u60e0\u5238\u7f16\u53f7 \u53ef\u9009;c=1333333333;d=false"
         },
         "money": {
           "type": "string",
-          "title": "a=抵扣金额;c=300;d=false"
+          "title": "a=\u62b5\u6263\u91d1\u989d;c=300;d=false"
         }
       },
-      "title": "优惠券 数组"
+      "title": "\u4f18\u60e0\u5238 \u6570\u7ec4"
     },
     "Status": {
       "type": "object",

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "零售云;积分储值",
+    "title": "\u96f6\u552e\u4e91;\u79ef\u5206\u50a8\u503c",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/openapi/v2/ls/integral_record": {
       "get": {
-        "summary": "积分流水查询;积分流水查询;1.0.8",
+        "summary": "\u79ef\u5206\u6d41\u6c34\u67e5\u8be2;\u79ef\u5206\u6d41\u6c34\u67e5\u8be2;1.0.8",
         "operationId": "IntegralRecord_list",
         "responses": {
           "200": {
@@ -37,56 +37,56 @@
         "parameters": [
           {
             "name": "mobile",
-            "description": "a=会员手机号码;c=1;d=false.",
+            "description": "a=\u4f1a\u5458\u624b\u673a\u53f7\u7801;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "member_id",
-            "description": "a=会员ID;c=1;d=false.",
+            "description": "a=\u4f1a\u5458ID;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "start_date",
-            "description": "a=开始日期，格式yyyy-MM-dd HH:mm:ss;c=1;d=false.",
+            "description": "a=\u5f00\u59cb\u65e5\u671f\uff0c\u683c\u5f0fyyyy-MM-dd HH:mm:ss;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "end_date",
-            "description": "a=结束日期，格式yyyy-MM-dd HH:mm:ss;c=1;d=false.",
+            "description": "a=\u7ed3\u675f\u65e5\u671f\uff0c\u683c\u5f0fyyyy-MM-dd HH:mm:ss;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page",
-            "description": "a=页数，默认1;c=1;d=false.",
+            "description": "a=\u9875\u6570\uff0c\u9ed8\u8ba41;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "page_size",
-            "description": "a=每页记录数，默认10;c=1;d=false.",
+            "description": "a=\u6bcf\u9875\u8bb0\u5f55\u6570\uff0c\u9ed8\u8ba410;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "id",
-            "description": "a=流水记录ID;c=1;d=false.",
+            "description": "a=\u6d41\u6c34\u8bb0\u5f55ID;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "integral_type",
-            "description": "a=积分业务类型，具体值请参考后台系统，积分流水功能的积分业务类型编码;c=1;d=false.",
+            "description": "a=\u79ef\u5206\u4e1a\u52a1\u7c7b\u578b\uff0c\u5177\u4f53\u503c\u8bf7\u53c2\u8003\u540e\u53f0\u7cfb\u7edf\uff0c\u79ef\u5206\u6d41\u6c34\u529f\u80fd\u7684\u79ef\u5206\u4e1a\u52a1\u7c7b\u578b\u7f16\u7801;c=1;d=false.",
             "in": "query",
             "required": false,
             "type": "string"
@@ -108,7 +108,7 @@
         }
       },
       "additionalProperties": {},
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := \u0026pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
     },
     "IntegralRecordListRes": {
       "type": "object",
@@ -116,34 +116,34 @@
         "total_page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总页数;c=10;d=false"
+          "title": "a=\u603b\u9875\u6570;c=10;d=false"
         },
         "cur_page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页条数;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875\u6761\u6570;c=1;d=false"
         },
         "count": {
           "type": "integer",
           "format": "int32",
-          "title": "a=总条数;c=100;d=false"
+          "title": "a=\u603b\u6761\u6570;c=100;d=false"
         },
         "page_size": {
           "type": "integer",
           "format": "int32",
-          "title": "a=每页条数;c=100;d=false"
+          "title": "a=\u6bcf\u9875\u6761\u6570;c=100;d=false"
         },
         "page": {
           "type": "integer",
           "format": "int32",
-          "title": "a=当前页;c=1;d=false"
+          "title": "a=\u5f53\u524d\u9875;c=1;d=false"
         },
         "rows": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/IntegralRecordListRes.Row"
           },
-          "title": "a=数据列表;c=[];d=false"
+          "title": "a=\u6570\u636e\u5217\u8868;c=[];d=false"
         }
       }
     },
@@ -152,47 +152,47 @@
       "properties": {
         "member_id": {
           "type": "string",
-          "title": "a=会员ID;c=1;d=false"
+          "title": "a=\u4f1a\u5458ID;c=1;d=false"
         },
         "member_name": {
           "type": "string",
-          "title": "a=会员名称;c=会员A;d=false"
+          "title": "a=\u4f1a\u5458\u540d\u79f0;c=\u4f1a\u5458A;d=false"
         },
         "create_time": {
           "type": "string",
-          "title": "a=创建时间;c=2022-08-05;d=false"
+          "title": "a=\u521b\u5efa\u65f6\u95f4;c=2022-08-05;d=false"
         },
         "modify_time": {
           "type": "string",
-          "title": "a=更改时间;c=2022-08-05;d=false"
+          "title": "a=\u66f4\u6539\u65f6\u95f4;c=2022-08-05;d=false"
         },
         "last_integral": {
           "type": "string",
-          "title": "a=上存积分;c=500;d=false"
+          "title": "a=\u4e0a\u5b58\u79ef\u5206;c=500;d=false"
         },
         "occur": {
           "type": "string",
-          "title": "a=当次积分;c=20;d=false"
+          "title": "a=\u5f53\u6b21\u79ef\u5206;c=20;d=false"
         },
         "integral": {
           "type": "string",
-          "title": "a=结存积分;c=500;d=false"
+          "title": "a=\u7ed3\u5b58\u79ef\u5206;c=500;d=false"
         },
         "type_number": {
           "type": "string",
-          "title": "a=积分业务类型编号;c=001;d=false"
+          "title": "a=\u79ef\u5206\u4e1a\u52a1\u7c7b\u578b\u7f16\u53f7;c=001;d=false"
         },
         "type_id": {
           "type": "string",
-          "title": "a=积分业务类型ID;c=001;d=false"
+          "title": "a=\u79ef\u5206\u4e1a\u52a1\u7c7b\u578bID;c=001;d=false"
         },
         "type_name": {
           "type": "string",
-          "title": "a=积分业务类型名称;c=业务A;d=false"
+          "title": "a=\u79ef\u5206\u4e1a\u52a1\u7c7b\u578b\u540d\u79f0;c=\u4e1a\u52a1A;d=false"
         },
         "id": {
           "type": "string",
-          "title": "a=唯一记录标识id;c=1"
+          "title": "a=\u552f\u4e00\u8bb0\u5f55\u6807\u8bc6id;c=1"
         }
       }
     },
