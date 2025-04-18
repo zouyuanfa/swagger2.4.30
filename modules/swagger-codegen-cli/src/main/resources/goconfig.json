@@ -1,0 +1,11 @@
+{
+  "packageName": "kingdee_xw_openapi",
+  "packageVersion": "1.0.0",
+  "hideGenerationTimestamp": true,
+  "withGoCodegenComment": true,
+  "structPrefix": true,
+  "additionalProperties": {
+    "generateInterfaces": true,
+    "enumClassPrefix": true
+  }
+}
