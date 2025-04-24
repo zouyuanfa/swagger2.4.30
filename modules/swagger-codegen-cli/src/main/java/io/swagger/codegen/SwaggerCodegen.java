@@ -8,6 +8,7 @@ import io.swagger.codegen.cmd.Langs;
 import io.swagger.codegen.cmd.Meta;
 import io.swagger.codegen.cmd.Validate;
 import io.swagger.codegen.cmd.Version;
+import io.swagger.codegen.util.SwaggerHarvester;
 
 /**
  * User: lanwen Date: 24.03.15 Time: 17:56
@@ -20,6 +21,7 @@ public class SwaggerCodegen {
 
 
     public static void main(String[] args) {
+
 //        System.setProperty("apiTests","false");
         String version = Version.readVersionFromResources();
         @SuppressWarnings("unchecked")

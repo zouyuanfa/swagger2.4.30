@@ -1,8 +1,16 @@
 {
-  "developerName": "kingdee",
-  "developerOrganization": "open_jdy_com",
-  "invokerPackage": "com_kingdee_service",
-  "modelPackage": "data\\entity",
-  "apiPackage": "data\\api",
-  "artifactId": "kingdee-xw-openapi"
+  "invokerPackage": "Kingdee\\XwOpenapi",
+  "packagePath": "kingdee-xw-openapi-php",
+  "artifactVersion": "1.0.0",
+  "modelPackage": "Kingdee\\XwOpenapi\\Model",
+  "apiPackage": "Kingdee\\XwOpenapi\\Api",
+  "composerVendorName": "kingdee",
+  "composerProjectName": "xw-openapi-sdk",
+  "srcBasePath": "src",
+  "variableNamingConvention": "camelCase",
+  "additionalProperties": {
+    "generateModelDocumentation": true,
+    "generateApiDocumentation": true,
+    "hideGenerationTimestamp": true
+  }
 }
