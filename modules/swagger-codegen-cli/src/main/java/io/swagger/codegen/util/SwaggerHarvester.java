@@ -19,8 +19,10 @@ public class SwaggerHarvester {
     private int fileCount = 0;
     private final List<String> errorUrls = new ArrayList<>();
 
-    private static final String APP_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHQiOnsiYWNjb3VudElkIjoiMTY4MzUzMDI0NDE0NTgyOTI1OCIsImdyb3VwTmFtZSI6Im5zLWZvcms1MyIsImFwcF9rZXkiOiJlMUVGN3pqdCIsInRlbmFudElkIjoiNzk3Njc5Njk4NjExNyIsInVzZXJOYW1lIjoiYTE4MDkzNzY5Njc3In0sImdycCI6Im5zLWZvcms1MyIsImV4cCI6MTc0NTU2NzU2NywiYWlkIjoiMTY4MzUzMDI0NDE0NTgyOTI1OCIsImlhdCI6MTc0NTQ4MTE2N30.eGdcI_MGiyH9oFQJm8QM-qmMHiPs75F7ktLvakhrYUI";
+    // app-token
+    private static final String APP_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHQiOnsiYWNjb3VudElkIjoiMTY0MTM2MDk5MzAxMDMyNDI1MCIsImdyb3VwTmFtZSI6Im5zLXQ1MWMiLCJhcHBfa2V5IjoiN0lqTnJ5QUsiLCJ0ZW5hbnRJZCI6Ijc5ODY2OTM5OTU4IiwidXNlck5hbWUiOiJtdWx0aWNvcnBfMTMzODU4OTAyIiwidXNlcklkIjoxMzM4NTg5MDJ9LCJncnAiOiJucy10NTFjIiwiZXhwIjoxNzUyNjM0NzU2LCJhaWQiOiIxNjQxMzYwOTkzMDEwMzI0MjUwIiwiaWF0IjoxNzUyNTQ4MzU2fQ.Lwm5zD6_qk_u44kHvsc6nVRcOoOvbtml9uk-OnlgQXg";
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    // 输出 swagger的文件目录
     private static final String BASE_OUTPUT_PATH = "E:\\Java\\Kingdee\\swagger2.4.30\\modules\\swagger-codegen-cli\\src\\main\\java\\io\\swagger\\codegen\\aster";
 
     public SwaggerHarvester(String baseUrl) throws IOException {
@@ -30,7 +32,7 @@ public class SwaggerHarvester {
         System.out.println("Output will be saved to: " + this.outputDir);
     }
 
-    public void startHarvest() throws IOException {
+    public void startHarvest(){
         String entryPoint = baseUrl + "/docs/jdy-stars-grpc/";
         urlQueue.add(entryPoint);
 
@@ -225,6 +227,7 @@ public class SwaggerHarvester {
         }
     }
 
+    // 下载所有API 的swagger.JSON文件
     public static void main(String[] args) {
         try {
             SwaggerHarvester harvester = new SwaggerHarvester("https://tf.jdy.com");

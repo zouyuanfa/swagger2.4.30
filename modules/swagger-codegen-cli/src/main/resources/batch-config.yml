@@ -1,0 +1,14 @@
+outputDir: E:\Java\Kingdee\openapi-generate\sdk-output  # SDK 输出根目录
+generators:
+  - generator: java
+    output: #java
+    glob: "E:\Java\Kingdee\openapi-generate\swagger-apis\**\*.json"  # 递归匹配所有子目录的JSON文件[4,7](@ref)
+    config:
+      library: "okhttp-gson"
+      # 动态包名：根据文件路径生成唯一包名[3,8](@ref)
+      modelPackage: "com.kingdee.{name}.model"
+      apiPackage: "com.kingdee.{name}.api"
+      additionalProperties:
+        # 使用文件父目录名替换{name}占位符[3,9](@ref)
+        name: ${file.parent.fileName}
+      dateLibrary: "java8"
