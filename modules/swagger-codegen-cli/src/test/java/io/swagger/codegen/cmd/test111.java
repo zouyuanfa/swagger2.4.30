@@ -5,7 +5,6 @@ package io.swagger.codegen.cmd;
 import mockit.Mocked;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 
 public class test111 {
 
